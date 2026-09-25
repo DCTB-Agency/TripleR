@@ -1,0 +1,19 @@
+# Netlify — designprototypes (stap 1). Bij de Astro-build (stap 2) wordt dit:
+#   command = "npm run build"   publish = "dist"
+[build]
+  publish = "design"
+  command = ""
+
+# Root toont de homepage
+[[redirects]]
+  from = "/"
+  to = "/homepage.html"
+  status = 200
+
+# Staging: nooit indexeren (BRIEF §11 — noindex alleen via host-headers, nooit in de pagina's zelf)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

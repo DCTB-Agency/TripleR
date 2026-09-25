@@ -22,6 +22,9 @@ python3 -m http.server 4321 --directory design
 
 Open daarna http://localhost:4321/homepage.html.
 
+### Online (Netlify)
+`netlify.toml` publiceert de map `design/` (geen build nodig) en toont de homepage op `/`. Elke push naar `main` zet een nieuwe versie online. Alle pagina's krijgen de header `X-Robots-Tag: noindex`, zodat het prototype niet in Google komt.
+
 ### Designbronnen aanpassen
 Pagina's worden opgebouwd uit `*.src.html` + `partials/` (gedeelde header, footer en zoekpaneel):
 
