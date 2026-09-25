@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Triple R Design System</title>
+<meta name="description" content="Design system v0.3 voor de nieuwe Triple R Europe-website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--font-sans);font-size:var(--fs-body);line-height:var(--lh-body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--blue-700);text-underline-offset:.18em}
+:focus-visible{outline:none;box-shadow:var(--focus);border-radius:var(--radius)}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:var(--track-head);line-height:var(--lh-head);text-wrap:balance}
+p{margin:0}
+.wrap{max-width:calc(var(--container) + 2*var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
+.muted{color:var(--grey-600)}.small{font-size:var(--fs-sm)}
+.mono{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.kicker{font-size:var(--fs-sm);font-weight:600;color:var(--blue-700);margin-bottom:var(--s-3)}
+.lbl{font-size:var(--fs-xs);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--grey-600)}
+
+.top{border-bottom:var(--border);padding-block:var(--s-6)}
+.top__in{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--s-4)}
+.top .logo{width:150px}.top .logo svg{width:100%;height:auto;display:block}
+.intro{padding-block:var(--s-16) var(--s-12);border-bottom:var(--border)}
+.intro h1{font-size:var(--fs-h1)}
+.intro p{font-size:var(--fs-lead);color:var(--grey-600);max-width:44rem;margin-top:var(--s-4)}
+.toc{display:flex;flex-wrap:wrap;gap:var(--s-2) var(--s-6);margin-top:var(--s-8);list-style:none;padding:0;font-size:var(--fs-sm);font-weight:600}
+.toc a{text-decoration:none}.toc a:hover{text-decoration:underline}
+
+section.ds{padding-block:var(--s-16);border-bottom:var(--border)}
+.ds__head{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--gap);margin-bottom:var(--s-10)}
+.ds__head h2{font-size:var(--fs-h2)}
+.ds__head p{color:var(--grey-600);max-width:42rem}
+@media (max-width:767px){.ds__head{grid-template-columns:1fr;gap:var(--s-3)}}
+.grid{display:grid;gap:var(--gap)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1023px){.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:559px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.box{border:var(--border);border-radius:var(--radius-lg);padding:var(--s-6)}
+.box.grey{background:var(--grey-50)}
+.box.indigo{background:var(--brand-gradient);border-color:transparent;color:#fff}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:var(--fs-sm)}
+th,td{text-align:left;padding:10px var(--s-4) 10px 0;border-bottom:var(--border);vertical-align:top}
+th{font-weight:600;color:var(--grey-600);font-size:var(--fs-xs);letter-spacing:var(--track-label);text-transform:uppercase}
+
+/* colour */
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:var(--s-4)}
+.sw figure{margin:0;border:var(--border)}
+.sw .chip{height:80px}
+.sw figcaption{padding:var(--s-3);display:grid;gap:2px;font-size:var(--fs-xs)}
+.sw b{font-size:var(--fs-sm);font-weight:600}
+.sw .mono{font-size:12px;color:var(--grey-600)}
+.pair{display:inline-flex;align-items:center;justify-content:center;min-width:88px;height:32px;padding:0 10px;font-weight:600;border:var(--border)}
+.ok{color:var(--ok-700);font-weight:600}
+
+/* type */
+.trow{display:grid;grid-template-columns:220px 1fr;gap:var(--gap);padding-block:var(--s-5);border-bottom:var(--border);align-items:baseline}
+.trow .m{font-size:12px;color:var(--grey-600);display:grid;gap:2px}
+.trow .m b{color:var(--ink);font-size:var(--fs-sm)}
+@media (max-width:767px){.trow{grid-template-columns:1fr;gap:var(--s-2)}}
+
+/* space + grid */
+.space{display:grid;gap:var(--s-2)}
+.space div{display:grid;grid-template-columns:80px 60px 1fr;gap:var(--s-4);align-items:center;font-size:12px}
+.space i{height:12px;background:var(--blue-500);display:block}
+.cols{display:grid;gap:var(--gap);height:48px}
+.cols span{background:var(--blue-50);border:1px solid #BFDDEF}
+
+/* components (identiek aan homepage) */
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:var(--s-2);min-height:52px;padding:0 var(--s-6);border-radius:var(--radius);font:600 var(--fs-body)/1.1 var(--font-sans);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.btn--primary{background:var(--blue-700);color:#fff}
+.btn--primary:hover,.btn--primary.is-hover{background:var(--blue-800)}
+.btn--primary:active,.btn--primary.is-active{background:var(--blue-900)}
+.btn--secondary{background:#fff;border-color:var(--grey-200);color:var(--ink)}
+.btn--secondary:hover,.btn--secondary.is-hover{border-color:var(--ink)}
+.btn--secondary.is-active{background:var(--grey-100)}
+.btn--light{background:#fff;color:var(--indigo-900)}
+.btn--light.is-hover{background:var(--grey-100)}
+.btn--outline-light{border-color:rgb(255 255 255 / .6);color:#fff;background:transparent}
+.btn--outline-light.is-hover{border-color:#fff;background:rgb(255 255 255 / .08)}
+.btn.is-focus{box-shadow:var(--focus)}
+.box.indigo .btn.is-focus{box-shadow:var(--focus-dark)}
+.btn[disabled]{background:var(--grey-100);border-color:var(--grey-100);color:var(--grey-600);cursor:not-allowed}
+.btn--sm{min-height:40px;padding:0 var(--s-4);font-size:var(--fs-sm)}
+.states{display:grid;grid-template-columns:110px repeat(5,max-content);gap:var(--s-4) var(--s-5);align-items:center}
+.states .h{font-size:var(--fs-xs);color:var(--grey-600);font-weight:600}
+.box.indigo .states .h{color:var(--indigo-200)}
+.arrow{font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.arrow::after{content:"→"}
+.field{display:grid;gap:6px}
+.field label{font-size:var(--fs-sm);font-weight:600}
+.field .hint{font-size:var(--fs-xs);color:var(--grey-600)}
+.input,select{height:48px;width:100%;padding:0 var(--s-4);border:1px solid var(--grey-200);border-radius:var(--radius);background:#fff;font:inherit;color:var(--ink)}
+select{appearance:none;padding-right:40px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%231D1D1B' stroke-width='1.5'%3E%3Cpath d='M2.5 4.5L6 8l3.5-3.5'/%3E%3C/svg%3E") right 14px center/12px no-repeat}
+.input:hover{border-color:var(--grey-400)}
+.input:focus,.input.is-focus{outline:none;border-color:var(--blue-700);box-shadow:0 0 0 3px var(--blue-50)}
+.input.is-error{border-color:var(--err-700)}
+.input[disabled]{background:var(--grey-50);color:var(--grey-600)}
+.err{font-size:var(--fs-xs);color:var(--err-700);font-weight:600}
+.check{display:flex;gap:var(--s-3);align-items:flex-start;font-size:var(--fs-sm)}
+.check input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--blue-700)}
+.progress{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.progress i{height:4px;background:var(--grey-200)}
+.progress i.on{background:var(--blue-700)}
+.tb{display:inline-grid;place-items:center;width:15px;height:15px;margin-left:3px;border:1px solid var(--check-700);border-radius:50%;font:600 10px/1 var(--font-sans);color:var(--check-700);background:var(--check-50);vertical-align:super;font-style:normal}
+.tb::after{content:"?"}
+.prod{display:grid;border:var(--border);border-radius:var(--radius-lg);overflow:hidden;color:var(--ink);text-decoration:none;max-width:380px}
+.prod:hover{border-color:var(--ink)}
+.prod__img{background:radial-gradient(80% 70% at 50% 45%,#fff 0%,#F1F4F8 60%,#E3E8EF 100%);aspect-ratio:5/4;padding:var(--s-8);overflow:hidden}
+.prod__img img{mix-blend-mode:multiply;width:100%;height:100%;object-fit:contain}
+.prod__body{padding:var(--s-5) var(--s-6) var(--s-6);display:grid;gap:var(--s-2)}
+.prod__body p{font-size:var(--fs-sm);color:var(--grey-600)}
+.prod dl{display:grid;grid-template-columns:auto 1fr;gap:4px var(--s-4);margin:var(--s-3) 0 0;padding-top:var(--s-3);border-top:var(--border);font-size:var(--fs-sm)}
+.prod dt{color:var(--grey-600)}.prod dd{margin:0;font-weight:600;text-align:right}
+.rule{border-top:2px solid var(--ink);padding-top:var(--s-4);display:grid;gap:var(--s-2)}
+.icons{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));border-top:var(--border);border-left:var(--border)}
+.icons figure{margin:0;padding:var(--s-5) var(--s-2);border-right:var(--border);border-bottom:var(--border);display:grid;justify-items:center;gap:var(--s-2)}
+.icons svg{width:28px;height:28px;color:var(--blue-700)}
+.icons figcaption{font-size:11px;color:var(--grey-600)}
+.dont{color:var(--grey-600)}
+.dont li{margin-bottom:6px}
+footer.f{padding-block:var(--s-10);font-size:var(--fs-sm);color:var(--grey-600)}
+</style>
+</head>
+<body>
+
+
+<header class="top"><div class="wrap top__in"><div class="logo"><svg role="img" aria-label="Triple R" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="lc0" viewBox="0 0 1760 440"><defs><radialGradient id="lc1" cx="848.79" cy="-3317.73" fx="848.79" fy="-3317.73" r="704.33" gradientTransform="translate(-25.24 1778.69) scale(.43)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0086cd"></stop><stop offset="1" stop-color="#211452"></stop></radialGradient><clipPath id="lc2"><path d="m351.45,382.08c-29.7-.13-52.19-6.37-78.5-14.53-34.94-10.81-128.78-57.69-167.35-83.59-28.17-18.91-43.68-41.62-43.68-63.97s15.51-45.06,43.68-63.97c38.57-25.9,132.42-72.77,167.35-83.59,26.32-8.15,48.81-14.39,78.5-14.52,29.83.13,52.33,6.37,78.65,14.52,34.93,10.82,128.77,57.69,167.35,83.59,28.16,18.91,43.68,41.63,43.68,63.97s-15.51,45.06-43.68,63.97c-38.57,25.9-132.41,72.78-167.34,83.59-26.32,8.15-48.8,14.4-78.5,14.53h-.15Z" style="fill: none; stroke-width: 0px;"></path></clipPath><radialGradient id="lc3" cx="874.42" cy="-3899.58" fx="874.42" fy="-3899.58" r="553.91" gradientTransform="translate(-25.24 1778.69) scale(.43)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"></stop><stop offset="1" stop-color="#fff" stop-opacity=".5"></stop></radialGradient></defs><g><path d="m351.45,382.08c-29.7-.13-52.19-6.37-78.5-14.53-34.94-10.81-128.78-57.69-167.35-83.59-28.17-18.91-43.68-41.62-43.68-63.97s15.51-45.06,43.68-63.97c38.57-25.9,132.42-72.77,167.35-83.59,26.32-8.15,48.81-14.39,78.5-14.52,29.83.13,52.33,6.37,78.65,14.52,34.93,10.82,128.77,57.69,167.35,83.59,28.16,18.91,43.68,41.63,43.68,63.97s-15.51,45.06-43.68,63.97c-38.57,25.9-132.41,72.78-167.34,83.59-26.32,8.15-48.8,14.4-78.5,14.53h-.15Z" style="fill: #211452; stroke-width: 0px;"></path><path d="m623.93,220c0,17.18-14.36,35.11-36.07,49.69-36.83,24.72-129.37,71.07-162.85,81.44-25.38,7.86-46.29,13.63-73.49,13.75-27.2-.12-48.11-5.9-73.49-13.75-33.48-10.37-126.02-56.72-162.85-81.44-21.71-14.58-36.07-32.52-36.07-49.69s14.35-35.12,36.07-49.69c36.83-24.72,129.37-71.08,162.85-81.44,25.38-7.86,46.29-13.64,73.49-13.75,27.2.12,48.1,5.89,73.49,13.75,33.48,10.37,126.02,56.72,162.85,81.44,21.71,14.58,36.07,32.52,36.07,49.69Z" style="fill: url(#lc1); stroke-width: 0px;"></path><path d="m574.58,276.21c.49.34,1.58.95,2.72.24l.5.68-2.11,1.27-1.11-.69v-1.5" style="fill: #fff; stroke-width: 0px;"></path><path d="m548.56,291.49c.36.25.72,1.18.03,1.56l.18.41,2.44-.19.21-1.78-2.05-1.41-.8,1.41" style="fill: #fff; stroke-width: 0px;"></path><path d="m592.66,163.17c-38.12-25.59-130.7-71.87-165.1-82.52-25.63-7.93-47.5-14.01-76-14.13h-.08c-28.51.12-50.37,6.2-76,14.13-34.4,10.65-126.98,56.93-165.1,82.52-25.72,17.26-39.88,37.45-39.88,56.84s14.16,39.57,39.88,56.84c38.12,25.59,130.7,71.86,165.1,82.51,25.63,7.94,47.49,14.02,76,14.14,28.58-.12,50.44-6.2,76.07-14.14,34.4-10.66,126.98-56.93,165.1-82.51,25.71-17.27,39.88-37.45,39.88-56.84s-14.16-39.57-39.88-56.84Zm-4.8,106.53c-3.14,2.11-6.71,4.38-10.6,6.77-1.13.67-2.2.08-2.68-.26h0c-8.16-5.71-61.55-43.1-65.77-46.12-1.44-1.04-4.45-3.21-4.45-5.52,0-2.08,3.49-3.91,7.92-6.22,9.71-5.06,24.38-12.72,24.38-34.42,0-16.38-6.85-28.19-20.34-35.12-11.14-5.71-23.58-6.16-27.14-6.16h-27.04c-4.23,0-8.14,2.25-8.25,2.32l-25.1,12.95c-.28.11-6.8,2.9-6.8,11.17v86.89c0,1.33-.46,2-1.36,2-.67,0-1.53-.34-2.42-.96-10.92-7.68-34.7-24.41-38.2-26.93-1.45-1.04-4.46-3.21-4.46-5.52,0-2.08,3.49-3.91,7.92-6.22,9.71-5.06,24.38-12.72,24.38-34.42,0-16.38-6.84-28.19-20.34-35.12-11.14-5.71-23.59-6.16-27.14-6.16h-27.04c-4.23,0-8.14,2.25-8.26,2.32l-25.1,12.95c-.28.11-6.8,2.9-6.8,11.17v86.89c0,1.33-.46,2-1.36,2-.67,0-1.53-.34-2.41-.96-10.93-7.68-34.7-24.41-38.2-26.93-1.45-1.04-4.46-3.21-4.46-5.52,0-2.08,3.5-3.91,7.92-6.22,9.71-5.06,24.38-12.72,24.38-34.42,0-16.38-6.84-28.19-20.34-35.12-11.14-5.71-23.59-6.16-27.14-6.16h-27.05c-4.23,0-8.14,2.25-8.25,2.32l-25.1,12.95c-.27.11-6.8,2.9-6.8,11.17v115.37c0,6.32,2.49,7.63,4.58,7.63.83,0,1.72-.2,2.76-.64l22.48-9.78c2.77-1.19,3.75-2.94,3.75-6.69v-111.26c0-.78,0-3.14,3.17-3.14h21.43c11.57,0,24.03,7.31,24.03,23.34,0,21.27-14.32,25.65-25.83,29.17-7.93,2.42-14.77,4.52-14.77,11.47s8.59,13.42,22.63,23.58l56.95,39.58h.01c.05.05.1.08.15.12l.19.13h0c2.71,1.9,6.63,4.27,10.69,4.27,1.86,0,4.38-.98,4.38-.98l22.02-9.59c2.77-1.19,3.75-2.94,3.75-6.69v-111.26c0-.78,0-3.14,3.17-3.14h21.43c11.58,0,24.04,7.31,24.04,23.34,0,21.27-14.32,25.65-25.83,29.17-7.93,2.42-14.78,4.52-14.78,11.47s8.59,13.42,22.63,23.58l56.96,39.58h.02s.1.08.14.12l.19.13h0c2.71,1.9,6.64,4.27,10.69,4.27,1.95,0,4.38-.98,4.38-.98l22.03-9.59c2.77-1.19,3.75-2.94,3.75-6.69v-111.26c0-.78,0-3.14,3.17-3.14h21.43c11.58,0,24.03,7.31,24.03,23.34,0,21.27-14.32,25.65-25.83,29.17-7.92,2.42-14.78,4.52-14.78,11.47s8.6,13.42,22.64,23.58l62.34,43.35h0c.36.24.71,1.16.04,1.54-42.81,23.58-99.05,50.51-123.59,58.11-25.38,7.86-46.29,13.63-73.49,13.75-27.2-.12-48.11-5.9-73.49-13.75-33.48-10.37-126.02-56.72-162.85-81.44-21.71-14.58-36.07-32.52-36.07-49.69s14.35-35.12,36.07-49.69c36.83-24.72,129.37-71.08,162.85-81.44,25.38-7.86,46.29-13.64,73.49-13.75,27.2.12,48.1,5.89,73.49,13.75,33.48,10.37,126.02,56.72,162.85,81.44,21.71,14.58,36.07,32.52,36.07,49.69s-14.36,35.11-36.07,49.69Z" style="fill: #fff; stroke-width: 0px;"></path><g style="clip-path: url(#lc2);"><path d="m670,33.66c0,93.01-144.54,168.41-322.83,168.41S24.35,126.67,24.35,33.66" style="fill: url(#lc3); stroke-width: 0px;"></path></g></g><g><path d="m834.53,145v174.72h-27.19v-174.72h-63.36v-24.47h156.77v24.47h-66.22Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m981.2,198.98c-5.62-3.9-11.29-5.85-17-5.85-9.16,0-17.16,4.21-24,12.65-6.84,8.43-10.27,18.58-10.27,30.46v83.49h-25.83v-145.62h25.83v23.25c9.43-17.31,23.43-25.97,42.01-25.97,4.62,0,11.29.82,19.99,2.45l-10.74,25.15Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1028.37,319.72v-123.87h-19.99v-21.75h45.82v145.62h-25.83Zm14.14-200.69c4.44,0,8.23,1.56,11.35,4.69,3.13,3.13,4.69,6.87,4.69,11.22s-1.56,8.23-4.69,11.35c-3.13,3.13-6.91,4.69-11.35,4.69s-8.09-1.56-11.22-4.69c-3.13-3.13-4.69-6.91-4.69-11.35s1.54-8.2,4.62-11.29c3.08-3.08,6.84-4.62,11.29-4.62Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1121.1,311.69v65.13h-25.83v-202.73h25.83v11.97c9.79-9.79,21.62-14.68,35.49-14.68,20.67,0,36.76,6.44,48.27,19.31,11.51,12.87,17.27,31.73,17.27,56.56,0,22.12-5.8,40.18-17.4,54.18-11.6,14-28.37,21.01-50.31,21.01-6.16,0-12.76-1.09-19.78-3.26-7.03-2.18-11.54-4.67-13.53-7.48Zm0-106.19v84.84c1.63,2.45,5.07,4.78,10.33,7,5.26,2.22,10.38,3.33,15.36,3.33,32.09,0,48.13-18.13,48.13-54.39,0-18.4-3.81-31.86-11.42-40.38-7.61-8.52-19.81-12.78-36.58-12.78-3.63,0-8.07,1.27-13.32,3.81-5.26,2.54-9.43,5.39-12.51,8.57Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1255.23,278.52V114.4h25.83v159.76c0,7.8,2.24,13.94,6.73,18.42s10.36,6.73,17.61,6.73v23.11c-33.45,0-50.17-14.64-50.17-43.92Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1457.96,249.42h-104.97c0,17.04,4.67,30.14,14,39.3,8.25,7.98,18.85,11.97,31.82,11.97,14.77,0,27.1-4.3,36.98-12.92l10.88,18.63c-3.99,3.99-10.11,7.43-18.36,10.33-10.33,3.81-21.85,5.71-34.54,5.71-18.31,0-33.86-6.21-46.64-18.63-14.23-13.68-21.35-32.09-21.35-55.2s7.3-43.28,21.89-57.79c13.05-12.96,28.51-19.44,46.37-19.44,20.76,0,37.03,5.85,48.81,17.54,11.42,11.24,17.13,26.15,17.13,44.73,0,5.71-.68,10.97-2.04,15.77Zm-62.68-56.29c-11.51,0-21.17,3.72-28.96,11.15-7.43,7.07-11.65,15.86-12.65,26.38h80.63c0-10.42-3.26-19.12-9.79-26.11-7.16-7.61-16.91-11.42-29.23-11.42Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1666.96,319.72l-53.16-85.52c-6.07,0-15.68-.45-28.83-1.36v86.88h-27.19V120.52c1,0,8.04-.34,21.14-1.02,13.1-.68,22.64-1.02,28.62-1.02,47.86,0,71.79,19.04,71.79,57.11,0,12.51-3.85,23.77-11.56,33.79-7.71,10.02-16.86,16.25-27.47,18.7l57.79,91.64h-31.14Zm-81.99-174.72v64.72c6.53.91,12.87,1.36,19.04,1.36,16.32,0,28.19-2.63,35.62-7.89,7.43-5.25,11.15-14.64,11.15-28.15,0-11.15-3.99-19.17-11.97-24.07-7.98-4.89-20.58-7.34-37.8-7.34-2.72,0-8.07.46-16.04,1.36Z" style="fill: #1d1d1b; stroke-width: 0px;"></path></g></svg></div><p class="small muted">Design system v0.3 · premium industrieel · 24 september 2026</p></div></header>
+<main>
+<div class="intro"><div class="wrap">
+  <p class="kicker">Triple R Europe · website 2026</p>
+  <h1>Design system</h1>
+  <p>Premium industrieel: strak en technisch, met karakter. Wit en koel grijs voor inhoud, diep indigo-zwart voor accentsecties, het blauw-naar-indigo-verloop uit het logo als enige decoratieve kleur. Grote typografie, zachte radius, echte foto’s.</p>
+  <ul class="toc"><li><a href="#principes">Principes</a></li><li><a href="#kleur">Kleur</a></li><li><a href="#type">Typografie</a></li><li><a href="#ruimte">Ruimte &amp; grid</a></li><li><a href="#knoppen">Knoppen</a></li><li><a href="#formulieren">Formulieren</a></li><li><a href="#componenten">Componenten</a></li><li><a href="#iconen">Iconen &amp; beeld</a></li><li><a href="#beweging">Beweging</a></li></ul>
+</div></div>
+
+<section class="ds" id="principes"><div class="wrap">
+  <div class="ds__head"><h2>Principes</h2><p>Zes regels die elke pagina volgt.</p></div>
+  <div class="grid g3">
+    <div class="rule"><h3 style="font-size:var(--fs-h4)">Product eerst</h3><p class="small muted">Echte productfoto’s in een “studio”: radiaal verloop met een subtiel technisch raster. Geen stockfoto’s van “klanten”.</p></div>
+    <div class="rule"><h3 style="font-size:var(--fs-h4)">Cijfers met eenheid</h3><p class="small muted">450 bar, 2 µm, &lt; 100 ppm. Geen claim zonder eenheid of bron.</p></div>
+    <div class="rule"><h3 style="font-size:var(--fs-h4)">Eén actiekleur</h3><p class="small muted">Blue-700 voor knoppen en links. Maximaal één primaire knop per blok.</p></div>
+    <div class="rule"><h3 style="font-size:var(--fs-h4)">Zachte vormen</h3><p class="small muted">Radius 10 px voor knoppen en velden, 20 px voor kaarten en foto’s, pill voor labels. Kaarten tillen op bij hover.</p></div>
+    <div class="rule"><h3 style="font-size:var(--fs-h4)">Ritme met contrast</h3><p class="small muted">Wit en grey-50 wisselen elkaar af, met twee donkere momenten (probleem, resultaten op foto) en het logoverloop voor productkeuze en slot-CTA.</p></div>
+    <div class="rule"><h3 style="font-size:var(--fs-h4)">Beweging met een doel</h3><p class="small muted">Inschuiven bij scrollen, tellers en groeiende grafieken tonen data; hover en parallax geven feedback. Alles uit bij “minder beweging”.</p></div>
+  </div>
+</div></section>
+
+<section class="ds" id="kleur"><div class="wrap">
+  <div class="ds__head"><h2>Kleur</h2><p>Blauw en indigo komen uit het logo. Logoblauw #0086CD haalt op wit maar 3,97:1, dus knoppen en links gebruiken blue-700 (5,75:1).</p></div>
+  <div class="sw" id="sw"></div>
+  <h3 style="font-size:var(--fs-h4);margin:var(--s-10) 0 var(--s-4)">Tekstcombinaties</h3>
+  <div class="scroll"><table id="pairs"><thead><tr><th>Voorbeeld</th><th>Combinatie</th><th>Contrast</th><th>Gebruik</th></tr></thead><tbody></tbody></table></div>
+</div></section>
+
+<section class="ds" id="type"><div class="wrap">
+  <div class="ds__head"><h2>Typografie</h2><p><b>Geist</b> (400 / 500 / 600): modern, technisch en strak, met krappe letterspatiëring op grote koppen (−0,045 em). <b>Geist Mono</b> voor ISO-codes en spec-waarden. In productie zelf hosten (WOFF2, latin-subset, Geist voorladen).</p></div>
+  <div class="trow"><div class="m"><b>Display (hero)</b>600 · 42 → 76 px · −0.045em</div><p style="font-size:var(--fs-display);font-weight:600;letter-spacing:var(--track-display);line-height:1.02">Stop met olie verversen.</p></div>
+  <div class="trow"><div class="m"><b>H2</b>600 · 32 → 52 px · −0.035em</div><p style="font-size:var(--fs-h2);font-weight:600;letter-spacing:var(--track-head)">Toepassingen per sector</p></div>
+  <div class="trow"><div class="m"><b>H3</b>600 · 20 → 24 px</div><p style="font-size:var(--fs-h3);font-weight:600">Vaste deeltjes</p></div>
+  <div class="trow"><div class="m"><b>H4</b>600 · 18 px</div><p style="font-size:var(--fs-h4);font-weight:600">Niet-samengeperste laag</p></div>
+  <div class="trow"><div class="m"><b>Lead</b>400 · 17 → 20 px · grey-600</div><p style="font-size:var(--fs-lead);color:var(--grey-600);max-width:40rem">Triple R-bypassfilters verwijderen vaste deeltjes, varnish, water en lucht uit hydraulische olie en smeerolie.</p></div>
+  <div class="trow"><div class="m"><b>Body</b>400 · 16 px · lh 1.6</div><p style="max-width:40rem">Een Triple R-filterelement is een dieptefilter op basis van cellulose. De olie stroomt langzaam door 114 mm media.</p></div>
+  <div class="trow"><div class="m"><b>Small</b>400 · 14 px</div><p class="small muted">Indicatieve keuze op basis van de productinformatie van Triple R.</p></div>
+  <div class="trow"><div class="m"><b>Eyebrow</b>500 · 13 px · caps · blauwe stip</div><p class="kicker" style="margin:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;font-weight:500">● Gratis olieanalyse</p></div>
+  <div class="trow"><div class="m"><b>Kerncijfer</b>500 · 40 → 64 px · −0.05em</div><p style="font-size:var(--fs-num);font-weight:500;letter-spacing:-.05em;line-height:1">50.000 u</p></div>
+  <div class="trow"><div class="m"><b>Spec-waarde</b>Geist Mono 400 · 16 px</div><p class="mono">21/18/16 → 15/13/10</p></div>
+  <p class="small muted" style="margin-top:var(--s-5)">Notatie: 3.000 kg · 3,0 kg · 450 bar · 2 µm · 6–60 l/min · “tot” in plaats van “max.”</p>
+</div></section>
+
+<section class="ds" id="ruimte"><div class="wrap">
+  <div class="ds__head"><h2>Ruimte &amp; grid</h2><p>4-px basis. Secties 72 → 128 px verticaal. Content max 1280 px, zijmarge 20 → 40 px, kolomafstand 16 → 32 px.</p></div>
+  <div class="grid g2">
+    <div class="space" id="space"></div>
+    <div style="display:grid;gap:var(--s-5)">
+      <div><p class="lbl" style="margin-bottom:6px">≥ 1024 · 12 kolommen</p><div class="cols" style="grid-template-columns:repeat(12,1fr)" data-n="12"></div></div>
+      <div><p class="lbl" style="margin-bottom:6px">768–1023 · 6 kolommen</p><div class="cols" style="grid-template-columns:repeat(6,1fr);max-width:70%" data-n="6"></div></div>
+      <div><p class="lbl" style="margin-bottom:6px">&lt; 768 · 4 kolommen</p><div class="cols" style="grid-template-columns:repeat(4,1fr);max-width:36%" data-n="4"></div></div>
+      <p class="small muted">Breakpoints: sm 480 · md 768 (mobiele CTA-balk eronder) · lg 1024 (desktopheader + megamenu) · xl 1280.<br>Radius 10 px (knoppen, velden) · 20 px (kaarten, foto’s) · 28 px (hero-studio, slot-CTA). Schaduw: shadow-card in rust, shadow-float bij hover en voor menu’s.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="ds" id="knoppen"><div class="wrap">
+  <div class="ds__head"><h2>Knoppen &amp; links</h2><p>Primair (blauw) voor de conversie: “Gratis olieanalyse”, “Advies aanvragen”, met een pijl die bij hover opschuift. Secundair (lichte rand, inkt bij hover) voor de rest. Hoogte 52 px, compact 42 px.</p></div>
+  <div class="box scroll">
+    <div class="states">
+      <span class="h"></span><span class="h">Standaard</span><span class="h">Hover</span><span class="h">Focus</span><span class="h">Actief</span><span class="h">Uit</span>
+      <span class="h">Primair</span><button class="btn btn--primary">Gratis olieanalyse</button><button class="btn btn--primary is-hover" tabindex="-1">Gratis olieanalyse</button><button class="btn btn--primary is-focus" tabindex="-1">Gratis olieanalyse</button><button class="btn btn--primary is-active" tabindex="-1">Gratis olieanalyse</button><button class="btn btn--primary" disabled>Gratis olieanalyse</button>
+      <span class="h">Secundair</span><button class="btn btn--secondary">Bereken besparing</button><button class="btn btn--secondary is-hover" tabindex="-1">Bereken besparing</button><button class="btn btn--secondary is-focus" tabindex="-1">Bereken besparing</button><button class="btn btn--secondary is-active" tabindex="-1">Bereken besparing</button><button class="btn btn--secondary" disabled>Bereken besparing</button>
+    </div>
+  </div>
+  <div class="box indigo scroll" style="margin-top:var(--s-4)">
+    <div class="states">
+      <span class="h"></span><span class="h">Standaard</span><span class="h">Hover</span><span class="h">Focus</span><span class="h"></span><span class="h"></span>
+      <span class="h">Op indigo</span><button class="btn btn--light">Vraag advies aan</button><button class="btn btn--light is-hover" tabindex="-1">Vraag advies aan</button><button class="btn btn--light is-focus" tabindex="-1">Vraag advies aan</button><span></span><span></span>
+      <span class="h">Omlijnd licht</span><button class="btn btn--outline-light">Gratis olieanalyse</button><button class="btn btn--outline-light is-hover" tabindex="-1">Gratis olieanalyse</button><button class="btn btn--outline-light is-focus" tabindex="-1">Gratis olieanalyse</button><span></span><span></span>
+    </div>
+  </div>
+  <div class="grid g3" style="margin-top:var(--s-6)">
+    <div class="box"><p class="lbl">Tekstlink</p><p style="margin-top:var(--s-2)">Lees meer over <a href="#">bypassfiltratie</a>.</p></div>
+    <div class="box"><p class="lbl">Pijllink</p><p style="margin-top:var(--s-2)"><a class="arrow" href="#">Vergelijk alle 10 series</a></p></div>
+    <div class="box"><p class="lbl">Te bevestigen (review)</p><p style="margin-top:var(--s-2)">80% van de storingen<i class="tb" title="Te bevestigen"></i></p><p class="small muted" style="margin-top:4px">Verdwijnt in productie; CI faalt als hij nog voorkomt.</p></div>
+  </div>
+</div></section>
+
+<section class="ds" id="formulieren"><div class="wrap">
+  <div class="ds__head"><h2>Formulieren</h2><p>Label boven het veld, nooit alleen een placeholder. Fouten verschijnen bij het verlaten van een veld of bij het versturen, zijn gekoppeld via aria-describedby en zeggen hoe u ze oplost. Maximaal 3 stappen met een voortgangsbalk.</p></div>
+  <div class="grid g3">
+    <div class="field"><label for="a1">Bedrijfsnaam</label><input class="input" id="a1" placeholder="bv. Plastics Kempen nv"><span class="hint">Standaard</span></div>
+    <div class="field"><label for="a2">Olievolume per machine</label><input class="input is-focus" id="a2" value="400 l"><span class="hint">Focus</span></div>
+    <div class="field"><label for="a3">Zakelijk e-mailadres</label><input class="input is-error" id="a3" value="jan@gmail" aria-invalid="true" aria-describedby="a3e"><span class="err" id="a3e">Vul een volledig e-mailadres in, bv. naam@bedrijf.be</span></div>
+    <div class="field"><label for="a4">Sector</label><select id="a4"><option>Scheepvaart</option><option>Hydraulische systemen</option></select><span class="hint">Select</span></div>
+    <div class="field"><label for="a5">Postcode</label><input class="input" id="a5" value="2630" disabled><span class="hint">Uitgeschakeld</span></div>
+    <div class="field"><span style="font-size:var(--fs-sm);font-weight:600">Stap 2 van 3 · Uw bedrijf</span><div class="progress" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></div><span class="hint">Voortgang</span></div>
+  </div>
+  <div style="display:grid;gap:var(--s-3);margin-top:var(--s-8);max-width:40rem">
+    <label class="check"><input type="checkbox"><span>Ik ga akkoord met de verwerking van mijn gegevens volgens het <a href="#">privacybeleid</a>. (verplicht)</span></label>
+    <label class="check"><input type="checkbox"><span>Stuur mij af en toe praktische tips over olie-onderhoud. (optioneel)</span></label>
+  </div>
+</div></section>
+
+<section class="ds" id="componenten"><div class="wrap">
+  <div class="ds__head"><h2>Componenten</h2><p>Productfoto op grey-50 met <span class="mono">mix-blend-mode: multiply</span>, zodat alle uitsnedes op witte achtergrond uniform ogen. Specificaties als definitielijst.</p></div>
+  <div class="grid g3" style="align-items:start">
+    <a class="prod" href="#"><div class="prod__img"><img src="img/BU-Series.png" alt="BU-serie" width="1024" height="878"></div><div class="prod__body"><h3 style="font-size:var(--fs-h3)">BU-serie</h3><p>Bypassfilter direct op de hogedrukleiding, zonder pomp of motor.</p><dl><dt>Druk</dt><dd>tot 450 bar</dd><dt>M-element</dt><dd>2 µm abs.</dd></dl></div></a>
+    <div style="display:grid;gap:var(--gap)">
+      <div class="rule"><p class="lbl">Kolom met inktlijn</p><h3 style="font-size:var(--fs-h3)">Water</h3><p class="small muted">Water versnelt oxidatie en corrosie.</p><p class="small" style="font-weight:600">Tot &lt; 100 ppm</p></div>
+      <div style="border-top:var(--border);border-bottom:var(--border);display:grid;grid-template-columns:1fr 1fr"><div style="padding:var(--s-4) var(--s-4) var(--s-4) 0"><b style="font-size:1.375rem">114 mm</b><p class="small muted">filterdiepte</p></div><div style="padding:var(--s-4);border-left:var(--border)"><b style="font-size:1.375rem">1–10 µm</b><p class="small muted">absoluut</p></div></div>
+    </div>
+    <div class="box"><p class="lbl" style="margin-bottom:var(--s-3)">Case · ISO-tabel</p><table><thead><tr><th>ISO 4406</th><th>Vóór</th><th>Na</th></tr></thead><tbody><tr><td class="muted">Reinheid</td><td class="mono">21/19/16</td><td class="mono" style="color:var(--blue-700)">16/14/11</td></tr></tbody></table></div>
+  </div>
+</div></section>
+
+<section class="ds" id="iconen"><div class="wrap">
+  <div class="ds__head"><h2>Iconen &amp; beeld</h2><p>Lijniconen op een 24-grid met een lijndikte van 1,5 px, in blue-700. Technische illustraties als zwart-wit lijntekening met blauwe stromingspijlen, in de stijl van een datasheet.</p></div>
+  <div class="icons" id="icons"></div>
+  <div class="grid g2" style="margin-top:var(--s-10)">
+    <div><p class="lbl" style="margin-bottom:var(--s-3)">Wel</p><ul class="small" style="padding-left:1.1em;display:grid;gap:6px"><li>Productfoto’s van de huidige site, uniform op grey-50</li><li>Eigen foto’s: team, labo, elementwissel, installaties (shotlist §4.3)</li><li>Technische doorsneden en systeemschema’s</li></ul></div>
+    <div><p class="lbl" style="margin-bottom:var(--s-3)">Niet</p><ul class="small dont" style="padding-left:1.1em"><li>Stockfoto’s die klanten voorstellen</li><li>Gradients buiten het logoverloop, neon-glow, deeltjesanimaties</li><li>Emoji of decoratieve nummering</li><li>De kleine sectorfoto’s (300 px) van de huidige site</li></ul></div>
+  </div>
+</div></section>
+
+<section class="ds" id="beweging"><div class="wrap">
+  <div class="ds__head"><h2>Beweging</h2><p>Beweging vertelt iets of geeft feedback, nooit versiering op zich. Alles staat in rust zichtbaar: alleen elementen onder de vouw schuiven in. Met prefers-reduced-motion valt alles weg (klasse <span class="mono">.motion</span> wordt niet gezet).</p></div>
+  <div class="scroll"><table><thead><tr><th>Animatie</th><th>Trigger</th><th>Duur · easing</th><th>Waar</th></tr></thead><tbody>
+    <tr><td>Hero-intro</td><td>paginalading</td><td class="mono">800 ms · ease-out · 80 ms stagger</td><td>hero-tekst, product, spec-labels (pop)</td></tr>
+    <tr><td>Product zweeft + parallax</td><td>continu 7 s / muisbeweging</td><td class="mono">±8 px · 14 px parallax</td><td>hero-product; labels bewegen tegengesteld</td></tr>
+    <tr><td>Baan rond het product</td><td>continu</td><td class="mono">26 s lineair</td><td>stippellijn + lichtpunt (lensmotief)</td></tr>
+    <tr><td>Inschuiven</td><td>in beeld (IO, 12%)</td><td class="mono">700 ms · ease-out · 70 ms stagger · 22 px</td><td>kaarten, lijsten, koppen</td></tr>
+    <tr><td>Tellers</td><td>60% in beeld, 1×</td><td class="mono">1400 ms · ease-out cubic</td><td>80%, 114 mm, resultaten</td></tr>
+    <tr><td>Staafdiagram groeit</td><td>30% in beeld</td><td class="mono">1400 ms · 350 ms vertraging tweede staaf</td><td>probleemsectie</td></tr>
+    <tr><td>Olie stroomt</td><td>continu</td><td class="mono">1,1 s lineair (stroke-dashoffset)</td><td>doorsnede 114 mm</td></tr>
+    <tr><td>Foto-zoom</td><td>in beeld</td><td class="mono">2,4 s</td><td>resultatenband</td></tr>
+    <tr><td>Kaart-spotlight</td><td>muis over kaart</td><td class="mono">200 ms</td><td>contaminanten, producten, cases</td></tr>
+    <tr><td>Header compact</td><td>scroll &gt; 60 px</td><td class="mono">200 ms</td><td>76 → 64 px, donkerder glas + scrollbalk bovenaan</td></tr>
+    <tr><td>Keuzehulp</td><td>volgende / vorige</td><td class="mono">400 ms schuiven · 450 ms resultaat</td><td>producten</td></tr>
+    <tr><td>Calculator</td><td>invoer wijzigt</td><td class="mono">450 ms getallen · 600 ms staven</td><td>besparingscalculator</td></tr>
+  </tbody></table></div>
+</div></section>
+</main>
+<footer class="f wrap">Triple R Europe nv · Design system v0.3 · tokens.css · tailwind.tokens.cjs · homepage.html · HANDOFF.md</footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-hyd" viewBox="0 0 24 24"><rect x="2.75" y="8.75" width="12.5" height="6.5" rx="1"/><path d="M15.25 12H20.5M6 8.75V6h2.5M12 8.75V6H9.5"/><circle cx="21" cy="12" r=".5"/></symbol>
+  <symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 14.5h18l-2.2 4.5H5.2z"/><path d="M6.5 14.5V10.5h8.5l2 4"/><path d="M9.5 10.5V7h3v3.5"/><path d="M2.5 21.5c1.5 0 1.5-.8 3-.8s1.5.8 3 .8 1.5-.8 3-.8 1.5.8 3 .8 1.5-.8 3-.8 1.5.8 3 .8"/></symbol>
+  <symbol id="i-wind" viewBox="0 0 24 24"><path d="M12 10.5V21.5M9 21.5h6"/><circle cx="12" cy="9" r="1.5"/><path d="M12 7.5V2.5M13.3 9.75l4.3 2.5M10.7 9.75l-4.3 2.5"/></symbol>
+  <symbol id="i-energy" viewBox="0 0 24 24"><path d="M13 2.5L5.5 13.5h6l-1 8 7.5-11h-6z"/></symbol>
+  <symbol id="i-petro" viewBox="0 0 24 24"><path d="M6 21.5V7a2 2 0 0 1 4 0v14.5M14 21.5V11a2 2 0 0 1 4 0v10.5M2.5 21.5h19M10 12h4M10 16h4"/></symbol>
+  <symbol id="i-steel" viewBox="0 0 24 24"><path d="M5 3.5h14v3h-5v11h5v3H5v-3h5v-11H5z"/></symbol>
+  <symbol id="i-paper" viewBox="0 0 24 24"><ellipse cx="7" cy="12" rx="3.25" ry="6.5"/><circle cx="7" cy="12" r="1.2"/><path d="M7 5.5h10c1.8 0 3.25 2.9 3.25 6.5S18.8 18.5 17 18.5H7"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4.8 16.5H2.5V13L5 9h9.2l3.3 4h4v3.5h-2.3M9.2 16.5h5.6"/><circle cx="7" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/></symbol>
+  <symbol id="i-dig" viewBox="0 0 24 24"><rect x="2.5" y="17" width="11" height="3.75" rx="1.9"/><path d="M4 17v-5h4.5l2 3v2M10.5 13l5.5-6 5 4.5M21 11.5v3.5h-3"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v10h-11zM13.5 10h4l3 3.5v3h-7"/><circle cx="6.5" cy="18" r="1.75"/><circle cx="17" cy="18" r="1.75"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 10.5h14M8.5 17l-2.5 4.5M15.5 17l2.5 4.5"/><circle cx="9" cy="13.75" r=".6"/><circle cx="15" cy="13.75" r=".6"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 13.5l-8-4.5V4.5a1 1 0 0 0-2 0V9l-8 4.5V15l8-2.2v4.7l-2 1.5v1.5l3-.9 3 .9V19l-2-1.5v-4.7l8 2.2z"/></symbol>
+  <symbol id="u-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="u-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.4 20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></symbol>
+  <symbol id="u-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="u-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="u-download" viewBox="0 0 24 24"><path d="M12 3.5v11M7 10l5 5 5-5M4 19.5h16"/></symbol>
+  <symbol id="u-pdf" viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6z"/><path d="M14 2.5V7h4.5M9 13h6M9 16.5h6"/></symbol>
+  <symbol id="u-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11"/></symbol>
+  <symbol id="u-lab" viewBox="0 0 24 24"><path d="M9.5 2.5h5M10.5 2.5v6L5 19a1.7 1.7 0 0 0 1.5 2.5h11A1.7 1.7 0 0 0 19 19l-5.5-10.5v-6M7.5 15h9"/></symbol>
+</svg>
+<script>
+(() => {
+  const L = h => { const c = [1,3,5].map(i => parseInt(h.slice(i,i+2),16)/255).map(v => v <= .03928 ? v/12.92 : ((v+.055)/1.055)**2.4); return .2126*c[0]+.7152*c[1]+.0722*c[2]; };
+  const cr = (a,b) => { const x=L(a), y=L(b); return (Math.max(x,y)+.05)/(Math.min(x,y)+.05); };
+  const f = n => n.toFixed(2).replace('.', ',');
+  const sw = [['--blue-700','#006BA6','Knoppen, links'],['--blue-500','#0086CD','Logoblauw: iconen, accentlijnen'],['--blue-50','#EAF4FA','Focus-ring, selectie'],['--indigo-900','#211452','Logo-indigo, verloop'],['--night-950','#0E0B24','Donkere secties, footer'],['--blue-300','#5CB8EB','Accenttekst op donker'],['--ink','#1D1D1B','Tekst'],['--grey-600','#55596A','Secundaire tekst'],['--grey-200','#DADFE6','Lijnen, randen'],['--grey-50','#F3F5F8','Banden, productvlak'],['--white','#FFFFFF','Grond'],['--check-700','#8A5A00','Alleen review-markering']];
+  document.getElementById('sw').innerHTML = sw.map(([t,h,u]) => `<figure><div class="chip" style="background:${h}"></div><figcaption><b>${t}</b><span class="mono">${h} · ${f(Math.max(cr(h,'#FFFFFF'),cr(h,'#1D1D1B')))}:1</span><span class="muted">${u}</span></figcaption></figure>`).join('');
+  const pairs = [['#1D1D1B','#FFFFFF','ink op wit','Tekst'],['#55596A','#FFFFFF','grey-600 op wit','Secundaire tekst'],['#55596A','#F3F5F8','grey-600 op grey-50','Secundaire tekst in banden'],['#FFFFFF','#0E0B24','wit op night-950','Tekst op donker'],['#A7A3C2','#0E0B24','night-300 op night-950','Secundaire tekst op donker'],['#5CB8EB','#0E0B24','blue-300 op night-950','Accent op donker'],['#006BA6','#FFFFFF','blue-700 op wit','Links'],['#FFFFFF','#006BA6','wit op blue-700','Primaire knop'],['#FFFFFF','#211452','wit op indigo-900','Slot-CTA, footer'],['#B9B4D6','#211452','indigo-200 op indigo-900','Secundaire tekst op indigo'],['#8A5A00','#FFF4DB','check-700 op check-50','Review-markering']];
+  document.querySelector('#pairs tbody').innerHTML = pairs.map(([a,b,n,u]) => `<tr><td><span class="pair" style="color:${a};background:${b}">Aa 450 bar</span></td><td>${n}</td><td class="ok">${f(cr(a,b))}:1 AA</td><td>${u}</td></tr>`).join('');
+  document.getElementById('space').innerHTML = [['s-1',4],['s-2',8],['s-3',12],['s-4',16],['s-6',24],['s-8',32],['s-12',48],['s-16',64],['s-24',96]].map(([t,v]) => `<div><span class="mono">--${t}</span><span>${v} px</span><i style="width:${v*2}px;max-width:100%"></i></div>`).join('');
+  document.querySelectorAll('.cols').forEach(c => c.innerHTML = '<span></span>'.repeat(+c.dataset.n));
+  const ic = [['i-hyd','hydrauliek'],['i-ship','scheepvaart'],['i-wind','wind'],['i-energy','energie'],['i-petro','petrochemie'],['i-steel','staal'],['i-paper','papier'],['i-car','automobiel'],['i-dig','bouw'],['i-truck','transport'],['i-train','spoor'],['i-plane','luchtvaart'],['u-search','zoeken'],['u-phone','bel'],['u-menu','menu'],['u-close','sluiten'],['u-download','download'],['u-pdf','pdf'],['u-check','check'],['u-lab','analyse']];
+  document.getElementById('icons').innerHTML = ic.map(([i,n]) => `<figure><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#${i}"/></svg><figcaption>${n}</figcaption></figure>`).join('');
+})();
+</script>
+
+</body>
+</html>
