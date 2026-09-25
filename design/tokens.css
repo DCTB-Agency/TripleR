@@ -1,0 +1,94 @@
+/* ==========================================================================
+   Triple R Europe — design tokens v0.3 ("premium industrieel")
+   Merkkleuren uit mark_horizon_color.svg: #0086CD · #211452 · #1D1D1B
+   Principe: strak en technisch, maar met karakter. Wit + koel grijs voor
+   inhoud, diep indigo-zwart voor accentsecties, het logoverloop
+   (blauw → indigo) als enige decoratieve kleur. Grote typografie,
+   zachte radius, echte foto's.
+   Contrastwaarden = WCAG 2.x, per script gecontroleerd.
+   ========================================================================== */
+
+:root {
+  /* ---- Merk ---------------------------------------------------------- */
+  --blue-500: #0086CD;     /* logoblauw: iconen, accenten, grote tekst op donker (4.85:1 op night-950) */
+  --blue-700: #006BA6;     /* knoppen, links op licht. wit op blue-700 = 5.75:1 */
+  --blue-800: #00598A;     /* hover */
+  --blue-900: #004A73;     /* actief */
+  --blue-300: #5CB8EB;     /* accenttekst op donker. 8.7:1 op night-950 */
+  --blue-50:  #EAF4FA;     /* icoonvlak, selectie, focus-ring */
+  --indigo-900: #211452;   /* logo-indigo: slot-CTA */
+  --indigo-800: #2E2166;   /* lijnen op indigo */
+  --indigo-200: #B9B4D6;   /* secundaire tekst op indigo. 8.2:1 */
+  --night-950: #0E0B24;    /* diepste vlak: topbalk, probleem, footer. wit 19.2:1 */
+  --night-900: #17133A;    /* verhoogd vlak op donker */
+  --night-700: #2B2656;    /* lijnen op donker */
+  --night-300: #A7A3C2;    /* secundaire tekst op donker. 7.9:1 */
+  --brand-gradient: radial-gradient(120% 140% at 85% 0%, #0086CD 0%, #1B3F8F 35%, #211452 70%); /* uit het logo */
+
+  /* ---- Neutraal ------------------------------------------------------- */
+  --white:    #FFFFFF;
+  --grey-50:  #F3F5F8;     /* banden, productvlakken */
+  --grey-100: #E8ECF1;     /* studioverloop rand, hover */
+  --grey-200: #DADFE6;     /* lijnen, randen */
+  --grey-400: #99A0AD;     /* uitgeschakeld (geen tekst) */
+  --grey-600: #55596A;     /* secundaire tekst. 6.95:1 op wit, 6.36:1 op grey-50 */
+  --ink:      #1D1D1B;     /* tekst (woordmerk-zwart) */
+
+  /* ---- Semantisch ----------------------------------------------------- */
+  --ok-700:   #1E6B45;
+  --err-700:  #B42318;
+  --check-700:#8A5A00;     /* review-markering [CONFIRM] */
+  --check-50: #FFF4DB;
+
+  /* ---- Typografie ----------------------------------------------------- */
+  --font-sans: "Geist", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  --fs-display: clamp(2.625rem, 1.6rem + 4.2vw, 4.75rem);  /* 42 → 76 hero */
+  --fs-h1:   clamp(2.25rem, 1.5rem + 3vw, 3.75rem);        /* 36 → 60 */
+  --fs-h2:   clamp(2rem, 1.45rem + 2.2vw, 3.25rem);        /* 32 → 52 */
+  --fs-h3:   clamp(1.25rem, 1.15rem + .4vw, 1.5rem);       /* 20 → 24 */
+  --fs-h4:   1.125rem;                                     /* 18 */
+  --fs-lead: clamp(1.0625rem, 1rem + .35vw, 1.3125rem);    /* 17 → 21 */
+  --fs-body: 1rem;
+  --fs-sm:   .9375rem;                                     /* 15 */
+  --fs-xs:   .8125rem;                                     /* 13 */
+  --fs-num:  clamp(2.5rem, 1.8rem + 2.8vw, 4rem);          /* 40 → 64 kerncijfers */
+
+  --lh-tight: 1.02;
+  --lh-head: 1.1;
+  --lh-body: 1.6;
+  --track-display: -0.045em;
+  --track-head: -0.035em;
+  --track-label: 0.06em;
+
+  /* ---- Ruimte (4-px) -------------------------------------------------- */
+  --s-1: .25rem; --s-2: .5rem; --s-3: .75rem; --s-4: 1rem; --s-5: 1.25rem; --s-6: 1.5rem;
+  --s-8: 2rem; --s-10: 2.5rem; --s-12: 3rem; --s-16: 4rem; --s-20: 5rem; --s-24: 6rem;
+  --section-y: clamp(4.5rem, 3rem + 5vw, 8rem);   /* 72 → 128 */
+
+  /* ---- Grid ------------------------------------------------------------
+     sm 480 · md 768 · lg 1024 · xl 1280 · ontwerpframes 390 / 1440          */
+  --container: 80rem;                           /* 1280 */
+  --gutter: clamp(1.25rem, .5rem + 2.4vw, 2.5rem);  /* 20 → 40 */
+  --gap: clamp(1rem, .5rem + 1.6vw, 2rem);
+
+  /* ---- Vorm ------------------------------------------------------------ */
+  --radius: 10px;           /* knoppen, velden */
+  --radius-lg: 20px;        /* kaarten, foto's, panelen */
+  --radius-pill: 999px;     /* chips, spec-labels */
+  --border: 1px solid var(--grey-200);
+  --shadow-card: 0 1px 2px rgb(14 11 36 / .04), 0 16px 40px -20px rgb(14 11 36 / .22);
+  --shadow-float: 0 2px 6px rgb(14 11 36 / .06), 0 24px 60px -24px rgb(14 11 36 / .35);
+  --focus: 0 0 0 2px var(--white), 0 0 0 4px var(--blue-700);
+  --focus-dark: 0 0 0 2px var(--night-950), 0 0 0 4px var(--blue-300);
+
+  /* ---- Beweging: functioneel ------------------------------------------ */
+  --dur: 200ms;
+  --dur-slow: 600ms;        /* beeldzoom bij hover */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+
+  --z-header: 100; --z-menu: 200; --z-panel: 300;
+}
+
+@media (prefers-reduced-motion: reduce) { :root { --dur: 0ms; --dur-slow: 0ms; } }

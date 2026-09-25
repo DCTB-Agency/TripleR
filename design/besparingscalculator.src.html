@@ -1,0 +1,293 @@
+<title>Triple R Besparingscalculator</title>
+<meta name="description" content="Designvoorstel besparingscalculator Triple R Europe">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.hero--page{padding-bottom:clamp(6rem,4rem + 6vw,9rem)}
+.crumbs{display:flex;flex-wrap:wrap;gap:8px;list-style:none;font-size:var(--fs-xs);color:#A9B0D6;margin-bottom:var(--s-6)}
+.crumbs a{color:#C9CCE3;text-decoration:none}.crumbs a:hover{color:#fff;text-decoration:underline}
+.crumbs li+li::before{content:"/";margin-right:8px;color:#6E75A3}
+.hero--page h1{font-size:var(--fs-h1);letter-spacing:var(--track-head);line-height:1.05;font-weight:600;color:#fff;max-width:18ch}
+.hero--page h1 span{background:linear-gradient(95deg,#5CB8EB,#9ED6F6 45%,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero--page .lead{margin-top:var(--s-5);max-width:44rem}
+.hero--page .hero__grid{grid-template-columns:1fr}
+
+/* ===== Calculator ==================================================== */
+.calc{margin-top:calc(-1 * clamp(4rem,3rem + 4vw,6.5rem));position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s-5);align-items:start}
+.card{background:#fff;border-radius:28px;box-shadow:var(--shadow-float);padding:clamp(1.5rem,1rem + 2vw,2.75rem)}
+.card h2{font-size:var(--fs-h3);letter-spacing:-.025em}
+.card .sub{font-size:var(--fs-sm);color:var(--grey-600);margin-top:4px}
+.inputs{display:grid;gap:var(--s-6);margin-top:var(--s-8)}
+.in{display:grid;grid-template-columns:1fr auto;gap:10px 16px;align-items:center}
+.in label{font-weight:500;font-size:var(--fs-sm);display:flex;align-items:center;gap:8px}
+.in .help{grid-column:1 / -1;font-size:12.5px;color:var(--grey-600);margin-top:-4px}
+.num{display:flex;align-items:center;height:44px;border:1px solid var(--grey-200);border-radius:var(--radius);background:#fff;transition:border-color var(--dur),box-shadow var(--dur)}
+.num:focus-within{border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blue-50)}
+.num input{width:96px;border:0;background:none;font:500 var(--fs-body) var(--font-mono);text-align:right;padding:0 8px 0 12px;outline:none;color:var(--ink)}
+.num span{padding:0 12px 0 2px;font-size:13px;color:var(--grey-600);white-space:nowrap}
+.rng{grid-column:1 / -1;-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;--pct:50%}
+.rng::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--blue-700) var(--pct),var(--grey-100) var(--pct))}
+.rng::-moz-range-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--blue-700) var(--pct),var(--grey-100) var(--pct))}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-8px;border-radius:50%;background:#fff;border:2px solid var(--blue-700);box-shadow:0 2px 8px rgb(14 11 36 / .2);transition:transform var(--dur)}
+.rng::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--blue-700)}
+.rng:hover::-webkit-slider-thumb{transform:scale(1.12)}
+.rng:focus-visible{outline:none}
+.rng:focus-visible::-webkit-slider-thumb{box-shadow:var(--focus)}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--s-6)}
+.presets span{font-size:12.5px;color:var(--grey-600);align-self:center;margin-right:4px}
+.presets button{font:500 13px var(--font-sans);padding:7px 12px;border-radius:var(--radius-pill);border:1px solid var(--grey-200);background:#fff;cursor:pointer;color:var(--ink)}
+.presets button:hover{border-color:var(--ink)}
+.presets button[aria-pressed="true"]{background:var(--night-950);color:#fff;border-color:var(--night-950)}
+details.ass{margin-top:var(--s-8);border-top:var(--border);padding-top:var(--s-5)}
+details.ass summary{cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;min-height:44px}
+details.ass summary::-webkit-details-marker{display:none}
+details.ass summary::after{content:"";width:28px;height:28px;border-radius:50%;background:var(--grey-50) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%231D1D1B' stroke-width='1.4'%3E%3Cpath d='M6 2v8M2 6h8'/%3E%3C/svg%3E") center/11px no-repeat;transition:transform var(--dur)}
+details.ass[open] summary::after{transform:rotate(45deg)}
+.ass__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-4) var(--s-5);margin-top:var(--s-4)}
+.ass__grid .in label{font-weight:400;font-size:13px}
+.ass__note{font-size:12.5px;color:var(--grey-600);margin-top:var(--s-4)}
+
+/* resultaten */
+.out{position:sticky;top:96px;background:var(--brand-gradient);color:#fff;border-radius:28px;box-shadow:var(--shadow-float);padding:clamp(1.5rem,1rem + 2vw,2.5rem);overflow:hidden;isolation:isolate}
+.out::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgb(255 255 255 / .05) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / .05) 1px,transparent 1px);background-size:32px 32px;mask-image:linear-gradient(180deg,#000,transparent 60%);-webkit-mask-image:linear-gradient(180deg,#000,transparent 60%);z-index:-1}
+.out .lbl{font-size:var(--fs-xs);font-weight:500;letter-spacing:var(--track-label);text-transform:uppercase;color:#CFE6F5}
+.big{font-size:clamp(2.75rem,2rem + 3vw,4.25rem);font-weight:500;letter-spacing:-.05em;line-height:1;margin:8px 0 4px;font-variant-numeric:tabular-nums}
+.big small{font-size:.38em;letter-spacing:-.01em;color:#CFE6F5;font-weight:400;margin-left:6px}
+.out .per{font-size:var(--fs-sm);color:#DCD9EE}
+.kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-3);margin-top:var(--s-6)}
+.kpi{padding:14px;border-radius:16px;background:rgb(255 255 255 / .08);border:1px solid rgb(255 255 255 / .14)}
+.kpi b{display:block;font-size:1.375rem;font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12px;color:#DCD9EE}
+.bars2{display:grid;gap:14px;margin-top:var(--s-6)}
+.b2 .t{display:flex;justify-content:space-between;font-size:12.5px;color:#DCD9EE;margin-bottom:6px}
+.b2 .t b{color:#fff;font-weight:500;font-variant-numeric:tabular-nums}
+.b2 .tr{height:10px;border-radius:10px;background:rgb(255 255 255 / .1);position:relative;overflow:hidden}
+.b2 .tr i{position:absolute;inset:0 auto 0 0;border-radius:10px;transition:width .6s var(--ease)}
+.b2 .now{background:rgb(255 255 255 / .35)}
+.b2 .rrr{background:#5CB8EB}
+.b2 .tr+.tr{margin-top:4px}
+.leg{display:flex;gap:var(--s-4);font-size:12px;color:#DCD9EE;margin-top:var(--s-3)}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.pay{margin-top:var(--s-6);padding-top:var(--s-5);border-top:1px solid rgb(255 255 255 / .16);display:grid;grid-template-columns:1fr auto;gap:8px 16px;align-items:center;font-size:var(--fs-sm)}
+.pay .num{background:rgb(255 255 255 / .1);border-color:rgb(255 255 255 / .2)}
+.pay .num input{color:#fff;width:110px}
+.pay .num span{color:#DCD9EE}
+.pay .num:focus-within{border-color:#5CB8EB;box-shadow:0 0 0 4px rgb(92 184 235 / .25)}
+.pay output{grid-column:1 / -1;font-size:13px;color:#DCD9EE}
+.pay output b{color:#fff;font-weight:600}
+.out .btns{margin-top:var(--s-6)}
+.out a:focus-visible,.out input:focus-visible{box-shadow:var(--focus-dark)}
+.disc{font-size:12px;color:#C9C5E0;margin-top:var(--s-4)}
+.bump{animation:bump .5s var(--ease)}
+@keyframes bump{30%{color:#9ED6F6}}
+@media (max-width:1023px){.calc{grid-template-columns:1fr}.out{position:relative;top:0}}
+@media (max-width:559px){.kpi{padding:10px}.kpi b{font-size:1.0625rem}.kpi span{font-size:11px}.ass__grid{grid-template-columns:1fr}.num input{width:80px}}
+.mini{display:none}
+@media (max-width:1023px){.mini{display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:72px;z-index:3;margin:var(--s-5) 0 0;padding:12px 16px;border-radius:16px;background:var(--brand-gradient);color:#fff;font-size:var(--fs-sm)}.mini b{font-size:1.25rem;font-weight:500;letter-spacing:-.03em}.mini a{color:#fff;font-size:12.5px}}
+
+/* rapportformulier */
+.rep{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2rem,1rem + 4vw,5rem);align-items:start}
+.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-4)}
+.form .full{grid-column:1 / -1}
+.f{display:grid;gap:6px}
+.f label{font-size:var(--fs-sm);font-weight:500}
+.f label em{font-style:normal;color:var(--grey-600);font-weight:400}
+.f input[type=text],.f input[type=email],.f input[type=tel]{height:48px;padding:0 14px;border:1px solid var(--grey-200);border-radius:var(--radius);font:inherit;background:#fff;transition:border-color var(--dur),box-shadow var(--dur)}
+.f input:focus{outline:none;border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blue-50)}
+.f input[aria-invalid="true"]{border-color:var(--err-700)}
+.f .err{font-size:12.5px;color:var(--err-700);font-weight:500}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:var(--fs-sm)}
+.chk input{width:20px;height:20px;margin-top:1px;accent-color:var(--blue-700)}
+.ok-panel{grid-column:1 / -1;display:flex;gap:14px;align-items:flex-start;padding:var(--s-5);border-radius:18px;background:#E9F6EF;color:#14402A}
+.ok-panel svg{width:28px;height:28px;flex:none;color:var(--ok-700)}
+.method{margin-top:var(--s-8);font-size:var(--fs-sm);color:var(--grey-600);display:grid;gap:var(--s-3)}
+.method table{border-collapse:collapse;width:100%}
+.method td,.method th{text-align:left;padding:8px 12px 8px 0;border-bottom:var(--border);vertical-align:top}
+.method th{font-weight:500;color:var(--ink)}
+@media (max-width:1023px){.rep{grid-template-columns:1fr}}
+@media (max-width:559px){.form{grid-template-columns:1fr}}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page" aria-labelledby="h1" data-annot="Calculator-hero · compact donker · answer-first (BRIEF §3.7)">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Besparingscalculator</li></ol>
+      <h1 id="h1">Wat levert <span>schone olie</span> u op?</h1>
+      <p class="lead">Bereken in één minuut hoeveel u per jaar bespaart op olie, verversingswerk en stilstand wanneer u uw olie reinigt in plaats van ververst — inclusief de CO₂ die u vermijdt. Het resultaat ziet u meteen; het volledige rapport kunt u als PDF ontvangen.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Calculator" style="padding-bottom:var(--section-y)">
+  <div class="wrap calc">
+    <form class="card" id="calc" onsubmit="return false" data-annot="Invoer · schuif + getalveld gekoppeld · voorbeeldprofielen · aannames openklapbaar en aanpasbaar (config in één bestand, BRIEF §3.7)">
+      <h2>Uw installatie</h2>
+      <p class="sub">Ingevuld met een voorbeeld. Pas de waarden aan; het resultaat rekent live mee.</p>
+      <p class="mini" aria-hidden="true"><span>Besparing <b id="r-mini">€ 0</b> / jaar</span><a href="#h-out">Details ↓</a></p>
+      <div class="presets" role="group" aria-label="Voorbeeldprofielen"><span>Voorbeeld:</span><button type="button" data-preset="spuit" aria-pressed="true">Spuitgieterij</button><button type="button" data-preset="staal">Staal &amp; persen</button><button type="button" data-preset="schip">Schip</button></div>
+      <div class="inputs" id="inputs"></div>
+      <details class="ass">
+        <summary>Aannames bekijken en aanpassen</summary>
+        <div class="ass__grid" id="ass"></div>
+        <p class="ass__note">Alle aannames komen uit de huidige Triple R-documentatie en moeten nog bevestigd worden.<i class="tb" title="Te bevestigen: formule en aannames afstemmen met de bestaande rekenmachine"></i> Ze staan in één configuratiebestand, zodat Triple R ze zelf kan bijwerken.</p>
+      </details>
+    </form>
+
+    <section class="out" aria-labelledby="h-out" data-annot="Resultaat · sticky · logoverloop · getallen tellen mee (300ms) · staven animeren · terugverdientijd optioneel · event roi_calculated">
+      <p class="lbl" id="h-out">Geschatte besparing per jaar</p>
+      <p class="big" aria-live="polite"><span id="r-total">€ 0</span><small>/ jaar</small></p>
+      <p class="per" id="r-per">na aftrek van filterelementen</p>
+      <div class="kpis">
+        <div class="kpi"><b id="r-oil">0 l</b><span>minder olie</span></div>
+        <div class="kpi"><b id="r-co2">0 kg</b><span>CO₂ vermeden</span></div>
+        <div class="kpi"><b id="r-dt">0 u</b><span>minder stilstand</span></div>
+      </div>
+      <div class="bars2" id="bars" aria-label="Kosten per jaar: nu en met Triple R"></div>
+      <p class="leg"><span><i style="background:rgb(255 255 255 / .35)"></i>Nu</span><span><i style="background:#5CB8EB"></i>Met Triple R</span></p>
+      <div class="pay">
+        <label for="inv">Investering in filterunits <span style="color:#C9C5E0">(optioneel)</span></label>
+        <div class="num"><input id="inv" type="text" inputmode="numeric" placeholder="bv. 15000"><span>€</span></div>
+        <output id="r-pay" for="inv">Vul uw investering in voor de terugverdientijd.</output>
+      </div>
+      <div class="btns"><a class="btn btn--light" href="#rapport">Ontvang uw rapport als PDF</a><a class="btn btn--ghost-light" href="homepage.html#olieanalyse">Gratis olieanalyse</a></div>
+      <p class="disc">Indicatieve berekening, geen offerte. Werkelijke resultaten hangen af van uw olie, installatie en vervuiling.</p>
+    </section>
+  </div>
+</section>
+
+<section class="sec band" id="rapport" aria-labelledby="h-rep" data-annot="Rapport-aanvraag · resultaat blijft altijd zichtbaar (geen gate) · event roi_report_request · methodologie transparant">
+  <div class="wrap rep">
+    <div>
+      <p class="eyebrow">Uw rapport</p>
+      <h2 id="h-rep">Ontvang de berekening als PDF, met een vrijblijvende bespreking</h2>
+      <p class="lead" style="margin-top:var(--s-5)">We sturen u het volledige rapport met uw waarden en aannames. Een specialist belt u daarna om het te overlopen, als u dat wilt.</p>
+      <div class="method">
+        <p><b style="color:var(--ink);font-weight:500">Zo rekenen we</b></p>
+        <table><tbody>
+          <tr><th>Olie</th><td>machines × liter × verversingen per jaar × prijs, min de reductie in olieverbruik</td></tr>
+          <tr><th>Verversingswerk</th><td>verversingen × uren per verversing × arbeidskost, dezelfde reductie</td></tr>
+          <tr><th>Stilstand</th><td>ongeplande uren × aandeel door olie × deel voorkomen × kost per uur</td></tr>
+          <tr><th>Filterelementen</th><td>machines × elementen per jaar × prijs per element (wordt afgetrokken)</td></tr>
+          <tr><th>CO₂</th><td>bespaarde liters × kg CO₂ per liter</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <form class="card form" id="rep-form" novalidate style="box-shadow:var(--shadow-card)">
+      <div class="f"><label for="rf-n">Naam</label><input type="text" id="rf-n" autocomplete="name" required aria-describedby="rf-n-e"><span class="err" id="rf-n-e" hidden>Vul uw naam in.</span></div>
+      <div class="f"><label for="rf-c">Bedrijf</label><input type="text" id="rf-c" autocomplete="organization" required aria-describedby="rf-c-e"><span class="err" id="rf-c-e" hidden>Vul uw bedrijfsnaam in.</span></div>
+      <div class="f"><label for="rf-e">Zakelijk e-mailadres</label><input type="email" id="rf-e" autocomplete="email" required aria-describedby="rf-e-e"><span class="err" id="rf-e-e" hidden>Vul een volledig e-mailadres in, bv. naam@bedrijf.be.</span></div>
+      <div class="f"><label for="rf-t">Telefoon <em>(optioneel)</em></label><input type="tel" id="rf-t" autocomplete="tel"></div>
+      <label class="chk full"><input type="checkbox" id="rf-call" checked> Bel mij om het rapport te bespreken</label>
+      <label class="chk full"><input type="checkbox" id="rf-gdpr" required aria-describedby="rf-g-e"> <span>Ik ga akkoord met de verwerking van mijn gegevens volgens het <a href="#">privacybeleid</a>.</span></label>
+      <span class="err full" id="rf-g-e" hidden style="font-size:12.5px;color:var(--err-700);font-weight:500">Vink dit aan om het rapport te ontvangen.</span>
+      <div class="full"><button class="btn btn--primary" type="submit">Stuur mij het rapport</button></div>
+      <p class="full" style="font-size:12.5px;color:var(--grey-600)">We gebruiken uw gegevens alleen om het rapport te sturen en u te contacteren. Prototype: er wordt niets verzonden.</p>
+    </form>
+  </div>
+</section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>
+<script>
+(() => {
+  const nf = new Intl.NumberFormat('nl-BE', { maximumFractionDigits: 0 });
+  const eur = v => '€ ' + nf.format(Math.round(v));
+  /* Alle aannames in één config — in productie: src/data/calculator.ts */
+  const ASS = [
+    { id: 'interval', l: 'Olie verversen elke', u: 'draaiuren', v: 4000, min: 500, max: 20000, step: 100 },
+    { id: 'hPer', l: 'Arbeid per verversing', u: 'uur / machine', v: 4, min: 0.5, max: 40, step: 0.5 },
+    { id: 'red', l: 'Minder olieverbruik met Triple R', u: '%', v: 90, min: 0, max: 100, step: 1 },
+    { id: 'share', l: 'Stilstand met oorzaak in de olie', u: '%', v: 80, min: 0, max: 100, step: 1 },
+    { id: 'prev', l: 'Daarvan voorkomen met schone olie', u: '%', v: 80, min: 0, max: 100, step: 1 },
+    { id: 'elem', l: 'Prijs filterelement', u: '€', v: 60, min: 25, max: 90, step: 1 },
+    { id: 'epy', l: 'Elementen per machine per jaar', u: 'st.', v: 2, min: 1, max: 12, step: 1 },
+    { id: 'co2', l: 'CO₂ per liter olie', u: 'kg', v: 3, min: 0, max: 10, step: 0.1 }
+  ];
+  const IN = [
+    { id: 'm', l: 'Aantal machines', u: 'machines', v: 10, min: 1, max: 200, step: 1, h: 'Hydraulische of smeersystemen die u zou uitrusten.' },
+    { id: 'L', l: 'Olie per machine', u: 'liter', v: 400, min: 20, max: 5000, step: 10, h: 'Tankinhoud per machine.' },
+    { id: 'p', l: 'Olieprijs', u: '€ / liter', v: 4, min: 1, max: 20, step: 0.1, h: 'Inclusief afvoer van afgewerkte olie.' },
+    { id: 'h', l: 'Draaiuren per jaar', u: 'uur', v: 6000, min: 500, max: 8760, step: 100, h: 'Per machine; 8.760 = continu.' },
+    { id: 'd', l: 'Kost van stilstand', u: '€ / uur', v: 500, min: 0, max: 5000, step: 50, h: 'Gemiste productie en herstelling per uur stilstand.' },
+    { id: 'a', l: 'Arbeidskost', u: '€ / uur', v: 60, min: 20, max: 150, step: 5, h: 'Kost van een technicus per uur.' },
+    { id: 'av', l: 'Huidige beschikbaarheid', u: '%', v: 97, min: 80, max: 99.9, step: 0.1, h: 'Deel van de draaiuren zonder ongeplande stilstand.' }
+  ];
+  const PRE = { spuit: { m: 10, L: 400, p: 4, h: 6000, d: 500, a: 60, av: 97 }, staal: { m: 6, L: 3000, p: 3.5, h: 7500, d: 2000, a: 70, av: 95 }, schip: { m: 4, L: 1500, p: 5, h: 5000, d: 1500, a: 80, av: 98 } };
+  const S = {}; [...IN, ...ASS].forEach(x => S[x.id] = x.v);
+  const field = (x, small) => `<div class="in"><label for="n-${x.id}">${x.l}</label><div class="num"><input id="n-${x.id}" type="text" inputmode="decimal" value="${String(x.v).replace('.', ',')}" data-k="${x.id}" aria-describedby="${x.h ? 'h-' + x.id : ''}"><span>${x.u}</span></div>${small ? '' : `<input class="rng" type="range" id="r-${x.id}" min="${x.min}" max="${x.max}" step="${x.step}" value="${x.v}" data-k="${x.id}" aria-label="${x.l}">`}${x.h ? `<p class="help" id="h-${x.id}">${x.h}</p>` : ''}</div>`;
+  document.getElementById('inputs').innerHTML = IN.map(x => field(x)).join('');
+  document.getElementById('ass').innerHTML = ASS.map(x => field(x, true)).join('');
+  const all = Object.fromEntries([...IN, ...ASS].map(x => [x.id, x]));
+  const setVal = (k, v, from) => {
+    const x = all[k]; v = Math.min(x.max, Math.max(x.min, v)); S[k] = v;
+    const n = document.getElementById('n-' + k), r = document.getElementById('r-' + k);
+    if (n && from !== 'n') n.value = String(+v.toFixed(2)).replace('.', ',');
+    if (r) { if (from !== 'r') r.value = v; r.style.setProperty('--pct', ((v - x.min) / (x.max - x.min) * 100) + '%'); }
+  };
+  Object.keys(all).forEach(k => setVal(k, S[k]));
+
+  function calc() {
+    const ch = S.h / S.interval, red = S.red / 100;
+    const oilNowL = S.m * S.L * ch, oilNow = oilNowL * S.p, oilRRR = oilNow * (1 - red);
+    const labNow = S.m * ch * S.hPer * S.a, labRRR = labNow * (1 - red);
+    const dtNowH = S.h * (1 - S.av / 100), dtAvoidH = dtNowH * (S.share / 100) * (S.prev / 100);
+    const dtNow = dtNowH * S.d, dtRRR = (dtNowH - dtAvoidH) * S.d;
+    const elem = S.m * S.epy * S.elem;
+    const total = (oilNow - oilRRR) + (labNow - labRRR) + (dtNow - dtRRR) - elem;
+    return { total, oilL: oilNowL * red, co2: oilNowL * red * S.co2, dtH: dtAvoidH, rows: [['Olie', oilNow, oilRRR], ['Verversingswerk', labNow, labRRR], ['Stilstand', dtNow, dtRRR], ['Filterelementen', 0, elem]] };
+  }
+  const shown = {};
+  const tween = (id, to, fmt) => {
+    const el = document.getElementById(id), from = shown[id] ?? 0; shown[id] = to;
+    if (!document.documentElement.classList.contains('motion')) { el.textContent = fmt(to); return; }
+    const t0 = performance.now(), D = 450; el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump');
+    const step = now => { const k = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(from + (to - from) * e); if (k < 1) requestAnimationFrame(step); }; requestAnimationFrame(step);
+  };
+  let timer;
+  function update() {
+    const r = calc();
+    tween('r-total', r.total, eur); document.getElementById('r-mini').textContent = eur(r.total); tween('r-oil', r.oilL, v => nf.format(v) + ' l'); tween('r-co2', r.co2, v => nf.format(v) + ' kg'); tween('r-dt', r.dtH, v => nf.format(v) + ' u');
+    const max = Math.max(...r.rows.flatMap(x => [x[1], x[2]]), 1);
+    const bars = document.getElementById('bars');
+    if (!bars.children.length) bars.innerHTML = r.rows.map((x, i) => `<div class="b2"><div class="t"><span>${x[0]}</span><b id="bt-${i}"></b></div><div class="tr"><i class="now" id="bn-${i}"></i></div><div class="tr"><i class="rrr" id="br-${i}"></i></div></div>`).join('');
+    r.rows.forEach((x, i) => { document.getElementById('bn-' + i).style.width = (x[1] / max * 100) + '%'; document.getElementById('br-' + i).style.width = Math.max(x[2] ? .6 : 0, x[2] / max * 100) + '%'; document.getElementById('bt-' + i).textContent = i === 3 ? '+ ' + eur(x[2]) : eur(x[1]) + ' → ' + eur(x[2]); });
+    const inv = parseFloat((document.getElementById('inv').value || '').replace(/\./g, '').replace(',', '.'));
+    const pay = document.getElementById('r-pay');
+    const mo = Math.max(1, Math.round(inv / (r.total / 12)));
+    pay.innerHTML = inv > 0 && r.total > 0 ? `Terugverdiend in <b>${mo < 2 ? 'minder dan 2 maanden' : nf.format(mo) + ' maanden'}</b>.` : inv > 0 ? 'Met deze waarden verdient de investering zich niet terug.' : 'Vul uw investering in voor de terugverdientijd.';
+    clearTimeout(timer); timer = setTimeout(() => window.dataLayer?.push({ event: 'roi_calculated', value: Math.round(r.total) }), 800);
+  }
+  const form = document.getElementById('calc');
+  form.addEventListener('input', e => {
+    const k = e.target.dataset.k; if (!k) return;
+    if (e.target.type === 'range') setVal(k, +e.target.value, 'r');
+    else { const v = parseFloat(e.target.value.replace(/\./g, '').replace(',', '.')); if (!isNaN(v)) setVal(k, v, 'n'); }
+    document.querySelectorAll('[data-preset]').forEach(b => b.setAttribute('aria-pressed', 'false'));
+    update();
+  });
+  form.addEventListener('change', e => { const k = e.target.dataset.k; if (k && e.target.type !== 'range') setVal(k, S[k]); });
+  document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => { Object.entries(PRE[b.dataset.preset]).forEach(([k, v]) => setVal(k, v)); document.querySelectorAll('[data-preset]').forEach(x => x.setAttribute('aria-pressed', x === b)); update(); }));
+  document.getElementById('inv').addEventListener('input', update);
+  update();
+
+  /* rapportformulier */
+  const rf = document.getElementById('rep-form');
+  rf.addEventListener('submit', e => {
+    e.preventDefault();
+    const req = [['rf-n', v => v.trim().length > 1], ['rf-c', v => v.trim().length > 1], ['rf-e', v => /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim())]];
+    let ok = true, first = null;
+    req.forEach(([id, t]) => { const el = document.getElementById(id), good = t(el.value); el.setAttribute('aria-invalid', !good); document.getElementById(id + '-e').hidden = good; if (!good) { ok = false; first ||= el; } });
+    const g = document.getElementById('rf-gdpr'); document.getElementById('rf-g-e').hidden = g.checked; if (!g.checked) { ok = false; first ||= g; }
+    if (!ok) { first.focus(); return; }
+    const name = document.getElementById('rf-n').value.trim().split(' ')[0], mail = document.getElementById('rf-e').value.trim();
+    rf.innerHTML = `<div class="ok-panel" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><div><b>Bedankt, ${name.replace(/</g, '')}.</b><p style="margin-top:4px">Uw rapport met een geschatte besparing van <b>${document.getElementById('r-total').textContent}</b> per jaar wordt naar ${mail.replace(/</g, '')} gestuurd.${document.getElementById('rf-call').checked ? ' Een specialist belt u om het te bespreken.' : ''} (Prototype: er is niets verzonden.)</p></div></div>`;
+    window.dataLayer?.push({ event: 'roi_report_request' });
+  });
+})();
+</script>

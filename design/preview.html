@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triple R Frames</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:var(--grey-50);font-family:var(--font-sans);color:var(--ink)}
+header{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:16px 24px;background:var(--indigo-900);color:#fff}
+header b{font-family:var(--font-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+header nav{display:flex;flex-wrap:wrap;gap:8px}
+header a,header button{font:500 12.5px var(--font-mono);color:#fff;border:1px solid var(--indigo-800);background:none;border-radius:2px;padding:8px 12px;text-decoration:none;cursor:pointer}
+header button[aria-pressed="true"]{background:#fff;color:var(--indigo-900);border-color:#fff}
+main{display:flex;gap:32px;padding:24px;align-items:flex-start;overflow-x:auto}
+figure{margin:0;display:grid;gap:8px;flex:none}
+figcaption{font:500 12px var(--font-mono);color:var(--grey-600)}
+.frame{background:#fff;border-radius:2px;overflow:hidden;box-shadow:var(--shadow-menu);position:relative}
+.frame iframe{border:0;transform-origin:0 0;display:block}
+</style>
+</head>
+<body>
+<header>
+  <b>Triple R · homepage · 1440 + 390</b>
+  <nav>
+    <button type="button" id="annot" aria-pressed="false">Annotaties in beide frames</button>
+    <button type="button" id="clean" aria-pressed="false">Zonder review-markeringen</button>
+    <a href="homepage.html">Open 1440 los</a>
+    <a href="design-system.html">Design system</a>
+  </nav>
+</header>
+<main>
+  <figure><figcaption>Desktop 1440 × 900 · geschaald</figcaption><div class="frame" id="fd"><iframe id="d" title="Homepage desktop 1440" src="homepage.html" width="1440" height="900"></iframe></div></figure>
+  <figure><figcaption>Mobiel 390 × 844 · 100%</figcaption><div class="frame" id="fm"><iframe id="m" title="Homepage mobiel 390" src="homepage.html" width="390" height="844"></iframe></div></figure>
+</main>
+<script>
+const d=document.getElementById('d'),fd=document.getElementById('fd');
+function fit(){const avail=Math.max(480,innerWidth-390-24*2-32-8);const s=Math.min(1,avail/1440);d.style.transform=`scale(${s})`;fd.style.width=1440*s+'px';fd.style.height=900*s+'px';}
+addEventListener('resize',fit);fit();
+const q=(id,v)=>{const u='homepage.html'+(v?.length?'?'+v.join('&'):'');document.getElementById('d').src=u;document.getElementById('m').src=u;};
+const st={annot:false,clean:false};
+for(const k of ['annot','clean']){document.getElementById(k).addEventListener('click',e=>{st[k]=!st[k];e.currentTarget.setAttribute('aria-pressed',st[k]);q(null,Object.keys(st).filter(x=>st[x]));});}
+</script>
+</body>
+</html>

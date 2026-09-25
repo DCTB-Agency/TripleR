@@ -1,0 +1,373 @@
+<title>Triple R Homepage</title>
+<meta name="description" content="Designvoorstel homepage Triple R Europe — pass 1, revisie 3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+/* pagina-specifiek */
+</style>
+{{HEADER}}
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="top" aria-labelledby="h1" data-annot="S01 Hero · donker merkblauw (#0C0D2E → #111A52) + blauwe gloed achter product + 56px raster (gemaskeerd) + horizonboog
+H1 76px wit, 2e regel verloop blue-300 → wit · lens-cirkels uit het logo achter het product · glas-spec-labels
+header zit transparant boven de hero (sticky, blur) · achtergrond drijft traag (18s), uit bij reduced-motion">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">Bypass-oliefiltratie sinds 1992</p>
+        <h1 id="h1"><span>Stop met olie verversen.</span><span>Begin met olie reinigen.</span></h1>
+        <p class="lead">Triple R-bypassfilters verwijderen vaste deeltjes, varnish, water en lucht uit hydraulische olie en smeerolie — met één filterconcept. Minder stilstand, langere olielevensduur, lagere kosten.</p>
+        <div class="btns">
+          <a class="btn btn--light" href="#olieanalyse">Vraag een gratis olieanalyse aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+          <a class="btn btn--ghost-light" href="besparingscalculator.html">Bereken uw besparing</a>
+        </div>
+        <ul class="checks">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>Gratis labo-analyse met persoonlijk advies</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg><span>Standaard gemonteerd door toonaangevende machinebouwers<i class="tb" title="Te bevestigen door Triple R: formulering"></i></span></li>
+        </ul>
+      </div>
+      <figure class="stage">
+        <span class="orbit" aria-hidden="true"></span>
+        <img src="img/BU-Series.png" alt="Triple R BU-serie bypassfilters in vier formaten, van compact tot vrijstaand" width="1024" height="878" fetchpriority="high">
+        <div class="spec spec--a"><i><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M10 10l3.5-3"/></svg></i><span><b>tot 450 bar</b>op de drukleiding</span></div>
+        <div class="spec spec--b"><i><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14"/></svg></i><span><b>114 mm</b>dieptefiltratie</span></div>
+        <div class="spec spec--c"><i><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="6" cy="7" r="1.3"/><circle cx="13" cy="6" r="1"/><circle cx="10" cy="12" r="1.6"/><circle cx="15" cy="14" r="1"/></svg></i><span><b>1–10 µm</b>absoluut, Multipass-getest</span></div>
+        <figcaption>BU-serie</figcaption>
+      </figure>
+    </div>
+    <div class="trust" data-annot="Vertrouwensbalk · tekst-placeholders tot logo's (grijs SVG, 28px hoog) goedgekeurd zijn">
+      <p>Vertrouwd door machinebouwers en rederijen<i class="tb" title="Te bevestigen: toestemming logo's"></i></p>
+      <ul aria-label="Referenties (placeholder)"><li>KOMATSU</li><li>Yokohama</li><li>ENGEL</li><li>Stena Line</li><li>SKF</li><li>Rolls-Royce</li><li>Castrol</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM (dark) -->
+<section class="sec band problem" aria-labelledby="h-prob" data-annot="S02 Probleem · grey-50 · kerncijfer 152px verloop inkt→blauw
+staafdiagram op schaal (3.000 : 15) · kerngegevensrij onderaan">
+  <div class="wrap">
+    <div class="prob">
+      <div>
+        <p class="eyebrow">Waarom olie reinigen</p>
+        <p class="prob__num" aria-hidden="true"><span data-count="80">80</span>%</p>
+        <h2 id="h-prob"><span class="vh">80% </span>van de machinestoringen begint in de olie.<i class="tb" title="Te bevestigen: 80% of 90%, met bron"></i></h2>
+        <p class="lead">De meeste schadelijke deeltjes zijn kleiner dan 5 µm: onzichtbaar, en kleiner dan de spleten in pompen en servokleppen.</p>
+        <ul class="prob-facts">
+          <li><b>&gt; 70%</b><span>van de hydraulische machines draait op sterk vervuilde olie<i class="tb" title="Te bevestigen"></i></span></li>
+          <li><b>&gt; 50%</b><span>kortere levensduur door water in de olie<i class="tb" title="Te bevestigen"></i></span></li>
+          <li><b>5–6×</b><span>hogere klepwrijving door varnish<i class="tb" title="Te bevestigen"></i></span></li>
+        </ul>
+      </div>
+      <figure class="chart">
+        <h3>Vuil dat één pomp per jaar rondpompt</h3>
+        <p class="sub">Pomp van 200 l/min, één jaar in bedrijf</p>
+        <div class="bars">
+          <div class="bar"><div class="bar__top"><span class="bar__lbl">Vervuilde olie · ISO 21/18 · NAS 12</span><span class="bar__val">&gt; 3.000 kg</span></div><div class="bar__track"><span class="bar__fill" style="width:100%"></span></div></div>
+          <div class="bar bar--good"><div class="bar__top"><span class="bar__lbl">Schone olie · ISO 12/9 · NAS 4</span><span class="bar__val">15 kg</span></div><div class="bar__track"><span class="bar__fill" style="width:.5%"></span></div></div>
+        </div>
+        <figcaption class="src">Rekenvoorbeeld Triple R op basis van ISO 4406-deeltjestellingen. Balken op schaal.<i class="tb" title="Te bevestigen: bron rekenvoorbeeld"></i></figcaption>
+      </figure>
+    </div>
+    <div class="facts" aria-label="Kerngegevens Triple R-filterelement">
+      <div><b><span data-count="114">114</span> mm</b><span>filterdiepte in 3 lagen</span></div>
+      <div><b>1–10 µm</b><span>absoluut, Multipass-getest</span></div>
+      <div><b>&lt; 100 ppm</b><span>restwater (WE100: &lt; 80 ppm)</span></div>
+      <div><b>tot 95%</b><span>minder lucht met de Quicktoron</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTAMINANTS -->
+<section class="sec" id="contaminanten" aria-labelledby="h-cont" data-annot="S03 Vier contaminanten · kaarten radius 20 · icoon op blue-50 (14px radius) · hover: −3px + schaduw (200ms)">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="eyebrow">Oplossingen</p><h2 id="h-cont">Eén filterelement tegen vier soorten vervuiling</h2></div>
+      <div class="side"><p class="lead">De meeste filters stoppen enkel deeltjes. Een Triple R-element werkt in de diepte en houdt ook varnish en water vast.</p></div>
+    </div>
+    <div class="four">
+      <a class="ccard" href="#"><span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l3-1.5 2 2.5-1.5 3L6 12.5zM17 6l2-1 1.5 1.5-1 2-2.5-.5zM18 17l3.5-1.5 2 3-2 3-3.5-1zM7 19l2-1 1.5 2-1 2-2.5-.5z"/><circle cx="14" cy="14" r="1"/></svg></span>
+        <h3>Vaste deeltjes</h3><p>Slijtagemetaal, stof en silica slijpen pompen, kleppen en cilinders.</p>
+        <span class="foot"><span>Tot 99% verwijderd</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
+      <a class="ccard" href="#"><span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 16c4-2 6 2 11 0s7-2 11 0M3 21c4-2 6 2 11 0s7-2 11 0M8 9h8M19 9h3"/></svg></span>
+        <h3>Varnish &amp; sludge</h3><p>Oxidatieresten zetten zich af op kleppen; servo- en proportionele kleppen gaan haperen.</p>
+        <span class="foot"><span>V-element: 1 µm absoluut</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
+      <a class="ccard" href="#"><span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M14 4s-7 8.5-7 13a7 7 0 0 0 14 0c0-4.5-7-13-7-13z"/><path d="M11 17.5a3 3 0 0 0 3 3"/></svg></span>
+        <h3>Water</h3><p>Water versnelt oxidatie en corrosie. De cellulose in het element absorbeert het.</p>
+        <span class="foot"><span>Tot &lt; 100 ppm</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
+      <a class="ccard" href="#"><span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="17" r="5"/><circle cx="19" cy="9" r="3.5"/><circle cx="21" cy="20" r="2.5"/><circle cx="8" cy="7" r="1.5"/></svg></span>
+        <h3>Lucht &amp; schuim</h3><p>Luchtbellen veroorzaken cavitatie en lawaai. De Quicktoron ontlucht de olie.</p>
+        <span class="foot"><span>Tot 95% verwijderd</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec band" id="werking" aria-labelledby="h-how" data-annot="S04 Werking · technische tekening in witte kaart (radius 20, schaduw) · stappen 01–03 in mono">
+  <div class="wrap how">
+    <figure>
+      <svg viewBox="0 0 540 470" role="img" aria-labelledby="xs-t">
+        <title id="xs-t">Doorsnede van een Triple R-filterelement: olie stroomt van boven naar beneden door 114 mm filtermedia in drie lagen.</title>
+        <defs>
+          <pattern id="pc" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="4" cy="5" r="1.4" fill="#99A0AD"/><circle cx="12" cy="12" r="1.4" fill="#99A0AD"/></pattern>
+          <pattern id="pm" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".9" fill="#99A0AD"/><circle cx="6" cy="6" r=".9" fill="#99A0AD"/></pattern>
+          <pattern id="pf" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 2h4" stroke="#99A0AD" stroke-width=".8"/></pattern>
+          <linearGradient id="flowg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A6A3A"/><stop offset="1" stop-color="#0086CD"/></linearGradient>
+          <marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1l8 4-8 4z" fill="#006BA6"/></marker>
+        </defs>
+        <g font-family="Geist, Arial, sans-serif" font-size="13" fill="#1D1D1B">
+          <rect x="70" y="40" width="260" height="380" rx="10" fill="#fff" stroke="#1D1D1B" stroke-width="1.25"/>
+          <rect x="80" y="60" width="240" height="70" fill="url(#pc)" stroke="#DADFE6"/>
+          <rect x="80" y="130" width="240" height="130" fill="url(#pm)" stroke="#DADFE6"/>
+          <rect x="80" y="260" width="240" height="140" fill="url(#pf)" stroke="#DADFE6"/>
+          <rect x="188" y="60" width="24" height="340" fill="#F3F5F8" stroke="#1D1D1B" stroke-width="1"/>
+          <path d="M130 18v68M270 18v68" stroke="#8A6A3A" stroke-width="1.75" marker-end="url(#ar)"/>
+          <path d="M130 150v80M270 150v80M130 280v90M270 280v90" stroke="url(#flowg)" stroke-width="1.75" stroke-dasharray="4 5" marker-end="url(#ar)" class="flow"/>
+          <path d="M200 400v46" stroke="#0086CD" stroke-width="1.75" marker-end="url(#ar)"/>
+          <text x="146" y="16" fill="#55596A">vuile olie in</text>
+          <text x="212" y="462" fill="#55596A">schone olie terug naar de tank</text>
+          <path d="M44 60h16M44 400h16M52 60v340" stroke="#55596A" stroke-width="1"/>
+          <path d="M49 68l3-8 3 8M49 392l3 8 3-8" fill="none" stroke="#55596A"/>
+          <text x="34" y="230" transform="rotate(-90 34 230)" text-anchor="middle" font-weight="600">114 mm</text>
+          <g stroke="#1D1D1B" stroke-width="1"><path d="M320 95h36"/><path d="M320 195h36"/><path d="M320 330h36"/></g>
+          <g font-weight="600"><text x="364" y="92">01  Grove laag</text><text x="364" y="192">02  Niet samengeperst</text><text x="364" y="327">03  Samengeperst</text></g>
+          <g fill="#55596A"><text x="390" y="110">grote deeltjes</text><text x="390" y="210">kleinere deeltjes, water</text><text x="390" y="345">fijnste deeltjes, varnish</text></g>
+        </g>
+      </svg>
+      <figcaption><span>Schematische doorsnede, niet op schaal</span><span>Multipass-getest · β ≥ 75 / β = 1000</span></figcaption>
+    </figure>
+    <div>
+      <p class="eyebrow">Zo werkt het</p>
+      <h2 id="h-how">114 mm dieptefiltratie in drie stappen</h2>
+      <p class="lead" style="margin-top:var(--s-5)">Een Triple R-filterelement is een dieptefilter op basis van cellulose. De olie stroomt langzaam door 114 mm media en wordt per laag fijner gereinigd.</p>
+      <ol class="steps">
+        <li><h3 class="h4">Grove laag</h3><p>Grote deeltjes blijven bovenaan, zodat de diepere lagen hun capaciteit bewaren voor fijner vuil.</p></li>
+        <li><h3 class="h4">Niet-samengeperste laag</h3><p>Kleinere deeltjes blijven steken; de cellulosevezels absorberen vrij en geëmulgeerd water.</p></li>
+        <li><h3 class="h4">Samengeperste laag</h3><p>De fijnste deeltjes en oxidatieresten (varnish, sludge) worden vastgehouden.</p></li>
+      </ol>
+      <p class="note">Het element vervangt u zonder morsen: de afvalzak zit in de middenbuis. <a href="#">Hoe werkt bypassfiltratie?</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="sec" id="producten" aria-labelledby="h-prod" data-annot="S05 Producten · tegels radius 20 · studioverloop achter productfoto · hover: foto schaal 1.045 (600ms) + pijl verschijnt">
+  <div class="wrap">
+    <div class="head">
+      <div><p class="eyebrow">Producten</p><h2 id="h-prod">Van filterelement tot mobiele oliereiniger</h2></div>
+      <div class="side"><a class="btn btn--secondary btn--sm" href="producten.html#vergelijk">Vergelijk alle 10 series</a></div>
+    </div>
+    <div class="prods">
+      <a class="prod" href="producten.html#p-elementen"><div class="prod__img"><span class="prod__tag">Basis van elk systeem</span><img src="img/elements.png" alt="Triple R-filterelementen in verschillende formaten" width="766" height="480" loading="lazy"></div>
+        <div class="prod__body"><div class="prod__title"><h3>Filterelementen</h3><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></div><p>3-in-1 dieptefilter voor deeltjes, varnish en water.</p><dl><div><dt>Filterfijnheid</dt><dd>1–10 µm abs.</dd></div><div><dt>Viscositeit</dt><dd>3–320 cSt</dd></div></dl></div></a>
+      <a class="prod" href="producten.html#p-bu"><div class="prod__img"><img src="img/BU-Series.png" alt="BU-serie bypassfilters" width="1024" height="878" loading="lazy"></div>
+        <div class="prod__body"><div class="prod__title"><h3>BU-serie</h3><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></div><p>Bypassfilter direct op de hogedrukleiding, zonder pomp of motor.</p><dl><div><dt>Druk</dt><dd>tot 450 bar</dd></div><div><dt>M-element</dt><dd>2 µm abs.</dd></div></dl></div></a>
+      <a class="prod" href="producten.html#p-se"><div class="prod__img"><img src="img/se.png" alt="SE-serie offline oliereiniger met motor-pompgroep" width="577" height="432" loading="lazy"></div>
+        <div class="prod__body"><div class="prod__title"><h3>SE-serie</h3><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></div><p>Offline oliereiniger met eigen motor-pompgroep, stationair of mobiel.</p><dl><div><dt>Uitvoering</dt><dd>vast of mobiel</dd></div><div><dt>Optie</dt><dd>deeltjesteller</dd></div></dl></div></a>
+      <a class="prod" href="producten.html#p-osca"><div class="prod__img"><img src="img/osca.png" alt="OSCA-serie oliereiniger voor grote volumes" width="577" height="432" loading="lazy"></div>
+        <div class="prod__body"><div class="prod__title"><h3>OSCA-serie</h3><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></div><p>Hoog debiet voor grote tanks, smeerolie en hoge viscositeit.</p><dl><div><dt>Debiet</dt><dd>6 – &gt; 60 l/min</dd></div><div><dt>Volume</dt><dd>&gt; 50.000 l</dd></div></dl></div></a>
+      <a class="prod" href="producten.html#p-vacuum"><div class="prod__img"><img src="img/vacuum.png" alt="Triple R vacuümontwateraar" width="800" height="533" loading="lazy"></div>
+        <div class="prod__body"><div class="prod__title"><h3>Vacuümontwateraar</h3><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></div><p>Verwijdert automatisch vrij en opgelost water en lucht.</p><dl><div><dt>Viscositeit</dt><dd>10–600 cSt</dd></div><div><dt>Optie</dt><dd>ATEX</dd></div></dl></div></a>
+      <a class="prod" href="producten.html#p-quicktoron"><div class="prod__img"><img src="img/quicktoron.png" alt="Quicktoron cycloon-ontluchter" width="577" height="432" loading="lazy"></div>
+        <div class="prod__body"><div class="prod__title"><h3>Quicktoron</h3><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></div><p>Cycloon-ontluchter tegen schuim, cavitatie en lawaai.</p><dl><div><dt>Luchtbellen</dt><dd>tot 95% eruit</dd></div><div><dt>Vaak met</dt><dd>OSCA-serie</dd></div></dl></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS on photo -->
+<section class="sec photo-band" aria-labelledby="h-res" data-annot="S06 Resultaten · full-bleed foto 'schone olie' (bestaand beeld) + verloop night-950 94% → 15% · cijfers 64px/500">
+  <img src="img/oil-gold.jpg" alt="" width="1600" height="845" loading="lazy">
+  <div class="wrap">
+    <p class="eyebrow">Resultaten</p>
+    <h2 id="h-res">Wat schone olie oplevert</h2>
+    <div class="results">
+      <div><b><span data-count="50000">50.000</span> u</b><span>olielevensduur in hydraulische systemen<i class="tb" title="Te bevestigen"></i></span></div>
+      <div><b>−<span data-count="90">90</span>%</b><span>oliegerelateerde kosten<i class="tb" title="Te bevestigen"></i></span></div>
+      <div><b>2–5×</b><span>langere levensduur van full-flowfilters<i class="tb" title="Te bevestigen"></i></span></div>
+      <div><b>&gt; <span data-count="90">90</span>%</b><span>minder pomp- en klepfalen<i class="tb" title="Te bevestigen"></i></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINDER -->
+<section class="sec band" id="productkeuze" aria-labelledby="h-find" data-annot="S07 Productkeuze · witte kaart + resultaatpaneel in logoverloop · native selects 52px · aria-live">
+  <div class="wrap">
+    <div class="head"><div><p class="eyebrow">Productkeuze</p><h2 id="h-find">Welke Triple R past bij uw installatie?</h2></div><div class="side"><p class="lead">Drie vragen, één indicatief advies. Een specialist bevestigt de keuze.</p></div></div>
+    <div class="finder">
+      <form id="finder" onsubmit="return false">
+        <div class="fields">
+          <div class="field"><label for="f-sys">Systeem</label><select id="f-sys" name="sys"><option value="hyd" selected>Hydrauliek</option><option value="lube">Smering / tandwielkast</option><option value="engine">Motorolie</option><option value="tank">Grote tank / flushing</option></select></div>
+          <div class="field"><label for="f-p">Werkdruk</label><select id="f-p" name="p"><option value="high" selected>tot 450 bar</option><option value="low">onder 6 bar</option><option value="unk">weet ik niet</option></select></div>
+          <div class="field"><label for="f-v">Olievolume</label><select id="f-v" name="v"><option value="s">minder dan 200 l</option><option value="m" selected>200 – 1.000 l</option><option value="l">meer dan 1.000 l</option></select></div>
+        </div>
+        <p class="small muted">Indicatieve keuze op basis van de productinformatie van Triple R. Gratis en vrijblijvend.</p>
+      </form>
+      <div class="finder__res" aria-live="polite">
+        <div class="img"><img id="f-img" src="img/BU-Series.png" alt="" width="1024" height="878"></div>
+        <p class="lbl">Aanbevolen</p>
+        <h3 id="f-name">BU-serie</h3>
+        <p id="f-why">Bypassfilter direct op de hogedrukleiding, zonder eigen pomp of motor. Geschikt voor servo- en proportionele hydrauliek.</p>
+        <div class="btns"><a class="btn btn--light btn--sm" id="f-cta" href="#">Advies over de BU-serie</a><a class="btn btn--ghost-light btn--sm" id="f-more" href="producten.html#p-bu">Productpagina</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sec" id="sectoren" aria-labelledby="h-sec" data-annot="S08 Sectoren · sfeerfoto (bestaand beeld, geen klant) + 12 links in 2 kolommen met icoon op grey-50">
+  <div class="wrap sect">
+    <figure class="sect__img"><img src="img/industry.jpg" alt="Onderhoudstechnicus bij een grote turbineas in een industriële hal" width="1800" height="1200" loading="lazy"><figcaption>Van spuitgietmachine tot scheepsmotor: overal waar olie een machine draaiende houdt.</figcaption></figure>
+    <div>
+      <p class="eyebrow">Sectoren</p>
+      <h2 id="h-sec">Toepassingen per sector</h2>
+      <ul class="sectors">
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-hyd"/></svg></span>Hydraulische systemen<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-ship"/></svg></span>Scheepvaart<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-wind"/></svg></span>Windenergie<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-energy"/></svg></span>Energie<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-petro"/></svg></span>Petrochemie<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-steel"/></svg></span>Staal &amp; metaal<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-paper"/></svg></span>Papierindustrie<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-car"/></svg></span>Automobielindustrie<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-dig"/></svg></span>Bouwmachines<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-truck"/></svg></span>Transport<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-train"/></svg></span>Spoorwegen<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="#"><span class="ic"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#i-plane"/></svg></span>Luchtvaart<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="sec band" aria-labelledby="h-cases" data-annot="S09 Cases · ISO vóór (doorgestreept) → na (blauw) in Geist Mono · waarden = layoutvoorbeeld">
+  <div class="wrap">
+    <div class="head"><div><p class="eyebrow">Cases</p><h2 id="h-cases">Gemeten vóór en na</h2></div><div class="side"><a class="btn btn--secondary btn--sm" href="#">Alle cases</a></div></div>
+    <div class="cases">
+      <a class="case" href="#"><div class="case__iso"><p class="lbl"><span>ISO 4406</span><span>vóór → na</span></p><p class="codes"><span class="before">21/19/16</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg><span class="after">16/14/11</span></p></div>
+        <div class="case__body"><div class="case__tags"><span>Rubber &amp; kunststof</span><span>Filterelementen</span></div><h3>Yokohama Rubber<i class="tb" title="Te bevestigen: toestemming naam"></i></h3><p>Hydraulische persen met varnishproblemen.</p><span class="more">Lees de case <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></div></a>
+      <a class="case" href="#"><div class="case__iso"><p class="lbl"><span>ISO 4406</span><span>vóór → na</span></p><p class="codes"><span class="before">20/18/15</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg><span class="after">15/13/10</span></p></div>
+        <div class="case__body"><div class="case__tags"><span>Bouwmachines</span><span>TR-serie</span></div><h3>Komatsu<i class="tb" title="Te bevestigen: toestemming naam"></i></h3><p>Mobiele hydrauliek en motorolie.</p><span class="more">Lees de case <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></div></a>
+      <a class="case" href="#"><div class="case__iso"><p class="lbl"><span>ISO 4406</span><span>vóór → na</span></p><p class="codes"><span class="before">19/17/14</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg><span class="after">15/12/9</span></p></div>
+        <div class="case__body"><div class="case__tags"><span>Tandwielolie</span><span>OSCA-serie</span></div><h3>Castrol<i class="tb" title="Te bevestigen: toestemming naam"></i></h3><p>Tandwielolie langdurig schoon gehouden.</p><span class="more">Lees de case <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></div></a>
+    </div>
+    <p class="caption">ISO-waarden, sectoren en producten op deze kaarten zijn layoutvoorbeelden en worden vervangen door de gegevens uit de case-PDF’s.<i class="tb" title="Te vervangen door echte data"></i></p>
+  </div>
+</section>
+
+<!-- OIL ANALYSIS -->
+<section class="sec" id="olieanalyse" aria-labelledby="h-oa" data-annot="S10 Gratis olieanalyse (primaire conversie) · foto radius 20 met zwevend label · 4 stapkaarten">
+  <div class="wrap oa">
+    <figure class="oa__img"><img src="img/oil-samples.jpg" alt="Een oliestaal wordt in het labo overgegoten in een glazen kolf" width="1400" height="933" loading="lazy">
+      <figcaption class="oa__badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h5M10.5 2.5v6L5 19a1.7 1.7 0 0 0 1.5 2.5h11A1.7 1.7 0 0 0 19 19l-5.5-10.5v-6M7.5 15h9"/></svg></i><span><b>Labo-rapport + advies</b><br><span class="muted">ISO 4406 · NAS 1638 · water · TAN · MPC</span></span></figcaption>
+    </figure>
+    <div>
+      <p class="eyebrow">Gratis olieanalyse</p>
+      <h2 id="h-oa">Weet hoe proper uw olie écht is</h2>
+      <p class="lead" style="margin-top:var(--s-5)">Een labo-analyse van uw olie met persoonlijk advies van een Triple R-specialist. Resultaat binnen [X] werkdagen.<i class="tb" title="Te bevestigen: doorlooptijd"></i></p>
+      <ol>
+        <li><h3 class="h4">Aanvraag online</h3><p>Beschrijf uw installatie in 2 minuten.</p></li>
+        <li><h3 class="h4">Staalname</h3><p>Wij sturen een staalnamekit of komen langs.</p></li>
+        <li><h3 class="h4">Labo-analyse</h3><p>Deeltjes, water, viscositeit, TAN en varnish.<i class="tb" title="Te bevestigen: scope gratis analyse"></i></p></li>
+        <li><h3 class="h4">Rapport en advies</h3><p>U ontvangt het rapport met concreet advies.</p></li>
+      </ol>
+      <div class="btns"><a class="btn btn--primary" href="#">Vraag een gratis olieanalyse aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+      <p class="cond">Voor bedrijven · 1 staal per installatie · Benelux en Frankrijk<i class="tb" title="Te bevestigen: voorwaarden"></i></p>
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+<section class="sec band" aria-labelledby="h-sus" data-annot="S11 Duurzaamheid · Reduce · Reuse · Recycle als definitielijst · foto elementwissel · CO₂-rekenvoorbeeld">
+  <div class="wrap sus">
+    <div>
+      <p class="eyebrow">Duurzaamheid</p>
+      <h2 id="h-sus">De schoonste olie is de olie die u niet vervangt</h2>
+      <ul class="rrr">
+        <li><b><span>R</span>educe</b><p>Olieverbruik tot 90% lager, minder afgewerkte olie.<i class="tb" title="Te bevestigen"></i></p></li>
+        <li><b><span>R</span>euse</b><p>Dezelfde olie jarenlang in gebruik; sommige klanten al meer dan 20 jaar.<i class="tb" title="Te bevestigen"></i></p></li>
+        <li><b><span>R</span>ecycle</b><p>Vacuüm verpakte elementen, vervangen zonder morsen met de afvalzak in de middenbuis.</p></li>
+      </ul>
+      <div class="co2"><b>≈ 3.000 kg CO₂</b><p>vermeden per 1.000 l olie die niet ververst wordt (aanname: 1 l olie ≈ 3,0 kg CO₂).<i class="tb" title="Te bevestigen: aanname calculator"></i></p><a class="arrow" href="besparingscalculator.html">Bereken uw besparing <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+    </div>
+    <figure><img src="img/element-change.jpg" alt="Een gebruikt Triple R-filterelement in het geopende filterhuis" width="800" height="533" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- KNOWLEDGE + FAQ -->
+<section class="sec" id="kennis" aria-labelledby="h-faq" data-annot="S12 Kennisbank + FAQ (FAQPage schema) · FAQ als losse kaarten, + draait naar ×">
+  <div class="wrap kf">
+    <div>
+      <p class="eyebrow">Kennisbank</p>
+      <h2>Uitgelegd door specialisten</h2>
+      <ul class="arts">
+        <li><a href="#"><b>Wat is varnish in hydraulische olie en hoe verwijdert u het?</b><span>Maxim Van Uytven · 7 min leestijd<i class="tb" title="Te bevestigen: auteur"></i></span></a></li>
+        <li><a href="#"><b>ISO 4406-reinheidscode uitgelegd, met tabel en voorbeelden</b><span>Marc Van Uytven · 6 min leestijd</span></a></li>
+        <li><a href="#"><b>Bypassfiltratie of full-flowfiltratie: wat is het verschil?</b><span>Maxim Van Uytven · 5 min leestijd</span></a></li>
+      </ul>
+      <p style="margin-top:var(--s-6)"><a class="arrow" href="#">Naar de kennisbank <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></p>
+    </div>
+    <div>
+      <h2 id="h-faq">Veelgestelde vragen</h2>
+      <div class="faq">
+        <details open><summary>Wat is een bypassfilter (nevenstroomfilter)?</summary><div class="a"><p>Een bypassfilter reinigt continu een kleine deelstroom van de olie, naast het hoofdcircuit. Omdat de olie traag door 114 mm filtermedia stroomt, filtert het veel fijner dan een full-flowfilter en houdt het ook varnish en water vast.</p></div></details>
+        <details><summary>Is olie reinigen goedkoper dan olie verversen?</summary><div class="a"><p>Vaak wel: u betaalt filterelementen in plaats van nieuwe olie, afvoer en stilstand. Met de besparingscalculator rekent u het na voor uw installatie.</p></div></details>
+        <details><summary>Welke vervuiling haalt een Triple R-filter uit de olie?</summary><div class="a"><p>Vaste deeltjes, varnish en sludge, en water — in één element. Lucht en schuim verwijdert u met de Quicktoron.</p></div></details>
+        <details><summary>Wat kost een filterelement?</summary><div class="a"><p>Tussen € 25 en € 90, afhankelijk van type en maat; één element volstaat voor tanks tot 1.000 l.<i class="tb" title="Te bevestigen: prijs tonen"></i></p></div></details>
+        <details><summary>Hoe werkt de gratis olieanalyse?</summary><div class="a"><p>U vraagt de analyse online aan, wij sturen een staalnamekit of komen langs, het labo meet uw olie en u ontvangt een rapport met advies.</p></div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact" aria-labelledby="h-cta" data-annot="S13 Slot-CTA · afgerond paneel (28px) in logoverloop blauw → indigo · teamfoto tot portretshoot">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <p class="eyebrow">Advies op maat</p>
+        <h2 id="h-cta">Bespreek uw installatie met een specialist</h2>
+        <p class="lead">Beschrijf uw machines in 2 minuten en ontvang vrijblijvend advies over de juiste filteroplossing.</p>
+        <div class="btns"><a class="btn btn--light" href="#">Vraag advies aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--ghost-light" href="#olieanalyse">Gratis olieanalyse</a></div>
+      </div>
+      <div class="person">
+        <img src="img/team.jpg" alt="Het Triple R-team in het hoofdkantoor in Aartselaar" width="768" height="1024" loading="lazy">
+        <div class="person__who">
+          <div><h3>Maxim Van Uytven</h3><p class="role">Sales Manager</p></div>
+          <div class="links">
+            <a href="tel:+3238254647"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.4 20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg>+32 (0)3 825 46 47<i class="tb" title="Te bevestigen: direct nummer"></i></a>
+            <a href="mailto:info@triple-r-europe.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>info@triple-r-europe.com</a>
+          </div>
+        </div>
+        <p class="cap">Team Triple R Europe, Aartselaar. Portret volgt na de fotoshoot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+{{FOOTER}}
+<script src="site.js"></script>
+<script>
+(() => {
+  const P = {
+    bu:   { n: 'BU-serie', img: 'img/BU-Series.png', why: 'Bypassfilter direct op de hogedrukleiding, zonder eigen pomp of motor. Geschikt voor servo- en proportionele hydrauliek.' },
+    se:   { n: 'SE-serie', img: 'img/se.png', why: 'Offline oliereiniger met eigen motor-pompgroep, los van de machine. Stationair of mobiel (SE-Mobile).' },
+    tr:   { n: 'TR-serie', img: 'img/elements.png', why: 'Bypassfilter voor motorolie, tandwielkasten en systemen onder 6 bar — van vrachtwagens tot scheepsmotoren.' },
+    osca: { n: 'OSCA-serie', img: 'img/osca.png', why: 'Offline reiniger met hoog debiet voor grote tanks, smeerolie en hoge viscositeit, ook voor flushing.' }
+  };
+  const pick = (s, p, v) => s === 'tank' || v === 'l' ? 'osca' : s === 'engine' ? 'tr' : s === 'lube' ? (p === 'high' ? 'se' : 'tr') : (p === 'high' ? 'bu' : 'se');
+  const f = document.getElementById('finder');
+  const upd = () => {
+    const k = pick(f.sys.value, f.p.value, f.v.value), x = P[k];
+    document.getElementById('f-name').textContent = x.n;
+    document.getElementById('f-why').textContent = x.why;
+    document.getElementById('f-img').src = x.img;
+    const cta = document.getElementById('f-cta'); cta.firstChild.nodeValue = 'Advies over de ' + x.n; cta.href = '#?product=' + k + '-serie'; document.getElementById('f-more').href = 'producten.html#p-' + k; const res = document.querySelector('.finder__res'); res.classList.remove('swap'); void res.offsetWidth; res.classList.add('swap');
+  };
+  f.addEventListener('change', upd); upd();
+})();
+</script>
