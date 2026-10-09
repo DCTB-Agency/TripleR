@@ -1,0 +1,537 @@
+<title>Find My Oil Cleaner · Triple R</title>
+<meta name="description" content="Find My Oil Cleaner: vul uw olie, volume, druk en probleem in en vind live de Triple R op maat van uw installatie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+/* ===== Find My Oil Cleaner ================================================= */
+.hero--mt .hero__grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:center}
+.build{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,.85fr);align-items:center;gap:6px;justify-self:end;width:100%;max-width:520px}
+.build__in,.build__out{border-radius:20px;background:rgb(255 255 255 / .07);border:1px solid rgb(255 255 255 / .16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:16px;display:grid;gap:8px}
+.build .k{font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#CFE6F5}
+.build .f{display:grid;gap:2px;padding:8px 10px;border-radius:10px;background:#fff;color:var(--ink)}
+.build .f span{font-size:10.5px;color:var(--grey-600)}
+.build .f b{font:500 13.5px var(--font-mono);white-space:nowrap;overflow:hidden}
+.build .f.on{box-shadow:0 0 0 3px #5CB8EB}
+.build .f b::after{content:"";display:inline-block;width:1.5px;height:1em;margin-left:2px;vertical-align:-2px;background:transparent}
+.build .f.on b::after{background:var(--blue-700)}
+.motion .build .f.on b::after{animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{background:transparent}}
+.build__arrow{color:#5CB8EB;display:grid;place-items:center}
+.build__arrow svg{width:28px;height:28px}
+.motion .build__arrow svg{animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(5px)}}
+.build__out{text-align:center;justify-items:center}
+.build__out .pi{height:120px;width:100%;border-radius:14px;background:radial-gradient(80% 70% at 50% 45%,#fff 0%,#EEF2F7 70%);display:grid;place-items:center;padding:8px}
+.build__out img{max-height:100%;width:auto;mix-blend-mode:multiply;transition:opacity .35s var(--ease)}
+.build__out b{font-size:1.05rem;font-weight:600;color:#fff}
+.build__out small{font-size:12px;color:#CFE6F5}
+.build__out .badge{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--night-950,#0E0B24);background:#5CB8EB;border-radius:999px;padding:3px 10px}
+.pp{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s-5);align-items:start}
+.tool{background:#fff;border-radius:28px;box-shadow:var(--shadow-float);overflow:hidden}
+.tool__top{padding:var(--s-6) clamp(1.5rem,1rem + 2vw,2.5rem) 0}
+.stamps{list-style:none;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin:0;padding:0}
+.stamps button{display:grid;justify-items:center;gap:6px;width:100%;background:none;border:0;padding:4px 0;cursor:pointer;font:500 11px var(--font-sans);color:var(--grey-600);border-radius:10px}
+.stamps button:disabled{cursor:default}
+.stamps button:focus-visible{outline:none;box-shadow:var(--focus)}
+.stamps .st{width:40px;height:40px;border-radius:50%;border:1.5px dashed var(--grey-400);display:grid;place-items:center;font:500 13px var(--font-mono);color:var(--grey-600);transition:background .3s var(--ease),border-color .3s,color .3s,transform .3s var(--ease)}
+.stamps .st svg{width:18px;height:18px}
+.stamps .cur .st{border:2px solid var(--blue-700);color:var(--blue-700)}
+.stamps .on .st{border:2px solid var(--blue-700);background:var(--blue-700);color:#fff;transform:rotate(-10deg)}
+.stamps .on button,.stamps .cur button{color:var(--ink)}
+.motion .stamps .on.new .st{animation:stamp .45s var(--ease)}
+@keyframes stamp{from{opacity:0;transform:scale(1.6) rotate(-25deg)}to{opacity:1;transform:rotate(-10deg)}}
+.tool__step{font-size:var(--fs-xs);font-weight:500;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--blue-700);margin-top:var(--s-4)}
+.tool form{padding:var(--s-4) clamp(1.5rem,1rem + 2vw,2.5rem) clamp(1.5rem,1rem + 2vw,2.5rem);display:grid;gap:var(--s-6);min-height:440px;align-content:start}
+.tool fieldset{border:0;margin:0;padding:0;display:grid;gap:var(--s-4)}
+.tool legend{font-size:var(--fs-h3);font-weight:600;letter-spacing:-.025em;padding:0;margin-bottom:6px}
+.tool .hint{font-size:var(--fs-sm);color:var(--grey-600);margin-top:-6px}
+@keyframes slidein{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes slideback{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.motion .tool fieldset.fwd{animation:slidein .4s var(--ease) both}
+.motion .tool fieldset.bwd{animation:slideback .4s var(--ease) both}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:var(--s-3)}
+.opts.wide{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:grid;grid-template-columns:40px 1fr;gap:2px 12px;align-items:center;min-height:72px;height:100%;padding:12px 14px;border:1.5px solid var(--grey-200);border-radius:16px;background:#fff;transition:border-color var(--dur) var(--ease),background var(--dur),transform var(--dur) var(--ease),box-shadow var(--dur)}
+.opt svg{grid-row:span 2;width:40px;height:40px;padding:9px;border-radius:12px;background:var(--grey-50);color:var(--blue-700);transition:background var(--dur),color var(--dur)}
+.opt b{font-weight:600;font-size:var(--fs-sm)}
+.opt small{font-size:12.5px;color:var(--grey-600)}
+.opt input:hover+span{border-color:var(--grey-400);transform:translateY(-1px)}
+.opt input:checked+span{border-color:var(--blue-700);background:#F4FAFE;box-shadow:0 0 0 4px var(--blue-50)}
+.opt input:checked+span svg{background:var(--blue-700);color:#fff}
+.opt input:focus-visible+span{box-shadow:var(--focus)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:42px;padding:0 15px;border:1.5px solid var(--grey-200);border-radius:var(--radius-pill);font-size:var(--fs-sm);background:#fff;transition:all var(--dur) var(--ease)}
+.chip input:hover+span{border-color:var(--grey-400)}
+.chip input:checked+span{border-color:var(--blue-700);background:var(--blue-50);color:var(--blue-900);font-weight:500}
+.chip input:focus-visible+span{box-shadow:var(--focus)}
+.sl{display:grid;gap:10px}
+.sl__row{display:flex;justify-content:space-between;align-items:center;gap:var(--s-4)}
+.sl label{font-weight:500;font-size:var(--fs-sm)}
+.num{display:flex;align-items:center;height:44px;border:1px solid var(--grey-200);border-radius:var(--radius);background:#fff}
+.num:focus-within{border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blue-50)}
+.num input{width:96px;border:0;background:none;font:500 var(--fs-body) var(--font-mono);text-align:right;padding:0 8px 0 12px;outline:none;color:var(--ink)}
+.num span{padding:0 12px 0 2px;font-size:13px;color:var(--grey-600)}
+.rng{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;--pct:50%}
+.rng::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--blue-700) var(--pct),var(--grey-100) var(--pct))}
+.rng::-moz-range-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--blue-700) var(--pct),var(--grey-100) var(--pct))}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-8px;border-radius:50%;background:#fff;border:2px solid var(--blue-700);box-shadow:0 2px 8px rgb(14 11 36 / .2)}
+.rng::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--blue-700)}
+.rng:focus-visible{outline:none}.rng:focus-visible::-webkit-slider-thumb{box-shadow:var(--focus)}
+.ticks{display:flex;justify-content:space-between;font-size:11.5px;color:var(--grey-600);font-family:var(--font-mono)}
+.gauge{display:grid;gap:8px;padding:var(--s-4) var(--s-5);border-radius:16px;background:var(--grey-50)}
+.gauge__top{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-3);font-size:var(--fs-sm)}
+.gauge__top b{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;letter-spacing:-.02em}
+.gauge__bar{position:relative;height:10px;border-radius:10px;background:linear-gradient(90deg,#F6C9C3 0 8%,#D9EEDC 8% 78%,#FBE3B8 78% 100%)}
+.gauge__bar i{position:absolute;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--ink);border:3px solid #fff;box-shadow:0 2px 6px rgb(0 0 0 / .25);transition:left .35s var(--ease)}
+.gauge__lbl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--grey-600)}
+.gauge p{font-size:12.5px;color:var(--grey-600)}
+.tnav{display:flex;justify-content:space-between;gap:var(--s-3);margin-top:auto;padding-top:var(--s-2)}
+.tnav .btn[hidden]{display:none}
+.ghost{background:none!important;border-color:transparent!important;color:var(--grey-600)!important}
+.ghost:hover{color:var(--ink)!important}
+.sub{display:grid;gap:var(--s-3);padding-top:var(--s-4);border-top:var(--border)}
+.sub[hidden]{display:none}
+
+/* live paneel */
+.live{position:sticky;top:96px;background:var(--brand-gradient);color:#fff;border-radius:28px;box-shadow:var(--shadow-float);padding:clamp(1.5rem,1rem + 2vw,2.25rem);display:grid;gap:var(--s-5);overflow:hidden;isolation:isolate}
+.live::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgb(255 255 255 / .05) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / .05) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(180deg,#000,transparent 55%);-webkit-mask-image:linear-gradient(180deg,#000,transparent 55%);z-index:-1}
+.live .lbl{font-size:var(--fs-xs);font-weight:500;letter-spacing:var(--track-label);text-transform:uppercase;color:#CFE6F5}
+.pp-head{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-3);padding-bottom:var(--s-3);border-bottom:1px solid rgb(255 255 255 / .16)}
+.pp-head h3{font-size:1.25rem;letter-spacing:-.02em;color:#fff}
+.pp-no{font:500 12px var(--font-mono);color:#CFE6F5;letter-spacing:.06em}
+.ppf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;margin:0}
+.ppf div{display:grid;gap:2px;min-width:0}
+.ppf dt{font-size:10.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:#A9B0D6}
+.ppf dd{margin:0;font:500 14px/1.35 var(--font-mono);color:#fff;overflow-wrap:anywhere}
+.ppf dd.e{color:rgb(255 255 255 / .38)}
+.ppf dd.new{animation:pop .5s var(--ease)}
+.cfg{display:grid;gap:4px;padding:10px 12px;border-radius:12px;background:rgb(0 0 0 / .2)}
+.cfg code{font:500 14px var(--font-mono);letter-spacing:.06em;color:#fff;overflow-wrap:anywhere}
+.cfg small{font-size:12px;color:#C9C5E0}
+.matches{display:grid;gap:12px}
+.m{display:grid;grid-template-columns:52px 1fr auto;gap:4px 12px;align-items:center;padding:10px;border-radius:16px;background:rgb(255 255 255 / .07);border:1px solid rgb(255 255 255 / .12);transition:background var(--dur)}
+.m img{grid-row:span 2;width:52px;height:44px;object-fit:contain;background:rgb(255 255 255 / .92);border-radius:10px;padding:4px}
+.m .ph{grid-row:span 2;width:52px;height:44px;border-radius:10px;background:rgb(255 255 255 / .12)}
+.m b{font-weight:600;font-size:var(--fs-sm)}
+.m .pct{font-family:var(--font-mono);font-size:13px;color:#CFE6F5}
+.m .bar{grid-column:2 / -1;height:6px;border-radius:6px;background:rgb(255 255 255 / .12);overflow:hidden}
+.m .bar i{display:block;height:100%;border-radius:6px;background:#5CB8EB;transition:width .5s var(--ease)}
+.m.out{opacity:.5}
+.m.out .bar i{background:#F2A091}
+.live .empty{font-size:var(--fs-sm);color:#DCD9EE}
+.live .foot{font-size:12px;color:#C9C5E0}
+
+/* resultaat */
+.result{display:grid;gap:var(--s-5)}
+.best{display:grid;grid-template-columns:200px 1fr;gap:var(--s-6);align-items:center;padding:var(--s-5);border-radius:20px;border:1.5px solid var(--blue-700);background:#F7FBFE}
+.best .img{height:170px;border-radius:14px;background:radial-gradient(80% 70% at 50% 45%,#fff 0%,#F1F4F8 60%,#E3E8EF 100%);display:grid;place-items:center;padding:12px}
+.best .img{min-width:0;overflow:hidden}.best .img img{max-height:100%;max-width:100%;width:auto;object-fit:contain;mix-blend-mode:multiply}.result,.best>div,#q{min-width:0}.result .btn{white-space:normal;text-align:center;height:auto;min-height:48px}
+.best .tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--blue-700);border-radius:var(--radius-pill);padding:3px 10px;margin-bottom:6px}
+.best h3{font-size:clamp(1.5rem,1.2rem + 1vw,2rem);letter-spacing:-.03em}
+.checklist{list-style:none;display:grid;gap:6px;margin-top:var(--s-3);font-size:var(--fs-sm)}
+.checklist li{display:flex;gap:8px;align-items:flex-start}
+.checklist li::before{content:"✓";flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;background:#E3F4EA;color:var(--ok-700)}
+.checklist li.warn::before{content:"!";background:#FFF1D6;color:#8A5A00}
+.checklist li.fail::before{content:"×";background:#FBE4E1;color:var(--err-700)}
+.elem{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:var(--s-4) var(--s-5);border-radius:16px;background:var(--grey-50);font-size:var(--fs-sm)}
+.elem b{font-weight:600}
+.elem .pill{font-family:var(--font-mono);font-size:13px;padding:3px 10px;border-radius:var(--radius-pill);background:#fff;border:var(--border)}
+.alts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:var(--s-3)}
+.alt{display:grid;grid-template-columns:56px 1fr;gap:4px 12px;align-items:center;padding:12px;border-radius:16px;border:var(--border);color:var(--ink);text-decoration:none;background:#fff;transition:border-color var(--dur),box-shadow var(--dur)}
+.alt:hover{border-color:transparent;box-shadow:var(--shadow-card);color:var(--ink)}
+.alt img{grid-row:span 2;width:56px;height:46px;object-fit:contain;mix-blend-mode:multiply}
+.alt b{font-size:var(--fs-sm);font-weight:600}
+.alt span{font-size:12.5px;color:var(--grey-600)}
+.alt .k{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--blue-700)}
+.eng{padding:var(--s-5);border-radius:20px;border:1.5px dashed var(--grey-400);display:grid;gap:var(--s-3)}
+.result h4{font-size:var(--fs-sm);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--grey-600)}
+.share{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center;font-size:13px;color:var(--grey-600)}
+@media (max-width:1023px){.pp{grid-template-columns:1fr}.live{position:relative;top:0}.hero--mt .hero__grid{grid-template-columns:1fr}.build{display:none}}
+@media (max-width:767px){.ppf,.ppf-l{display:none}.live{gap:var(--s-4)}}
+@media (max-width:559px){.stamps .t{display:none}.stamps .st{width:34px;height:34px}.ppf{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 12px}.best{grid-template-columns:minmax(0,1fr)}.best .img{height:140px}.tool form{min-height:0}}
+.how3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.how3 div{border-top:2px solid var(--ink);padding-top:var(--s-4);display:grid;gap:6px}
+.how3 p{font-size:var(--fs-sm);color:var(--grey-600)}
+@media (max-width:767px){.how3{grid-template-columns:1fr}}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page hero--mt" aria-labelledby="h1" data-annot="Find My Oil Cleaner · productconfigurator (naam [CONFIRM]: lijkt op TRIS ‘Build My Oil Cleaner’) (betere versie van oilcleaner.eu ‘Build my oil cleaner’) · hero-demo: velden worden één voor één ‘getypt’ (45 ms/teken), daarna verschijnt het samengestelde product · statisch bij reduced motion">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li><a href="producten.html">Producten</a></li><li aria-current="page">Find My Oil Cleaner</li></ol>
+      <h1 id="h1"><span lang="en">Find My Oil Cleaner</span><span>: de Triple R op maat van uw installatie</span><i class="tb" title="Te bevestigen: naam en merkgebruik met Triple R (gelijkenis met ‘Build My Oil Cleaner’ van TRIS)"></i></h1>
+      <p class="lead">Vul zelf uw gegevens in: olie, volume, temperatuur, druk en probleem. Terwijl u typt, stellen wij live uw Triple R samen, met de reden bij elke keuze.</p>
+      <ul class="qstats"><li><b>7</b>stappen</li><li><b>± 2</b>minuten</li><li><b>live</b>resultaat</li></ul>
+    </div>
+    <div class="build" aria-hidden="true">
+      <div class="build__in"><p class="k">Uw gegevens</p>
+        <div class="f"><span>Vloeistof</span><b data-t="Hydrauliekolie">Hydrauliekolie</b></div>
+        <div class="f"><span>Volume</span><b data-t="400 l">400 l</b></div>
+        <div class="f"><span>Druk</span><b data-t="120 bar">120 bar</b></div>
+        <div class="f"><span>Probleem</span><b data-t="Water">Water</b></div>
+      </div>
+      <div class="build__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M14 6l6 6-6 6"/></svg></div>
+      <div class="build__out"><p class="k">Uw oliereiniger</p><div class="pi"><img src="img/BU-Series.png" alt="" id="bo-img"></div><b id="bo-n">BU-serie</b><small id="bo-e">met WE100-element</small><span class="badge">op maat</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="tool" aria-labelledby="h-tool" data-annot="Tool · links stappen (pas zich aan: druk alleen bij drukleiding, spanning alleen bij offline) · 7 stappen = voortgang (ingevulde stappen klikbaar) · rechts live ‘Uw oliereiniger’: uw gegevens + configuratiecode + samengestelde matches · nooit doodlopend">
+  <div class="wrap">
+    <h2 id="h-tool" class="vh">Vind uw oliereiniger</h2>
+    <div class="pp">
+      <div class="tool">
+        <div class="tool__top">
+          <ol class="stamps" id="stamps" aria-label="Voortgang"></ol>
+          <p class="tool__step" id="step-lbl" aria-live="polite">Stap 1 van 7</p>
+        </div>
+        <form id="pp-form" onsubmit="return false" novalidate>
+          <div id="q"></div>
+          <div class="tnav"><button type="button" class="btn btn--secondary btn--sm ghost" id="back" hidden>← Vorige</button><button type="button" class="btn btn--primary" id="next" style="margin-left:auto">Volgende</button></div>
+        </form>
+      </div>
+      <section class="live" aria-labelledby="live-h">
+        <div class="pp-head"><h3 id="live-h">Uw oliereiniger</h3><span class="pp-no">op maat</span></div>
+        <p class="lbl ppf-l">Uw gegevens</p>
+        <dl class="ppf" id="fields"></dl>
+        <div class="cfg"><span class="lbl">Configuratiecode</span><code id="cfg">—</code><small>Vermeld deze code bij uw aanvraag.</small></div>
+        <div><p class="lbl" style="margin-bottom:10px">Samengesteld voor u</p><div class="matches" id="matches" aria-live="polite"><p class="empty">De matches verschijnen zodra u begint.</p></div></div>
+        <p class="foot">Indicatieve voorselectie op basis van de productinformatie van Triple R. Een specialist bevestigt de definitieve configuratie.<i class="tb" title="Te bevestigen: selectieregels en productgrenzen door Triple R"></i></p>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-how" data-annot="Uitleg · 3 punten · waarom niet alleen het volume telt">
+  <div class="wrap">
+    <div class="head"><div><p class="eyebrow">Zo werkt <span lang="en">Find My Oil Cleaner</span></p><h2 id="h-how">Meer dan alleen het tankvolume</h2></div><div class="side"><p class="lead">Twee installaties met evenveel olie kunnen een totaal andere oplossing vragen.</p></div></div>
+    <div class="how3">
+      <div><h3 class="h4">1 · Uw olie</h3><p>Vloeistof, volume, viscositeitsklasse en temperatuur bepalen hoe makkelijk de olie door het filterelement stroomt. De tool rekent de bedrijfsviscositeit live uit.</p></div>
+      <div><h3 class="h4">2 · Technische controles</h3><p>Aansluiting, druk, viscositeit en toepassing worden getoetst aan de grenzen van elke serie. U ziet bij elke match waarom ze past — of waarom niet.</p></div>
+      <div><h3 class="h4">3 · Specialist bevestigt</h3><p>Valt uw installatie buiten de standaard, dan kijkt een Triple R-specialist mee. U krijgt nooit een leeg scherm.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-cta" data-annot="Slot-CTA">
+  <div class="wrap">
+    <div class="cta">
+      <div><p class="eyebrow">Twijfelt u?</p><h2 id="h-cta">Laat eerst uw olie analyseren</h2><p class="lead">Weet u de viscositeit of het watergehalte niet? Een gratis olieanalyse geeft het antwoord, met persoonlijk advies.</p>
+        <div class="btns"><a class="btn btn--light" href="olieanalyse.html">Gratis olieanalyse</a><a class="btn btn--ghost-light" href="tel:+3238254647">Bel +32 (0)3 825 46 47</a></div></div>
+      <div class="person"><img src="img/team.jpg" alt="Het Triple R-team in Aartselaar" width="768" height="1024" loading="lazy"><div class="person__who"><div><h3>Maxim Van Uytven</h3><p class="role">Sales Manager</p></div><div class="links"><a href="tel:+3238254647">+32 (0)3 825 46 47</a><a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a></div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>
+<script>
+(() => {
+  /* ======================= data (uitsluitend uit de briefing / datasheets) ======================= */
+  const FLUIDS = [
+    ['hyd', 'Hydrauliekolie', 'persen, spuitgieten, mobiel', '<path d="M3 9h12v6H3zM15 12h6M6 9V6.5h2.5M12 9V6.5H9.5"/>'],
+    ['lube', 'Smeer- of tandwielolie', 'gearboxes, lagers, windturbines', '<circle cx="9" cy="12" r="5"/><circle cx="17" cy="9" r="3"/><path d="M9 7v2M9 15v2M4 12h2M12 12h2"/>'],
+    ['eng', 'Motorolie', 'scheeps-, gas- en dieselmotoren', '<path d="M4 9h3l2-2h5l2 2h3v7h-3l-2 2H9l-2-2H4z"/>'],
+    ['tur', 'Turbineolie', 'stoom-, gas- en waterturbines', '<circle cx="12" cy="12" r="2"/><path d="M12 10c0-4 2-6 5-6M14 12c4 0 6 2 6 5M12 14c0 4-2 6-5 6M10 12c-4 0-6-2-6-5"/>'],
+    ['wg', 'Water-glycol', 'brandveilige hydrauliek', '<path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/><path d="M9 14h6"/>'],
+    ['cool', 'Koelvloeistof of emulsie', 'bewerkingsmachines, wassers', '<path d="M12 3v18M5 7l14 10M19 7L5 17"/>'],
+    ['oth', 'Andere vloeistof', 'we bekijken het samen', '<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5M12 16.5v.5"/>']
+  ];
+  const APPS = {
+    hyd: ['Spuitgietmachines', 'Persen', 'Mobiele hydrauliek', 'Powerpacks', 'Maritieme hydrauliek', 'Testbanken'],
+    lube: ['Tandwielkasten', 'Windturbines', 'Lagers en smeercircuits', 'Papiermachines'],
+    eng: ['Scheepsmotoren', 'Generatoren', 'Vrachtwagens en bouwmachines'],
+    tur: ['Stoom- en gasturbines', 'Waterkracht'],
+    wg: ['Brandveilige hydrauliek', 'Spuitgieten'],
+    cool: ['Bewerkingsmachines', 'Onderdelenwassers', 'Lakstraten', 'Draadtrekken'],
+    oth: []
+  };
+  const VG = [15, 22, 32, 46, 68, 100, 150, 220, 320, 460, 680];
+  const V100 = { 15: 3.4, 22: 4.3, 32: 5.4, 46: 6.8, 68: 8.6, 100: 11.1, 150: 14.5, 220: 18.7, 320: 23.7, 460: 30.1, 680: 38 }; // schatting bij VI ≈ 100
+  const VG_DEFAULT = { hyd: 46, lube: 220, eng: 100, tur: 32, wg: 46, oth: 46 };
+  const P = {
+    bu: { n: 'BU-serie', img: 'img/BU-Series.png', pdf: 'BU-2023-UK-.pdf', conn: 'press', pmax: 450, fl: ['hyd', 'lube', 'wg'], vis: [3, 320], apps: ['Spuitgietmachines', 'Persen', 'Mobiele hydrauliek', 'Powerpacks', 'Maritieme hydrauliek', 'Spuitgieten', 'Brandveilige hydrauliek'], vol: [0, 2000], line: 'Bypassfilter op de drukleiding, zonder pomp of motor' },
+    tr: { n: 'TR-serie', img: null, pdf: 'TR-2019-ENGLISH.pdf', conn: 'press', pmax: 6, fl: ['eng', 'lube'], vis: [3, 320], apps: ['Scheepsmotoren', 'Generatoren', 'Vrachtwagens en bouwmachines', 'Tandwielkasten', 'Windturbines'], vol: [0, 2000], line: 'Bypassfilter voor motorolie en systemen onder 6 bar' },
+    se: { n: 'SE-serie', img: 'img/se.png', pdf: 'SE-2019-ENGLISH.pdf', conn: 'off', fl: ['hyd', 'lube', 'wg', 'tur'], vis: [3, 320], apps: ['Powerpacks', 'Testbanken', 'Mobiele hydrauliek', 'Lagers en smeercircuits'], vol: [0, 5000], mob: true, wall: true, line: 'Offline reiniger met eigen motor-pompgroep' },
+    osca: { n: 'OSCA-serie', img: 'img/osca.png', pdf: 'OSCA-2019-ENGLISH.pdf', conn: 'off', fl: ['hyd', 'lube', 'tur', 'eng'], vis: [3, 320], apps: ['Tandwielkasten', 'Windturbines', 'Papiermachines', 'Persen', 'Stoom- en gasturbines', 'Testbanken'], vol: [1000, 1e9], mob: true, line: 'Offline reiniger met hoog debiet, 6 tot > 60 l/min' },
+    ss: { n: 'SS-serie', img: 'img/ss.png', pdf: 'SS-2019-ENGLISH-.pdf', conn: 'both', pmax: 15, fl: ['hyd', 'lube'], vis: [3, 600], apps: ['Persen', 'Tandwielkasten', 'Maritieme hydrauliek', 'Papiermachines'], vol: [1000, 1e9], line: 'Stalen huis voor 2 tot 6 elementen, tot 60 l/min' },
+    cen: { n: 'Centrifuges', img: 'img/centrifuge.png', pdf: 'Centrifuges_2014_UK-1.pdf', conn: 'off', fl: ['cool', 'hyd', 'oth'], vis: [0, 20], apps: ['Bewerkingsmachines', 'Onderdelenwassers', 'Lakstraten', 'Draadtrekken'], vol: [0, 1e9], line: 'Deeltjes tot 3 µm uit koelvloeistof en proceswater' }
+  };
+  const ADD = {
+    vac: { n: 'Vacuümontwateraar', img: 'img/vacuum.png', pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', why: 'verwijdert 80% van het opgeloste en 100% van het vrije water (10–600 cSt, 15–60 °C)' },
+    ws: { n: 'WS-serie', img: 'img/ws.png', pdf: 'WS-2019-ENGLISH.pdf', why: 'coalescer voor continue waterinloop' },
+    qt: { n: 'Quicktoron', img: 'img/quicktoron.png', pdf: 'QUICKTORON-2023-ENGLISH.pdf', why: 'haalt tot 95% van de luchtbellen uit de olie (tot 250 cSt, 120 °C)' }
+  };
+  const ICON = {
+    press: '<circle cx="12" cy="13" r="7"/><path d="M12 13l4-4"/>', off: '<rect x="4" y="7" width="10" height="11" rx="1.5"/><circle cx="18" cy="14" r="3"/><path d="M14 12h1"/>', unk: '<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5M12 16.5v.5"/>',
+    D: '<path d="M6 9l3-1.5 2 2.5-1.5 3L6 12.5zM15 6l2-1 1.5 1.5-1 2-2.5-.5zM15 15l3.5-1.5 2 3-2 3-3.5-1z"/>', V: '<path d="M3 14c4-2 6 2 9 0s5-2 9 0M3 18c4-2 6 2 9 0s5-2 9 0"/>', W: '<path d="M12 4s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/>', L: '<circle cx="9" cy="14" r="4"/><circle cx="16" cy="8" r="3"/>', X: '<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5M12 16.5v.5"/>',
+    st: '<rect x="5" y="5" width="14" height="14" rx="2"/><path d="M5 19l-1 2M19 19l1 2"/>', mob: '<rect x="4" y="6" width="12" height="10" rx="1.5"/><circle cx="7" cy="19" r="1.5"/><circle cx="14" cy="19" r="1.5"/><path d="M16 9h4v7"/>', wall: '<path d="M4 3v18"/><rect x="8" y="7" width="10" height="10" rx="1.5"/><path d="M4 9h4M4 15h4"/>', any: '<path d="M5 12h14M12 5v14"/>'
+  };
+  const ic = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  const nf = new Intl.NumberFormat('nl-BE', { maximumFractionDigits: 1 });
+
+  /* ======================= state ======================= */
+  const S = { f: null, a: null, vol: 400, vg: null, t: 45, c: null, p: 120, pb: [], m: 'any', x: 'nee', u: '400' };
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('f')) { ['f', 'a', 'c', 'm', 'x', 'u'].forEach(k => qs.get(k) && (S[k] = qs.get(k))); ['vol', 'vg', 't', 'p'].forEach(k => qs.get(k) && (S[k] = +qs.get(k))); S.pb = (qs.get('pb') || '').split(',').filter(Boolean); }
+  const STEPS = ['f', 'a', 'vol', 'vis', 'c', 'pb', 'm'];
+  const LBL = ['Vloeistof', 'Toepassing', 'Volume', 'Viscositeit', 'Aansluiting', 'Probleem', 'Installatie'];
+  let step = 0, done = new Set(), finished = false;
+  if (qs.get('f')) { STEPS.forEach((_, i) => done.add(i)); finished = true; step = 6; }
+  const coolant = () => S.f === 'cool';
+
+  /* ======================= viscositeit (Walther / ASTM D341) ======================= */
+  function opVisc() {
+    if (coolant()) return null;
+    const vg = S.vg || VG_DEFAULT[S.f] || 46, v40 = vg, v100 = V100[vg];
+    const W = v => Math.log10(Math.log10(v + .7)), B = (W(v40) - W(v100)) / (Math.log10(373.15) - Math.log10(313.15)), A = W(v40) + B * Math.log10(313.15);
+    return Math.pow(10, Math.pow(10, A - B * Math.log10(S.t + 273.15))) - .7;
+  }
+
+  /* ======================= selectie-engine ======================= */
+  function evaluate() {
+    const v = opVisc(), out = [];
+    for (const [id, p] of Object.entries(P)) {
+      const ch = []; let fail = false, sc = 50;
+      const add = (s, t) => { ch.push([s, t]); if (s === 'fail') fail = true; };
+      if (!S.f) return [];
+      // vloeistof
+      if (p.fl.includes(S.f)) { add('ok', 'Geschikt voor ' + FLUIDS.find(x => x[0] === S.f)[1].toLowerCase()); if (id === 'cen' && S.f !== 'cool') add('warn', 'Alleen voor oliën tot 20 cSt'); }
+      else if (S.f === 'oth') add('warn', 'Vloeistof te bevestigen door een specialist');
+      else add('fail', 'Niet bedoeld voor ' + FLUIDS.find(x => x[0] === S.f)[1].toLowerCase());
+      if (S.f === 'wg' && ['bu', 'se'].includes(id)) add('ok', 'Met WG/DWG-element voor water-glycol');
+      // toepassing
+      if (S.a && p.apps.includes(S.a)) { sc += 18; add('ok', 'Veel gebruikt bij ' + S.a.toLowerCase()); }
+      // volume
+      if (done.has(2) || finished) {
+        if (S.vol >= p.vol[0] && S.vol <= p.vol[1]) { sc += 12; add('ok', `Past bij ${nf.format(S.vol)} l systeeminhoud`); }
+        else if (S.vol > p.vol[1]) { sc -= 18; add('warn', `Voor ${nf.format(S.vol)} l is een unit met meer debiet efficiënter`); }
+        else { sc -= 8; add('warn', 'Bedoeld voor grotere volumes'); }
+        if (id === 'osca' && S.vol > 50000) sc += 10;
+      }
+      // viscositeit
+      if (v != null && (done.has(3) || finished)) {
+        if (v >= p.vis[0] && v <= p.vis[1]) add('ok', `Bedrijfsviscositeit ≈ ${nf.format(v)} cSt binnen bereik`);
+        else if (id === 'ss' && v <= 600) add('ok', `≈ ${nf.format(v)} cSt: met X-element (hoge viscositeit)`);
+        else add('fail', `Bedrijfsviscositeit ≈ ${nf.format(v)} cSt buiten bereik (${p.vis[0]}–${p.vis[1]} cSt)`);
+        if (v > 150 && ['osca', 'ss'].includes(id)) sc += 8;
+      }
+      // aansluiting en druk
+      if (S.c === 'press') {
+        if (p.conn === 'press' || p.conn === 'both') {
+          if (S.p <= p.pmax) { sc += 22; add('ok', `Op de drukleiding, ${S.p} bar binnen limiet (${p.pmax} bar)`); }
+          else add('fail', `${S.p} bar is boven de limiet van ${p.pmax} bar`);
+        } else { sc -= 6; add('warn', 'Werkt los van de drukleiding, met eigen pomp'); }
+      } else if (S.c === 'off') {
+        if (p.conn === 'press') add('fail', 'Vraagt een bestaande drukleiding');
+        else { sc += 16; add('ok', 'Offline, met eigen pomp'); }
+      }
+      // installatie
+      if (S.m === 'mob') { if (p.mob) { sc += 10; add('ok', 'Ook mobiel leverbaar'); } else add('warn', 'Standaard stationair'); }
+      if (S.m === 'wall') { if (p.wall) { sc += 8; add('ok', 'Ook voor wandmontage (WH)'); } else add('warn', 'Wandmontage te bevestigen'); }
+      if (S.x === 'ja') add('warn', 'ATEX-uitvoering te bevestigen door een specialist');
+      out.push({ id, p, ch, fail, sc: Math.max(5, Math.min(99, sc)) });
+    }
+    return out.sort((a, b) => (a.fail - b.fail) || (b.sc - a.sc));
+  }
+  function element() {
+    const v = opVisc();
+    if (S.f === 'cool') return null;
+    if (S.f === 'wg') return ['WG / DWG', 'voor water-glycol'];
+    if (S.pb.includes('W')) return ['WE100', 'absorbeert tot 900 ml water, < 80 ppm'];
+    if (S.pb.includes('V')) return ['V100', '1 µm absoluut, tegen varnish'];
+    if (S.f === 'eng') return ['E-element', '5 µm absoluut, voor motorolie'];
+    if (v && v > 150) return ['X-element', '10 µm absoluut, voor hoge viscositeit'];
+    if (S.pb.includes('D') && S.vol > 1000) return ['D-element', '4 µm, 80% meer vuilcapaciteit'];
+    return ['M-element', '3 µm absoluut, voor hydrauliek en smering'];
+  }
+  function addons() {
+    const a = [], v = opVisc();
+    if (S.pb.includes('W')) { if (S.vol >= 200 || S.f === 'tur') a.push(['vac', v && (v < 10 || v > 600) ? 'warn' : 'ok']); if (['Maritieme hydrauliek', 'Papiermachines', 'Scheepsmotoren'].includes(S.a) || S.vol >= 1000) a.push(['ws', 'ok']); }
+    if (S.pb.includes('L')) a.push(['qt', v && v > 250 ? 'warn' : 'ok']);
+    return a;
+  }
+
+  /* ======================= gegevens + matches ======================= */
+  const has = i => done.has(i) || finished;
+  const PBN = { D: 'Deeltjes', V: 'Varnish', W: 'Water', L: 'Lucht', X: 'Onbekend' };
+  function fields() {
+    const fl = S.f ? FLUIDS.find(x => x[0] === S.f)[1] : null;
+    return [
+      ['Vloeistof', fl],
+      ['Toepassing', has(1) ? (S.a || 'Niet opgegeven') : null],
+      ['Volume', has(2) ? nf.format(S.vol) + ' l' : null],
+      ['Viscositeit', has(3) ? (coolant() ? 'n.v.t.' : `VG ${S.vg || VG_DEFAULT[S.f]} · ${S.t} °C → ≈ ${nf.format(opVisc())} cSt`) : null],
+      ['Aansluiting', has(4) ? (S.c === 'press' ? `Drukleiding · ${S.p} bar` : S.c === 'off' ? 'Offline, eigen pomp' : 'Nog onbekend') : null],
+      ['Probleem', has(5) ? (S.pb.length ? S.pb.map(x => PBN[x]).join(', ') : 'Niet opgegeven') : null],
+      ['Installatie', has(6) ? { st: 'Stationair', mob: 'Mobiel', wall: 'Wandmontage', any: 'Geen voorkeur' }[S.m] + (S.x === 'ja' ? ' · ATEX' : '') : null]
+    ];
+  }
+  function cfgCode() {
+    if (!S.f) return '—';
+    const c = ['RRR', S.f.toUpperCase()];
+    if (has(2)) c.push(String(S.vol).padStart(4, '0'));
+    if (has(3) && !coolant()) c.push('VG' + (S.vg || VG_DEFAULT[S.f]) + '/' + S.t + 'C');
+    if (has(4)) c.push(S.c === 'press' ? 'P' + S.p : S.c === 'off' ? 'OFF' : 'UNK');
+    if (has(5) && S.pb.length) c.push(S.pb.join(''));
+    if (has(6)) c.push(S.m.toUpperCase() + (S.x === 'ja' ? '-ATEX' : ''));
+    return c.join('-');
+  }
+  let prevF = [];
+  function renderLive() {
+    const f = fields();
+    document.getElementById('fields').innerHTML = f.map(([k, v], i) => `<div><dt>${k}</dt><dd class="${v ? (v !== prevF[i] ? 'new' : '') : 'e'}">${v || '—'}</dd></div>`).join('');
+    prevF = f.map(x => x[1]);
+    document.getElementById('cfg').textContent = cfgCode();
+    const r = evaluate().slice(0, 3), m = document.getElementById('matches');
+    m.innerHTML = r.length ? r.map(x => `<div class="m ${x.fail ? 'out' : ''}">${x.p.img ? `<img src="${x.p.img}" alt="">` : '<span class="ph"></span>'}<b>${x.p.n}</b><span class="pct">${x.fail ? 'past niet' : x.sc + '%'}</span><span class="bar"><i style="width:${x.fail ? 12 : x.sc}%"></i></span></div>`).join('') : '<p class="empty">De matches verschijnen zodra u begint.</p>';
+  }
+
+  /* ======================= stappen (voortgang) ======================= */
+  const stamps = document.getElementById('stamps');
+  const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  let prevOn = new Set();
+  function drawStamps() {
+    const reach = Math.max(-1, ...done) + 1;
+    stamps.innerHTML = LBL.map((l, i) => { const on = has(i), cur = i === step && !finished, ok = on || i <= reach;
+      return `<li class="${on ? 'on' : ''}${cur ? ' cur' : ''}${on && !prevOn.has(i) ? ' new' : ''}"><button type="button" data-i="${i}" ${ok ? '' : 'disabled'} ${cur ? 'aria-current="step"' : ''} aria-label="Stap ${i + 1}: ${l}${on ? ', ingevuld' : ''}"><span class="st">${on ? CHECK : i + 1}</span><span class="t">${l}</span></button></li>`; }).join('');
+    prevOn = new Set(LBL.map((_, i) => i).filter(has));
+  }
+  stamps.addEventListener('click', e => { const b = e.target.closest('button[data-i]'); if (!b || b.disabled) return; finished = false; go(+b.dataset.i); });
+
+/* ======================= stappen ======================= */
+  const q = document.getElementById('q'), back = document.getElementById('back'), next = document.getElementById('next'), lbl = document.getElementById('step-lbl');
+  const radio = (name, v, label, small, icon, checked) => `<label class="opt"><input type="radio" name="${name}" value="${v}" ${checked ? 'checked' : ''}><span>${ic(icon)}<b>${label}</b><small>${small || '&nbsp;'}</small></span></label>`;
+  const chip = (type, name, v, label, checked) => `<label class="chip"><input type="${type}" name="${name}" value="${v}" ${checked ? 'checked' : ''}><span>${label}</span></label>`;
+  const volToR = v => Math.log10(Math.max(10, v)), rToVol = r => { const v = Math.pow(10, r); return v < 100 ? Math.round(v / 5) * 5 : v < 1000 ? Math.round(v / 10) * 10 : v < 10000 ? Math.round(v / 100) * 100 : Math.round(v / 1000) * 1000; };
+  const pct = el => el.style.setProperty('--pct', ((el.value - el.min) / (el.max - el.min) * 100) + '%');
+  function view(i) {
+    switch (i) {
+      case 0: return `<fieldset><legend>Welke vloeistof wilt u reinigen?</legend><div class="opts">${FLUIDS.map(f => radio('f', f[0], f[1], f[2], f[3], S.f === f[0])).join('')}</div></fieldset>`;
+      case 1: { const a = APPS[S.f] || []; return `<fieldset><legend>Waar wordt de ${S.f ? FLUIDS.find(x => x[0] === S.f)[1].toLowerCase() : 'vloeistof'} gebruikt?</legend><p class="hint">Optioneel, maar het verfijnt de match.</p><div class="chips">${a.map(x => chip('radio', 'a', x, x, S.a === x)).join('')}${chip('radio', 'a', '', 'Andere / weet ik niet', !S.a)}</div></fieldset>`; }
+      case 2: return `<fieldset><legend>Hoeveel vloeistof zit er in het systeem?</legend><p class="hint">De totale inhoud van tank en leidingen. Een schatting volstaat.</p>
+        <div class="sl"><div class="sl__row"><label for="vol-n">Systeeminhoud</label><div class="num"><input id="vol-n" type="text" inputmode="numeric" value="${S.vol}"><span>liter</span></div></div>
+        <input class="rng" id="vol-r" type="range" min="1" max="5" step="0.01" value="${volToR(S.vol)}" aria-label="Systeeminhoud in liter" aria-valuetext="${nf.format(S.vol)} liter"><div class="ticks"><span>10 l</span><span>100 l</span><span>1.000 l</span><span>10.000 l</span><span>100.000 l</span></div></div>
+        <div class="chips">${[50, 200, 400, 1000, 10000, 50000].map(v => `<button type="button" class="btn btn--secondary btn--sm" data-vol="${v}">${nf.format(v)} l</button>`).join('')}</div></fieldset>`;
+      case 3: if (coolant()) return `<fieldset><legend>Viscositeit</legend><p class="hint">Voor koelvloeistof en emulsies is de viscositeit niet bepalend; deze stap slaan we over.</p></fieldset>`;
+        return `<fieldset><legend>Welke viscositeit en temperatuur?</legend><p class="hint">De ISO VG-klasse staat op het etiket of de datasheet van de olie. Weet u het niet? Dan nemen we een typische waarde.</p>
+        <div class="chips" role="radiogroup" aria-label="ISO VG-klasse">${VG.map(v => chip('radio', 'vg', v, 'VG ' + v, S.vg === v)).join('')}${chip('radio', 'vg', '', 'Weet ik niet', !S.vg)}</div>
+        <div class="sl"><div class="sl__row"><label for="t-n">Normale bedrijfstemperatuur</label><div class="num"><input id="t-n" type="text" inputmode="numeric" value="${S.t}"><span>°C</span></div></div><input class="rng" id="t-r" type="range" min="10" max="100" step="1" value="${S.t}" aria-label="Bedrijfstemperatuur in °C"><div class="ticks"><span>10 °C</span><span>40</span><span>70</span><span>100 °C</span></div></div>
+        <div class="gauge" aria-live="polite"><div class="gauge__top"><span>Bedrijfsviscositeit (berekend)</span><b id="vv"></b></div><div class="gauge__bar"><i id="vi"></i></div><div class="gauge__lbl"><span>te dun</span><span>3–320 cSt: standaardelementen</span><span>hoog</span></div><p id="vt"></p></div></fieldset>`;
+      case 4: return `<fieldset><legend>Hoe wordt de filter aangesloten?</legend><div class="opts wide">${radio('c', 'press', 'Op de bestaande drukleiding', 'gebruikt de druk van de machine, geen pomp nodig', ICON.press, S.c === 'press')}${radio('c', 'off', 'Offline, met eigen pomp', 'aparte unit naast de machine of tank', ICON.off, S.c === 'off')}${radio('c', 'unk', 'Weet ik niet', 'we tonen beide opties', ICON.unk, S.c === 'unk')}</div>
+        <div class="sub" id="p-sub" ${S.c === 'press' ? '' : 'hidden'}><div class="sl"><div class="sl__row"><label for="p-n">Druk op het aansluitpunt</label><div class="num"><input id="p-n" type="text" inputmode="numeric" value="${S.p}"><span>bar</span></div></div><input class="rng" id="p-r" type="range" min="0" max="450" step="1" value="${S.p}" aria-label="Druk in bar"><div class="ticks"><span>0</span><span>150</span><span>300</span><span>450 bar</span></div></div></div></fieldset>`;
+      case 5: return `<fieldset><legend>Wat wilt u vooral oplossen?</legend><p class="hint">Meerdere antwoorden mogelijk. Dit bepaalt het filterelement en eventuele aanvullende units.</p><div class="opts">${[['D', 'Vuile olie / deeltjes', 'slijtage, filters lopen vol'], ['V', 'Varnish / afzettingen', 'haperende kleppen'], ['W', 'Water in de olie', 'melkachtig, corrosie'], ['L', 'Lucht / schuim', 'cavitatie, lawaai'], ['X', 'Weet ik niet', 'een olieanalyse helpt']].map(([v, l, s]) => `<label class="opt"><input type="checkbox" name="pb" value="${v}" ${S.pb.includes(v) ? 'checked' : ''}><span>${ic(ICON[v])}<b>${l}</b><small>${s}</small></span></label>`).join('')}</div></fieldset>`;
+      case 6: return `<fieldset><legend>Hoe wordt het systeem geïnstalleerd?</legend><div class="opts">${[['st', 'Stationair', 'vast naast de machine'], ['mob', 'Mobiel', 'op wielen, voor meerdere machines'], ['wall', 'Wandmontage', 'compact aan de wand'], ['any', 'Geen voorkeur', '']].map(([v, l, s]) => radio('m', v, l, s, ICON[v], S.m === v)).join('')}</div>
+        <div class="sl__row" style="flex-wrap:wrap"><span style="font-weight:500;font-size:var(--fs-sm)" id="x-l">ATEX-uitvoering nodig?</span><div class="chips" role="radiogroup" aria-labelledby="x-l">${chip('radio', 'x', 'nee', 'Nee', S.x === 'nee')}${chip('radio', 'x', 'ja', 'Ja', S.x === 'ja')}</div></div>
+        ${S.c !== 'press' ? `<div class="sl__row" style="flex-wrap:wrap"><span style="font-weight:500;font-size:var(--fs-sm)" id="u-l">Voedingsspanning</span><div class="chips" role="radiogroup" aria-labelledby="u-l">${['230', '400', '?'].map(u => chip('radio', 'u', u, u === '?' ? 'Weet ik niet' : u + ' V', S.u === u)).join('')}</div></div>` : ''}</fieldset>`;
+    }
+  }
+  function gauge() {
+    const v = opVisc(); if (v == null || !document.getElementById('vv')) return;
+    document.getElementById('vv').textContent = '≈ ' + nf.format(v) + ' cSt';
+    const pos = v < 3 ? v / 3 * 8 : v <= 320 ? 8 + (Math.log10(v) - Math.log10(3)) / (Math.log10(320) - Math.log10(3)) * 70 : Math.min(100, 78 + (Math.log10(v) - Math.log10(320)) / (Math.log10(3000) - Math.log10(320)) * 22);
+    document.getElementById('vi').style.left = pos + '%';
+    document.getElementById('vt').textContent = v < 3 ? 'Erg dunne olie: een specialist bekijkt de configuratie.' : v <= 320 ? 'Binnen het bereik van de standaard Triple R-filterelementen.' : v <= 600 ? 'Hoge viscositeit: de SS-serie met X-element of een opwarming van de olie kan nodig zijn.' : 'Zeer hoge viscositeit: een specialist bekijkt de mogelijkheden.';
+  }
+  function go(i, dir) {
+    step = Math.max(0, Math.min(6, i));
+    if (step === 1 && !(APPS[S.f] || []).length) step = dir === 'bwd' ? 0 : 2;
+    finished = false; next.hidden = false; back.textContent = '← Vorige';
+    q.innerHTML = view(step);
+    const fs = q.querySelector('fieldset'); dir && fs && fs.classList.add(dir);
+    q.querySelectorAll('.rng').forEach(pct);
+    gauge();
+    lbl.textContent = `Stap ${step + 1} van 7 · ${LBL[step]}`;
+    back.hidden = step === 0; next.textContent = step === 6 ? 'Toon mijn match' : 'Volgende';
+    next.disabled = step === 0 && !S.f;
+    drawStamps(); renderLive();
+  }
+  q.addEventListener('input', e => {
+    const t = e.target;
+    if (t.name === 'f') { S.f = t.value; S.a = null; S.vg = null; next.disabled = false; done.add(0); setTimeout(() => go(1, 'fwd'), 220); }
+    if (t.name === 'a') S.a = t.value || null;
+    if (t.id === 'vol-r') { S.vol = rToVol(+t.value); document.getElementById('vol-n').value = S.vol; t.setAttribute('aria-valuetext', nf.format(S.vol) + ' liter'); pct(t); }
+    if (t.id === 'vol-n') { const v = parseInt(t.value.replace(/\D/g, '')); if (v > 0) { S.vol = v; const r = document.getElementById('vol-r'); r.value = volToR(v); pct(r); } }
+    if (t.name === 'vg') { S.vg = t.value ? +t.value : null; gauge(); }
+    if (t.id === 't-r' || t.id === 't-n') { const v = parseInt(t.value); if (!isNaN(v)) { S.t = Math.max(-10, Math.min(150, v)); if (t.id === 't-r') document.getElementById('t-n').value = S.t; else { const r = document.getElementById('t-r'); r.value = S.t; pct(r); } pct(document.getElementById('t-r')); gauge(); } }
+    if (t.name === 'c') { S.c = t.value; document.getElementById('p-sub').hidden = S.c !== 'press'; }
+    if (t.id === 'p-r' || t.id === 'p-n') { const v = parseInt(t.value); if (!isNaN(v)) { S.p = Math.max(0, Math.min(1000, v)); if (t.id === 'p-r') document.getElementById('p-n').value = S.p; else { const r = document.getElementById('p-r'); r.value = Math.min(450, S.p); pct(r); } pct(document.getElementById('p-r')); } }
+    if (t.name === 'pb') { S.pb = [...q.querySelectorAll('[name=pb]:checked')].map(x => x.value); if (t.value === 'X' && t.checked) { q.querySelectorAll('[name=pb]').forEach(x => { if (x.value !== 'X') x.checked = false; }); S.pb = ['X']; } else if (t.checked) { const x = q.querySelector('[name=pb][value=X]'); x.checked = false; S.pb = S.pb.filter(v => v !== 'X'); } }
+    if (t.name === 'm') S.m = t.value;
+    if (t.name === 'x') S.x = t.value;
+    if (t.name === 'u') S.u = t.value;
+    done.add(step); renderLive();
+  });
+  q.addEventListener('click', e => { const b = e.target.closest('[data-vol]'); if (!b) return; S.vol = +b.dataset.vol; document.getElementById('vol-n').value = S.vol; const r = document.getElementById('vol-r'); r.value = volToR(S.vol); pct(r); done.add(2); renderLive(); });
+  next.addEventListener('click', () => { done.add(step); if (step < 6) go(step + 1, 'fwd'); else showResult(); });
+  back.addEventListener('click', () => finished ? go(6, 'bwd') : go(step - 1, 'bwd'));
+
+  /* ======================= resultaat ======================= */
+  function shareUrl() {
+    const p = new URLSearchParams({ f: S.f, vol: S.vol, t: S.t, c: S.c || 'unk', p: S.p, m: S.m, x: S.x, u: S.u });
+    if (S.a) p.set('a', S.a); if (S.vg) p.set('vg', S.vg); if (S.pb.length) p.set('pb', S.pb.join(','));
+    return location.origin + location.pathname + '?' + p.toString();
+  }
+  function showResult() {
+    finished = true; done = new Set([0, 1, 2, 3, 4, 5, 6]);
+    const r = evaluate(), ok = r.filter(x => !x.fail), best = ok[0], el = element(), ad = addons();
+    lbl.textContent = 'Uw oliereiniger op maat';
+    back.hidden = false; back.textContent = '← Antwoorden aanpassen'; next.hidden = true;
+    const alt = ok.slice(1, 3);
+    const failing = r.filter(x => x.fail).slice(0, 2);
+    q.innerHTML = `<div class="result" aria-live="polite">
+      ${best ? `<div class="best"><div class="img">${best.p.img ? `<img src="${best.p.img}" alt="${best.p.n}">` : ''}</div><div><span class="tag">Uw oliereiniger · ${best.sc}% match</span><h3>${best.p.n}${el ? ' met ' + el[0] : ''}</h3><p class="small" style="color:var(--grey-600)">${best.p.line}</p><ul class="checklist">${best.ch.map(([s, t]) => `<li class="${s === 'ok' ? '' : s}">${t}</li>`).join('')}</ul></div></div>`
+      : `<div class="eng"><h3 style="font-size:var(--fs-h3)">Uw installatie vraagt maatwerk</h3><p style="color:var(--grey-600)">Geen enkele standaardserie doorstaat alle technische controles. Dat is geen doodlopende weg: een specialist kijkt mee en stelt een configuratie op maat voor.</p><ul class="checklist">${failing.flatMap(x => x.ch.filter(c => c[0] === 'fail').map(c => `<li class="fail">${x.p.n}: ${c[1]}</li>`)).slice(0, 4).join('')}</ul></div>`}
+      ${el ? `<div class="elem"><b>Aanbevolen filterelement:</b><span class="pill">${el[0]}</span><span>${el[1]}</span></div>` : ''}
+      ${ad.length ? `<div><h4 style="margin-bottom:10px">Aanvullend aanbevolen</h4><div class="alts">${ad.map(([k, s]) => `<a class="alt" href="producten.html#p-${k === 'vac' ? 'vacuum' : k === 'qt' ? 'quicktoron' : 'ws'}"><img src="${ADD[k].img}" alt=""><b>${ADD[k].n}${s === 'warn' ? ' <span style="color:#8A5A00">(te controleren)</span>' : ''}</b><span>${ADD[k].why}</span></a>`).join('')}</div></div>` : ''}
+      ${alt.length ? `<div><h4 style="margin-bottom:10px">Ook geschikt</h4><div class="alts">${alt.map(x => `<a class="alt" href="producten.html#p-${x.id === 'cen' ? 'centrifuges' : x.id}">${x.p.img ? `<img src="${x.p.img}" alt="">` : '<span></span>'}<span class="k">${x.sc}% match</span><b>${x.p.n}</b></a>`).join('')}</div></div>` : ''}
+      <div class="btns"><a class="btn btn--primary" href="homepage.html?config=${encodeURIComponent(cfgCode())}#contact">${best ? 'Vraag advies en prijs voor de ' + best.p.n : 'Laat een specialist meekijken'}</a>${best && best.p.pdf ? `<a class="btn btn--secondary" href="pdf/${encodeURIComponent(best.p.pdf)}" target="_blank" rel="noopener">Datasheet (PDF)</a>` : ''}<a class="btn btn--secondary" href="olieanalyse.html">Gratis olieanalyse</a></div>
+      <div class="share"><button type="button" class="btn btn--secondary btn--sm" id="copy">Kopieer de link naar dit resultaat</button><span id="copy-t" role="status"></span><button type="button" class="btn btn--secondary btn--sm ghost" id="restart">Opnieuw beginnen</button></div>
+    </div>`;
+    drawStamps(); renderLive();
+    history.replaceState(null, '', shareUrl());
+    document.getElementById('copy').addEventListener('click', () => { const u = shareUrl(); (navigator.clipboard?.writeText(u) || Promise.reject()).then(() => document.getElementById('copy-t').textContent = 'Link gekopieerd.').catch(() => { document.getElementById('copy-t').textContent = u; }); });
+    document.getElementById('restart').addEventListener('click', () => { Object.assign(S, { f: null, a: null, vol: 400, vg: null, t: 45, c: null, p: 120, pb: [], m: 'any', x: 'nee', u: '400' }); done = new Set(); prevF = []; prevOn = new Set(); history.replaceState(null, '', location.pathname); back.textContent = '← Vorige'; next.hidden = false; go(0); });
+    window.dataLayer?.push({ event: 'product_selector_result', product: best ? best.id : 'engineering' });
+  }
+
+  /* ======================= hero-demo: gegevens typen → product ======================= */
+  (() => {
+    if (!document.documentElement.classList.contains('motion')) return;
+    const demos = [
+      [['Hydrauliekolie', '400 l', '120 bar', 'Water'], 'img/BU-Series.png', 'BU-serie', 'met WE100-element'],
+      [['Tandwielolie', '12.000 l', 'offline', 'Deeltjes'], 'img/osca.png', 'OSCA-serie', 'met M-element'],
+      [['Hydrauliekolie', '250 l', 'offline', 'Lucht'], 'img/se.png', 'SE-serie', '+ Quicktoron']
+    ];
+    const f = [...document.querySelectorAll('.build .f')], img = document.getElementById('bo-img'), n = document.getElementById('bo-n'), e = document.getElementById('bo-e');
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    let k = 0;
+    (async function loop() {
+      for (;;) {
+        const [vals, src, name, extra] = demos[k++ % demos.length];
+        img.style.opacity = .15;
+        for (let i = 0; i < f.length; i++) {
+          const b = f[i].querySelector('b'); f.forEach(x => x.classList.remove('on')); f[i].classList.add('on'); b.textContent = '';
+          for (const ch of vals[i]) { b.textContent += ch; await wait(45); }
+          await wait(250);
+        }
+        f.forEach(x => x.classList.remove('on'));
+        img.src = src; n.textContent = name; e.textContent = extra; img.style.opacity = 1;
+        await wait(3200);
+      }
+    })();
+  })();
+
+  if (finished) showResult(); else go(0);
+})();
+</script>

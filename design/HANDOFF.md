@@ -47,24 +47,43 @@ Date: 24 Sep 2026 · Status: **for review**
   - Dragon capsule (SpaceX, unrelated).
   - The small 300 px sector photos.
 
-## Homepage structure
+## Site structure (pass 1.4: lean homepage + subpages)
 
-1. **Header:** a dark utility bar (38 px: HQ, phone, email, Word dealer, NL/EN/FR) above one white header row (76 px, blurred background) with the logo, navigation (pill hover), a "Vraag het Triple R" search pill and the primary CTA; the mega menu opens under Producten.
-2. **Hero:** H1 + lead + 2 CTAs + 2 check lines. BU-serie product photo in the "studio" with 3 spec labels. Below it, a trust strip with reference names.
-3. **Problem (dark):** the 80% claim + 3 facts, a bar chart to scale (3,000 vs 15 kg), and a key-figures row: 114 mm · 1–10 µm · < 100 ppm · up to 95%.
-4. **Four contaminants:** 4 cards with icons on blue-50, specs and links to the solution pages.
-5. **How it works:** technical cross-section of 114 mm with 3 layers + numbered steps.
-6. **Products:** 6 tiles with a real photo and 2 specs; link to "Vergelijk alle 10 series".
-7. **Product finder:** 3 native selects → live recommendation + CTA.
-8. **Results:** 4 key figures on a full-bleed photo of clean oil.
-9. **Sectors:** atmospheric photo + 12 links in 2 columns with line icons.
-10. **Cases:** 3 cards with an ISO before/after table (values are layout examples).
-11. **Free oil analysis:** lab photo + 4 steps + CTA.
-12. **Sustainability:** Reduce · Reuse · Recycle, CO₂ example calculation, element-change photo.
-13. **Knowledge base + FAQ.**
-14. **Closing CTA (logo gradient):** Maxim Van Uytven's contact details with the team photo.
-15. **Footer:** full company details + KBO/BTW BE 0448.276.293.
-16. **Mobile:** a sticky [Bel] [Gratis olieanalyse] bar below 768 px.
+The homepage only gives a short overview and sends visitors on; the detail lives on the subpages (BRIEF §5).
+
+**Homepage (`homepage.html`, 7 sections)**
+1. **Hero:** full-bleed video background (`media/hero-*.mp4`, poster `hero-poster.jpg`). The visible credit line has been removed at the client's request, but **[CONFIRM] permission from TRIS to use the footage remains open**. The video autoplays muted on a loop, has a pause button (WCAG 2.2.2), pauses when out of view and shows only the poster under reduced motion. Left column: H1, intro, CTAs → olieanalyse and Find My Oil Cleaner. **Right column: "Vraag het Triple R"** (see below). Under it: the reference names as a running carousel.
+2. **Four contaminants:** 4 cards → `oplossingen.html`.
+3. **Featured products:** 3 tiles → `producten.html` (the selector moved there).
+4. **Results:** on the oil photo, with a link to the calculator.
+5. **Sectors:** compact row of 12 pill links → `sectoren.html`.
+6. **Free oil analysis:** compact, 3 check lines → `olieanalyse.html`.
+7. **Closing CTA:** with Maxim Van Uytven.
+
+**Subpages (all with a compact dark hero, breadcrumb, answer-first intro and closing CTA)**
+
+| Page | Brief | Content |
+|---|---|---|
+| `oplossingen.html` | /oplossingen/ | Problem + 80% claim + bar chart, 4 contaminants, 114 mm cross-section, results, Reduce · Reuse · Recycle |
+| `producten.html` | §6.4 | Find My Oil Cleaner teaser (anchor `#keuze`), filterable list of 10 series, comparison table, 17 downloads, embedded search |
+| `sectoren.html` | /sectoren/ | Atmospheric photo + 12 sectors, cases with ISO before/after |
+| `olieanalyse.html` | §6.6 | Landing page with a **3-step form above the fold** (§3.3), what we measure (6 measurements), sample report (blurred values), 4-step process, FAQ |
+| `kennisbank.html` | §6.9 | 12 articles (3 existing, 9 "in voorbereiding" from the content plan) with theme filter, embedded search, FAQ |
+| `find-my-oil-cleaner.html` | §6.4 selector | **Find My Oil Cleaner**: product configurator (improved take on oilcleaner.eu “Build my oil cleaner”), see below |
+| `besparingscalculator.html` | §3.7 | Calculator with adjustable assumptions and a report form |
+
+- **Navigation:** Oplossingen → `oplossingen.html`, Producten → mega menu (incl. "Alle producten"), Sectoren → `sectoren.html`, Diensten → `olieanalyse.html`, Kennisbank → `kennisbank.html`. The active page is highlighted.
+- **Header CTA:** "Gratis olieanalyse" → `olieanalyse.html`.
+- **Footer:** full company details + KBO/BTW BE 0448.276.293.
+- **Mobile:** sticky [Bel] [Gratis olieanalyse] bar below 768 px.
+- **Oil analysis form (prototype):**
+  1. Installation: system, sector, volume, problems, oil type.
+  2. Company: company, first name, last name, job title, business email, phone, postcode + country.
+  3. Confirmation: contact preference, remarks, GDPR (required), newsletter (optional, unchecked).
+  - Validation per step with error messages linked to the fields.
+  - Thank-you state with next steps.
+  - Events: `form_start`, `form_step_2`, `form_step_3`, `lead_olieanalyse`.
+- **Not done yet:** the minimal header for Ads traffic (logo + phone only, §6.6). For now the landing page uses the full header.
 
 ## "Vraag het Triple R": conversational search (BRIEF §17)
 
@@ -171,3 +190,70 @@ Everything hangs off `html.motion` and is off under reduced motion; the resting 
 - Mega menu + mobile nav in full
 - "Vraag het Triple R" search panel with all states
 - Components sheet
+
+
+## Find My Oil Cleaner (product configurator, pass 1.5)
+
+This page (`find-my-oil-cleaner.html`) replaces the 4-question selector. It is modelled on oilcleaner.eu's "Build my oil cleaner", but avoids its dead ends and gives the visitor more feedback along the way.
+
+**Name:** "Find My Oil Cleaner" is used as the tool's brand name, marked `lang="en"`. The copy around it stays Dutch ("Vind uw oliereiniger", "Uw oliereiniger").
+- **[CONFIRM] name and trademark use with Triple R:** it is very close to TRIS's "Build My Oil Cleaner".
+- **[CONFIRM] EN/FR versions:** the brand name stays the same and only the explanatory copy is localised.
+
+**Concept:** the visitor enters their own data and sees, live, which Triple R is assembled for them.
+
+- **Hero demo:** a form that types itself field by field (fluid, volume, pressure, problem, at 45 ms per character with a caret). Then the assembled product appears ("Uw oliereiniger · op maat"). It cycles through 3 example cases (BU, OSCA, SE). Under reduced motion it is static, and it is hidden below 1024 px.
+- **7 adaptive steps:**
+  1. fluid;
+  2. application (optional);
+  3. system volume (log slider, number input, presets);
+  4. ISO VG plus operating temperature, with a **live operating viscosity** via Walther/ASTM D341 and a gauge; skipped for coolant;
+  5. connection, plus pressure only for a pressure line;
+  6. problem (multi-select);
+  7. installation, ATEX, and voltage (offline only).
+- **Progress:** 7 numbered step buttons (`aria-current="step"`). Answered steps fill in and are clickable.
+- **Live panel (sticky), "Uw oliereiniger":**
+  - "Uw gegevens" (a `dl`, hidden on mobile because it repeats the form);
+  - a **configuration code** (e.g. `RRR-HYD-0400-VG46/45C-P120-W-ANY`) that the customer quotes in their request; it is passed to the contact link as `?config=`;
+  - the top 3 matches with score bars ("Samengesteld voor u").
+- **Result:**
+  - "Uw oliereiniger · xx% match" with `BU-serie met WE100`, the ✓ / ! / × reasons, the element, add-ons and alternatives;
+  - CTAs to advice, the datasheet and the oil analysis;
+  - a shareable URL and the event `product_selector_result`.
+- **Never a dead end:** an "Uw installatie vraagt maatwerk" card plus a hand-off to a specialist.
+- **Rules:** `P`, `evaluate()`, `element()` and `addons()` in the page script. **[CONFIRM] with Triple R:**
+  - per-series viscosity, volume and pressure ranges;
+  - application mapping;
+  - element choice;
+  - ATEX and wall-mount availability.
+- **Astro:** build as a Preact island. Move the rules to `src/data/selector.ts` so they are shared with the header assistant (§17).
+
+## Mobile layer (pass 1.6)
+
+The mobile rules live in the last block of `site.css` (≤ 767 px). They make pages shorter and put less text on screen without removing content.
+
+- Section padding drops to 48–64 px.
+- **`.rail`:** a horizontal scroll-snap carousel at 78 % width, so the next card peeks in. Used for:
+  - the homepage products;
+  - the oplossingen contaminants;
+  - the sectoren cases;
+  - the olieanalyse measurements (`role="region"`, `tabindex="0"`).
+- **`.four--compact` (homepage):** contaminants as a 2 × 2 grid with icon, title and key figure; the description is hidden.
+- **Homepage hero:** the spec labels, the second promise and the second sentence of the intro (`.m-hide`) are hidden.
+- **Product list:** compact rows (photo 104 px on the left, specs on the right); the description and tags are hidden.
+- **Sectors:** 2 columns.
+- **`[data-more="N"]` + site.js:** long lists show N items plus a "Toon alle (x)" button. Used for:
+  - datasheets (5 of 17);
+  - knowledge-base articles (4 of 12; a filter click opens the full list).
+- **Result (390 px):** the homepage went from 9,382 to 6,810 px, producten from 15,017 to 9,011 px, with no horizontal scroll. axe (WCAG 2.2 AA) is clean on all 8 pages at 390 and 1440 px.
+
+## Hero: Vraag het Triple R + reference carousel (pass 1.7)
+
+- **`.heroask`:** a prominent conversational search in the right column of the homepage hero, visible without scrolling at 1440 × 900. It is a glass card with:
+  - a white input;
+  - suggestion chips;
+  - a placeholder that types example questions (stops on focus, static under reduced motion).
+
+  It uses the same `[data-ask-embed]` handler as the header, so it opens the answer panel with PDF passages. It replaces the spec labels (those figures are on the product pages).
+- **Reference carousel (`.marquee`):** the list is rendered twice (the second copy `aria-hidden`) and scrolls at 40 s per loop, linear, with faded edges. It pauses on hover/focus. Under reduced motion it is static and wraps.
+- **Results band fix:** the counter numbers inherited the caption style (`.results span`) and looked tiny next to "u" and "%". Now `.results div>span` is used for the caption and `.results b span` inherits the figure style.

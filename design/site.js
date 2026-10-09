@@ -13,6 +13,11 @@
   if (params.has('annot')) setAn(true);
   if (params.has('clean')) setTb(false);
 
+  /* ---------- actieve pagina in de navigatie ---------- */
+  const here = location.pathname.split('/').pop() || 'homepage.html';
+  document.querySelectorAll('.nl[href], .drawer .list a').forEach(a => { if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page'); });
+  if (here === 'producten.html') document.getElementById('mm-btn')?.classList.add('is-cur');
+
   /* ---------- megamenu + drawer ---------- */
   const mmBtn = document.getElementById('mm-btn'), mm = document.getElementById('mm');
   const closeMm = () => { mm.hidden = true; mmBtn.setAttribute('aria-expanded', 'false'); };
@@ -77,15 +82,16 @@
     { g: 'Producten', t: 'WS-serie', s: 'Coalescer olie-waterafscheider voor continue waterinloop.', k: 'ws coalescer water afscheider separator', u: 'producten.html#p-ws' },
     { g: 'Producten', t: 'Quicktoron', s: 'Cycloon-ontluchter die tot 95% van de luchtbellen verwijdert.', k: 'quicktoron quiktoron lucht schuim cavitatie air', u: 'producten.html#p-quicktoron' },
     { g: 'Producten', t: 'Centrifuges', s: 'Deeltjes tot 3 µm uit koelvloeistof en proceswater, 15–200 l/min.', k: 'centrifuge koelvloeistof emulsie proceswater coolant', u: 'producten.html#p-centrifuges' },
-    { g: 'Oplossingen', t: 'Varnish verwijderen', s: 'Oxidatieresten die kleppen doen haperen, verwijderd met een 114 mm dieptefilter.', k: 'varnish sludge oxidatie klep', u: 'homepage.html#contaminanten' },
-    { g: 'Oplossingen', t: 'Water in olie verwijderen', s: 'Oorzaken, gevolgen en ontwateren tot onder 100 ppm.', k: 'water ppm vocht ontwateren tandwiel', u: 'homepage.html#contaminanten' },
-    { g: 'Oplossingen', t: 'Vuile olie filtreren (ISO 4406)', s: 'Breng uw olie naar de juiste reinheidsklasse.', k: 'deeltjes iso 4406 nas 1638 reinheid vuil', u: 'homepage.html#contaminanten' },
+    { g: 'Oplossingen', t: 'Varnish verwijderen', s: 'Oxidatieresten die kleppen doen haperen, verwijderd met een 114 mm dieptefilter.', k: 'varnish sludge oxidatie klep', u: 'oplossingen.html' },
+    { g: 'Oplossingen', t: 'Water in olie verwijderen', s: 'Oorzaken, gevolgen en ontwateren tot onder 100 ppm.', k: 'water ppm vocht ontwateren tandwiel', u: 'oplossingen.html' },
+    { g: 'Oplossingen', t: 'Vuile olie filtreren (ISO 4406)', s: 'Breng uw olie naar de juiste reinheidsklasse.', k: 'deeltjes iso 4406 nas 1638 reinheid vuil', u: 'oplossingen.html' },
+    { g: 'Producten', t: 'Find My Oil Cleaner: de Triple R op maat', s: 'Vul uw gegevens in en stel live uw Triple R samen: vloeistof, volume, viscositeit, druk en probleem.', k: 'find my oil cleaner build vind uw oil cleaner op maat samenstellen configurator keuzehulp configurator welke filter past kiezen selector build my oil cleaner', u: 'find-my-oil-cleaner.html' },
     { g: 'Oplossingen', t: 'Besparingscalculator', s: 'Bereken wat schone olie u oplevert aan olie, stilstand en CO₂.', k: 'besparing calculator kosten roi co2 rendement', u: 'besparingscalculator.html' },
-    { g: 'Kennisbank', t: 'ISO 4406-reinheidscode uitgelegd', s: 'Wat de drie getallen betekenen, met tabel en voorbeelden.', k: 'iso 4406 21/18/16 code reinheid tabel', u: 'homepage.html#kennis' },
-    { g: 'Kennisbank', t: 'Bypass- of full-flowfiltratie: het verschil', s: 'Vergelijking met rekenvoorbeeld.', k: 'bypass full flow verschil nevenstroom', u: 'homepage.html#kennis' },
-    { g: 'Sectoren', t: 'Hydraulische systemen', s: 'Spuitgietmachines, persen en testbanken.', k: 'hydrauliek hydraulisch spuitgiet spuitgietmachine pers', u: 'homepage.html#sectoren' },
-    { g: 'Sectoren', t: 'Scheepvaart', s: 'Motoren, thrusters, kranen en lieren; ook ATEX.', k: 'scheepvaart schip marine thruster kraan', u: 'homepage.html#sectoren' },
-    { g: 'Sectoren', t: 'Windenergie', s: 'Tandwielkastolie schoon en droog houden.', k: 'wind windturbine tandwiel gearbox', u: 'homepage.html#sectoren' }
+    { g: 'Kennisbank', t: 'ISO 4406-reinheidscode uitgelegd', s: 'Wat de drie getallen betekenen, met tabel en voorbeelden.', k: 'iso 4406 21/18/16 code reinheid tabel', u: 'kennisbank.html' },
+    { g: 'Kennisbank', t: 'Bypass- of full-flowfiltratie: het verschil', s: 'Vergelijking met rekenvoorbeeld.', k: 'bypass full flow verschil nevenstroom', u: 'kennisbank.html' },
+    { g: 'Sectoren', t: 'Hydraulische systemen', s: 'Spuitgietmachines, persen en testbanken.', k: 'hydrauliek hydraulisch spuitgiet spuitgietmachine pers', u: 'sectoren.html' },
+    { g: 'Sectoren', t: 'Scheepvaart', s: 'Motoren, thrusters, kranen en lieren; ook ATEX.', k: 'scheepvaart schip marine thruster kraan', u: 'sectoren.html' },
+    { g: 'Sectoren', t: 'Windenergie', s: 'Tandwielkastolie schoon en droog houden.', k: 'wind windturbine tandwiel gearbox', u: 'sectoren.html' }
   ];
   /* NL → EN-uitbreiding: de datasheets zijn Engelstalig */
   const SYN = {
@@ -180,7 +186,7 @@
       blocks: [['p', 'Voor een spuitgietmachine wordt meestal de BU-serie ingezet: een bypassfilter die rechtstreeks op de hogedrukleiding komt, zonder eigen pomp of motor [1].'],
         ['ul', ['Werkdruk tot 450 bar; het M-element filtert 2 µm absoluut [2].', 'Geschikt voor servo- en proportionele hydrauliek, typisch in kunststofinjectie [1][3].', 'Wilt u los van de machine filtreren, dan is de SE-serie met eigen motor-pompgroep een alternatief [4].']],
         ['p', 'Het aantal en type elementen voor 400 l olie hangt af van uw olie en vervuiling. Laat dat bevestigen door een specialist of via een gratis olieanalyse.']],
-      src: [{ page: 'BU-serie · Voor welke toepassingen?', u: 'producten.html#p-bu' }, { pdf: 'BU-2023-UK-.pdf', q: 'pressure bar micron' }, { page: 'Hydraulische systemen', u: 'homepage.html#sectoren' }, { pdf: 'SE-2019-ENGLISH.pdf', q: 'pump motor offline' }],
+      src: [{ page: 'BU-serie · Voor welke toepassingen?', u: 'producten.html#p-bu' }, { pdf: 'BU-2023-UK-.pdf', q: 'pressure bar micron' }, { page: 'Hydraulische systemen', u: 'sectoren.html' }, { pdf: 'SE-2019-ENGLISH.pdf', q: 'pump motor offline' }],
       follow: ['Hoeveel elementen heb ik nodig voor 400 l?', 'Wat is het verschil tussen BU en SE?', 'Welke reinheid hebben servokleppen nodig?'] },
     { m: /water|vocht|tandwiel/, prod: 'vac', lead: 'Advies over water in olie',
       blocks: [['p', 'Water uit tandwielolie haalt u, afhankelijk van de hoeveelheid, op drie manieren:'],
@@ -292,7 +298,7 @@
   }
   function handoff(lead, q) {
     return `<div class="handoff"><p>Volgende stap. Het adviesformulier opent vooraf ingevuld met uw vraag; u kunt alles nog aanpassen.</p>
-      <div class="btns"><a class="btn btn--primary" href="#?advies&vraag=${encodeURIComponent(q)}">${esc(lead)}</a><a class="btn btn--secondary" href="homepage.html#olieanalyse" data-close-go>Gratis olieanalyse</a><a class="btn btn--secondary" href="tel:+3238254647">Bel +32 3 825 46 47</a></div></div>`;
+      <div class="btns"><a class="btn btn--primary" href="#?advies&vraag=${encodeURIComponent(q)}">${esc(lead)}</a><a class="btn btn--secondary" href="olieanalyse.html" data-close-go>Gratis olieanalyse</a><a class="btn btn--secondary" href="tel:+3238254647">Bel +32 3 825 46 47</a></div></div>`;
   }
 
   document.querySelectorAll('[data-ask-open]').forEach(b => {
@@ -364,4 +370,22 @@
     });
     document.addEventListener('pointermove', e => { const c = e.target.closest?.('.ccard,.prod,.case'); if (!c) return; const r = c.getBoundingClientRect(); c.style.setProperty('--mx', (e.clientX - r.left) + 'px'); c.style.setProperty('--my', (e.clientY - r.top) + 'px'); }, { passive: true });
   }
+
+  /* ---------- mobiel: lange lijsten inkorten met ‘Toon alle’ ---------- */
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[data-more]').forEach(el => {
+      const n = +el.dataset.more, items = [...el.children];
+      if (items.length <= n) return;
+      items.slice(n).forEach(x => x.classList.add('mm'));
+      el.classList.add('is-collapsed');
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'btn btn--secondary more-btn';
+      b.textContent = (el.dataset.moreLabel || 'Toon alle') + ' (' + items.length + ')';
+      b.setAttribute('aria-expanded', 'false'); if (el.id) b.setAttribute('aria-controls', el.id);
+      const open = () => { el.classList.remove('is-collapsed'); b.remove(); };
+      b.addEventListener('click', () => { open(); const f = items[n].matches('a,button') ? items[n] : items[n].querySelector('a,button'); f && f.focus(); });
+      el.addEventListener('more:open', open);
+      el.after(b);
+    });
+  });
 })();

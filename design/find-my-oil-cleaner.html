@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Find My Oil Cleaner · Triple R</title>
+<meta name="description" content="Find My Oil Cleaner: vul uw olie, volume, druk en probleem in en vind live de Triple R op maat van uw installatie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css?v=6e2ef2d5">
+<link rel="stylesheet" href="site.css?v=c07c8ef6">
+<style>
+/* ===== Find My Oil Cleaner ================================================= */
+.hero--mt .hero__grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:center}
+.build{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,.85fr);align-items:center;gap:6px;justify-self:end;width:100%;max-width:520px}
+.build__in,.build__out{border-radius:20px;background:rgb(255 255 255 / .07);border:1px solid rgb(255 255 255 / .16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:16px;display:grid;gap:8px}
+.build .k{font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#CFE6F5}
+.build .f{display:grid;gap:2px;padding:8px 10px;border-radius:10px;background:#fff;color:var(--ink)}
+.build .f span{font-size:10.5px;color:var(--grey-600)}
+.build .f b{font:500 13.5px var(--font-mono);white-space:nowrap;overflow:hidden}
+.build .f.on{box-shadow:0 0 0 3px #5CB8EB}
+.build .f b::after{content:"";display:inline-block;width:1.5px;height:1em;margin-left:2px;vertical-align:-2px;background:transparent}
+.build .f.on b::after{background:var(--blue-700)}
+.motion .build .f.on b::after{animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{background:transparent}}
+.build__arrow{color:#5CB8EB;display:grid;place-items:center}
+.build__arrow svg{width:28px;height:28px}
+.motion .build__arrow svg{animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(5px)}}
+.build__out{text-align:center;justify-items:center}
+.build__out .pi{height:120px;width:100%;border-radius:14px;background:radial-gradient(80% 70% at 50% 45%,#fff 0%,#EEF2F7 70%);display:grid;place-items:center;padding:8px}
+.build__out img{max-height:100%;width:auto;mix-blend-mode:multiply;transition:opacity .35s var(--ease)}
+.build__out b{font-size:1.05rem;font-weight:600;color:#fff}
+.build__out small{font-size:12px;color:#CFE6F5}
+.build__out .badge{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--night-950,#0E0B24);background:#5CB8EB;border-radius:999px;padding:3px 10px}
+.pp{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s-5);align-items:start}
+.tool{background:#fff;border-radius:28px;box-shadow:var(--shadow-float);overflow:hidden}
+.tool__top{padding:var(--s-6) clamp(1.5rem,1rem + 2vw,2.5rem) 0}
+.stamps{list-style:none;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin:0;padding:0}
+.stamps button{display:grid;justify-items:center;gap:6px;width:100%;background:none;border:0;padding:4px 0;cursor:pointer;font:500 11px var(--font-sans);color:var(--grey-600);border-radius:10px}
+.stamps button:disabled{cursor:default}
+.stamps button:focus-visible{outline:none;box-shadow:var(--focus)}
+.stamps .st{width:40px;height:40px;border-radius:50%;border:1.5px dashed var(--grey-400);display:grid;place-items:center;font:500 13px var(--font-mono);color:var(--grey-600);transition:background .3s var(--ease),border-color .3s,color .3s,transform .3s var(--ease)}
+.stamps .st svg{width:18px;height:18px}
+.stamps .cur .st{border:2px solid var(--blue-700);color:var(--blue-700)}
+.stamps .on .st{border:2px solid var(--blue-700);background:var(--blue-700);color:#fff;transform:rotate(-10deg)}
+.stamps .on button,.stamps .cur button{color:var(--ink)}
+.motion .stamps .on.new .st{animation:stamp .45s var(--ease)}
+@keyframes stamp{from{opacity:0;transform:scale(1.6) rotate(-25deg)}to{opacity:1;transform:rotate(-10deg)}}
+.tool__step{font-size:var(--fs-xs);font-weight:500;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--blue-700);margin-top:var(--s-4)}
+.tool form{padding:var(--s-4) clamp(1.5rem,1rem + 2vw,2.5rem) clamp(1.5rem,1rem + 2vw,2.5rem);display:grid;gap:var(--s-6);min-height:440px;align-content:start}
+.tool fieldset{border:0;margin:0;padding:0;display:grid;gap:var(--s-4)}
+.tool legend{font-size:var(--fs-h3);font-weight:600;letter-spacing:-.025em;padding:0;margin-bottom:6px}
+.tool .hint{font-size:var(--fs-sm);color:var(--grey-600);margin-top:-6px}
+@keyframes slidein{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes slideback{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
+.motion .tool fieldset.fwd{animation:slidein .4s var(--ease) both}
+.motion .tool fieldset.bwd{animation:slideback .4s var(--ease) both}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:var(--s-3)}
+.opts.wide{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.opt span{display:grid;grid-template-columns:40px 1fr;gap:2px 12px;align-items:center;min-height:72px;height:100%;padding:12px 14px;border:1.5px solid var(--grey-200);border-radius:16px;background:#fff;transition:border-color var(--dur) var(--ease),background var(--dur),transform var(--dur) var(--ease),box-shadow var(--dur)}
+.opt svg{grid-row:span 2;width:40px;height:40px;padding:9px;border-radius:12px;background:var(--grey-50);color:var(--blue-700);transition:background var(--dur),color var(--dur)}
+.opt b{font-weight:600;font-size:var(--fs-sm)}
+.opt small{font-size:12.5px;color:var(--grey-600)}
+.opt input:hover+span{border-color:var(--grey-400);transform:translateY(-1px)}
+.opt input:checked+span{border-color:var(--blue-700);background:#F4FAFE;box-shadow:0 0 0 4px var(--blue-50)}
+.opt input:checked+span svg{background:var(--blue-700);color:#fff}
+.opt input:focus-visible+span{box-shadow:var(--focus)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:42px;padding:0 15px;border:1.5px solid var(--grey-200);border-radius:var(--radius-pill);font-size:var(--fs-sm);background:#fff;transition:all var(--dur) var(--ease)}
+.chip input:hover+span{border-color:var(--grey-400)}
+.chip input:checked+span{border-color:var(--blue-700);background:var(--blue-50);color:var(--blue-900);font-weight:500}
+.chip input:focus-visible+span{box-shadow:var(--focus)}
+.sl{display:grid;gap:10px}
+.sl__row{display:flex;justify-content:space-between;align-items:center;gap:var(--s-4)}
+.sl label{font-weight:500;font-size:var(--fs-sm)}
+.num{display:flex;align-items:center;height:44px;border:1px solid var(--grey-200);border-radius:var(--radius);background:#fff}
+.num:focus-within{border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blue-50)}
+.num input{width:96px;border:0;background:none;font:500 var(--fs-body) var(--font-mono);text-align:right;padding:0 8px 0 12px;outline:none;color:var(--ink)}
+.num span{padding:0 12px 0 2px;font-size:13px;color:var(--grey-600)}
+.rng{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;cursor:pointer;--pct:50%}
+.rng::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--blue-700) var(--pct),var(--grey-100) var(--pct))}
+.rng::-moz-range-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--blue-700) var(--pct),var(--grey-100) var(--pct))}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;margin-top:-8px;border-radius:50%;background:#fff;border:2px solid var(--blue-700);box-shadow:0 2px 8px rgb(14 11 36 / .2)}
+.rng::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--blue-700)}
+.rng:focus-visible{outline:none}.rng:focus-visible::-webkit-slider-thumb{box-shadow:var(--focus)}
+.ticks{display:flex;justify-content:space-between;font-size:11.5px;color:var(--grey-600);font-family:var(--font-mono)}
+.gauge{display:grid;gap:8px;padding:var(--s-4) var(--s-5);border-radius:16px;background:var(--grey-50)}
+.gauge__top{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-3);font-size:var(--fs-sm)}
+.gauge__top b{font-family:var(--font-mono);font-size:1.5rem;font-weight:500;letter-spacing:-.02em}
+.gauge__bar{position:relative;height:10px;border-radius:10px;background:linear-gradient(90deg,#F6C9C3 0 8%,#D9EEDC 8% 78%,#FBE3B8 78% 100%)}
+.gauge__bar i{position:absolute;top:50%;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--ink);border:3px solid #fff;box-shadow:0 2px 6px rgb(0 0 0 / .25);transition:left .35s var(--ease)}
+.gauge__lbl{display:flex;justify-content:space-between;font-size:11.5px;color:var(--grey-600)}
+.gauge p{font-size:12.5px;color:var(--grey-600)}
+.tnav{display:flex;justify-content:space-between;gap:var(--s-3);margin-top:auto;padding-top:var(--s-2)}
+.tnav .btn[hidden]{display:none}
+.ghost{background:none!important;border-color:transparent!important;color:var(--grey-600)!important}
+.ghost:hover{color:var(--ink)!important}
+.sub{display:grid;gap:var(--s-3);padding-top:var(--s-4);border-top:var(--border)}
+.sub[hidden]{display:none}
+
+/* live paneel */
+.live{position:sticky;top:96px;background:var(--brand-gradient);color:#fff;border-radius:28px;box-shadow:var(--shadow-float);padding:clamp(1.5rem,1rem + 2vw,2.25rem);display:grid;gap:var(--s-5);overflow:hidden;isolation:isolate}
+.live::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgb(255 255 255 / .05) 1px,transparent 1px),linear-gradient(90deg,rgb(255 255 255 / .05) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(180deg,#000,transparent 55%);-webkit-mask-image:linear-gradient(180deg,#000,transparent 55%);z-index:-1}
+.live .lbl{font-size:var(--fs-xs);font-weight:500;letter-spacing:var(--track-label);text-transform:uppercase;color:#CFE6F5}
+.pp-head{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-3);padding-bottom:var(--s-3);border-bottom:1px solid rgb(255 255 255 / .16)}
+.pp-head h3{font-size:1.25rem;letter-spacing:-.02em;color:#fff}
+.pp-no{font:500 12px var(--font-mono);color:#CFE6F5;letter-spacing:.06em}
+.ppf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;margin:0}
+.ppf div{display:grid;gap:2px;min-width:0}
+.ppf dt{font-size:10.5px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:#A9B0D6}
+.ppf dd{margin:0;font:500 14px/1.35 var(--font-mono);color:#fff;overflow-wrap:anywhere}
+.ppf dd.e{color:rgb(255 255 255 / .38)}
+.ppf dd.new{animation:pop .5s var(--ease)}
+.cfg{display:grid;gap:4px;padding:10px 12px;border-radius:12px;background:rgb(0 0 0 / .2)}
+.cfg code{font:500 14px var(--font-mono);letter-spacing:.06em;color:#fff;overflow-wrap:anywhere}
+.cfg small{font-size:12px;color:#C9C5E0}
+.matches{display:grid;gap:12px}
+.m{display:grid;grid-template-columns:52px 1fr auto;gap:4px 12px;align-items:center;padding:10px;border-radius:16px;background:rgb(255 255 255 / .07);border:1px solid rgb(255 255 255 / .12);transition:background var(--dur)}
+.m img{grid-row:span 2;width:52px;height:44px;object-fit:contain;background:rgb(255 255 255 / .92);border-radius:10px;padding:4px}
+.m .ph{grid-row:span 2;width:52px;height:44px;border-radius:10px;background:rgb(255 255 255 / .12)}
+.m b{font-weight:600;font-size:var(--fs-sm)}
+.m .pct{font-family:var(--font-mono);font-size:13px;color:#CFE6F5}
+.m .bar{grid-column:2 / -1;height:6px;border-radius:6px;background:rgb(255 255 255 / .12);overflow:hidden}
+.m .bar i{display:block;height:100%;border-radius:6px;background:#5CB8EB;transition:width .5s var(--ease)}
+.m.out{opacity:.5}
+.m.out .bar i{background:#F2A091}
+.live .empty{font-size:var(--fs-sm);color:#DCD9EE}
+.live .foot{font-size:12px;color:#C9C5E0}
+
+/* resultaat */
+.result{display:grid;gap:var(--s-5)}
+.best{display:grid;grid-template-columns:200px 1fr;gap:var(--s-6);align-items:center;padding:var(--s-5);border-radius:20px;border:1.5px solid var(--blue-700);background:#F7FBFE}
+.best .img{height:170px;border-radius:14px;background:radial-gradient(80% 70% at 50% 45%,#fff 0%,#F1F4F8 60%,#E3E8EF 100%);display:grid;place-items:center;padding:12px}
+.best .img{min-width:0;overflow:hidden}.best .img img{max-height:100%;max-width:100%;width:auto;object-fit:contain;mix-blend-mode:multiply}.result,.best>div,#q{min-width:0}.result .btn{white-space:normal;text-align:center;height:auto;min-height:48px}
+.best .tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--blue-700);border-radius:var(--radius-pill);padding:3px 10px;margin-bottom:6px}
+.best h3{font-size:clamp(1.5rem,1.2rem + 1vw,2rem);letter-spacing:-.03em}
+.checklist{list-style:none;display:grid;gap:6px;margin-top:var(--s-3);font-size:var(--fs-sm)}
+.checklist li{display:flex;gap:8px;align-items:flex-start}
+.checklist li::before{content:"✓";flex:none;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;background:#E3F4EA;color:var(--ok-700)}
+.checklist li.warn::before{content:"!";background:#FFF1D6;color:#8A5A00}
+.checklist li.fail::before{content:"×";background:#FBE4E1;color:var(--err-700)}
+.elem{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:var(--s-4) var(--s-5);border-radius:16px;background:var(--grey-50);font-size:var(--fs-sm)}
+.elem b{font-weight:600}
+.elem .pill{font-family:var(--font-mono);font-size:13px;padding:3px 10px;border-radius:var(--radius-pill);background:#fff;border:var(--border)}
+.alts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:var(--s-3)}
+.alt{display:grid;grid-template-columns:56px 1fr;gap:4px 12px;align-items:center;padding:12px;border-radius:16px;border:var(--border);color:var(--ink);text-decoration:none;background:#fff;transition:border-color var(--dur),box-shadow var(--dur)}
+.alt:hover{border-color:transparent;box-shadow:var(--shadow-card);color:var(--ink)}
+.alt img{grid-row:span 2;width:56px;height:46px;object-fit:contain;mix-blend-mode:multiply}
+.alt b{font-size:var(--fs-sm);font-weight:600}
+.alt span{font-size:12.5px;color:var(--grey-600)}
+.alt .k{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--blue-700)}
+.eng{padding:var(--s-5);border-radius:20px;border:1.5px dashed var(--grey-400);display:grid;gap:var(--s-3)}
+.result h4{font-size:var(--fs-sm);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--grey-600)}
+.share{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:center;font-size:13px;color:var(--grey-600)}
+@media (max-width:1023px){.pp{grid-template-columns:1fr}.live{position:relative;top:0}.hero--mt .hero__grid{grid-template-columns:1fr}.build{display:none}}
+@media (max-width:767px){.ppf,.ppf-l{display:none}.live{gap:var(--s-4)}}
+@media (max-width:559px){.stamps .t{display:none}.stamps .st{width:34px;height:34px}.ppf{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 12px}.best{grid-template-columns:minmax(0,1fr)}.best .img{height:140px}.tool form{min-height:0}}
+.how3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.how3 div{border-top:2px solid var(--ink);padding-top:var(--s-4);display:grid;gap:6px}
+.how3 p{font-size:var(--fs-sm);color:var(--grey-600)}
+@media (max-width:767px){.how3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="progress-line" aria-hidden="true"></div>
+<a class="skip" href="#main">Naar de inhoud</a>
+
+<aside class="util" aria-label="Contactgegevens en taal" data-annot="Utility-balk · night-950 · 38px · enkel ≥ 1024">
+  <div class="wrap">
+    <span>Europees hoofdkantoor, assemblage en voorraad in Aartselaar (BE)</span>
+    <ul>
+      <li><a href="tel:+3238254647">+32 (0)3 825 46 47</a></li>
+      <li><a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a></li>
+      <li><a href="homepage.html#contact">Contact</a></li>
+      <li><a href="#">Word dealer</a></li>
+      <li><nav class="lang" aria-label="Taal"><a href="#" aria-current="true" lang="nl">NL</a><a href="#" lang="en">EN</a><a href="#" lang="fr">FR</a></nav></li>
+    </ul>
+  </div>
+</aside>
+
+<header class="hdr" data-annot="Header · sticky · donker glas (#0C0C28 78% + blur 16px) over de hero · 76px, één rij · wit logo
+nav (pill-hover) · &quot;Vraag het Triple R&quot;-balk 320px (210px < 1280) met verloop-rand + wisselende voorbeeldvraag + ⌘K / · CTA · &lt; 1024: icoon → volledig scherm">
+  <div class="wrap hdr__row">
+    <a class="logo" href="homepage.html" aria-label="Triple R — homepage"><svg role="img" aria-label="Triple R" xmlns="http://www.w3.org/2000/svg" id="wh0" viewBox="0 0 1760 440"><g><path d="m834.53,145v174.72h-27.19v-174.72h-63.36v-24.47h156.77v24.47h-66.22Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m981.2,198.98c-5.62-3.9-11.29-5.85-17-5.85-9.16,0-17.16,4.22-24,12.65-6.84,8.43-10.27,18.58-10.27,30.46v83.49h-25.83v-145.62h25.83v23.25c9.43-17.31,23.43-25.97,42.01-25.97,4.62,0,11.29.82,19.99,2.45l-10.74,25.15Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1028.37,319.72v-123.87h-19.99v-21.76h45.82v145.62h-25.83Zm14.14-200.69c4.44,0,8.23,1.56,11.35,4.69,3.13,3.13,4.69,6.87,4.69,11.22s-1.56,8.23-4.69,11.35c-3.13,3.13-6.91,4.69-11.35,4.69s-8.09-1.56-11.22-4.69c-3.13-3.13-4.69-6.91-4.69-11.35s1.54-8.2,4.62-11.29c3.08-3.08,6.84-4.62,11.29-4.62Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1121.1,311.69v65.13h-25.83v-202.73h25.83v11.97c9.79-9.79,21.62-14.68,35.49-14.68,20.67,0,36.76,6.44,48.27,19.31,11.51,12.87,17.27,31.73,17.27,56.56,0,22.12-5.8,40.18-17.4,54.18-11.6,14-28.37,21.01-50.31,21.01-6.16,0-12.76-1.09-19.78-3.26-7.03-2.18-11.54-4.67-13.53-7.48Zm0-106.19v84.84c1.63,2.45,5.07,4.78,10.33,7,5.26,2.22,10.38,3.33,15.36,3.33,32.09,0,48.13-18.13,48.13-54.39,0-18.4-3.81-31.86-11.42-40.38-7.61-8.52-19.81-12.78-36.58-12.78-3.63,0-8.07,1.27-13.32,3.81-5.26,2.54-9.43,5.39-12.51,8.57Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1255.23,278.52V114.4h25.83v159.76c0,7.8,2.24,13.94,6.73,18.42s10.36,6.73,17.61,6.73v23.11c-33.45,0-50.17-14.64-50.17-43.92Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1457.96,249.42h-104.97c0,17.04,4.67,30.14,14,39.29,8.25,7.98,18.85,11.97,31.82,11.97,14.77,0,27.1-4.3,36.98-12.92l10.88,18.63c-3.99,3.99-10.11,7.43-18.36,10.33-10.33,3.81-21.85,5.71-34.54,5.71-18.31,0-33.86-6.21-46.64-18.63-14.23-13.68-21.35-32.09-21.35-55.2s7.3-43.28,21.89-57.79c13.05-12.96,28.51-19.44,46.37-19.44,20.76,0,37.03,5.85,48.81,17.54,11.42,11.24,17.13,26.15,17.13,44.73,0,5.71-.68,10.97-2.04,15.77Zm-62.68-56.29c-11.51,0-21.17,3.72-28.96,11.15-7.43,7.07-11.65,15.86-12.65,26.38h80.63c0-10.42-3.26-19.12-9.79-26.11-7.16-7.61-16.91-11.42-29.23-11.42Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1666.96,319.72l-53.16-85.52c-6.07,0-15.68-.45-28.83-1.36v86.88h-27.19V120.52c1,0,8.04-.34,21.14-1.02,13.1-.68,22.64-1.02,28.62-1.02,47.86,0,71.79,19.04,71.79,57.11,0,12.51-3.85,23.77-11.56,33.79-7.71,10.02-16.86,16.25-27.47,18.7l57.79,91.64h-31.14Zm-81.99-174.72v64.72c6.53.91,12.87,1.36,19.04,1.36,16.32,0,28.19-2.63,35.62-7.89,7.43-5.25,11.15-14.64,11.15-28.15,0-11.15-3.99-19.17-11.97-24.07-7.98-4.89-20.58-7.34-37.8-7.34-2.72,0-8.07.46-16.04,1.36Z" style="fill: #fff; stroke-width: 0px;"></path></g><path d="m587.86,170.3c-36.83-24.72-129.36-71.07-162.85-81.44-25.38-7.86-46.29-13.64-73.49-13.76-27.2.12-48.11,5.9-73.49,13.76-33.48,10.37-126.02,56.72-162.85,81.44-21.72,14.58-36.07,32.52-36.07,49.7s14.35,35.11,36.07,49.69c36.82,24.73,129.36,71.07,162.85,81.44,25.38,7.86,46.29,13.64,73.49,13.75,27.2-.12,48.11-5.89,73.49-13.75,24.54-7.6,80.79-34.52,123.59-58.1h0c.49-.29.42-.87.2-1.26-.04-.07-.09-.1-.14-.16-.04-.04-.07-.1-.11-.13l-62.34-43.36c-14.04-10.16-22.63-16.72-22.63-23.57s6.85-9.05,14.77-11.47c11.51-3.52,25.83-7.9,25.83-29.17,0-16.04-12.45-23.34-24.03-23.34h-21.42c-3.17,0-3.17,2.36-3.17,3.14v111.25c0,3.75-.98,5.5-3.75,6.69l-22.03,9.58s-2.42.98-4.37.98c-4.05,0-7.99-2.37-10.7-4.27l-.19-.13s-.1-.07-.14-.1h-.02s-56.96-39.6-56.96-39.6c-14.03-10.16-22.63-16.72-22.63-23.57s6.85-9.05,14.78-11.47c11.51-3.52,25.83-7.9,25.83-29.17,0-16.04-12.46-23.34-24.03-23.34h-21.43c-3.17,0-3.17,2.36-3.17,3.14v111.25c0,3.75-.98,5.5-3.75,6.69l-22.03,9.58s-2.52.98-4.38.98c-4.06,0-7.98-2.37-10.69-4.27l-.19-.13c-.05-.03-.1-.07-.15-.1h-.02s-56.94-39.6-56.94-39.6c-14.04-10.16-22.63-16.72-22.63-23.57s6.85-9.05,14.77-11.47c11.51-3.52,25.83-7.9,25.83-29.17,0-16.04-12.46-23.34-24.03-23.34h-21.43c-3.17,0-3.17,2.36-3.17,3.14v111.25c0,3.75-.98,5.5-3.76,6.69l-22.47,9.78c-1.03.43-1.93.64-2.76.64-2.09,0-4.58-1.32-4.58-7.64v-115.36c0-8.27,6.52-11.05,6.8-11.17l25.1-12.95c.12-.07,4.02-2.31,8.26-2.31h27.04c3.55,0,16,.44,27.14,6.16,13.5,6.93,20.34,18.74,20.34,35.12,0,21.69-14.67,29.36-24.39,34.42-4.42,2.31-7.92,4.13-7.92,6.22,0,2.31,3.01,4.48,4.46,5.53,3.5,2.52,27.28,19.24,38.2,26.92.88.62,1.75.96,2.42.96.9,0,1.36-.68,1.36-2v-86.88c0-8.27,6.52-11.05,6.8-11.17l25.09-12.95c.12-.07,4.03-2.31,8.26-2.31h27.04c3.55,0,16,.44,27.14,6.16,13.5,6.93,20.35,18.74,20.35,35.12,0,21.69-14.67,29.36-24.38,34.42-4.43,2.31-7.92,4.13-7.92,6.22,0,2.31,3.01,4.48,4.46,5.53,3.49,2.52,27.27,19.24,38.2,26.92.89.62,1.74.96,2.42.96.9,0,1.35-.68,1.35-2v-86.88c0-8.27,6.52-11.05,6.8-11.17l25.1-12.95c.11-.07,4.02-2.31,8.26-2.31h27.04c3.55,0,16,.44,27.13,6.16,13.5,6.93,20.35,18.74,20.35,35.12,0,21.69-14.67,29.36-24.38,34.42-4.42,2.31-7.92,4.13-7.92,6.22,0,2.31,3.01,4.48,4.45,5.53,4.21,3.03,57.61,40.41,65.77,46.12.49.34,1.55.93,2.68.26h0c3.88-2.39,7.45-4.67,10.59-6.78,21.71-14.58,36.07-32.51,36.07-49.69s-14.35-35.12-36.07-49.7Zm9.59-14.27c-38.57-25.9-132.41-72.77-167.35-83.59-26.32-8.15-48.81-14.4-78.65-14.53-29.68.13-52.18,6.38-78.5,14.53-34.93,10.82-128.77,57.68-167.35,83.59-28.17,18.91-43.68,41.63-43.68,63.96s15.51,45.06,43.68,63.97c38.57,25.9,132.42,72.77,167.35,83.59,26.31,8.15,48.8,14.39,78.5,14.52h.15c29.69-.13,52.18-6.37,78.5-14.52,34.93-10.82,128.77-57.7,167.34-83.59,28.17-18.91,43.68-41.63,43.68-63.97s-15.51-45.06-43.68-63.96Zm-4.79,120.8c-38.12,25.59-130.7,71.86-165.1,82.52-25.62,7.93-47.49,14.01-76.07,14.14-28.5-.12-50.37-6.2-75.99-14.14-34.4-10.66-126.98-56.93-165.1-82.52-25.72-17.27-39.88-37.45-39.88-56.83s14.16-39.57,39.88-56.84c38.12-25.59,130.7-71.86,165.1-82.52,25.63-7.94,47.49-14.02,75.99-14.14h.08c28.51.12,50.37,6.2,75.99,14.14,34.4,10.66,126.98,56.92,165.1,82.52,25.72,17.26,39.88,37.44,39.88,56.84s-14.16,39.57-39.88,56.83Z" style="fill: #fff; stroke-width: 0px;"></path></svg></a>
+    <nav aria-label="Hoofdmenu"><ul class="nav">
+      <li><a class="nl" href="oplossingen.html">Oplossingen</a></li>
+      <li><button class="nl" type="button" id="mm-btn" aria-expanded="false" aria-controls="mm">Producten <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg></button></li>
+      <li><a class="nl" href="sectoren.html">Sectoren</a></li>
+      <li><a class="nl" href="olieanalyse.html">Diensten</a></li>
+      <li><a class="nl" href="kennisbank.html">Kennisbank</a></li>
+      <li><a class="nl" href="#">Over ons</a></li>
+      <li class="nav-x"><a class="nl" href="homepage.html#contact">Contact</a></li>
+    </ul></nav>
+    <div class="hdr__end">
+      <button type="button" class="ask-trigger" id="ask-open" data-ask-open aria-haspopup="dialog" aria-controls="ask">
+        <span class="spark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l1.6 4.1L13.7 6.7 9.6 8.3 8 12.4 6.4 8.3 2.3 6.7l4.1-1.6z"/><path d="M13 10.5l.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6z" opacity=".75"/></svg></span>
+        <span class="ask-trigger__txt"><b>Vraag het Triple R</b><span class="ask-trigger__ph" id="ask-ph">Zoek een product of stel een vraag</span></span>
+        <span class="kbd" aria-hidden="true">⌘K</span>
+      </button>
+      <a class="btn btn--light btn--sm" href="olieanalyse.html">Gratis olieanalyse</a>
+    </div>
+    <button class="mbtn" type="button" id="m-search" data-ask-open aria-label="Vraag het Triple R: zoek of stel een vraag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+    <button class="mbtn" type="button" id="m-open" aria-label="Menu openen" aria-controls="drawer" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+  </div>
+  <div class="mega" id="mm" hidden>
+    <div class="wrap mega__in">
+      <div><h3>Op de drukleiding</h3><ul>
+        <li><a href="producten.html#p-bu"><b>BU-serie</b><span>Bypassfilter tot 450 bar, zonder pomp</span></a></li>
+        <li><a href="producten.html#p-elementen"><b>Filterelementen</b><span>1 tot 10 µm absoluut</span></a></li></ul>
+        <h3>Motorolie &amp; lage druk</h3><ul>
+        <li><a href="producten.html#p-tr"><b>TR-serie</b><span>Systemen onder 6 bar</span></a></li></ul></div>
+      <div><h3>Offline units</h3><ul>
+        <li><a href="producten.html#p-se"><b>SE-serie</b><span>Met motor-pompgroep, ook mobiel</span></a></li>
+        <li><a href="producten.html#p-osca"><b>OSCA-serie</b><span>6 tot &gt; 60 l/min, grote volumes</span></a></li>
+        <li><a href="producten.html#p-ss"><b>SS-serie</b><span>Stalen huizen voor 2 tot 6 elementen</span></a></li></ul></div>
+      <div><h3>Water, lucht &amp; proceswater</h3><ul>
+        <li><a href="producten.html#p-vacuum"><b>Vacuümontwateraar</b><span>Vrij en opgelost water, optioneel ATEX</span></a></li>
+        <li><a href="producten.html#p-ws"><b>WS-serie</b><span>Coalescer olie-waterafscheider</span></a></li>
+        <li><a href="producten.html#p-quicktoron"><b>Quicktoron</b><span>Tot 95% van de luchtbellen</span></a></li>
+        <li><a href="producten.html#p-centrifuges"><b>Centrifuges</b><span>Koelvloeistof, 15–200 l/min</span></a></li></ul></div>
+      <div class="mega__promo">
+        <img src="img/elements.png" alt="" width="766" height="480">
+        <h4>Welke filter past bij uw installatie?</h4>
+        <p class="small muted">Drie vragen, één indicatief advies.</p>
+        <a class="arrow" href="producten.html">Alle producten <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <a class="arrow" href="find-my-oil-cleaner.html"><span lang="en">Find My Oil Cleaner</span> <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer__top"><span style="width:132px;display:block"><svg role="img" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="ld0" viewBox="0 0 1760 440"><defs><radialGradient id="ld1" cx="848.79" cy="-3317.73" fx="848.79" fy="-3317.73" r="704.33" gradientTransform="translate(-25.24 1778.69) scale(.43)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0086cd"></stop><stop offset="1" stop-color="#211452"></stop></radialGradient><clipPath id="ld2"><path d="m351.45,382.08c-29.7-.13-52.19-6.37-78.5-14.53-34.94-10.81-128.78-57.69-167.35-83.59-28.17-18.91-43.68-41.62-43.68-63.97s15.51-45.06,43.68-63.97c38.57-25.9,132.42-72.77,167.35-83.59,26.32-8.15,48.81-14.39,78.5-14.52,29.83.13,52.33,6.37,78.65,14.52,34.93,10.82,128.77,57.69,167.35,83.59,28.16,18.91,43.68,41.63,43.68,63.97s-15.51,45.06-43.68,63.97c-38.57,25.9-132.41,72.78-167.34,83.59-26.32,8.15-48.8,14.4-78.5,14.53h-.15Z" style="fill: none; stroke-width: 0px;"></path></clipPath><radialGradient id="ld3" cx="874.42" cy="-3899.58" fx="874.42" fy="-3899.58" r="553.91" gradientTransform="translate(-25.24 1778.69) scale(.43)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"></stop><stop offset="1" stop-color="#fff" stop-opacity=".5"></stop></radialGradient></defs><g><path d="m351.45,382.08c-29.7-.13-52.19-6.37-78.5-14.53-34.94-10.81-128.78-57.69-167.35-83.59-28.17-18.91-43.68-41.62-43.68-63.97s15.51-45.06,43.68-63.97c38.57-25.9,132.42-72.77,167.35-83.59,26.32-8.15,48.81-14.39,78.5-14.52,29.83.13,52.33,6.37,78.65,14.52,34.93,10.82,128.77,57.69,167.35,83.59,28.16,18.91,43.68,41.63,43.68,63.97s-15.51,45.06-43.68,63.97c-38.57,25.9-132.41,72.78-167.34,83.59-26.32,8.15-48.8,14.4-78.5,14.53h-.15Z" style="fill: #211452; stroke-width: 0px;"></path><path d="m623.93,220c0,17.18-14.36,35.11-36.07,49.69-36.83,24.72-129.37,71.07-162.85,81.44-25.38,7.86-46.29,13.63-73.49,13.75-27.2-.12-48.11-5.9-73.49-13.75-33.48-10.37-126.02-56.72-162.85-81.44-21.71-14.58-36.07-32.52-36.07-49.69s14.35-35.12,36.07-49.69c36.83-24.72,129.37-71.08,162.85-81.44,25.38-7.86,46.29-13.64,73.49-13.75,27.2.12,48.1,5.89,73.49,13.75,33.48,10.37,126.02,56.72,162.85,81.44,21.71,14.58,36.07,32.52,36.07,49.69Z" style="fill: url(#ld1); stroke-width: 0px;"></path><path d="m574.58,276.21c.49.34,1.58.95,2.72.24l.5.68-2.11,1.27-1.11-.69v-1.5" style="fill: #fff; stroke-width: 0px;"></path><path d="m548.56,291.49c.36.25.72,1.18.03,1.56l.18.41,2.44-.19.21-1.78-2.05-1.41-.8,1.41" style="fill: #fff; stroke-width: 0px;"></path><path d="m592.66,163.17c-38.12-25.59-130.7-71.87-165.1-82.52-25.63-7.93-47.5-14.01-76-14.13h-.08c-28.51.12-50.37,6.2-76,14.13-34.4,10.65-126.98,56.93-165.1,82.52-25.72,17.26-39.88,37.45-39.88,56.84s14.16,39.57,39.88,56.84c38.12,25.59,130.7,71.86,165.1,82.51,25.63,7.94,47.49,14.02,76,14.14,28.58-.12,50.44-6.2,76.07-14.14,34.4-10.66,126.98-56.93,165.1-82.51,25.71-17.27,39.88-37.45,39.88-56.84s-14.16-39.57-39.88-56.84Zm-4.8,106.53c-3.14,2.11-6.71,4.38-10.6,6.77-1.13.67-2.2.08-2.68-.26h0c-8.16-5.71-61.55-43.1-65.77-46.12-1.44-1.04-4.45-3.21-4.45-5.52,0-2.08,3.49-3.91,7.92-6.22,9.71-5.06,24.38-12.72,24.38-34.42,0-16.38-6.85-28.19-20.34-35.12-11.14-5.71-23.58-6.16-27.14-6.16h-27.04c-4.23,0-8.14,2.25-8.25,2.32l-25.1,12.95c-.28.11-6.8,2.9-6.8,11.17v86.89c0,1.33-.46,2-1.36,2-.67,0-1.53-.34-2.42-.96-10.92-7.68-34.7-24.41-38.2-26.93-1.45-1.04-4.46-3.21-4.46-5.52,0-2.08,3.49-3.91,7.92-6.22,9.71-5.06,24.38-12.72,24.38-34.42,0-16.38-6.84-28.19-20.34-35.12-11.14-5.71-23.59-6.16-27.14-6.16h-27.04c-4.23,0-8.14,2.25-8.26,2.32l-25.1,12.95c-.28.11-6.8,2.9-6.8,11.17v86.89c0,1.33-.46,2-1.36,2-.67,0-1.53-.34-2.41-.96-10.93-7.68-34.7-24.41-38.2-26.93-1.45-1.04-4.46-3.21-4.46-5.52,0-2.08,3.5-3.91,7.92-6.22,9.71-5.06,24.38-12.72,24.38-34.42,0-16.38-6.84-28.19-20.34-35.12-11.14-5.71-23.59-6.16-27.14-6.16h-27.05c-4.23,0-8.14,2.25-8.25,2.32l-25.1,12.95c-.27.11-6.8,2.9-6.8,11.17v115.37c0,6.32,2.49,7.63,4.58,7.63.83,0,1.72-.2,2.76-.64l22.48-9.78c2.77-1.19,3.75-2.94,3.75-6.69v-111.26c0-.78,0-3.14,3.17-3.14h21.43c11.57,0,24.03,7.31,24.03,23.34,0,21.27-14.32,25.65-25.83,29.17-7.93,2.42-14.77,4.52-14.77,11.47s8.59,13.42,22.63,23.58l56.95,39.58h.01c.05.05.1.08.15.12l.19.13h0c2.71,1.9,6.63,4.27,10.69,4.27,1.86,0,4.38-.98,4.38-.98l22.02-9.59c2.77-1.19,3.75-2.94,3.75-6.69v-111.26c0-.78,0-3.14,3.17-3.14h21.43c11.58,0,24.04,7.31,24.04,23.34,0,21.27-14.32,25.65-25.83,29.17-7.93,2.42-14.78,4.52-14.78,11.47s8.59,13.42,22.63,23.58l56.96,39.58h.02s.1.08.14.12l.19.13h0c2.71,1.9,6.64,4.27,10.69,4.27,1.95,0,4.38-.98,4.38-.98l22.03-9.59c2.77-1.19,3.75-2.94,3.75-6.69v-111.26c0-.78,0-3.14,3.17-3.14h21.43c11.58,0,24.03,7.31,24.03,23.34,0,21.27-14.32,25.65-25.83,29.17-7.92,2.42-14.78,4.52-14.78,11.47s8.6,13.42,22.64,23.58l62.34,43.35h0c.36.24.71,1.16.04,1.54-42.81,23.58-99.05,50.51-123.59,58.11-25.38,7.86-46.29,13.63-73.49,13.75-27.2-.12-48.11-5.9-73.49-13.75-33.48-10.37-126.02-56.72-162.85-81.44-21.71-14.58-36.07-32.52-36.07-49.69s14.35-35.12,36.07-49.69c36.83-24.72,129.37-71.08,162.85-81.44,25.38-7.86,46.29-13.64,73.49-13.75,27.2.12,48.1,5.89,73.49,13.75,33.48,10.37,126.02,56.72,162.85,81.44,21.71,14.58,36.07,32.52,36.07,49.69s-14.36,35.11-36.07,49.69Z" style="fill: #fff; stroke-width: 0px;"></path><g style="clip-path: url(#ld2);"><path d="m670,33.66c0,93.01-144.54,168.41-322.83,168.41S24.35,126.67,24.35,33.66" style="fill: url(#ld3); stroke-width: 0px;"></path></g></g><g><path d="m834.53,145v174.72h-27.19v-174.72h-63.36v-24.47h156.77v24.47h-66.22Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m981.2,198.98c-5.62-3.9-11.29-5.85-17-5.85-9.16,0-17.16,4.21-24,12.65-6.84,8.43-10.27,18.58-10.27,30.46v83.49h-25.83v-145.62h25.83v23.25c9.43-17.31,23.43-25.97,42.01-25.97,4.62,0,11.29.82,19.99,2.45l-10.74,25.15Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1028.37,319.72v-123.87h-19.99v-21.75h45.82v145.62h-25.83Zm14.14-200.69c4.44,0,8.23,1.56,11.35,4.69,3.13,3.13,4.69,6.87,4.69,11.22s-1.56,8.23-4.69,11.35c-3.13,3.13-6.91,4.69-11.35,4.69s-8.09-1.56-11.22-4.69c-3.13-3.13-4.69-6.91-4.69-11.35s1.54-8.2,4.62-11.29c3.08-3.08,6.84-4.62,11.29-4.62Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1121.1,311.69v65.13h-25.83v-202.73h25.83v11.97c9.79-9.79,21.62-14.68,35.49-14.68,20.67,0,36.76,6.44,48.27,19.31,11.51,12.87,17.27,31.73,17.27,56.56,0,22.12-5.8,40.18-17.4,54.18-11.6,14-28.37,21.01-50.31,21.01-6.16,0-12.76-1.09-19.78-3.26-7.03-2.18-11.54-4.67-13.53-7.48Zm0-106.19v84.84c1.63,2.45,5.07,4.78,10.33,7,5.26,2.22,10.38,3.33,15.36,3.33,32.09,0,48.13-18.13,48.13-54.39,0-18.4-3.81-31.86-11.42-40.38-7.61-8.52-19.81-12.78-36.58-12.78-3.63,0-8.07,1.27-13.32,3.81-5.26,2.54-9.43,5.39-12.51,8.57Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1255.23,278.52V114.4h25.83v159.76c0,7.8,2.24,13.94,6.73,18.42s10.36,6.73,17.61,6.73v23.11c-33.45,0-50.17-14.64-50.17-43.92Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1457.96,249.42h-104.97c0,17.04,4.67,30.14,14,39.3,8.25,7.98,18.85,11.97,31.82,11.97,14.77,0,27.1-4.3,36.98-12.92l10.88,18.63c-3.99,3.99-10.11,7.43-18.36,10.33-10.33,3.81-21.85,5.71-34.54,5.71-18.31,0-33.86-6.21-46.64-18.63-14.23-13.68-21.35-32.09-21.35-55.2s7.3-43.28,21.89-57.79c13.05-12.96,28.51-19.44,46.37-19.44,20.76,0,37.03,5.85,48.81,17.54,11.42,11.24,17.13,26.15,17.13,44.73,0,5.71-.68,10.97-2.04,15.77Zm-62.68-56.29c-11.51,0-21.17,3.72-28.96,11.15-7.43,7.07-11.65,15.86-12.65,26.38h80.63c0-10.42-3.26-19.12-9.79-26.11-7.16-7.61-16.91-11.42-29.23-11.42Z" style="fill: #1d1d1b; stroke-width: 0px;"></path><path d="m1666.96,319.72l-53.16-85.52c-6.07,0-15.68-.45-28.83-1.36v86.88h-27.19V120.52c1,0,8.04-.34,21.14-1.02,13.1-.68,22.64-1.02,28.62-1.02,47.86,0,71.79,19.04,71.79,57.11,0,12.51-3.85,23.77-11.56,33.79-7.71,10.02-16.86,16.25-27.47,18.7l57.79,91.64h-31.14Zm-81.99-174.72v64.72c6.53.91,12.87,1.36,19.04,1.36,16.32,0,28.19-2.63,35.62-7.89,7.43-5.25,11.15-14.64,11.15-28.15,0-11.15-3.99-19.17-11.97-24.07-7.98-4.89-20.58-7.34-37.8-7.34-2.72,0-8.07.46-16.04,1.36Z" style="fill: #1d1d1b; stroke-width: 0px;"></path></g></svg></span><button class="mbtn" type="button" id="m-close" aria-label="Menu sluiten" style="display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <button type="button" class="ask-trigger" data-ask-open aria-haspopup="dialog" aria-controls="ask"><span class="spark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l1.6 4.1L13.7 6.7 9.6 8.3 8 12.4 6.4 8.3 2.3 6.7l4.1-1.6z"/></svg></span><span class="ask-trigger__txt"><b>Vraag het Triple R</b><span class="ask-trigger__ph">Zoek een product of stel een vraag</span></span></button>
+  <nav aria-label="Hoofdmenu mobiel"><ul class="list">
+    <li><a href="oplossingen.html">Oplossingen</a></li><li><a href="producten.html">Producten</a></li><li><a href="sectoren.html">Sectoren</a></li><li><a href="besparingscalculator.html">Besparingscalculator</a></li><li><a href="olieanalyse.html">Gratis olieanalyse</a></li><li><a href="kennisbank.html">Kennisbank</a></li><li><a href="homepage.html#contact">Contact</a></li>
+  </ul></nav>
+  <div class="btns"><a class="btn btn--primary" href="olieanalyse.html" style="flex:1">Gratis olieanalyse</a><a class="btn btn--secondary" href="tel:+3238254647">Bel ons</a></div>
+  <nav class="lang" aria-label="Taal mobiel" style="display:flex;gap:12px;font-weight:500"><a href="#" aria-current="true">NL</a><a href="#">EN</a><a href="#">FR</a></nav>
+</div>
+
+
+<main id="main">
+
+<section class="hero hero--page hero--mt" aria-labelledby="h1" data-annot="Find My Oil Cleaner · productconfigurator (naam [CONFIRM]: lijkt op TRIS ‘Build My Oil Cleaner’) (betere versie van oilcleaner.eu ‘Build my oil cleaner’) · hero-demo: velden worden één voor één ‘getypt’ (45 ms/teken), daarna verschijnt het samengestelde product · statisch bij reduced motion">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap hero__grid">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li><a href="producten.html">Producten</a></li><li aria-current="page">Find My Oil Cleaner</li></ol>
+      <h1 id="h1"><span lang="en">Find My Oil Cleaner</span><span>: de Triple R op maat van uw installatie</span><i class="tb" title="Te bevestigen: naam en merkgebruik met Triple R (gelijkenis met ‘Build My Oil Cleaner’ van TRIS)"></i></h1>
+      <p class="lead">Vul zelf uw gegevens in: olie, volume, temperatuur, druk en probleem. Terwijl u typt, stellen wij live uw Triple R samen, met de reden bij elke keuze.</p>
+      <ul class="qstats"><li><b>7</b>stappen</li><li><b>± 2</b>minuten</li><li><b>live</b>resultaat</li></ul>
+    </div>
+    <div class="build" aria-hidden="true">
+      <div class="build__in"><p class="k">Uw gegevens</p>
+        <div class="f"><span>Vloeistof</span><b data-t="Hydrauliekolie">Hydrauliekolie</b></div>
+        <div class="f"><span>Volume</span><b data-t="400 l">400 l</b></div>
+        <div class="f"><span>Druk</span><b data-t="120 bar">120 bar</b></div>
+        <div class="f"><span>Probleem</span><b data-t="Water">Water</b></div>
+      </div>
+      <div class="build__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M14 6l6 6-6 6"/></svg></div>
+      <div class="build__out"><p class="k">Uw oliereiniger</p><div class="pi"><img src="img/BU-Series.png" alt="" id="bo-img"></div><b id="bo-n">BU-serie</b><small id="bo-e">met WE100-element</small><span class="badge">op maat</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="tool" aria-labelledby="h-tool" data-annot="Tool · links stappen (pas zich aan: druk alleen bij drukleiding, spanning alleen bij offline) · 7 stappen = voortgang (ingevulde stappen klikbaar) · rechts live ‘Uw oliereiniger’: uw gegevens + configuratiecode + samengestelde matches · nooit doodlopend">
+  <div class="wrap">
+    <h2 id="h-tool" class="vh">Vind uw oliereiniger</h2>
+    <div class="pp">
+      <div class="tool">
+        <div class="tool__top">
+          <ol class="stamps" id="stamps" aria-label="Voortgang"></ol>
+          <p class="tool__step" id="step-lbl" aria-live="polite">Stap 1 van 7</p>
+        </div>
+        <form id="pp-form" onsubmit="return false" novalidate>
+          <div id="q"></div>
+          <div class="tnav"><button type="button" class="btn btn--secondary btn--sm ghost" id="back" hidden>← Vorige</button><button type="button" class="btn btn--primary" id="next" style="margin-left:auto">Volgende</button></div>
+        </form>
+      </div>
+      <section class="live" aria-labelledby="live-h">
+        <div class="pp-head"><h3 id="live-h">Uw oliereiniger</h3><span class="pp-no">op maat</span></div>
+        <p class="lbl ppf-l">Uw gegevens</p>
+        <dl class="ppf" id="fields"></dl>
+        <div class="cfg"><span class="lbl">Configuratiecode</span><code id="cfg">—</code><small>Vermeld deze code bij uw aanvraag.</small></div>
+        <div><p class="lbl" style="margin-bottom:10px">Samengesteld voor u</p><div class="matches" id="matches" aria-live="polite"><p class="empty">De matches verschijnen zodra u begint.</p></div></div>
+        <p class="foot">Indicatieve voorselectie op basis van de productinformatie van Triple R. Een specialist bevestigt de definitieve configuratie.<i class="tb" title="Te bevestigen: selectieregels en productgrenzen door Triple R"></i></p>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-how" data-annot="Uitleg · 3 punten · waarom niet alleen het volume telt">
+  <div class="wrap">
+    <div class="head"><div><p class="eyebrow">Zo werkt <span lang="en">Find My Oil Cleaner</span></p><h2 id="h-how">Meer dan alleen het tankvolume</h2></div><div class="side"><p class="lead">Twee installaties met evenveel olie kunnen een totaal andere oplossing vragen.</p></div></div>
+    <div class="how3">
+      <div><h3 class="h4">1 · Uw olie</h3><p>Vloeistof, volume, viscositeitsklasse en temperatuur bepalen hoe makkelijk de olie door het filterelement stroomt. De tool rekent de bedrijfsviscositeit live uit.</p></div>
+      <div><h3 class="h4">2 · Technische controles</h3><p>Aansluiting, druk, viscositeit en toepassing worden getoetst aan de grenzen van elke serie. U ziet bij elke match waarom ze past — of waarom niet.</p></div>
+      <div><h3 class="h4">3 · Specialist bevestigt</h3><p>Valt uw installatie buiten de standaard, dan kijkt een Triple R-specialist mee. U krijgt nooit een leeg scherm.</p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="h-cta" data-annot="Slot-CTA">
+  <div class="wrap">
+    <div class="cta">
+      <div><p class="eyebrow">Twijfelt u?</p><h2 id="h-cta">Laat eerst uw olie analyseren</h2><p class="lead">Weet u de viscositeit of het watergehalte niet? Een gratis olieanalyse geeft het antwoord, met persoonlijk advies.</p>
+        <div class="btns"><a class="btn btn--light" href="olieanalyse.html">Gratis olieanalyse</a><a class="btn btn--ghost-light" href="tel:+3238254647">Bel +32 (0)3 825 46 47</a></div></div>
+      <div class="person"><img src="img/team.jpg" alt="Het Triple R-team in Aartselaar" width="768" height="1024" loading="lazy"><div class="person__who"><div><h3>Maxim Van Uytven</h3><p class="role">Sales Manager</p></div><div class="links"><a href="tel:+3238254647">+32 (0)3 825 46 47</a><a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a></div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="ftr" data-annot="Footer · night-950 · volledige NAP + KBO/BTW (WER)">
+  <div class="wrap ftr__top">
+    <div class="ftr__brand">
+      <div class="ftr__logo"><svg role="img" aria-label="Triple R" xmlns="http://www.w3.org/2000/svg" id="wf0" viewBox="0 0 1760 440"><g><path d="m834.53,145v174.72h-27.19v-174.72h-63.36v-24.47h156.77v24.47h-66.22Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m981.2,198.98c-5.62-3.9-11.29-5.85-17-5.85-9.16,0-17.16,4.22-24,12.65-6.84,8.43-10.27,18.58-10.27,30.46v83.49h-25.83v-145.62h25.83v23.25c9.43-17.31,23.43-25.97,42.01-25.97,4.62,0,11.29.82,19.99,2.45l-10.74,25.15Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1028.37,319.72v-123.87h-19.99v-21.76h45.82v145.62h-25.83Zm14.14-200.69c4.44,0,8.23,1.56,11.35,4.69,3.13,3.13,4.69,6.87,4.69,11.22s-1.56,8.23-4.69,11.35c-3.13,3.13-6.91,4.69-11.35,4.69s-8.09-1.56-11.22-4.69c-3.13-3.13-4.69-6.91-4.69-11.35s1.54-8.2,4.62-11.29c3.08-3.08,6.84-4.62,11.29-4.62Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1121.1,311.69v65.13h-25.83v-202.73h25.83v11.97c9.79-9.79,21.62-14.68,35.49-14.68,20.67,0,36.76,6.44,48.27,19.31,11.51,12.87,17.27,31.73,17.27,56.56,0,22.12-5.8,40.18-17.4,54.18-11.6,14-28.37,21.01-50.31,21.01-6.16,0-12.76-1.09-19.78-3.26-7.03-2.18-11.54-4.67-13.53-7.48Zm0-106.19v84.84c1.63,2.45,5.07,4.78,10.33,7,5.26,2.22,10.38,3.33,15.36,3.33,32.09,0,48.13-18.13,48.13-54.39,0-18.4-3.81-31.86-11.42-40.38-7.61-8.52-19.81-12.78-36.58-12.78-3.63,0-8.07,1.27-13.32,3.81-5.26,2.54-9.43,5.39-12.51,8.57Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1255.23,278.52V114.4h25.83v159.76c0,7.8,2.24,13.94,6.73,18.42s10.36,6.73,17.61,6.73v23.11c-33.45,0-50.17-14.64-50.17-43.92Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1457.96,249.42h-104.97c0,17.04,4.67,30.14,14,39.29,8.25,7.98,18.85,11.97,31.82,11.97,14.77,0,27.1-4.3,36.98-12.92l10.88,18.63c-3.99,3.99-10.11,7.43-18.36,10.33-10.33,3.81-21.85,5.71-34.54,5.71-18.31,0-33.86-6.21-46.64-18.63-14.23-13.68-21.35-32.09-21.35-55.2s7.3-43.28,21.89-57.79c13.05-12.96,28.51-19.44,46.37-19.44,20.76,0,37.03,5.85,48.81,17.54,11.42,11.24,17.13,26.15,17.13,44.73,0,5.71-.68,10.97-2.04,15.77Zm-62.68-56.29c-11.51,0-21.17,3.72-28.96,11.15-7.43,7.07-11.65,15.86-12.65,26.38h80.63c0-10.42-3.26-19.12-9.79-26.11-7.16-7.61-16.91-11.42-29.23-11.42Z" style="fill: #fff; stroke-width: 0px;"></path><path d="m1666.96,319.72l-53.16-85.52c-6.07,0-15.68-.45-28.83-1.36v86.88h-27.19V120.52c1,0,8.04-.34,21.14-1.02,13.1-.68,22.64-1.02,28.62-1.02,47.86,0,71.79,19.04,71.79,57.11,0,12.51-3.85,23.77-11.56,33.79-7.71,10.02-16.86,16.25-27.47,18.7l57.79,91.64h-31.14Zm-81.99-174.72v64.72c6.53.91,12.87,1.36,19.04,1.36,16.32,0,28.19-2.63,35.62-7.89,7.43-5.25,11.15-14.64,11.15-28.15,0-11.15-3.99-19.17-11.97-24.07-7.98-4.89-20.58-7.34-37.8-7.34-2.72,0-8.07.46-16.04,1.36Z" style="fill: #fff; stroke-width: 0px;"></path></g><path d="m587.86,170.3c-36.83-24.72-129.36-71.07-162.85-81.44-25.38-7.86-46.29-13.64-73.49-13.76-27.2.12-48.11,5.9-73.49,13.76-33.48,10.37-126.02,56.72-162.85,81.44-21.72,14.58-36.07,32.52-36.07,49.7s14.35,35.11,36.07,49.69c36.82,24.73,129.36,71.07,162.85,81.44,25.38,7.86,46.29,13.64,73.49,13.75,27.2-.12,48.11-5.89,73.49-13.75,24.54-7.6,80.79-34.52,123.59-58.1h0c.49-.29.42-.87.2-1.26-.04-.07-.09-.1-.14-.16-.04-.04-.07-.1-.11-.13l-62.34-43.36c-14.04-10.16-22.63-16.72-22.63-23.57s6.85-9.05,14.77-11.47c11.51-3.52,25.83-7.9,25.83-29.17,0-16.04-12.45-23.34-24.03-23.34h-21.42c-3.17,0-3.17,2.36-3.17,3.14v111.25c0,3.75-.98,5.5-3.75,6.69l-22.03,9.58s-2.42.98-4.37.98c-4.05,0-7.99-2.37-10.7-4.27l-.19-.13s-.1-.07-.14-.1h-.02s-56.96-39.6-56.96-39.6c-14.03-10.16-22.63-16.72-22.63-23.57s6.85-9.05,14.78-11.47c11.51-3.52,25.83-7.9,25.83-29.17,0-16.04-12.46-23.34-24.03-23.34h-21.43c-3.17,0-3.17,2.36-3.17,3.14v111.25c0,3.75-.98,5.5-3.75,6.69l-22.03,9.58s-2.52.98-4.38.98c-4.06,0-7.98-2.37-10.69-4.27l-.19-.13c-.05-.03-.1-.07-.15-.1h-.02s-56.94-39.6-56.94-39.6c-14.04-10.16-22.63-16.72-22.63-23.57s6.85-9.05,14.77-11.47c11.51-3.52,25.83-7.9,25.83-29.17,0-16.04-12.46-23.34-24.03-23.34h-21.43c-3.17,0-3.17,2.36-3.17,3.14v111.25c0,3.75-.98,5.5-3.76,6.69l-22.47,9.78c-1.03.43-1.93.64-2.76.64-2.09,0-4.58-1.32-4.58-7.64v-115.36c0-8.27,6.52-11.05,6.8-11.17l25.1-12.95c.12-.07,4.02-2.31,8.26-2.31h27.04c3.55,0,16,.44,27.14,6.16,13.5,6.93,20.34,18.74,20.34,35.12,0,21.69-14.67,29.36-24.39,34.42-4.42,2.31-7.92,4.13-7.92,6.22,0,2.31,3.01,4.48,4.46,5.53,3.5,2.52,27.28,19.24,38.2,26.92.88.62,1.75.96,2.42.96.9,0,1.36-.68,1.36-2v-86.88c0-8.27,6.52-11.05,6.8-11.17l25.09-12.95c.12-.07,4.03-2.31,8.26-2.31h27.04c3.55,0,16,.44,27.14,6.16,13.5,6.93,20.35,18.74,20.35,35.12,0,21.69-14.67,29.36-24.38,34.42-4.43,2.31-7.92,4.13-7.92,6.22,0,2.31,3.01,4.48,4.46,5.53,3.49,2.52,27.27,19.24,38.2,26.92.89.62,1.74.96,2.42.96.9,0,1.35-.68,1.35-2v-86.88c0-8.27,6.52-11.05,6.8-11.17l25.1-12.95c.11-.07,4.02-2.31,8.26-2.31h27.04c3.55,0,16,.44,27.13,6.16,13.5,6.93,20.35,18.74,20.35,35.12,0,21.69-14.67,29.36-24.38,34.42-4.42,2.31-7.92,4.13-7.92,6.22,0,2.31,3.01,4.48,4.45,5.53,4.21,3.03,57.61,40.41,65.77,46.12.49.34,1.55.93,2.68.26h0c3.88-2.39,7.45-4.67,10.59-6.78,21.71-14.58,36.07-32.51,36.07-49.69s-14.35-35.12-36.07-49.7Zm9.59-14.27c-38.57-25.9-132.41-72.77-167.35-83.59-26.32-8.15-48.81-14.4-78.65-14.53-29.68.13-52.18,6.38-78.5,14.53-34.93,10.82-128.77,57.68-167.35,83.59-28.17,18.91-43.68,41.63-43.68,63.96s15.51,45.06,43.68,63.97c38.57,25.9,132.42,72.77,167.35,83.59,26.31,8.15,48.8,14.39,78.5,14.52h.15c29.69-.13,52.18-6.37,78.5-14.52,34.93-10.82,128.77-57.7,167.34-83.59,28.17-18.91,43.68-41.63,43.68-63.97s-15.51-45.06-43.68-63.96Zm-4.79,120.8c-38.12,25.59-130.7,71.86-165.1,82.52-25.62,7.93-47.49,14.01-76.07,14.14-28.5-.12-50.37-6.2-75.99-14.14-34.4-10.66-126.98-56.93-165.1-82.52-25.72-17.27-39.88-37.45-39.88-56.83s14.16-39.57,39.88-56.84c38.12-25.59,130.7-71.86,165.1-82.52,25.63-7.94,47.49-14.02,75.99-14.14h.08c28.51.12,50.37,6.2,75.99,14.14,34.4,10.66,126.98,56.92,165.1,82.52,25.72,17.26,39.88,37.44,39.88,56.84s-14.16,39.57-39.88,56.83Z" style="fill: #fff; stroke-width: 0px;"></path></svg></div>
+      <address>
+        <b style="color:#fff;font-weight:500">Triple R Europe nv</b>
+        <span>Cleydaellaan 16, unit 8</span><span>2630 Aartselaar, België</span>
+        <a href="tel:+3238254647" style="margin-top:var(--s-3)">+32 (0)3 825 46 47</a>
+        <a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a>
+        <span style="margin-top:var(--s-3)">KBO/BTW BE 0448.276.293</span>
+      </address>
+    </div>
+    <div><h2>Oplossingen</h2><ul><li><a href="#">Varnish verwijderen</a></li><li><a href="#">Water in olie</a></li><li><a href="#">Deeltjes filtreren</a></li><li><a href="#">Lucht en schuim</a></li><li><a href="#">Bypassfiltratie</a></li></ul></div>
+    <div><h2>Producten</h2><ul><li><a href="producten.html#p-elementen">Filterelementen</a></li><li><a href="producten.html#p-bu">BU-serie</a></li><li><a href="producten.html#p-se">SE-serie</a></li><li><a href="producten.html#p-osca">OSCA-serie</a></li><li><a href="producten.html">Alle producten</a></li></ul></div>
+    <div><h2>Diensten</h2><ul><li><a href="olieanalyse.html">Gratis olieanalyse</a></li><li><a href="#">Oliebeheer</a></li><li><a href="besparingscalculator.html">Besparingscalculator</a></li><li><a href="#">Elementen bestellen</a></li><li><a href="#">Downloads</a></li></ul></div>
+    <div><h2>Bedrijf</h2><ul><li><a href="#">Over ons</a></li><li><a href="#">Cases</a></li><li><a href="#">Dealers</a></li><li><a href="#">Contact</a></li><li><a href="https://www.linkedin.com/company/10456623/">LinkedIn</a></li></ul></div>
+  </div>
+  <div class="wrap ftr__bot">
+    <span>© 2026 Triple R Europe nv · Partner Finland: Triple R Finland Oy AB</span>
+    <ul><li><a href="#">Privacybeleid</a></li><li><a href="#">Cookiebeleid</a></li><li><a href="#">Algemene voorwaarden</a></li><li><a href="#">Cookie-instellingen</a></li></ul>
+    <nav class="lang" aria-label="Taal footer"><a href="#" aria-current="true">NL</a><a href="#">EN</a><a href="#">FR</a></nav>
+  </div>
+</footer>
+
+<div class="ask" id="ask" hidden data-annot="Vraag het Triple R · paneel (BRIEF §17) · role=dialog, focus-trap, Esc sluit, ↑↓ door resultaten
+staten: leeg (voorbeeldvragen + producten) · typen (instant, gegroepeerd, PDF · p. N) · antwoord (stream, [n]-bronnen, productkaart, vervolgvragen, feedback, hand-off) · geen betrouwbaar antwoord
+prototype: webpagina-index + échte PDF’s per pagina uitgelezen (pdf.js, lazy) + 3 voorbeeldantwoorden / letterlijke passages; productie: Pagefind + /api/ask (SSE)">
+  <div class="ask__backdrop" data-close></div>
+  <div class="ask__dlg" role="dialog" aria-modal="true" aria-labelledby="ask-title">
+    <div class="ask__top">
+      <span class="spark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l1.6 4.1L13.7 6.7 9.6 8.3 8 12.4 6.4 8.3 2.3 6.7l4.1-1.6z"/><path d="M13 10.5l.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6z" opacity=".75"/></svg></span>
+      <label id="ask-title" class="vh" for="ask-q">Vraag het Triple R: zoek een product of stel een vraag</label>
+      <input id="ask-q" type="text" autocomplete="off" placeholder="Zoek een product of stel een vraag…" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="ask-body">
+      <button type="button" class="ask__go" id="ask-go" disabled><span>Stel vraag</span><svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button>
+      <button type="button" class="ask__x" data-close aria-label="Sluiten">Esc</button>
+    </div>
+    <div class="ask__body" id="ask-body"></div>
+    <div class="ask__foot"><span class="ask__status" id="ask-status"><i></i><span>Doorzoekt webpagina’s en PDF’s</span></span><span>AI-antwoord op basis van Triple R-documentatie — controleer technische keuzes met een specialist. <a href="#">Privacy</a></span><span class="keys"><kbd>↑</kbd> <kbd>↓</kbd> kiezen · <kbd>↵</kbd> vragen · <kbd>Esc</kbd> sluiten</span></div>
+  </div>
+</div>
+
+<nav class="mbar" aria-label="Snel contact"><a class="btn btn--secondary" href="tel:+3238254647"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.4 20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg>Bel</a><a class="btn btn--primary" href="olieanalyse.html">Gratis olieanalyse</a></nav>
+
+<aside class="review" aria-label="Reviewhulpmiddelen">
+  <span>Review</span>
+  <button type="button" id="t-tb" aria-pressed="true">Te bevestigen</button>
+  <button type="button" id="t-annot" aria-pressed="false">Annotaties</button>
+</aside>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-hyd" viewBox="0 0 24 24"><rect x="2.75" y="8.75" width="12.5" height="6.5" rx="1"/><path d="M15.25 12H20.5M6 8.75V6h2.5M12 8.75V6H9.5"/><circle cx="21" cy="12" r=".5"/></symbol>
+  <symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 14.5h18l-2.2 4.5H5.2z"/><path d="M6.5 14.5V10.5h8.5l2 4"/><path d="M9.5 10.5V7h3v3.5"/><path d="M2.5 21.5c1.5 0 1.5-.8 3-.8s1.5.8 3 .8 1.5-.8 3-.8 1.5.8 3 .8 1.5-.8 3-.8 1.5.8 3 .8"/></symbol>
+  <symbol id="i-wind" viewBox="0 0 24 24"><path d="M12 10.5V21.5M9 21.5h6"/><circle cx="12" cy="9" r="1.5"/><path d="M12 7.5V2.5M13.3 9.75l4.3 2.5M10.7 9.75l-4.3 2.5"/></symbol>
+  <symbol id="i-energy" viewBox="0 0 24 24"><path d="M13 2.5L5.5 13.5h6l-1 8 7.5-11h-6z"/></symbol>
+  <symbol id="i-petro" viewBox="0 0 24 24"><path d="M6 21.5V7a2 2 0 0 1 4 0v14.5M14 21.5V11a2 2 0 0 1 4 0v10.5M2.5 21.5h19M10 12h4M10 16h4"/></symbol>
+  <symbol id="i-steel" viewBox="0 0 24 24"><path d="M5 3.5h14v3h-5v11h5v3H5v-3h5v-11H5z"/></symbol>
+  <symbol id="i-paper" viewBox="0 0 24 24"><ellipse cx="7" cy="12" rx="3.25" ry="6.5"/><circle cx="7" cy="12" r="1.2"/><path d="M7 5.5h10c1.8 0 3.25 2.9 3.25 6.5S18.8 18.5 17 18.5H7"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4.8 16.5H2.5V13L5 9h9.2l3.3 4h4v3.5h-2.3M9.2 16.5h5.6"/><circle cx="7" cy="16.5" r="2"/><circle cx="17" cy="16.5" r="2"/></symbol>
+  <symbol id="i-dig" viewBox="0 0 24 24"><rect x="2.5" y="17" width="11" height="3.75" rx="1.9"/><path d="M4 17v-5h4.5l2 3v2M10.5 13l5.5-6 5 4.5M21 11.5v3.5h-3"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v10h-11zM13.5 10h4l3 3.5v3h-7"/><circle cx="6.5" cy="18" r="1.75"/><circle cx="17" cy="18" r="1.75"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 10.5h14M8.5 17l-2.5 4.5M15.5 17l2.5 4.5"/><circle cx="9" cy="13.75" r=".6"/><circle cx="15" cy="13.75" r=".6"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M21 13.5l-8-4.5V4.5a1 1 0 0 0-2 0V9l-8 4.5V15l8-2.2v4.7l-2 1.5v1.5l3-.9 3 .9V19l-2-1.5v-4.7l8 2.2z"/></symbol>
+</svg>
+
+
+<script src="site.js?v=5f0e44df"></script>
+<script>
+(() => {
+  /* ======================= data (uitsluitend uit de briefing / datasheets) ======================= */
+  const FLUIDS = [
+    ['hyd', 'Hydrauliekolie', 'persen, spuitgieten, mobiel', '<path d="M3 9h12v6H3zM15 12h6M6 9V6.5h2.5M12 9V6.5H9.5"/>'],
+    ['lube', 'Smeer- of tandwielolie', 'gearboxes, lagers, windturbines', '<circle cx="9" cy="12" r="5"/><circle cx="17" cy="9" r="3"/><path d="M9 7v2M9 15v2M4 12h2M12 12h2"/>'],
+    ['eng', 'Motorolie', 'scheeps-, gas- en dieselmotoren', '<path d="M4 9h3l2-2h5l2 2h3v7h-3l-2 2H9l-2-2H4z"/>'],
+    ['tur', 'Turbineolie', 'stoom-, gas- en waterturbines', '<circle cx="12" cy="12" r="2"/><path d="M12 10c0-4 2-6 5-6M14 12c4 0 6 2 6 5M12 14c0 4-2 6-5 6M10 12c-4 0-6-2-6-5"/>'],
+    ['wg', 'Water-glycol', 'brandveilige hydrauliek', '<path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/><path d="M9 14h6"/>'],
+    ['cool', 'Koelvloeistof of emulsie', 'bewerkingsmachines, wassers', '<path d="M12 3v18M5 7l14 10M19 7L5 17"/>'],
+    ['oth', 'Andere vloeistof', 'we bekijken het samen', '<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5M12 16.5v.5"/>']
+  ];
+  const APPS = {
+    hyd: ['Spuitgietmachines', 'Persen', 'Mobiele hydrauliek', 'Powerpacks', 'Maritieme hydrauliek', 'Testbanken'],
+    lube: ['Tandwielkasten', 'Windturbines', 'Lagers en smeercircuits', 'Papiermachines'],
+    eng: ['Scheepsmotoren', 'Generatoren', 'Vrachtwagens en bouwmachines'],
+    tur: ['Stoom- en gasturbines', 'Waterkracht'],
+    wg: ['Brandveilige hydrauliek', 'Spuitgieten'],
+    cool: ['Bewerkingsmachines', 'Onderdelenwassers', 'Lakstraten', 'Draadtrekken'],
+    oth: []
+  };
+  const VG = [15, 22, 32, 46, 68, 100, 150, 220, 320, 460, 680];
+  const V100 = { 15: 3.4, 22: 4.3, 32: 5.4, 46: 6.8, 68: 8.6, 100: 11.1, 150: 14.5, 220: 18.7, 320: 23.7, 460: 30.1, 680: 38 }; // schatting bij VI ≈ 100
+  const VG_DEFAULT = { hyd: 46, lube: 220, eng: 100, tur: 32, wg: 46, oth: 46 };
+  const P = {
+    bu: { n: 'BU-serie', img: 'img/BU-Series.png', pdf: 'BU-2023-UK-.pdf', conn: 'press', pmax: 450, fl: ['hyd', 'lube', 'wg'], vis: [3, 320], apps: ['Spuitgietmachines', 'Persen', 'Mobiele hydrauliek', 'Powerpacks', 'Maritieme hydrauliek', 'Spuitgieten', 'Brandveilige hydrauliek'], vol: [0, 2000], line: 'Bypassfilter op de drukleiding, zonder pomp of motor' },
+    tr: { n: 'TR-serie', img: null, pdf: 'TR-2019-ENGLISH.pdf', conn: 'press', pmax: 6, fl: ['eng', 'lube'], vis: [3, 320], apps: ['Scheepsmotoren', 'Generatoren', 'Vrachtwagens en bouwmachines', 'Tandwielkasten', 'Windturbines'], vol: [0, 2000], line: 'Bypassfilter voor motorolie en systemen onder 6 bar' },
+    se: { n: 'SE-serie', img: 'img/se.png', pdf: 'SE-2019-ENGLISH.pdf', conn: 'off', fl: ['hyd', 'lube', 'wg', 'tur'], vis: [3, 320], apps: ['Powerpacks', 'Testbanken', 'Mobiele hydrauliek', 'Lagers en smeercircuits'], vol: [0, 5000], mob: true, wall: true, line: 'Offline reiniger met eigen motor-pompgroep' },
+    osca: { n: 'OSCA-serie', img: 'img/osca.png', pdf: 'OSCA-2019-ENGLISH.pdf', conn: 'off', fl: ['hyd', 'lube', 'tur', 'eng'], vis: [3, 320], apps: ['Tandwielkasten', 'Windturbines', 'Papiermachines', 'Persen', 'Stoom- en gasturbines', 'Testbanken'], vol: [1000, 1e9], mob: true, line: 'Offline reiniger met hoog debiet, 6 tot > 60 l/min' },
+    ss: { n: 'SS-serie', img: 'img/ss.png', pdf: 'SS-2019-ENGLISH-.pdf', conn: 'both', pmax: 15, fl: ['hyd', 'lube'], vis: [3, 600], apps: ['Persen', 'Tandwielkasten', 'Maritieme hydrauliek', 'Papiermachines'], vol: [1000, 1e9], line: 'Stalen huis voor 2 tot 6 elementen, tot 60 l/min' },
+    cen: { n: 'Centrifuges', img: 'img/centrifuge.png', pdf: 'Centrifuges_2014_UK-1.pdf', conn: 'off', fl: ['cool', 'hyd', 'oth'], vis: [0, 20], apps: ['Bewerkingsmachines', 'Onderdelenwassers', 'Lakstraten', 'Draadtrekken'], vol: [0, 1e9], line: 'Deeltjes tot 3 µm uit koelvloeistof en proceswater' }
+  };
+  const ADD = {
+    vac: { n: 'Vacuümontwateraar', img: 'img/vacuum.png', pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', why: 'verwijdert 80% van het opgeloste en 100% van het vrije water (10–600 cSt, 15–60 °C)' },
+    ws: { n: 'WS-serie', img: 'img/ws.png', pdf: 'WS-2019-ENGLISH.pdf', why: 'coalescer voor continue waterinloop' },
+    qt: { n: 'Quicktoron', img: 'img/quicktoron.png', pdf: 'QUICKTORON-2023-ENGLISH.pdf', why: 'haalt tot 95% van de luchtbellen uit de olie (tot 250 cSt, 120 °C)' }
+  };
+  const ICON = {
+    press: '<circle cx="12" cy="13" r="7"/><path d="M12 13l4-4"/>', off: '<rect x="4" y="7" width="10" height="11" rx="1.5"/><circle cx="18" cy="14" r="3"/><path d="M14 12h1"/>', unk: '<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5M12 16.5v.5"/>',
+    D: '<path d="M6 9l3-1.5 2 2.5-1.5 3L6 12.5zM15 6l2-1 1.5 1.5-1 2-2.5-.5zM15 15l3.5-1.5 2 3-2 3-3.5-1z"/>', V: '<path d="M3 14c4-2 6 2 9 0s5-2 9 0M3 18c4-2 6 2 9 0s5-2 9 0"/>', W: '<path d="M12 4s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/>', L: '<circle cx="9" cy="14" r="4"/><circle cx="16" cy="8" r="3"/>', X: '<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5M12 16.5v.5"/>',
+    st: '<rect x="5" y="5" width="14" height="14" rx="2"/><path d="M5 19l-1 2M19 19l1 2"/>', mob: '<rect x="4" y="6" width="12" height="10" rx="1.5"/><circle cx="7" cy="19" r="1.5"/><circle cx="14" cy="19" r="1.5"/><path d="M16 9h4v7"/>', wall: '<path d="M4 3v18"/><rect x="8" y="7" width="10" height="10" rx="1.5"/><path d="M4 9h4M4 15h4"/>', any: '<path d="M5 12h14M12 5v14"/>'
+  };
+  const ic = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  const nf = new Intl.NumberFormat('nl-BE', { maximumFractionDigits: 1 });
+
+  /* ======================= state ======================= */
+  const S = { f: null, a: null, vol: 400, vg: null, t: 45, c: null, p: 120, pb: [], m: 'any', x: 'nee', u: '400' };
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('f')) { ['f', 'a', 'c', 'm', 'x', 'u'].forEach(k => qs.get(k) && (S[k] = qs.get(k))); ['vol', 'vg', 't', 'p'].forEach(k => qs.get(k) && (S[k] = +qs.get(k))); S.pb = (qs.get('pb') || '').split(',').filter(Boolean); }
+  const STEPS = ['f', 'a', 'vol', 'vis', 'c', 'pb', 'm'];
+  const LBL = ['Vloeistof', 'Toepassing', 'Volume', 'Viscositeit', 'Aansluiting', 'Probleem', 'Installatie'];
+  let step = 0, done = new Set(), finished = false;
+  if (qs.get('f')) { STEPS.forEach((_, i) => done.add(i)); finished = true; step = 6; }
+  const coolant = () => S.f === 'cool';
+
+  /* ======================= viscositeit (Walther / ASTM D341) ======================= */
+  function opVisc() {
+    if (coolant()) return null;
+    const vg = S.vg || VG_DEFAULT[S.f] || 46, v40 = vg, v100 = V100[vg];
+    const W = v => Math.log10(Math.log10(v + .7)), B = (W(v40) - W(v100)) / (Math.log10(373.15) - Math.log10(313.15)), A = W(v40) + B * Math.log10(313.15);
+    return Math.pow(10, Math.pow(10, A - B * Math.log10(S.t + 273.15))) - .7;
+  }
+
+  /* ======================= selectie-engine ======================= */
+  function evaluate() {
+    const v = opVisc(), out = [];
+    for (const [id, p] of Object.entries(P)) {
+      const ch = []; let fail = false, sc = 50;
+      const add = (s, t) => { ch.push([s, t]); if (s === 'fail') fail = true; };
+      if (!S.f) return [];
+      // vloeistof
+      if (p.fl.includes(S.f)) { add('ok', 'Geschikt voor ' + FLUIDS.find(x => x[0] === S.f)[1].toLowerCase()); if (id === 'cen' && S.f !== 'cool') add('warn', 'Alleen voor oliën tot 20 cSt'); }
+      else if (S.f === 'oth') add('warn', 'Vloeistof te bevestigen door een specialist');
+      else add('fail', 'Niet bedoeld voor ' + FLUIDS.find(x => x[0] === S.f)[1].toLowerCase());
+      if (S.f === 'wg' && ['bu', 'se'].includes(id)) add('ok', 'Met WG/DWG-element voor water-glycol');
+      // toepassing
+      if (S.a && p.apps.includes(S.a)) { sc += 18; add('ok', 'Veel gebruikt bij ' + S.a.toLowerCase()); }
+      // volume
+      if (done.has(2) || finished) {
+        if (S.vol >= p.vol[0] && S.vol <= p.vol[1]) { sc += 12; add('ok', `Past bij ${nf.format(S.vol)} l systeeminhoud`); }
+        else if (S.vol > p.vol[1]) { sc -= 18; add('warn', `Voor ${nf.format(S.vol)} l is een unit met meer debiet efficiënter`); }
+        else { sc -= 8; add('warn', 'Bedoeld voor grotere volumes'); }
+        if (id === 'osca' && S.vol > 50000) sc += 10;
+      }
+      // viscositeit
+      if (v != null && (done.has(3) || finished)) {
+        if (v >= p.vis[0] && v <= p.vis[1]) add('ok', `Bedrijfsviscositeit ≈ ${nf.format(v)} cSt binnen bereik`);
+        else if (id === 'ss' && v <= 600) add('ok', `≈ ${nf.format(v)} cSt: met X-element (hoge viscositeit)`);
+        else add('fail', `Bedrijfsviscositeit ≈ ${nf.format(v)} cSt buiten bereik (${p.vis[0]}–${p.vis[1]} cSt)`);
+        if (v > 150 && ['osca', 'ss'].includes(id)) sc += 8;
+      }
+      // aansluiting en druk
+      if (S.c === 'press') {
+        if (p.conn === 'press' || p.conn === 'both') {
+          if (S.p <= p.pmax) { sc += 22; add('ok', `Op de drukleiding, ${S.p} bar binnen limiet (${p.pmax} bar)`); }
+          else add('fail', `${S.p} bar is boven de limiet van ${p.pmax} bar`);
+        } else { sc -= 6; add('warn', 'Werkt los van de drukleiding, met eigen pomp'); }
+      } else if (S.c === 'off') {
+        if (p.conn === 'press') add('fail', 'Vraagt een bestaande drukleiding');
+        else { sc += 16; add('ok', 'Offline, met eigen pomp'); }
+      }
+      // installatie
+      if (S.m === 'mob') { if (p.mob) { sc += 10; add('ok', 'Ook mobiel leverbaar'); } else add('warn', 'Standaard stationair'); }
+      if (S.m === 'wall') { if (p.wall) { sc += 8; add('ok', 'Ook voor wandmontage (WH)'); } else add('warn', 'Wandmontage te bevestigen'); }
+      if (S.x === 'ja') add('warn', 'ATEX-uitvoering te bevestigen door een specialist');
+      out.push({ id, p, ch, fail, sc: Math.max(5, Math.min(99, sc)) });
+    }
+    return out.sort((a, b) => (a.fail - b.fail) || (b.sc - a.sc));
+  }
+  function element() {
+    const v = opVisc();
+    if (S.f === 'cool') return null;
+    if (S.f === 'wg') return ['WG / DWG', 'voor water-glycol'];
+    if (S.pb.includes('W')) return ['WE100', 'absorbeert tot 900 ml water, < 80 ppm'];
+    if (S.pb.includes('V')) return ['V100', '1 µm absoluut, tegen varnish'];
+    if (S.f === 'eng') return ['E-element', '5 µm absoluut, voor motorolie'];
+    if (v && v > 150) return ['X-element', '10 µm absoluut, voor hoge viscositeit'];
+    if (S.pb.includes('D') && S.vol > 1000) return ['D-element', '4 µm, 80% meer vuilcapaciteit'];
+    return ['M-element', '3 µm absoluut, voor hydrauliek en smering'];
+  }
+  function addons() {
+    const a = [], v = opVisc();
+    if (S.pb.includes('W')) { if (S.vol >= 200 || S.f === 'tur') a.push(['vac', v && (v < 10 || v > 600) ? 'warn' : 'ok']); if (['Maritieme hydrauliek', 'Papiermachines', 'Scheepsmotoren'].includes(S.a) || S.vol >= 1000) a.push(['ws', 'ok']); }
+    if (S.pb.includes('L')) a.push(['qt', v && v > 250 ? 'warn' : 'ok']);
+    return a;
+  }
+
+  /* ======================= gegevens + matches ======================= */
+  const has = i => done.has(i) || finished;
+  const PBN = { D: 'Deeltjes', V: 'Varnish', W: 'Water', L: 'Lucht', X: 'Onbekend' };
+  function fields() {
+    const fl = S.f ? FLUIDS.find(x => x[0] === S.f)[1] : null;
+    return [
+      ['Vloeistof', fl],
+      ['Toepassing', has(1) ? (S.a || 'Niet opgegeven') : null],
+      ['Volume', has(2) ? nf.format(S.vol) + ' l' : null],
+      ['Viscositeit', has(3) ? (coolant() ? 'n.v.t.' : `VG ${S.vg || VG_DEFAULT[S.f]} · ${S.t} °C → ≈ ${nf.format(opVisc())} cSt`) : null],
+      ['Aansluiting', has(4) ? (S.c === 'press' ? `Drukleiding · ${S.p} bar` : S.c === 'off' ? 'Offline, eigen pomp' : 'Nog onbekend') : null],
+      ['Probleem', has(5) ? (S.pb.length ? S.pb.map(x => PBN[x]).join(', ') : 'Niet opgegeven') : null],
+      ['Installatie', has(6) ? { st: 'Stationair', mob: 'Mobiel', wall: 'Wandmontage', any: 'Geen voorkeur' }[S.m] + (S.x === 'ja' ? ' · ATEX' : '') : null]
+    ];
+  }
+  function cfgCode() {
+    if (!S.f) return '—';
+    const c = ['RRR', S.f.toUpperCase()];
+    if (has(2)) c.push(String(S.vol).padStart(4, '0'));
+    if (has(3) && !coolant()) c.push('VG' + (S.vg || VG_DEFAULT[S.f]) + '/' + S.t + 'C');
+    if (has(4)) c.push(S.c === 'press' ? 'P' + S.p : S.c === 'off' ? 'OFF' : 'UNK');
+    if (has(5) && S.pb.length) c.push(S.pb.join(''));
+    if (has(6)) c.push(S.m.toUpperCase() + (S.x === 'ja' ? '-ATEX' : ''));
+    return c.join('-');
+  }
+  let prevF = [];
+  function renderLive() {
+    const f = fields();
+    document.getElementById('fields').innerHTML = f.map(([k, v], i) => `<div><dt>${k}</dt><dd class="${v ? (v !== prevF[i] ? 'new' : '') : 'e'}">${v || '—'}</dd></div>`).join('');
+    prevF = f.map(x => x[1]);
+    document.getElementById('cfg').textContent = cfgCode();
+    const r = evaluate().slice(0, 3), m = document.getElementById('matches');
+    m.innerHTML = r.length ? r.map(x => `<div class="m ${x.fail ? 'out' : ''}">${x.p.img ? `<img src="${x.p.img}" alt="">` : '<span class="ph"></span>'}<b>${x.p.n}</b><span class="pct">${x.fail ? 'past niet' : x.sc + '%'}</span><span class="bar"><i style="width:${x.fail ? 12 : x.sc}%"></i></span></div>`).join('') : '<p class="empty">De matches verschijnen zodra u begint.</p>';
+  }
+
+  /* ======================= stappen (voortgang) ======================= */
+  const stamps = document.getElementById('stamps');
+  const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  let prevOn = new Set();
+  function drawStamps() {
+    const reach = Math.max(-1, ...done) + 1;
+    stamps.innerHTML = LBL.map((l, i) => { const on = has(i), cur = i === step && !finished, ok = on || i <= reach;
+      return `<li class="${on ? 'on' : ''}${cur ? ' cur' : ''}${on && !prevOn.has(i) ? ' new' : ''}"><button type="button" data-i="${i}" ${ok ? '' : 'disabled'} ${cur ? 'aria-current="step"' : ''} aria-label="Stap ${i + 1}: ${l}${on ? ', ingevuld' : ''}"><span class="st">${on ? CHECK : i + 1}</span><span class="t">${l}</span></button></li>`; }).join('');
+    prevOn = new Set(LBL.map((_, i) => i).filter(has));
+  }
+  stamps.addEventListener('click', e => { const b = e.target.closest('button[data-i]'); if (!b || b.disabled) return; finished = false; go(+b.dataset.i); });
+
+/* ======================= stappen ======================= */
+  const q = document.getElementById('q'), back = document.getElementById('back'), next = document.getElementById('next'), lbl = document.getElementById('step-lbl');
+  const radio = (name, v, label, small, icon, checked) => `<label class="opt"><input type="radio" name="${name}" value="${v}" ${checked ? 'checked' : ''}><span>${ic(icon)}<b>${label}</b><small>${small || '&nbsp;'}</small></span></label>`;
+  const chip = (type, name, v, label, checked) => `<label class="chip"><input type="${type}" name="${name}" value="${v}" ${checked ? 'checked' : ''}><span>${label}</span></label>`;
+  const volToR = v => Math.log10(Math.max(10, v)), rToVol = r => { const v = Math.pow(10, r); return v < 100 ? Math.round(v / 5) * 5 : v < 1000 ? Math.round(v / 10) * 10 : v < 10000 ? Math.round(v / 100) * 100 : Math.round(v / 1000) * 1000; };
+  const pct = el => el.style.setProperty('--pct', ((el.value - el.min) / (el.max - el.min) * 100) + '%');
+  function view(i) {
+    switch (i) {
+      case 0: return `<fieldset><legend>Welke vloeistof wilt u reinigen?</legend><div class="opts">${FLUIDS.map(f => radio('f', f[0], f[1], f[2], f[3], S.f === f[0])).join('')}</div></fieldset>`;
+      case 1: { const a = APPS[S.f] || []; return `<fieldset><legend>Waar wordt de ${S.f ? FLUIDS.find(x => x[0] === S.f)[1].toLowerCase() : 'vloeistof'} gebruikt?</legend><p class="hint">Optioneel, maar het verfijnt de match.</p><div class="chips">${a.map(x => chip('radio', 'a', x, x, S.a === x)).join('')}${chip('radio', 'a', '', 'Andere / weet ik niet', !S.a)}</div></fieldset>`; }
+      case 2: return `<fieldset><legend>Hoeveel vloeistof zit er in het systeem?</legend><p class="hint">De totale inhoud van tank en leidingen. Een schatting volstaat.</p>
+        <div class="sl"><div class="sl__row"><label for="vol-n">Systeeminhoud</label><div class="num"><input id="vol-n" type="text" inputmode="numeric" value="${S.vol}"><span>liter</span></div></div>
+        <input class="rng" id="vol-r" type="range" min="1" max="5" step="0.01" value="${volToR(S.vol)}" aria-label="Systeeminhoud in liter" aria-valuetext="${nf.format(S.vol)} liter"><div class="ticks"><span>10 l</span><span>100 l</span><span>1.000 l</span><span>10.000 l</span><span>100.000 l</span></div></div>
+        <div class="chips">${[50, 200, 400, 1000, 10000, 50000].map(v => `<button type="button" class="btn btn--secondary btn--sm" data-vol="${v}">${nf.format(v)} l</button>`).join('')}</div></fieldset>`;
+      case 3: if (coolant()) return `<fieldset><legend>Viscositeit</legend><p class="hint">Voor koelvloeistof en emulsies is de viscositeit niet bepalend; deze stap slaan we over.</p></fieldset>`;
+        return `<fieldset><legend>Welke viscositeit en temperatuur?</legend><p class="hint">De ISO VG-klasse staat op het etiket of de datasheet van de olie. Weet u het niet? Dan nemen we een typische waarde.</p>
+        <div class="chips" role="radiogroup" aria-label="ISO VG-klasse">${VG.map(v => chip('radio', 'vg', v, 'VG ' + v, S.vg === v)).join('')}${chip('radio', 'vg', '', 'Weet ik niet', !S.vg)}</div>
+        <div class="sl"><div class="sl__row"><label for="t-n">Normale bedrijfstemperatuur</label><div class="num"><input id="t-n" type="text" inputmode="numeric" value="${S.t}"><span>°C</span></div></div><input class="rng" id="t-r" type="range" min="10" max="100" step="1" value="${S.t}" aria-label="Bedrijfstemperatuur in °C"><div class="ticks"><span>10 °C</span><span>40</span><span>70</span><span>100 °C</span></div></div>
+        <div class="gauge" aria-live="polite"><div class="gauge__top"><span>Bedrijfsviscositeit (berekend)</span><b id="vv"></b></div><div class="gauge__bar"><i id="vi"></i></div><div class="gauge__lbl"><span>te dun</span><span>3–320 cSt: standaardelementen</span><span>hoog</span></div><p id="vt"></p></div></fieldset>`;
+      case 4: return `<fieldset><legend>Hoe wordt de filter aangesloten?</legend><div class="opts wide">${radio('c', 'press', 'Op de bestaande drukleiding', 'gebruikt de druk van de machine, geen pomp nodig', ICON.press, S.c === 'press')}${radio('c', 'off', 'Offline, met eigen pomp', 'aparte unit naast de machine of tank', ICON.off, S.c === 'off')}${radio('c', 'unk', 'Weet ik niet', 'we tonen beide opties', ICON.unk, S.c === 'unk')}</div>
+        <div class="sub" id="p-sub" ${S.c === 'press' ? '' : 'hidden'}><div class="sl"><div class="sl__row"><label for="p-n">Druk op het aansluitpunt</label><div class="num"><input id="p-n" type="text" inputmode="numeric" value="${S.p}"><span>bar</span></div></div><input class="rng" id="p-r" type="range" min="0" max="450" step="1" value="${S.p}" aria-label="Druk in bar"><div class="ticks"><span>0</span><span>150</span><span>300</span><span>450 bar</span></div></div></div></fieldset>`;
+      case 5: return `<fieldset><legend>Wat wilt u vooral oplossen?</legend><p class="hint">Meerdere antwoorden mogelijk. Dit bepaalt het filterelement en eventuele aanvullende units.</p><div class="opts">${[['D', 'Vuile olie / deeltjes', 'slijtage, filters lopen vol'], ['V', 'Varnish / afzettingen', 'haperende kleppen'], ['W', 'Water in de olie', 'melkachtig, corrosie'], ['L', 'Lucht / schuim', 'cavitatie, lawaai'], ['X', 'Weet ik niet', 'een olieanalyse helpt']].map(([v, l, s]) => `<label class="opt"><input type="checkbox" name="pb" value="${v}" ${S.pb.includes(v) ? 'checked' : ''}><span>${ic(ICON[v])}<b>${l}</b><small>${s}</small></span></label>`).join('')}</div></fieldset>`;
+      case 6: return `<fieldset><legend>Hoe wordt het systeem geïnstalleerd?</legend><div class="opts">${[['st', 'Stationair', 'vast naast de machine'], ['mob', 'Mobiel', 'op wielen, voor meerdere machines'], ['wall', 'Wandmontage', 'compact aan de wand'], ['any', 'Geen voorkeur', '']].map(([v, l, s]) => radio('m', v, l, s, ICON[v], S.m === v)).join('')}</div>
+        <div class="sl__row" style="flex-wrap:wrap"><span style="font-weight:500;font-size:var(--fs-sm)" id="x-l">ATEX-uitvoering nodig?</span><div class="chips" role="radiogroup" aria-labelledby="x-l">${chip('radio', 'x', 'nee', 'Nee', S.x === 'nee')}${chip('radio', 'x', 'ja', 'Ja', S.x === 'ja')}</div></div>
+        ${S.c !== 'press' ? `<div class="sl__row" style="flex-wrap:wrap"><span style="font-weight:500;font-size:var(--fs-sm)" id="u-l">Voedingsspanning</span><div class="chips" role="radiogroup" aria-labelledby="u-l">${['230', '400', '?'].map(u => chip('radio', 'u', u, u === '?' ? 'Weet ik niet' : u + ' V', S.u === u)).join('')}</div></div>` : ''}</fieldset>`;
+    }
+  }
+  function gauge() {
+    const v = opVisc(); if (v == null || !document.getElementById('vv')) return;
+    document.getElementById('vv').textContent = '≈ ' + nf.format(v) + ' cSt';
+    const pos = v < 3 ? v / 3 * 8 : v <= 320 ? 8 + (Math.log10(v) - Math.log10(3)) / (Math.log10(320) - Math.log10(3)) * 70 : Math.min(100, 78 + (Math.log10(v) - Math.log10(320)) / (Math.log10(3000) - Math.log10(320)) * 22);
+    document.getElementById('vi').style.left = pos + '%';
+    document.getElementById('vt').textContent = v < 3 ? 'Erg dunne olie: een specialist bekijkt de configuratie.' : v <= 320 ? 'Binnen het bereik van de standaard Triple R-filterelementen.' : v <= 600 ? 'Hoge viscositeit: de SS-serie met X-element of een opwarming van de olie kan nodig zijn.' : 'Zeer hoge viscositeit: een specialist bekijkt de mogelijkheden.';
+  }
+  function go(i, dir) {
+    step = Math.max(0, Math.min(6, i));
+    if (step === 1 && !(APPS[S.f] || []).length) step = dir === 'bwd' ? 0 : 2;
+    finished = false; next.hidden = false; back.textContent = '← Vorige';
+    q.innerHTML = view(step);
+    const fs = q.querySelector('fieldset'); dir && fs && fs.classList.add(dir);
+    q.querySelectorAll('.rng').forEach(pct);
+    gauge();
+    lbl.textContent = `Stap ${step + 1} van 7 · ${LBL[step]}`;
+    back.hidden = step === 0; next.textContent = step === 6 ? 'Toon mijn match' : 'Volgende';
+    next.disabled = step === 0 && !S.f;
+    drawStamps(); renderLive();
+  }
+  q.addEventListener('input', e => {
+    const t = e.target;
+    if (t.name === 'f') { S.f = t.value; S.a = null; S.vg = null; next.disabled = false; done.add(0); setTimeout(() => go(1, 'fwd'), 220); }
+    if (t.name === 'a') S.a = t.value || null;
+    if (t.id === 'vol-r') { S.vol = rToVol(+t.value); document.getElementById('vol-n').value = S.vol; t.setAttribute('aria-valuetext', nf.format(S.vol) + ' liter'); pct(t); }
+    if (t.id === 'vol-n') { const v = parseInt(t.value.replace(/\D/g, '')); if (v > 0) { S.vol = v; const r = document.getElementById('vol-r'); r.value = volToR(v); pct(r); } }
+    if (t.name === 'vg') { S.vg = t.value ? +t.value : null; gauge(); }
+    if (t.id === 't-r' || t.id === 't-n') { const v = parseInt(t.value); if (!isNaN(v)) { S.t = Math.max(-10, Math.min(150, v)); if (t.id === 't-r') document.getElementById('t-n').value = S.t; else { const r = document.getElementById('t-r'); r.value = S.t; pct(r); } pct(document.getElementById('t-r')); gauge(); } }
+    if (t.name === 'c') { S.c = t.value; document.getElementById('p-sub').hidden = S.c !== 'press'; }
+    if (t.id === 'p-r' || t.id === 'p-n') { const v = parseInt(t.value); if (!isNaN(v)) { S.p = Math.max(0, Math.min(1000, v)); if (t.id === 'p-r') document.getElementById('p-n').value = S.p; else { const r = document.getElementById('p-r'); r.value = Math.min(450, S.p); pct(r); } pct(document.getElementById('p-r')); } }
+    if (t.name === 'pb') { S.pb = [...q.querySelectorAll('[name=pb]:checked')].map(x => x.value); if (t.value === 'X' && t.checked) { q.querySelectorAll('[name=pb]').forEach(x => { if (x.value !== 'X') x.checked = false; }); S.pb = ['X']; } else if (t.checked) { const x = q.querySelector('[name=pb][value=X]'); x.checked = false; S.pb = S.pb.filter(v => v !== 'X'); } }
+    if (t.name === 'm') S.m = t.value;
+    if (t.name === 'x') S.x = t.value;
+    if (t.name === 'u') S.u = t.value;
+    done.add(step); renderLive();
+  });
+  q.addEventListener('click', e => { const b = e.target.closest('[data-vol]'); if (!b) return; S.vol = +b.dataset.vol; document.getElementById('vol-n').value = S.vol; const r = document.getElementById('vol-r'); r.value = volToR(S.vol); pct(r); done.add(2); renderLive(); });
+  next.addEventListener('click', () => { done.add(step); if (step < 6) go(step + 1, 'fwd'); else showResult(); });
+  back.addEventListener('click', () => finished ? go(6, 'bwd') : go(step - 1, 'bwd'));
+
+  /* ======================= resultaat ======================= */
+  function shareUrl() {
+    const p = new URLSearchParams({ f: S.f, vol: S.vol, t: S.t, c: S.c || 'unk', p: S.p, m: S.m, x: S.x, u: S.u });
+    if (S.a) p.set('a', S.a); if (S.vg) p.set('vg', S.vg); if (S.pb.length) p.set('pb', S.pb.join(','));
+    return location.origin + location.pathname + '?' + p.toString();
+  }
+  function showResult() {
+    finished = true; done = new Set([0, 1, 2, 3, 4, 5, 6]);
+    const r = evaluate(), ok = r.filter(x => !x.fail), best = ok[0], el = element(), ad = addons();
+    lbl.textContent = 'Uw oliereiniger op maat';
+    back.hidden = false; back.textContent = '← Antwoorden aanpassen'; next.hidden = true;
+    const alt = ok.slice(1, 3);
+    const failing = r.filter(x => x.fail).slice(0, 2);
+    q.innerHTML = `<div class="result" aria-live="polite">
+      ${best ? `<div class="best"><div class="img">${best.p.img ? `<img src="${best.p.img}" alt="${best.p.n}">` : ''}</div><div><span class="tag">Uw oliereiniger · ${best.sc}% match</span><h3>${best.p.n}${el ? ' met ' + el[0] : ''}</h3><p class="small" style="color:var(--grey-600)">${best.p.line}</p><ul class="checklist">${best.ch.map(([s, t]) => `<li class="${s === 'ok' ? '' : s}">${t}</li>`).join('')}</ul></div></div>`
+      : `<div class="eng"><h3 style="font-size:var(--fs-h3)">Uw installatie vraagt maatwerk</h3><p style="color:var(--grey-600)">Geen enkele standaardserie doorstaat alle technische controles. Dat is geen doodlopende weg: een specialist kijkt mee en stelt een configuratie op maat voor.</p><ul class="checklist">${failing.flatMap(x => x.ch.filter(c => c[0] === 'fail').map(c => `<li class="fail">${x.p.n}: ${c[1]}</li>`)).slice(0, 4).join('')}</ul></div>`}
+      ${el ? `<div class="elem"><b>Aanbevolen filterelement:</b><span class="pill">${el[0]}</span><span>${el[1]}</span></div>` : ''}
+      ${ad.length ? `<div><h4 style="margin-bottom:10px">Aanvullend aanbevolen</h4><div class="alts">${ad.map(([k, s]) => `<a class="alt" href="producten.html#p-${k === 'vac' ? 'vacuum' : k === 'qt' ? 'quicktoron' : 'ws'}"><img src="${ADD[k].img}" alt=""><b>${ADD[k].n}${s === 'warn' ? ' <span style="color:#8A5A00">(te controleren)</span>' : ''}</b><span>${ADD[k].why}</span></a>`).join('')}</div></div>` : ''}
+      ${alt.length ? `<div><h4 style="margin-bottom:10px">Ook geschikt</h4><div class="alts">${alt.map(x => `<a class="alt" href="producten.html#p-${x.id === 'cen' ? 'centrifuges' : x.id}">${x.p.img ? `<img src="${x.p.img}" alt="">` : '<span></span>'}<span class="k">${x.sc}% match</span><b>${x.p.n}</b></a>`).join('')}</div></div>` : ''}
+      <div class="btns"><a class="btn btn--primary" href="homepage.html?config=${encodeURIComponent(cfgCode())}#contact">${best ? 'Vraag advies en prijs voor de ' + best.p.n : 'Laat een specialist meekijken'}</a>${best && best.p.pdf ? `<a class="btn btn--secondary" href="pdf/${encodeURIComponent(best.p.pdf)}" target="_blank" rel="noopener">Datasheet (PDF)</a>` : ''}<a class="btn btn--secondary" href="olieanalyse.html">Gratis olieanalyse</a></div>
+      <div class="share"><button type="button" class="btn btn--secondary btn--sm" id="copy">Kopieer de link naar dit resultaat</button><span id="copy-t" role="status"></span><button type="button" class="btn btn--secondary btn--sm ghost" id="restart">Opnieuw beginnen</button></div>
+    </div>`;
+    drawStamps(); renderLive();
+    history.replaceState(null, '', shareUrl());
+    document.getElementById('copy').addEventListener('click', () => { const u = shareUrl(); (navigator.clipboard?.writeText(u) || Promise.reject()).then(() => document.getElementById('copy-t').textContent = 'Link gekopieerd.').catch(() => { document.getElementById('copy-t').textContent = u; }); });
+    document.getElementById('restart').addEventListener('click', () => { Object.assign(S, { f: null, a: null, vol: 400, vg: null, t: 45, c: null, p: 120, pb: [], m: 'any', x: 'nee', u: '400' }); done = new Set(); prevF = []; prevOn = new Set(); history.replaceState(null, '', location.pathname); back.textContent = '← Vorige'; next.hidden = false; go(0); });
+    window.dataLayer?.push({ event: 'product_selector_result', product: best ? best.id : 'engineering' });
+  }
+
+  /* ======================= hero-demo: gegevens typen → product ======================= */
+  (() => {
+    if (!document.documentElement.classList.contains('motion')) return;
+    const demos = [
+      [['Hydrauliekolie', '400 l', '120 bar', 'Water'], 'img/BU-Series.png', 'BU-serie', 'met WE100-element'],
+      [['Tandwielolie', '12.000 l', 'offline', 'Deeltjes'], 'img/osca.png', 'OSCA-serie', 'met M-element'],
+      [['Hydrauliekolie', '250 l', 'offline', 'Lucht'], 'img/se.png', 'SE-serie', '+ Quicktoron']
+    ];
+    const f = [...document.querySelectorAll('.build .f')], img = document.getElementById('bo-img'), n = document.getElementById('bo-n'), e = document.getElementById('bo-e');
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    let k = 0;
+    (async function loop() {
+      for (;;) {
+        const [vals, src, name, extra] = demos[k++ % demos.length];
+        img.style.opacity = .15;
+        for (let i = 0; i < f.length; i++) {
+          const b = f[i].querySelector('b'); f.forEach(x => x.classList.remove('on')); f[i].classList.add('on'); b.textContent = '';
+          for (const ch of vals[i]) { b.textContent += ch; await wait(45); }
+          await wait(250);
+        }
+        f.forEach(x => x.classList.remove('on'));
+        img.src = src; n.textContent = name; e.textContent = extra; img.style.opacity = 1;
+        await wait(3200);
+      }
+    })();
+  })();
+
+  if (finished) showResult(); else go(0);
+})();
+</script>
+
+</body>
+</html>
