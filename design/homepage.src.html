@@ -38,7 +38,6 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
       <form data-ask-embed role="search" aria-label="Vraag het aan Triple R"><label class="vh" for="ha-q">Stel uw vraag aan Triple R</label><svg class="heroask__ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18"/></svg><input id="ha-q" type="text" autocomplete="off" placeholder="Stel een vraag, bv. hoe haal ik water uit hydraulische olie?"><button class="btn btn--light" type="submit">Vraag</button></form>
       <div class="chips" aria-label="Voorbeeldvragen"><button type="button" data-q="Hoe verwijder ik varnish uit hydraulische olie?">Varnish verwijderen</button><button type="button" data-q="Welke filter past op een drukleiding van 300 bar?">Filter voor 300 bar</button><button type="button" data-q="Hoeveel water haalt de vacuümontwateraar uit de olie?">Water uit olie</button></div>
     </div>
-        <div class="hero__credit"><button type="button" class="vbtn" id="hero-pause" aria-pressed="false" aria-label="Video pauzeren"><svg class="i-pause" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3.5" y="3" width="3" height="10" rx="1"/><rect x="9.5" y="3" width="3" height="10" rx="1"/></svg><svg class="i-play" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3l8 5-8 5z"/></svg></button></div>
       </div>
     </div>
     <div class="trust" data-annot="Vertrouwensbalk · namen lopen als carrousel (40 s per ronde, lineair, pauzeert bij hover/focus, randen vervagen) · statisch en wrappend bij reduced motion · tekst-placeholders tot logo's (grijs SVG, 28px hoog) goedgekeurd zijn">
@@ -167,13 +166,10 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
 </script>
 <script>
 (() => {
-  const v = document.getElementById('hero-video'), b = document.getElementById('hero-pause');
+  const v = document.getElementById('hero-video');
   if (!v) return;
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const set = playing => { b.setAttribute('aria-pressed', !playing); b.setAttribute('aria-label', playing ? 'Video pauzeren' : 'Video afspelen'); b.classList.toggle('paused', !playing); };
-  if (reduce) { v.removeAttribute('autoplay'); v.pause(); set(false); }
-  b.addEventListener('click', () => { if (v.paused) { v.play(); set(true); } else { v.pause(); set(false); } });
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); return; }
   /* pauzeer buiten beeld: spaart batterij en CPU */
-  new IntersectionObserver(([e]) => { if (b.getAttribute('aria-pressed') === 'true') return; e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }, { threshold: .1 }).observe(v);
+  new IntersectionObserver(([e]) => { e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }, { threshold: .1 }).observe(v);
 })();
 </script>

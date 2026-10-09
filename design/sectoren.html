@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="tokens.css?v=6e2ef2d5">
-<link rel="stylesheet" href="site.css?v=ae0f88f1">
+<link rel="stylesheet" href="site.css?v=f749752c">
 <style>
 /* pagina-specifiek */
 </style>
@@ -201,7 +201,20 @@ prototype: webpagina-index + échte PDF’s per pagina uitgelezen (pdf.js, lazy)
   </div>
 </div>
 
-<nav class="mbar" aria-label="Snel contact"><a class="btn btn--secondary" href="tel:+3238254647"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.4 20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg>Bel</a><a class="btn btn--primary" href="olieanalyse.html">Gratis olieanalyse</a></nav>
+
+<div class="fab" data-annot="Contactknop · vast rechtsonder op elk scherm (vervangt de mobiele belbalk) · popup met 5 opties · Esc of klik buiten sluit · focus gaat naar de eerste optie">
+  <div class="fab__pop" id="fab-pop" role="dialog" aria-labelledby="fab-h" hidden>
+    <div class="fab__who"><img src="img/team.jpg" alt="" width="44" height="44"><div><p id="fab-h">Hoe kunnen we helpen?</p><small>Het team van Triple R in Aartselaar</small></div></div>
+    <ul>
+      <li><a href="tel:+3238254647"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.6 20 4 13.4 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg><span><b>Bel ons</b><small>+32 (0)3 825 46 47</small></span></a></li>
+      <li><a href="mailto:info@triple-r-europe.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6 8.5-6"/></svg><span><b>Mail ons</b><small>info@triple-r-europe.com</small></span></a></li>
+      <li><a href="olieanalyse.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2.5h5M10.5 2.5v6L5 19a1.7 1.7 0 0 0 1.5 2.5h11A1.7 1.7 0 0 0 19 19l-5.5-10.5v-6"/><path d="M7.5 14.5h9"/></svg><span><b>Gratis olieanalyse</b><small>Labo-rapport met advies</small></span></a></li>
+      <li><a href="homepage.html#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg><span><b>Advies aanvragen</b><small>Een specialist kijkt mee</small></span></a></li>
+      <li><button type="button" data-ask-open aria-haspopup="dialog" aria-controls="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg><span><b>Vraag het aan Triple R</b><small>Technische vraag, meteen antwoord</small></span></button></li>
+    </ul>
+  </div>
+  <button type="button" class="fab__btn" id="fab-btn" aria-expanded="false" aria-controls="fab-pop"><svg class="i-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Contact</span></button>
+</div>
 
 <aside class="review" aria-label="Reviewhulpmiddelen">
   <span>Review</span>
@@ -225,7 +238,7 @@ prototype: webpagina-index + échte PDF’s per pagina uitgelezen (pdf.js, lazy)
 </svg>
 
 
-<script src="site.js?v=d7de2fcb"></script>
+<script src="site.js?v=86b6d2bc"></script>
 
 </body>
 </html>

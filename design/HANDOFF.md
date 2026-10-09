@@ -278,3 +278,22 @@ The mobile rules live in the last block of `site.css` (≤ 767 px). They make pa
 - **Oplossingen:** the fact list and the duplicated results band are removed.
 - **Producten:** the downloads note is removed.
 - **Kennisbank → FAQ:** `faq.html` replaces `kennisbank.html`; the 9 planned "in voorbereiding" articles have been dropped from the design.
+
+## Contact button + hero (pass 1.9)
+
+- **Contact button (`.fab`, in the footer partial):**
+  - fixed at the bottom right of every page, on every screen size;
+  - replaces the mobile bar with "Bel" and "Gratis olieanalyse";
+  - opens a popup with 5 options: call, mail, free oil analysis, request advice, and Vraag het aan Triple R (which opens the answer panel);
+  - it is a disclosure (`aria-expanded`): Esc or a click outside closes it, focus moves to the first option and returns to the button afterwards.
+- **Header:** there is now 1.5–4 rem of space between the logo and the menu (≥ 1024 px).
+- **Reference logos above the fold:**
+  - on desktop, measured at 1440 × 900, 1366 × 768 and 1280 × 720;
+  - on mobile, measured at 390 × 844 and 375 × 667;
+  - on mobile, the logos come before the search card (flex order).
+- **Video pause button removed at the client's request.** This fails WCAG 2.2.2 (Pause, Stop, Hide): video that autoplays for longer than 5 s needs a control. **[CONFIRM] a compliant alternative**, for example:
+  - (a) the video plays once and stops on the last frame;
+  - (b) a subtle pause control in the bottom corner of the hero;
+  - (c) a still image instead of video.
+
+  `prefers-reduced-motion` still shows only the poster image.

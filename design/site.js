@@ -395,4 +395,14 @@
     root.classList.add('has-heroask');
     new IntersectionObserver(([e]) => root.classList.toggle('heroask-gone', !e.isIntersecting), { rootMargin: '-80px 0px 0px 0px' }).observe(heroAsk);
   }
+
+  /* ---------- contactknop rechtsonder ---------- */
+  const fab = document.getElementById('fab-btn'), fabPop = document.getElementById('fab-pop');
+  if (fab) {
+    const setFab = open => { fabPop.hidden = !open; fab.setAttribute('aria-expanded', open); if (open) fabPop.querySelector('a,button').focus(); };
+    fab.addEventListener('click', () => setFab(fabPop.hidden));
+    fabPop.addEventListener('click', e => { if (e.target.closest('a,button')) setFab(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !fabPop.hidden) { setFab(false); fab.focus(); } });
+    document.addEventListener('click', e => { if (!fabPop.hidden && !e.target.closest('.fab')) setFab(false); });
+  }
 })();
