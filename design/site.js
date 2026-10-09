@@ -1,4 +1,4 @@
-/* Triple R — gedeelde scripts: header, megamenu, drawer, "Vraag het Triple R" (incl. PDF-index), beweging, review */
+/* Triple R: gedeelde scripts: header, megamenu, drawer, "Vraag het aan Triple R" (incl. PDF-index), beweging, review */
 (() => {
   const root = document.documentElement, params = new URLSearchParams(location.search);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -31,7 +31,7 @@
   drawer.addEventListener('click', e => { if (e.target.closest('.list a, .btn')) openDrawer(false); });
 
   /* =====================================================================
-     VRAAG HET TRIPLE R — conversational search (designprototype, BRIEF §17)
+     VRAAG HET AAN TRIPLE R: conversational search (designprototype, BRIEF §17)
      • Webpagina's: vaste index (in productie: Pagefind op de gebouwde site).
      • PDF's: de échte datasheets uit /pdf/ worden per pagina uitgelezen met pdf.js
        (in productie gebeurt dit bij elke build → Pagefind + vectorindex).
@@ -87,8 +87,8 @@
     { g: 'Oplossingen', t: 'Vuile olie filtreren (ISO 4406)', s: 'Breng uw olie naar de juiste reinheidsklasse.', k: 'deeltjes iso 4406 nas 1638 reinheid vuil', u: 'oplossingen.html' },
     { g: 'Producten', t: 'Find My Oil Cleaner: de Triple R op maat', s: 'Vul uw gegevens in en stel live uw Triple R samen: vloeistof, volume, viscositeit, druk en probleem.', k: 'find my oil cleaner build vind uw oil cleaner op maat samenstellen configurator keuzehulp configurator welke filter past kiezen selector build my oil cleaner', u: 'find-my-oil-cleaner.html' },
     { g: 'Oplossingen', t: 'Besparingscalculator', s: 'Bereken wat schone olie u oplevert aan olie, stilstand en CO₂.', k: 'besparing calculator kosten roi co2 rendement', u: 'besparingscalculator.html' },
-    { g: 'Kennisbank', t: 'ISO 4406-reinheidscode uitgelegd', s: 'Wat de drie getallen betekenen, met tabel en voorbeelden.', k: 'iso 4406 21/18/16 code reinheid tabel', u: 'kennisbank.html' },
-    { g: 'Kennisbank', t: 'Bypass- of full-flowfiltratie: het verschil', s: 'Vergelijking met rekenvoorbeeld.', k: 'bypass full flow verschil nevenstroom', u: 'kennisbank.html' },
+    { g: 'Veelgestelde vragen', t: 'Wat betekent een ISO 4406-code?', s: 'Wat de drie getallen betekenen, met tabel en voorbeelden.', k: 'iso 4406 21/18/16 code reinheid tabel', u: 'faq.html' },
+    { g: 'Veelgestelde vragen', t: 'Wat is een bypassfilter?', s: 'Vergelijking met rekenvoorbeeld.', k: 'bypass full flow verschil nevenstroom', u: 'faq.html' },
     { g: 'Sectoren', t: 'Hydraulische systemen', s: 'Spuitgietmachines, persen en testbanken.', k: 'hydrauliek hydraulisch spuitgiet spuitgietmachine pers', u: 'sectoren.html' },
     { g: 'Sectoren', t: 'Scheepvaart', s: 'Motoren, thrusters, kranen en lieren; ook ATEX.', k: 'scheepvaart schip marine thruster kraan', u: 'sectoren.html' },
     { g: 'Sectoren', t: 'Windenergie', s: 'Tandwielkastolie schoon en droog houden.', k: 'wind windturbine tandwiel gearbox', u: 'sectoren.html' }
@@ -142,7 +142,7 @@
         try { localStorage.setItem(CACHE, JSON.stringify(out.map(({ tf, ...r }) => r))); } catch (e) {}
         statusReady();
         if (!ask.hidden && askQ.value.trim() && !askBody.querySelector('#ans')) render();
-      } catch (e) { setStatus('PDF-index niet beschikbaar (offline?) — webpagina’s blijven doorzoekbaar'); }
+      } catch (e) { setStatus('PDF-index niet beschikbaar (offline?). Webpagina’s blijven doorzoekbaar'); }
     })();
     return pdfLoading;
   }
@@ -337,7 +337,7 @@
   });
 
   /* =====================================================================
-     BEWEGING — reveals, tellers, header, scroll-voortgang, parallax, spotlight
+     BEWEGING: reveals, tellers, header, scroll-voortgang, parallax, spotlight
      ===================================================================== */
   const hdr = document.querySelector('.hdr'), bar = document.querySelector('.progress-line');
   let ticking = false;
@@ -388,4 +388,11 @@
       el.after(b);
     });
   });
+
+  /* ---------- header-zoekbalk verbergen zolang een grote zoekbalk op de pagina in beeld is ---------- */
+  const heroAsk = document.querySelector('.heroask');
+  if (heroAsk) {
+    root.classList.add('has-heroask');
+    new IntersectionObserver(([e]) => root.classList.toggle('heroask-gone', !e.isIntersecting), { rootMargin: '-80px 0px 0px 0px' }).observe(heroAsk);
+  }
 })();

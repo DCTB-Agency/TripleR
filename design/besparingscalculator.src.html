@@ -115,7 +115,7 @@ details.ass[open] summary::after{transform:rotate(45deg)}
     <div class="hero__copy" style="gap:0">
       <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Besparingscalculator</li></ol>
       <h1 id="h1">Wat levert <span>schone olie</span> u op?</h1>
-      <p class="lead">Bereken in één minuut hoeveel u per jaar bespaart op olie, verversingswerk en stilstand wanneer u uw olie reinigt in plaats van ververst — inclusief de CO₂ die u vermijdt. Het resultaat ziet u meteen; het volledige rapport kunt u als PDF ontvangen.</p>
+      <p class="lead">Bereken in één minuut hoeveel u per jaar bespaart op olie, verversingswerk en stilstand wanneer u uw olie reinigt in plaats van ververst, inclusief de CO₂ die u vermijdt. Het resultaat ziet u meteen; het volledige rapport kunt u als PDF ontvangen.</p>
     </div>
   </div>
 </section>
@@ -160,7 +160,6 @@ details.ass[open] summary::after{transform:rotate(45deg)}
 <section class="sec band" id="rapport" aria-labelledby="h-rep" data-annot="Rapport-aanvraag · resultaat blijft altijd zichtbaar (geen gate) · event roi_report_request · methodologie transparant">
   <div class="wrap rep">
     <div>
-      <p class="eyebrow">Uw rapport</p>
       <h2 id="h-rep">Ontvang de berekening als PDF, met een vrijblijvende bespreking</h2>
       <p class="lead" style="margin-top:var(--s-5)">We sturen u het volledige rapport met uw waarden en aannames. Een specialist belt u daarna om het te overlopen, als u dat wilt.</p>
       <div class="method">
@@ -194,7 +193,7 @@ details.ass[open] summary::after{transform:rotate(45deg)}
 (() => {
   const nf = new Intl.NumberFormat('nl-BE', { maximumFractionDigits: 0 });
   const eur = v => '€ ' + nf.format(Math.round(v));
-  /* Alle aannames in één config — in productie: src/data/calculator.ts */
+  /* Alle aannames in één config; in productie: src/data/calculator.ts */
   const ASS = [
     { id: 'interval', l: 'Olie verversen elke', u: 'draaiuren', v: 4000, min: 500, max: 20000, step: 100 },
     { id: 'hPer', l: 'Arbeid per verversing', u: 'uur / machine', v: 4, min: 0.5, max: 40, step: 0.5 },

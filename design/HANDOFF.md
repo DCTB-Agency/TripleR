@@ -52,7 +52,7 @@ Date: 24 Sep 2026 · Status: **for review**
 The homepage only gives a short overview and sends visitors on; the detail lives on the subpages (BRIEF §5).
 
 **Homepage (`homepage.html`, 7 sections)**
-1. **Hero:** full-bleed video background (`media/hero-*.mp4`, poster `hero-poster.jpg`). The visible credit line has been removed at the client's request, but **[CONFIRM] permission from TRIS to use the footage remains open**. The video autoplays muted on a loop, has a pause button (WCAG 2.2.2), pauses when out of view and shows only the poster under reduced motion. Left column: H1, intro, CTAs → olieanalyse and Find My Oil Cleaner. **Right column: "Vraag het Triple R"** (see below). Under it: the reference names as a running carousel.
+1. **Hero:** full-bleed video background (`media/hero-*.mp4`, poster `hero-poster.jpg`). The visible credit line has been removed at the client's request, but **[CONFIRM] permission from TRIS to use the footage remains open**. The video autoplays muted on a loop, has a pause button (WCAG 2.2.2), pauses when out of view and shows only the poster under reduced motion. Left column: H1, intro, CTAs → olieanalyse and Find My Oil Cleaner. **Right column: "Vraag het aan Triple R"** (see below). Under it: the reference names as a running carousel.
 2. **Four contaminants:** 4 cards → `oplossingen.html`.
 3. **Featured products:** 3 tiles → `producten.html` (the selector moved there).
 4. **Results:** on the oil photo, with a link to the calculator.
@@ -68,11 +68,11 @@ The homepage only gives a short overview and sends visitors on; the detail lives
 | `producten.html` | §6.4 | Find My Oil Cleaner teaser (anchor `#keuze`), filterable list of 10 series, comparison table, 17 downloads, embedded search |
 | `sectoren.html` | /sectoren/ | Atmospheric photo + 12 sectors, cases with ISO before/after |
 | `olieanalyse.html` | §6.6 | Landing page with a **3-step form above the fold** (§3.3), what we measure (6 measurements), sample report (blurred values), 4-step process, FAQ |
-| `kennisbank.html` | §6.9 | 12 articles (3 existing, 9 "in voorbereiding" from the content plan) with theme filter, embedded search, FAQ |
+| `faq.html` | §6.9 (replaces the knowledge base) | Veelgestelde vragen: Vraag het aan Triple R in the hero, 15 questions in 4 themes with a sticky theme nav, the 3 existing articles under "Meer lezen". Not in the main menu (footer, drawer, internal links). |
 | `find-my-oil-cleaner.html` | §6.4 selector | **Find My Oil Cleaner**: product configurator (improved take on oilcleaner.eu “Build my oil cleaner”), see below |
 | `besparingscalculator.html` | §3.7 | Calculator with adjustable assumptions and a report form |
 
-- **Navigation:** Oplossingen → `oplossingen.html`, Producten → mega menu (incl. "Alle producten"), Sectoren → `sectoren.html`, Diensten → `olieanalyse.html`, Kennisbank → `kennisbank.html`. The active page is highlighted.
+- **Navigation:** Oplossingen → `oplossingen.html`, Producten → mega menu (incl. "Alle producten"), Sectoren → `sectoren.html`, Diensten → `olieanalyse.html`, FAQ → `faq.html` (footer/drawer only). The active page is highlighted.
 - **Header CTA:** "Gratis olieanalyse" → `olieanalyse.html`.
 - **Footer:** full company details + KBO/BTW BE 0448.276.293.
 - **Mobile:** sticky [Bel] [Gratis olieanalyse] bar below 768 px.
@@ -85,7 +85,7 @@ The homepage only gives a short overview and sends visitors on; the detail lives
   - Events: `form_start`, `form_step_2`, `form_step_3`, `lead_olieanalyse`.
 - **Not done yet:** the minimal header for Ads traffic (logo + phone only, §6.6). For now the landing page uses the full header.
 
-## "Vraag het Triple R": conversational search (BRIEF §17)
+## "Vraag het aan Triple R": conversational search (BRIEF §17)
 
 - **Trigger in the header:** a clearly visible bar (320 px, or 210 px below 1280) with a blue gradient border, an AI icon and example questions that change every 3.6 s ("Bv. filter voor 450 bar", …). `⌘K` and `/` open it too. Below 1024 px it is a search icon that opens the panel full-screen; the mobile menu has the same bar. "Contact" moved from the main navigation to the top bar to make room.
 - **Panel:** `role=dialog`, focus trap, Esc closes, ↑↓ moves through results, Enter asks the question. States:
@@ -107,7 +107,7 @@ The homepage only gives a short overview and sends visitors on; the detail lives
   - **4-question selector** that slides in step by step with a live recommendation plus complementary series;
   - **filterable product list** with 10 series (filter chips, "Vergelijk" up to 3, which highlights rows in the table);
   - **comparison table** (HTML, sticky first column, D/V/W/L icons, links to the datasheets);
-  - **downloads** for all 17 PDFs (ungated), with an embedded "Vraag het Triple R" field.
+  - **downloads** for all 17 PDFs (ungated), with an embedded "Vraag het aan Triple R" field.
   - The TR-serie has no product photo on the current site, so it shows a placeholder.
 - **`besparingscalculator.html` (/nl/besparingscalculator/, BRIEF §3.7):**
   - 7 inputs with sliders + number fields and 3 example profiles;
@@ -129,7 +129,7 @@ The homepage only gives a short overview and sends visitors on; the detail lives
 - a zoom on the results photo.
 Everything hangs off `html.motion` and is off under reduced motion; the resting state is always visible.
 
-**"Vraag het Triple R" now also searches the PDFs**
+**"Vraag het aan Triple R" now also searches the PDFs**
 - All 17 PDFs from the current site are in `pdf/`. When the panel is opened (or hovered), pdf.js (cdnjs, lazy) extracts the text **per page** → 28 searchable pages, cached in localStorage.
 - **Instant search:** the "Downloads · in de PDF’s gevonden" group shows a snippet with highlighting and links to `pdf/file.pdf#page=N`.
 - **Answers:**
@@ -188,7 +188,7 @@ Everything hangs off `html.motion` and is off under reduced motion; the resting 
 - /gratis-olieanalyse/ landing page
 - Advice form (3 steps)
 - Mega menu + mobile nav in full
-- "Vraag het Triple R" search panel with all states
+- "Vraag het aan Triple R" search panel with all states
 - Components sheet
 
 
@@ -247,7 +247,7 @@ The mobile rules live in the last block of `site.css` (≤ 767 px). They make pa
   - knowledge-base articles (4 of 12; a filter click opens the full list).
 - **Result (390 px):** the homepage went from 9,382 to 6,810 px, producten from 15,017 to 9,011 px, with no horizontal scroll. axe (WCAG 2.2 AA) is clean on all 8 pages at 390 and 1440 px.
 
-## Hero: Vraag het Triple R + reference carousel (pass 1.7)
+## Hero: Vraag het aan Triple R + reference carousel (pass 1.7)
 
 - **`.heroask`:** a prominent conversational search in the right column of the homepage hero, visible without scrolling at 1440 × 900. It is a glass card with:
   - a white input;
@@ -257,3 +257,24 @@ The mobile rules live in the last block of `site.css` (≤ 767 px). They make pa
   It uses the same `[data-ask-embed]` handler as the header, so it opens the answer panel with PDF passages. It replaces the spec labels (those figures are on the product pages).
 - **Reference carousel (`.marquee`):** the list is rendered twice (the second copy `aria-hidden`) and scrolls at 40 s per loop, linear, with faded edges. It pauses on hover/focus. Under reduced motion it is static and wraps.
 - **Results band fix:** the counter numbers inherited the caption style (`.results span`) and looked tiny next to "u" and "%". Now `.results div>span` is used for the caption and `.results b span` inherits the figure style.
+
+## Calm-down pass (pass 1.8)
+
+- **Header:**
+  - no utility bar any more;
+  - 5 menu items (Oplossingen, Producten, Sectoren, Diensten, Over ons);
+  - language as a compact `NL` dropdown;
+  - "Vraag het aan Triple R" as a short pill that only appears once the large search bar on the page is out of view (`.has-heroask` / `.heroask-gone`, site.js).
+- **Copy rules:**
+  - no em dashes (—) anywhere in the copy; table cells use "n.v.t.";
+  - no eyebrow labels above section headings (only the brand name on the producten teaser remains);
+  - no stat chips in subpage heroes.
+- **Homepage:**
+  - hero = H1, intro, 2 CTAs and the search card (3 example questions);
+  - contaminant cards = icon, title, key figure;
+  - product tiles without tag or specs, one button;
+  - sectors = 6 text pills plus "Alle sectoren";
+  - oil analysis = photo, heading, one sentence, button.
+- **Oplossingen:** the fact list and the duplicated results band are removed.
+- **Producten:** the downloads note is removed.
+- **Kennisbank → FAQ:** `faq.html` replaces `kennisbank.html`; the 9 planned "in voorbereiding" articles have been dropped from the design.

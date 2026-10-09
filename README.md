@@ -12,7 +12,7 @@ Nieuwe website voor **Triple R Europe nv** (Aartselaar, BE): een Nederlandstalig
 | Producten (keuzehulp, vergelijking, downloads) | `design/producten.html` |
 | Sectoren en cases | `design/sectoren.html` |
 | Gratis olieanalyse (landingspagina + formulier) | `design/olieanalyse.html` |
-| Kennisbank (artikels + FAQ) | `design/kennisbank.html` |
+| Veelgestelde vragen (artikels + FAQ) | `design/faq.html` |
 | Find My Oil Cleaner (productconfigurator) | `design/find-my-oil-cleaner.html` |
 | Besparingscalculator | `design/besparingscalculator.html` |
 | Design system | `design/design-system.html` |

@@ -737,3 +737,29 @@ html:not(.motion) .trust .marquee{-webkit-mask-image:none;mask-image:none}
 .hero__side{display:grid;gap:var(--s-3);justify-items:stretch}
 .hero__side .hero__credit{justify-self:end}
 @media (max-width:1023px){.hero__side .heroask{margin-top:var(--s-6)}}
+
+/* ===== Rustiger header + taalkeuze (pass 1.8) ========================== */
+.hdr .ask-trigger__ph{display:none}
+.hdr .ask-trigger{width:auto;flex:none;min-width:0;padding-right:16px}
+.langsw{position:relative}
+.langsw summary{list-style:none;cursor:pointer;display:grid;place-items:center;min-width:40px;height:40px;padding:0 10px;border-radius:var(--radius-pill);color:#fff;font-size:13px;font-weight:500;border:1px solid rgb(255 255 255 / .18)}
+.langsw summary::-webkit-details-marker{display:none}
+.langsw summary:hover{border-color:rgb(255 255 255 / .45)}
+.langsw summary:focus-visible{outline:none;box-shadow:var(--focus-dark)}
+.langsw nav{position:absolute;right:0;top:calc(100% + 8px);display:grid;min-width:140px;padding:6px;border-radius:14px;background:#fff;box-shadow:var(--shadow-float)}
+.langsw nav a{padding:9px 12px;border-radius:10px;color:var(--ink);text-decoration:none;font-size:var(--fs-sm)}
+.langsw nav a:hover{background:var(--grey-50)}
+@media (max-width:1023px){.langsw{display:none}}
+.drawer__more{display:flex;gap:var(--s-5);font-size:var(--fs-sm)}
+.drawer__more a{color:var(--grey-600)}
+/* homepage: header-zoekbalk pas tonen als de hero-zoekbalk uit beeld is */
+.has-heroask .hdr .ask-trigger{transition:opacity var(--dur) var(--ease),visibility var(--dur)}
+.has-heroask:not(.heroask-gone) .hdr .ask-trigger{opacity:0;visibility:hidden}
+.four--compact .ccard p{display:none}
+.four--compact .ccard{grid-template-rows:auto auto 1fr}
+.four--compact .ccard .foot{border-top:0;padding-top:0;margin-top:var(--s-2);color:var(--blue-700)}
+.pills--plain a{padding:6px 18px}
+/* zoekknop: pil binnen de pil (concentrische afronding) */
+.heroask form .btn,.askembed form .btn{border-radius:var(--radius-pill);min-height:0;height:52px;padding:0 24px;flex:none}
+.askembed form .btn{height:44px}
+@media (max-width:559px){.heroask form .btn{height:44px;padding:0 18px}}

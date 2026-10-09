@@ -171,7 +171,6 @@
       <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li><a href="producten.html">Producten</a></li><li aria-current="page">Find My Oil Cleaner</li></ol>
       <h1 id="h1"><span lang="en">Find My Oil Cleaner</span><span>: de Triple R op maat van uw installatie</span><i class="tb" title="Te bevestigen: naam en merkgebruik met Triple R (gelijkenis met ‘Build My Oil Cleaner’ van TRIS)"></i></h1>
       <p class="lead">Vul zelf uw gegevens in: olie, volume, temperatuur, druk en probleem. Terwijl u typt, stellen wij live uw Triple R samen, met de reden bij elke keuze.</p>
-      <ul class="qstats"><li><b>7</b>stappen</li><li><b>± 2</b>minuten</li><li><b>live</b>resultaat</li></ul>
     </div>
     <div class="build" aria-hidden="true">
       <div class="build__in"><p class="k">Uw gegevens</p>
@@ -204,7 +203,7 @@
         <div class="pp-head"><h3 id="live-h">Uw oliereiniger</h3><span class="pp-no">op maat</span></div>
         <p class="lbl ppf-l">Uw gegevens</p>
         <dl class="ppf" id="fields"></dl>
-        <div class="cfg"><span class="lbl">Configuratiecode</span><code id="cfg">—</code><small>Vermeld deze code bij uw aanvraag.</small></div>
+        <div class="cfg"><span class="lbl">Configuratiecode</span><code id="cfg">Verschijnt zodra u begint</code><small>Vermeld deze code bij uw aanvraag.</small></div>
         <div><p class="lbl" style="margin-bottom:10px">Samengesteld voor u</p><div class="matches" id="matches" aria-live="polite"><p class="empty">De matches verschijnen zodra u begint.</p></div></div>
         <p class="foot">Indicatieve voorselectie op basis van de productinformatie van Triple R. Een specialist bevestigt de definitieve configuratie.<i class="tb" title="Te bevestigen: selectieregels en productgrenzen door Triple R"></i></p>
       </section>
@@ -214,10 +213,10 @@
 
 <section class="sec" aria-labelledby="h-how" data-annot="Uitleg · 3 punten · waarom niet alleen het volume telt">
   <div class="wrap">
-    <div class="head"><div><p class="eyebrow">Zo werkt <span lang="en">Find My Oil Cleaner</span></p><h2 id="h-how">Meer dan alleen het tankvolume</h2></div><div class="side"><p class="lead">Twee installaties met evenveel olie kunnen een totaal andere oplossing vragen.</p></div></div>
+    <div class="head"><div><h2 id="h-how">Meer dan alleen het tankvolume</h2></div><div class="side"><p class="lead">Twee installaties met evenveel olie kunnen een totaal andere oplossing vragen.</p></div></div>
     <div class="how3">
       <div><h3 class="h4">1 · Uw olie</h3><p>Vloeistof, volume, viscositeitsklasse en temperatuur bepalen hoe makkelijk de olie door het filterelement stroomt. De tool rekent de bedrijfsviscositeit live uit.</p></div>
-      <div><h3 class="h4">2 · Technische controles</h3><p>Aansluiting, druk, viscositeit en toepassing worden getoetst aan de grenzen van elke serie. U ziet bij elke match waarom ze past — of waarom niet.</p></div>
+      <div><h3 class="h4">2 · Technische controles</h3><p>Aansluiting, druk, viscositeit en toepassing worden getoetst aan de grenzen van elke serie. U ziet bij elke match waarom ze past, of waarom niet.</p></div>
       <div><h3 class="h4">3 · Specialist bevestigt</h3><p>Valt uw installatie buiten de standaard, dan kijkt een Triple R-specialist mee. U krijgt nooit een leeg scherm.</p></div>
     </div>
   </div>
@@ -226,7 +225,7 @@
 <section aria-labelledby="h-cta" data-annot="Slot-CTA">
   <div class="wrap">
     <div class="cta">
-      <div><p class="eyebrow">Twijfelt u?</p><h2 id="h-cta">Laat eerst uw olie analyseren</h2><p class="lead">Weet u de viscositeit of het watergehalte niet? Een gratis olieanalyse geeft het antwoord, met persoonlijk advies.</p>
+      <div><h2 id="h-cta">Laat eerst uw olie analyseren</h2><p class="lead">Weet u de viscositeit of het watergehalte niet? Een gratis olieanalyse geeft het antwoord, met persoonlijk advies.</p>
         <div class="btns"><a class="btn btn--light" href="olieanalyse.html">Gratis olieanalyse</a><a class="btn btn--ghost-light" href="tel:+3238254647">Bel +32 (0)3 825 46 47</a></div></div>
       <div class="person"><img src="img/team.jpg" alt="Het Triple R-team in Aartselaar" width="768" height="1024" loading="lazy"><div class="person__who"><div><h3>Maxim Van Uytven</h3><p class="role">Sales Manager</p></div><div class="links"><a href="tel:+3238254647">+32 (0)3 825 46 47</a><a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a></div></div></div>
     </div>
@@ -378,7 +377,7 @@
     ];
   }
   function cfgCode() {
-    if (!S.f) return '—';
+    if (!S.f) return 'Verschijnt zodra u begint';
     const c = ['RRR', S.f.toUpperCase()];
     if (has(2)) c.push(String(S.vol).padStart(4, '0'));
     if (has(3) && !coolant()) c.push('VG' + (S.vg || VG_DEFAULT[S.f]) + '/' + S.t + 'C');
@@ -390,7 +389,7 @@
   let prevF = [];
   function renderLive() {
     const f = fields();
-    document.getElementById('fields').innerHTML = f.map(([k, v], i) => `<div><dt>${k}</dt><dd class="${v ? (v !== prevF[i] ? 'new' : '') : 'e'}">${v || '—'}</dd></div>`).join('');
+    document.getElementById('fields').innerHTML = f.map(([k, v], i) => `<div><dt>${k}</dt><dd class="${v ? (v !== prevF[i] ? 'new' : '') : 'e'}">${v || '…'}</dd></div>`).join('');
     prevF = f.map(x => x[1]);
     document.getElementById('cfg').textContent = cfgCode();
     const r = evaluate().slice(0, 3), m = document.getElementById('matches');

@@ -27,7 +27,7 @@ Astro + TypeScript (strict) + Content Collections (MDX/Zod) + Tailwind (tokens f
 - Stop after each phase (BRIEF §15) and summarise what changed + what needs review.
 
 ## Design (pass 1, approved direction pending)
-- Visual design + prototypes live in `design/` — open `design/homepage.html` (+ oplossingen, producten, find-my-oil-cleaner, sectoren, olieanalyse, kennisbank, besparingscalculator) and `design/design-system.html` (serve the folder over http, e.g. `python3 -m http.server --directory design`, so the PDF search works).
+- Visual design + prototypes live in `design/` — open `design/homepage.html` (+ oplossingen, producten, find-my-oil-cleaner, sectoren, olieanalyse, faq, besparingscalculator) and `design/design-system.html` (serve the folder over http, e.g. `python3 -m http.server --directory design`, so the PDF search works).
 - Tokens: `design/tokens.css` (source of truth) and `design/tailwind.tokens.cjs`. Build notes, animation spec and open [CONFIRM] items: `design/HANDOFF.md`.
 - Treat `design/` as reference, not as production code: rebuild components in Astro per BRIEF §11.
 

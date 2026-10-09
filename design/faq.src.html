@@ -1,0 +1,94 @@
+<title>Veelgestelde vragen · Triple R</title>
+<meta name="description" content="Antwoorden over bypassfiltratie, filterelementen, water, varnish en lucht in olie, kosten en de gratis olieanalyse van Triple R.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.hero--faq .heroask{margin-top:var(--s-8);max-width:880px}
+.faqlay>*{min-width:0}
+.faqlay{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:clamp(2rem,1rem + 4vw,5rem);align-items:start}
+.ftoc{position:sticky;top:110px;list-style:none;display:grid;gap:2px;border-left:2px solid var(--grey-100)}
+.ftoc a{display:block;padding:8px 0 8px 16px;margin-left:-2px;border-left:2px solid transparent;color:var(--grey-600);text-decoration:none;font-size:var(--fs-sm);font-weight:500}
+.ftoc a:hover{color:var(--ink)}
+.ftoc a[aria-current]{color:var(--ink);border-left-color:var(--blue-700)}
+.fgroup{scroll-margin-top:110px}
+.fgroup+.fgroup{margin-top:3rem}
+.fgroup h2{font-size:var(--fs-h3);letter-spacing:-.025em}
+.fgroup .faq{margin-top:var(--s-4)}
+.faq .a a{font-weight:500}
+.arts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-4)}
+.art{display:grid;grid-template-rows:auto 1fr auto;gap:var(--s-3);padding:var(--s-6);border-radius:var(--radius-lg);border:var(--border);background:#fff;color:var(--ink);text-decoration:none;transition:box-shadow var(--dur) var(--ease),border-color var(--dur)}
+.art:hover{box-shadow:var(--shadow-float);border-color:transparent;color:var(--ink)}
+.art .cat{justify-self:start;font-size:12px;font-weight:500;padding:3px 10px;border-radius:var(--radius-pill);background:var(--blue-50);color:var(--blue-800)}
+.art h3{font-size:1.125rem;line-height:1.3;letter-spacing:-.015em}
+.art .meta{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--grey-600)}
+.art .meta svg{width:16px;height:16px;color:var(--blue-700)}
+@media (max-width:1023px){.faqlay{grid-template-columns:1fr}.ftoc{position:static;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px;border:0;scrollbar-width:none}.ftoc a{white-space:nowrap;border:1px solid var(--grey-200);border-radius:var(--radius-pill);padding:8px 14px;margin:0}.ftoc a[aria-current]{border-color:var(--ink)}.arts{grid-template-columns:1fr}}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page hero--faq" aria-labelledby="h1" data-annot="Veelgestelde vragen (vervangt de kennisbank) · niet in het hoofdmenu: footer, drawer, interne links · ‘Vraag het aan Triple R’ prominent in de hero · FAQPage schema">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Veelgestelde vragen</li></ol>
+      <h1 id="h1">Veelgestelde <span>vragen</span></h1>
+      <p class="lead">De antwoorden op de vragen die we het vaakst krijgen: over bypassfiltratie, onze producten, water, varnish en lucht in olie, en over kosten en de gratis olieanalyse. Staat uw vraag er niet bij? Stel ze dan hieronder.</p>
+    </div>
+    <div class="heroask">
+      <div class="heroask__lbl"><span class="spark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span><div><b>Vraag het aan Triple R</b><small>Uw technische vraag, meteen beantwoord.</small></div></div>
+      <form data-ask-embed role="search" aria-label="Vraag het aan Triple R"><label class="vh" for="fq-q">Stel uw vraag aan Triple R</label><svg class="heroask__ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18"/></svg><input id="fq-q" type="text" autocomplete="off" placeholder="Bv. wat betekent ISO 4406 21/18/16?"><button class="btn btn--light" type="submit">Vraag</button></form>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-label="Vragen per thema">
+  <div class="wrap faqlay">
+    <nav aria-label="Thema's"><ul class="ftoc"><li><a href="#reinigen">Olie reinigen</a></li><li><a href="#producten">Producten en installatie</a></li><li><a href="#water">Water, varnish en lucht</a></li><li><a href="#kosten">Kosten en olieanalyse</a></li></ul></nav>
+    <div><section class="fgroup" id="reinigen" aria-labelledby="h-reinigen"><h2 id="h-reinigen">Olie reinigen</h2><div class="faq"><details><summary>Wat is een bypassfilter (nevenstroomfilter)?</summary><div class="a"><p>Een bypassfilter reinigt continu een kleine deelstroom van de olie, naast het hoofdcircuit. Omdat de olie traag door 114 mm filtermedia stroomt, filtert het veel fijner dan een full-flowfilter en houdt het ook varnish en water vast.</p></div></details><details><summary>Welke vervuiling haalt een Triple R-filter uit de olie?</summary><div class="a"><p>Vaste deeltjes, varnish, sludge en water, allemaal in één element. Lucht en schuim verwijdert u met de Quicktoron.</p></div></details><details><summary>Hoe fijn filtert een Triple R-element?</summary><div class="a"><p>Van 1 tot 10 µm absoluut, afhankelijk van het element. Het V-element filtert 1 µm absoluut en is bedoeld tegen varnish.</p></div></details><details><summary>Wat betekent een ISO 4406-code?</summary><div class="a"><p>De code geeft aan hoeveel deeltjes groter dan 4, 6 en 14 µm er per ml olie zitten. Elk getal staat voor een bereik: hoe lager de code, hoe schoner de olie.</p></div></details></div></section><section class="fgroup" id="producten" aria-labelledby="h-producten"><h2 id="h-producten">Producten en installatie</h2><div class="faq"><details><summary>Welke Triple R past bij mijn installatie?</summary><div class="a"><p>Dat hangt af van de vloeistof, het volume, de viscositeit, de druk en het probleem dat u wilt oplossen. Vul uw gegevens in bij <a href="find-my-oil-cleaner.html" lang="en">Find My Oil Cleaner</a> of vraag advies aan een specialist.</p></div></details><details><summary>Kan een filter rechtstreeks op de drukleiding?</summary><div class="a"><p>Ja. De BU-serie komt rechtstreeks op de hogedrukleiding, tot 450 bar, zonder eigen pomp of motor.</p></div></details><details><summary>Hoe vervang ik een filterelement?</summary><div class="a"><p>Zonder morsen: de afvalzak zit in de middenbuis van het element.</p></div></details><details><summary>Werkt het ook voor water-glycol?</summary><div class="a"><p>Ja, met het WG/DWG-element voor water-glycol.<i class="tb" title="Te bevestigen door Triple R"></i></p></div></details></div></section><section class="fgroup" id="water" aria-labelledby="h-water"><h2 id="h-water">Water, varnish en lucht</h2><div class="faq"><details><summary>Hoe haal ik water uit de olie?</summary><div class="a"><p>Het filterelement absorbeert vrij en geëmulgeerd water. Bij veel water verwijdert de vacuümontwateraar 80% van het opgeloste en 100% van het vrije water.</p></div></details><details><summary>Hoe verwijder ik varnish?</summary><div class="a"><p>Met het V-element. Het filtert 1 µm absoluut en houdt oxidatieresten zoals varnish en sludge vast.</p></div></details><details><summary>Wat doe ik tegen lucht en schuim?</summary><div class="a"><p>De Quicktoron haalt tot 95% van de luchtbellen uit de olie.</p></div></details></div></section><section class="fgroup" id="kosten" aria-labelledby="h-kosten"><h2 id="h-kosten">Kosten en olieanalyse</h2><div class="faq"><details><summary>Is olie reinigen goedkoper dan olie verversen?</summary><div class="a"><p>Vaak wel: u betaalt filterelementen in plaats van nieuwe olie, afvoer en stilstand. Met de <a href="besparingscalculator.html">besparingscalculator</a> rekent u het na voor uw installatie.</p></div></details><details><summary>Wat kost een filterelement?</summary><div class="a"><p>Tussen € 25 en € 90, afhankelijk van type en maat. Eén element volstaat voor tanks tot 1.000 l.<i class="tb" title="Te bevestigen: prijs tonen"></i></p></div></details><details><summary>Hoe werkt de gratis olieanalyse?</summary><div class="a"><p>U vraagt de analyse online aan, wij sturen een staalnamekit of komen langs, het labo meet uw olie en u ontvangt een rapport met advies. <a href="olieanalyse.html">Vraag ze hier aan</a>.</p></div></details><details><summary>Wat kost de analyse?</summary><div class="a"><p>Niets. De analyse en het advies zijn gratis voor bedrijven, voor één staal per installatie.<i class="tb" title="Te bevestigen: voorwaarden"></i></p></div></details></div></section></div>
+  </div>
+</section>
+
+<section class="sec band" aria-labelledby="h-arts" data-annot="Meer lezen · enkel de 3 bestaande artikels">
+  <div class="wrap">
+    <div class="head"><div><h2 id="h-arts">Meer lezen</h2></div></div>
+    <div class="arts"><a class="art" href="#"><span class="cat">Varnish</span><h3>Wat is varnish in hydraulische olie en hoe verwijdert u het?</h3><span class="meta"><span>7 min lezen</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a><a class="art" href="#"><span class="cat">Normen</span><h3>ISO 4406-reinheidscode uitgelegd, met tabel en voorbeelden</h3><span class="meta"><span>6 min lezen</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a><a class="art" href="#"><span class="cat">Techniek</span><h3>Bypassfiltratie of full-flowfiltratie: wat is het verschil?</h3><span class="meta"><span>5 min lezen</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a></div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact" aria-labelledby="h-cta" data-annot="S13 Slot-CTA · afgerond paneel (28px) in logoverloop blauw → indigo · teamfoto tot portretshoot">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2 id="h-cta">Bespreek uw installatie met een specialist</h2>
+        <p class="lead">Beschrijf uw machines in 2 minuten en ontvang vrijblijvend advies over de juiste filteroplossing.</p>
+        <div class="btns"><a class="btn btn--light" href="#">Vraag advies aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div>
+      </div>
+      <div class="person">
+        <img src="img/team.jpg" alt="Het Triple R-team in het hoofdkantoor in Aartselaar" width="768" height="1024" loading="lazy">
+        <div class="person__who">
+          <div><h3>Maxim Van Uytven</h3><p class="role">Sales Manager</p></div>
+          <div class="links">
+            <a href="tel:+3238254647"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.4 20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg>+32 (0)3 825 46 47<i class="tb" title="Te bevestigen: direct nummer"></i></a>
+            <a href="mailto:info@triple-r-europe.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>info@triple-r-europe.com</a>
+          </div>
+        </div>
+        <p class="cap">Team Triple R Europe, Aartselaar. Portret volgt na de fotoshoot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>
+<script>
+(() => {
+  const links = [...document.querySelectorAll('.ftoc a')];
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.toggleAttribute('aria-current', a.hash === '#' + e.target.id)); }), { rootMargin: '-30% 0px -60% 0px' });
+  document.querySelectorAll('.fgroup').forEach(g => io.observe(g));
+})();
+</script>
