@@ -405,4 +405,11 @@
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !fabPop.hidden) { setFab(false); fab.focus(); } });
     document.addEventListener('click', e => { if (!fabPop.hidden && !e.target.closest('.fab')) setFab(false); });
   }
+
+  /* ---------- scroll-hint ---------- */
+  document.querySelectorAll('.scrollcue').forEach(a => a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href')); if (!t) return;
+    e.preventDefault(); t.scrollIntoView({ behavior: root.classList.contains('motion') ? 'smooth' : 'auto' });
+    const h = t.querySelector('h2'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
+  }));
 })();

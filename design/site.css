@@ -608,7 +608,8 @@ select:focus-visible{border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blu
 .askembed .chips{grid-column:2;display:flex;flex-wrap:wrap;gap:6px}
 .askembed .chips button{font:inherit;font-size:12.5px;color:#C9CCE3;background:none;border:1px solid rgb(255 255 255 / .16);border-radius:var(--radius-pill);padding:5px 11px;cursor:pointer}
 .askembed .chips button:hover{color:#fff;border-color:rgb(255 255 255 / .4)}
-@media (max-width:1023px){.askembed{grid-template-columns:1fr}.askembed .chips{grid-column:1}}
+@media (max-width:1023px){.askembed{grid-template-columns:minmax(0,1fr)}.askembed .chips{grid-column:1}}
+.askembed>*{min-width:0}
 
 /* ===== Compacte sectorrij (homepage) ================================= */
 .pills{display:flex;flex-wrap:wrap;gap:10px;list-style:none}
@@ -712,7 +713,8 @@ select:focus-visible{border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blu
 .heroask .chips button{font:inherit;font-size:13px;color:#DCDEF0;background:rgb(255 255 255 / .06);border:1px solid rgb(255 255 255 / .18);border-radius:var(--radius-pill);padding:7px 13px;min-height:36px;cursor:pointer;transition:background var(--dur),border-color var(--dur),color var(--dur)}
 .heroask .chips button:hover{color:#fff;background:rgb(255 255 255 / .12);border-color:rgb(255 255 255 / .4)}
 .heroask .chips button:focus-visible{outline:none;box-shadow:var(--focus-dark)}
-@media (max-width:1023px){.heroask{grid-template-columns:1fr}.heroask .chips{grid-column:1}}
+@media (max-width:1023px){.heroask{grid-template-columns:minmax(0,1fr)}.heroask .chips{grid-column:1}}
+.heroask>*{min-width:0}
 @media (max-width:559px){.heroask{margin-inline:calc(-1 * var(--s-2));padding:14px;border-radius:20px;overflow:hidden}.heroask__lbl small{display:none}.heroask form{padding-left:14px}.heroask input{height:44px;font-size:1rem}.heroask form .btn{padding-inline:14px}.heroask .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-14px;padding-inline:14px}.heroask .chips::-webkit-scrollbar{display:none}.heroask .chips button{flex:none}}
 
 .trust .marquee{overflow:hidden;min-width:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -787,12 +789,34 @@ html:not(.motion) .trust .marquee{-webkit-mask-image:none;mask-image:none}
 @media (min-width:1024px){.hdr__row>nav{margin-left:clamp(1.5rem,1rem + 2.5vw,4rem)}}
 /* logo's boven de vouw (pass 1.9) */
 .hero--video .trust{margin-top:clamp(1.5rem,3vh,2.5rem);padding-block:20px 28px}
-@media (min-width:1024px){.hero--video{padding-top:max(112px,calc(76px + 4vh))}}
+@media (min-width:1024px){
+  .hero--video{padding-top:calc(77px + clamp(2.5rem,7vh,6.5rem))}
+  .hero--video .hero__grid{grid-template-columns:minmax(0,6fr) minmax(0,5fr);grid-template-areas:"h1 h1" "copy side";column-gap:clamp(2.5rem,1rem + 4vw,5rem);row-gap:clamp(1.75rem,1rem + 2vh,2.75rem);align-items:end}
+  .hero--video h1{grid-area:h1}
+  .hero--video .hero__copy{grid-area:copy;gap:var(--s-8)}
+  .hero--video .hero__copy .lead{max-width:36rem}
+  .hero--video .hero__side{grid-area:side;align-self:end;padding-bottom:0}
+  .hero--video .trust{margin-top:clamp(2.5rem,1.5rem + 3vh,4rem);padding-block:24px 32px}
+}
 @media (max-width:1023px){
   .hero--video>.wrap{display:flex;flex-direction:column}
   .hero--video .hero__grid{display:contents}
+  .hero--video h1{order:0;margin-bottom:var(--s-5)}
   .hero--video .hero__copy{order:1}
   .hero--video .trust{order:2;margin-top:var(--s-6);padding-block:16px 0;border-top:0}
-  .hero--video .hero__side{order:3;padding-bottom:var(--s-8)}
-  .hero--video{padding-top:104px}
+  .hero--video .hero__side{order:3;padding-bottom:56px}
+  .hero--video{padding-top:124px}
+  .hero--video .hero__copy .btns{margin-top:var(--s-6)}
 }
+@media (min-width:1024px) and (max-height:760px){.hero--video{padding-top:calc(77px + 2rem)}.hero--video .trust{margin-top:2rem;padding-top:16px}}
+
+/* ===== Scroll-hint tussen hero en blok 2 ================================ */
+.has-cue{position:relative}
+.scrollcue{position:absolute;top:0;left:50%;z-index:5;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--blue-700);box-shadow:0 10px 30px -8px rgb(14 11 36 / .35),0 0 0 6px rgb(255 255 255 / .18);text-decoration:none;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),background var(--dur)}
+.scrollcue svg{width:22px;height:22px}
+.scrollcue:hover{transform:translateY(3px);background:var(--blue-700);color:#fff;box-shadow:0 14px 34px -8px rgb(0 70 120 / .5),0 0 0 8px rgb(255 255 255 / .22)}
+.scrollcue:focus-visible{outline:none;box-shadow:var(--focus)}
+.motion .scrollcue svg{animation:cue 1.8s cubic-bezier(.45,0,.25,1) infinite}
+.motion .scrollcue:hover svg{animation-play-state:paused}
+@keyframes cue{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
+@media (max-width:559px){.scrollcue{width:48px;height:48px;margin:-24px 0 0 -24px}}
