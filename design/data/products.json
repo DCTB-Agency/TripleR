@@ -23,7 +23,7 @@
   {
    "id": "water",
    "n": "Water verwijderen",
-   "s": "Vacuümontwateraars en olie-waterafscheiders."
+   "s": "Vacuümdrogers en olie-waterafscheiders."
   },
   {
    "id": "lucht",
@@ -121,7 +121,7 @@
    "s": "Pompen om olie gefilterd over te pompen en machines te vullen."
   },
   "vacuum": {
-   "n": "Vacuümontwateraar",
+   "n": "Vacuümdroger",
    "cat": "water",
    "img": "vacuum.png",
    "pdf": "VacuumDehydrator-TRVS-N30E-ENG.pdf",
@@ -2604,7 +2604,7 @@
    "n": "TRVS-N30E",
    "art": "TRVS-N30E",
    "old": null,
-   "s": "Volautomatische vacuümontwateraar: 80% van het opgeloste en 100% van het vrije water, plus luchtbellen.",
+   "s": "Volautomatische vacuümdroger: 80% van het opgeloste en 100% van het vrije water, plus luchtbellen.",
    "specs": [
     [
      "Debiet",

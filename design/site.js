@@ -63,8 +63,8 @@
     { f: 'SS-2019-ENGLISH-.pdf', t: 'SS-serie datasheet', p: 'ss' },
     { f: 'WS-2019-ENGLISH.pdf', t: 'WS-serie datasheet', p: 'ws' },
     { f: 'QUICKTORON-2023-ENGLISH.pdf', t: 'Quicktoron datasheet', p: 'quicktoron' },
-    { f: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', t: 'Vacuümontwateraar TRVS-N30E', p: 'vacuum' },
-    { f: 'vacuum_system_test.pdf', t: 'Vacuümontwateraar testrapport', p: 'vacuum' },
+    { f: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', t: 'Vacuümdroger TRVS-N30E', p: 'vacuum' },
+    { f: 'vacuum_system_test.pdf', t: 'Vacuümdroger testrapport', p: 'vacuum' },
     { f: 'Centrifuges_2014_UK-1.pdf', t: 'Centrifuges brochure', p: 'centrifuges' },
     { f: 'windmill.pdf', t: 'Toepassing windturbines' },
     { f: 'Recommended-cleanliness4.pdf', t: 'Recommended cleanliness' },
@@ -84,7 +84,7 @@
     { g: 'Producten', t: 'TR-serie', s: 'Bypassfilter voor motorolie en systemen onder 6 bar.', k: 'tr serie motorolie tandwiel 6 bar engine', u: 'producten.html?serie=tr' },
     { g: 'Producten', t: 'SS-serie', s: 'Stalen filterhuizen voor 2 tot 6 elementen, tot 60 l/min en 15 bar.', k: 'ss serie staal huis housing', u: 'producten.html?serie=ss' },
     { g: 'Producten', t: 'Filterelementen', s: '3-in-1 dieptefilter, 1 tot 10 µm absoluut; WE100 absorbeert tot 900 ml water.', k: 'filterelement element v100 m100 we100 water varnish cartridge', u: 'producten.html?cat=elementen' },
-    { g: 'Producten', t: 'Vacuümontwateraar', s: 'Verwijdert 80% opgelost en 100% vrij water, voor olie van 10 tot 600 cSt.', k: 'vacuum vacuumontwateraar water ontwateren atex dehydrator', u: 'producten.html?serie=vacuum' },
+    { g: 'Producten', t: 'Vacuümdroger', s: 'Verwijdert 80% opgelost en 100% vrij water, voor olie van 10 tot 600 cSt.', k: 'vacuum vacuumdroger droger vacuumontwateraar water ontwateren atex dehydrator', u: 'producten.html?serie=vacuum' },
     { g: 'Producten', t: 'WS-serie', s: 'Coalescer olie-waterafscheider voor continue waterinloop.', k: 'ws coalescer water afscheider separator', u: 'producten.html?serie=ws' },
     { g: 'Producten', t: 'Quicktoron', s: 'Cycloon-ontluchter die tot 95% van de luchtbellen verwijdert.', k: 'quicktoron quiktoron lucht schuim cavitatie air', u: 'producten.html?serie=quicktoron' },
     { g: 'Producten', t: 'Centrifuges', s: 'Deeltjes tot 3 µm uit koelvloeistof en proceswater, 15–200 l/min.', k: 'centrifuge koelvloeistof emulsie proceswater coolant', u: 'producten.html?serie=centrifuges' },
@@ -153,7 +153,7 @@
     })();
     return pdfLoading;
   }
-  const PKEYS = [['osca', /osca/], ['bu', /\bbu\b|bu-serie/], ['se', /\bse\b|se-serie|se-mobile|se100/], ['tr', /\btr\b|tr-serie/], ['ss', /\bss\b|ss-serie/], ['ws', /\bws\b|ws-serie|coalescer/], ['quicktoron', /quick?t?oron/], ['vacuum', /vacu|ontwateraar|dehydrator/], ['centrifuges', /centrifug/]];
+  const PKEYS = [['osca', /osca/], ['bu', /\bbu\b|bu-serie/], ['se', /\bse\b|se-serie|se-mobile|se100/], ['tr', /\btr\b|tr-serie/], ['ss', /\bss\b|ss-serie/], ['ws', /\bws\b|ws-serie|coalescer/], ['quicktoron', /quick?t?oron/], ['vacuum', /vacu|droger|ontwateraar|dehydrator/], ['centrifuges', /centrifug/]];
   const detectProduct = q => { const n = norm(q); const hit = PKEYS.find(([, re]) => re.test(n)); return hit ? hit[0] : null; };
   function scorePdf(terms, pk) {
     if (!pdfChunks) return [];
@@ -185,7 +185,7 @@
   /* ---------- producten & voorbeeldantwoorden ---------- */
   const PROD = {
     bu: { n: 'BU-serie', img: 'img/BU-Series.png', c: ['tot 450 bar', '2 µm absoluut (M)', 'geen pomp of motor'], pdf: 'BU-2023-UK-.pdf', u: 'producten.html?serie=bu' },
-    vac: { n: 'Vacuümontwateraar', img: 'img/vacuum.png', c: ['80% opgelost water', '100% vrij water', '30 l/min'], pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', u: 'producten.html?serie=vacuum' },
+    vac: { n: 'Vacuümdroger', img: 'img/vacuum.png', c: ['80% opgelost water', '100% vrij water', '30 l/min'], pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', u: 'producten.html?serie=vacuum' },
     el: { n: 'Filterelementen', img: 'img/elements.png', c: ['1–10 µm absoluut', 'WE100: < 80 ppm', '3–320 cSt'], pdf: null, u: 'producten.html?cat=elementen' }
   };
   const ANSWERS = [
@@ -197,10 +197,10 @@
       follow: ['Hoeveel elementen heb ik nodig voor 400 l?', 'Wat is het verschil tussen BU en SE?', 'Welke reinheid hebben servokleppen nodig?'] },
     { m: /water|vocht|tandwiel/, prod: 'vac', lead: 'Advies over water in olie',
       blocks: [['p', 'Water uit tandwielolie haalt u, afhankelijk van de hoeveelheid, op drie manieren:'],
-        ['ul', ['Beperkte hoeveelheden: de cellulose van een Triple R-element absorbeert water tot onder 100 ppm; het WE100-element neemt tot 900 ml op en haalt < 80 ppm [1].', 'Continue waterinloop: een WS-coalescer scheidt het water af [2].', 'Veel of opgelost water: een vacuümontwateraar verwijdert 80% van het opgeloste en 100% van het vrije water, zonder verbruiksmateriaal [3].']],
+        ['ul', ['Beperkte hoeveelheden: de cellulose van een Triple R-element absorbeert water tot onder 100 ppm; het WE100-element neemt tot 900 ml op en haalt < 80 ppm [1].', 'Continue waterinloop: een WS-coalescer scheidt het water af [2].', 'Veel of opgelost water: een vacuümdroger verwijdert 80% van het opgeloste en 100% van het vrije water, zonder verbruiksmateriaal [3].']],
         ['p', 'Welke oplossing past, hangt af van het watergehalte in uw olie. Een olieanalyse meet dat in ppm.']],
       src: [{ page: 'Filterelementen · WE100', u: 'producten.html?cat=elementen' }, { pdf: 'WS-2019-ENGLISH.pdf', q: 'water coalescing separator' }, { pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', q: 'water dissolved free removal' }],
-      follow: ['Hoe neem ik een oliestaal uit een tandwielkast?', 'Is de vacuümontwateraar ook ATEX?', 'Wat staat er in het testrapport van de vacuümontwateraar?'] },
+      follow: ['Hoe neem ik een oliestaal uit een tandwielkast?', 'Is de vacuümdroger ook ATEX?', 'Wat staat er in het testrapport van de vacuümdroger?'] },
     { m: /iso|4406|21\/18|reinheid|nas/, prod: 'el', lead: 'Laat uw reinheid meten',
       blocks: [['p', 'Een ISO 4406-code telt de deeltjes per ml olie in drie groottes: groter dan 4, 6 en 14 µm [1].'],
         ['ul', ['21 = 10.000 tot 20.000 deeltjes > 4 µm per ml.', '18 = 1.300 tot 2.500 deeltjes > 6 µm per ml.', '16 = 320 tot 640 deeltjes > 14 µm per ml.']],
@@ -273,7 +273,7 @@
     }
     const docs = new Set((pdfChunks || []).map(c => c.f)).size;
     askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p>
-      <p class="ai busy marc-ai" id="ai-l"><img class="marc-av" src="${MARC('icoon')}" alt="" width="150" height="129"><span class="dot"></span><span id="ai-t">Marc stelt een antwoord op…</span></p>
+      <p class="ai busy marc-ai" id="ai-l"><img class="marc-av" src="${MARC('icoon')}" alt="" width="330" height="285"><span class="dot"></span><span id="ai-t">Marc stelt een antwoord op…</span></p>
       <div class="ans" id="ans" aria-live="polite" aria-busy="true"></div>
       <div id="after" hidden>
         ${mode === 'ext' ? src.map((s, i) => `<blockquote class="quote">“${hl(s.quote, terms)}”<cite>${esc(s.title)} · p. ${s.pageNo} <sup><a href="#src-${i + 1}">${i + 1}</a></sup> · Engelstalige datasheet</cite></blockquote>`).join('') : ''}
@@ -297,7 +297,7 @@
   }
   function noAnswer(q) {
     askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p>
-      <div class="noans marc-no" role="status"><img src="${MARC('knipoog')}" alt="" width="320" height="396"><div><p class="ai"><img class="marc-av" src="${MARC('icoon')}" alt="" width="150" height="129">Marc (AI-assistent)</p><p><b>Daar vind ik geen betrouwbaar antwoord op in de documentatie van Triple R.</b></p><p class="small muted">Ik heb gezocht in de webpagina’s en alle datasheets, maar geef liever geen gok. Een specialist beantwoordt uw vraag persoonlijk.<i class="tb" title="Te bevestigen: responstijd"></i></p></div></div>
+      <div class="noans marc-no" role="status"><img src="${MARC('knipoog')}" alt="" width="320" height="396"><div><p class="ai"><img class="marc-av" src="${MARC('icoon')}" alt="" width="330" height="285">Marc (AI-assistent)</p><p><b>Daar vind ik geen betrouwbaar antwoord op in de documentatie van Triple R.</b></p><p class="small muted">Ik heb gezocht in de webpagina’s en alle datasheets, maar geef liever geen gok. Een specialist beantwoordt uw vraag persoonlijk.<i class="tb" title="Te bevestigen: responstijd"></i></p></div></div>
       ${handoff('Stel uw vraag aan een specialist', q)}`;
   }
   function appendBlock(ans, t, html) {
@@ -433,7 +433,7 @@
     tr: ['TR-serie', null, 'Bypassfilter voor motorolie, onder 6 bar'],
     osca: ['OSCA-serie', 'osca.png', 'Hoog debiet voor grote volumes'],
     ss: ['SS-serie', 'ss.png', 'Stalen huizen voor 2 tot 6 elementen'],
-    vacuum: ['Vacuümontwateraar', 'vacuum.png', 'Vrij en opgelost water eruit'],
+    vacuum: ['Vacuümdroger', 'vacuum.png', 'Vrij en opgelost water eruit'],
     ws: ['WS-serie', 'ws.png', 'Coalescer olie-waterafscheider'],
     quicktoron: ['Quicktoron', 'quicktoron.png', 'Tot 95% van de luchtbellen eruit'],
     centrifuges: ['Centrifuges', 'centrifuge.png', 'Koelvloeistof en proceswater'],

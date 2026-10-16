@@ -92,3 +92,18 @@
 }
 
 @media (prefers-reduced-motion: reduce) { :root { --dur: 0ms; --dur-slow: 0ms; } }
+
+/* Kleine schermen: compactere typografie (pass 1.15) */
+@media (max-width: 559px) {
+  :root {
+    --fs-display: 2.25rem;   /* 36 */
+    --fs-h1: 1.875rem;       /* 30 */
+    --fs-h2: 1.625rem;       /* 26 */
+    --fs-h3: 1.1875rem;      /* 19 */
+    --fs-lead: 1rem;         /* 16 */
+    --fs-body: .9375rem;     /* 15 */
+    --fs-sm: .875rem;        /* 14 */
+    --fs-xs: .75rem;         /* 12 */
+  }
+}
+

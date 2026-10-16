@@ -13,7 +13,7 @@ CATS = [
     ('lagedruk', 'Bypass bij lage druk', 'Filterhuizen voor motorolie, smeersystemen en filterinstallaties tot enkele bar.'),
     ('offline', 'Offline met eigen pomp', 'Zelfaanzuigende units met motor-pompgroep: stationair, aan de wand of mobiel.'),
     ('vullen', 'Vulpompen', 'Olie gefilterd overpompen en machines vullen.'),
-    ('water', 'Water verwijderen', 'Vacuümontwateraars en olie-waterafscheiders.'),
+    ('water', 'Water verwijderen', 'Vacuümdrogers en olie-waterafscheiders.'),
     ('lucht', 'Lucht en schuim', 'Ontluchters op basis van het cycloonprincipe.'),
     ('proces', 'Koelvloeistof en proceswater', 'Centrifuges zonder verbruiksmateriaal.'),
     ('elementen', 'Filterelementen', 'Vervangelementen en voorfilters voor alle Triple R-systemen.'),
@@ -32,7 +32,7 @@ SERIES = {
     'se-mobile': dict(n='SE Mobile', cat='offline', img='se.png', pdf='SE-Mobile-2023-ENGLISH.pdf', s='Mobiele SE-units op wielen, voor service en onderhoud.'),
     'osca': dict(n='OSCA-serie', cat='offline', img='osca.png', pdf='OSCA-2019-ENGLISH.pdf', s='Offline reinigers met hoog debiet voor grote volumes.'),
     'vp': dict(n='Vulpompen', cat='vullen', img=None, pdf=None, s='Pompen om olie gefilterd over te pompen en machines te vullen.'),
-    'vacuum': dict(n='Vacuümontwateraar', cat='water', img='vacuum.png', pdf='VacuumDehydrator-TRVS-N30E-ENG.pdf', s='Volautomatische waterverwijdering onder vacuüm.'),
+    'vacuum': dict(n='Vacuümdroger', cat='water', img='vacuum.png', pdf='VacuumDehydrator-TRVS-N30E-ENG.pdf', s='Volautomatische waterverwijdering onder vacuüm.'),
     'ws': dict(n='WS-serie', cat='water', img='ws.png', pdf='WS-2019-ENGLISH.pdf', s='Olie-waterafscheiders op basis van coalescentie.'),
     'quicktoron': dict(n='Quicktoron', cat='lucht', img='quicktoron.png', pdf='QUICKTORON-2023-ENGLISH.pdf', s='Cycloon-ontluchter in roestvast staal.'),
     'centrifuges': dict(n='Centrifuges', cat='proces', img='centrifuge.png', pdf='Centrifuges_2014_UK-1.pdf', s='Deeltjes en slib uit koelvloeistof en proceswater.'),
@@ -175,7 +175,7 @@ for id, name, pw, flow, io, dim, kg, els in [
         confirm=['Artikelnummer niet vermeld in de datasheet'])
 
 # ---------------- Water, lucht, proces ----------------
-add('trvs-n30e', 'vacuum', 'TRVS-N30E', 'TRVS-N30E', 'Volautomatische vacuümontwateraar: 80% van het opgeloste en 100% van het vrije water, plus luchtbellen.',
+add('trvs-n30e', 'vacuum', 'TRVS-N30E', 'TRVS-N30E', 'Volautomatische vacuümdroger: 80% van het opgeloste en 100% van het vrije water, plus luchtbellen.',
     [('Debiet', '30 l/min'), ('Motor', '415 V x 3, 50 Hz'), ('Vermogen', '0,75 kW'), ('Aansluiting', 'in 1 1/4", uit 1"'), ('Viscositeit', '10 tot 600 cSt'),
      ('Olietemperatuur', '15 tot 60 °C'), ('Afmetingen', 'L 1350 x B 670 x H 1765 mm'), ('Gewicht', '410 kg')],
     fluid=['hyd', 'lube'], version=['stationair'], flow=30, page=2)

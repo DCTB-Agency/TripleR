@@ -23,13 +23,13 @@ nav (pill-hover) · &quot;Vraag het aan Marc&quot;-balk 320px (210px < 1280) met
     </ul></nav>
     <div class="hdr__end">
       <button type="button" class="ask-trigger" id="ask-open" data-ask-open aria-haspopup="dialog" aria-controls="ask">
-        <img class="marc-av" src="img/marc/marc-icoon.png" alt="" width="150" height="129">
+        <img class="marc-av" src="img/marc/marc-icoon.png" alt="" width="330" height="285">
         <span class="ask-trigger__txt"><b>Vraag het aan Marc</b><span class="ask-trigger__ph" id="ask-ph" hidden></span></span>
       </button>
       <details class="langsw"><summary aria-label="Taal: Nederlands">NL</summary><nav aria-label="Taal"><a href="#" lang="en" hreflang="en">English</a><a href="#" lang="fr" hreflang="fr">Français</a></nav></details>
-      <a class="qbtn" href="offerte.html" data-quote-link hidden aria-label="Offerteaanvraag, 0 producten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg><span class="qbtn__n" data-quote-count>0</span></a>
+      <a class="qbtn" href="offerte.html" data-quote-link hidden aria-label="Offerteaanvraag, 0 producten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2.5 3.5h2.6l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 7.5H6.2"/></svg><span class="qbtn__n" data-quote-count>0</span></a>
     </div>
-    <a class="mbtn qbtn--m" href="offerte.html" data-quote-link hidden aria-label="Offerteaanvraag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/></svg><span class="qbtn__n" data-quote-count>0</span></a>
+    <a class="mbtn qbtn--m" href="offerte.html" data-quote-link hidden aria-label="Offerteaanvraag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2.5 3.5h2.6l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 7.5H6.2"/></svg><span class="qbtn__n" data-quote-count>0</span></a>
     <button class="mbtn" type="button" id="m-search" data-ask-open aria-label="Vraag het aan Marc: zoek of stel een vraag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
     <button class="mbtn" type="button" id="m-open" aria-label="Menu openen" aria-controls="drawer" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
   </div>
@@ -50,7 +50,7 @@ nav (pill-hover) · &quot;Vraag het aan Marc&quot;-balk 320px (210px < 1280) met
         <h3>Filterelementen</h3><ul>
         <li><a href="producten.html?cat=elementen"><b>Alle filterelementen</b><span>M, E, X, D, V100, WE en WG</span></a></li></ul></div>
       <div><h3>Water, lucht en proces</h3><ul>
-        <li><a href="producten.html?serie=vacuum"><b>Vacuümontwateraar</b><span>Vrij en opgelost water, 30 l/min</span></a></li>
+        <li><a href="producten.html?serie=vacuum"><b>Vacuümdroger</b><span>Vrij en opgelost water, 30 l/min</span></a></li>
         <li><a href="producten.html?serie=ws"><b>WS-serie</b><span>Olie-waterafscheiders</span></a></li>
         <li><a href="producten.html?serie=quicktoron"><b>Quicktoron</b><span>Ontluchter, 9 tot 100 l/min</span></a></li>
         <li><a href="producten.html?serie=centrifuges"><b>Centrifuges</b><span>Koelvloeistof, 30 tot 200 l/min</span></a></li></ul></div>
@@ -67,7 +67,7 @@ nav (pill-hover) · &quot;Vraag het aan Marc&quot;-balk 320px (210px < 1280) met
 
 <div class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Menu">
   <div class="drawer__top"><span style="width:132px;display:block">{{LOGO_COLOR_D}}</span><button class="mbtn" type="button" id="m-close" aria-label="Menu sluiten" style="display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <button type="button" class="ask-trigger" data-ask-open aria-haspopup="dialog" aria-controls="ask"><img class="marc-av" src="img/marc/marc-icoon.png" alt="" width="150" height="129"><span class="ask-trigger__txt"><b>Vraag het aan Marc</b><span class="ask-trigger__ph">Onze AI-assistent</span></span></button>
+  <button type="button" class="ask-trigger" data-ask-open aria-haspopup="dialog" aria-controls="ask"><img class="marc-av" src="img/marc/marc-icoon.png" alt="" width="330" height="285"><span class="ask-trigger__txt"><b>Vraag het aan Marc</b><span class="ask-trigger__ph">Onze AI-assistent</span></span></button>
   <nav aria-label="Hoofdmenu mobiel"><ul class="list">
     <li><a href="oplossingen.html">Oplossingen</a></li><li><a href="producten.html">Producten</a></li><li><a href="sectoren.html">Sectoren</a></li><li><a href="olieanalyse.html">Gratis olieanalyse</a></li><li><a href="filtration-systembuilder.html" lang="en">Filtration Systembuilder</a></li><li><a href="verhuur.html">Verhuur</a></li><li><a href="netwerk.html">Netwerk</a></li><li><a href="besparingscalculator.html">Besparingscalculator</a></li><li><a href="homepage.html#contact">Contact</a></li>
   </ul></nav>

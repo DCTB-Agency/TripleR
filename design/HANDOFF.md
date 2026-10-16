@@ -413,3 +413,22 @@ The mobile rules live in the last block of `site.css` (≤ 767 px). They make pa
   - **Not offered:** LS/LL series (the LL suction filter TR-21000 has been removed), Crystal Products desiccant breathers, spare parts.
   - **Options are handled differently and are not on the website:** the "Op aanvraag" rows have been removed from SE Mobile and SE200E-HF; the "Optie" mentions have been removed from rental, the mega menu and the assistant.
 - **Photos:** the product photos on the site carry the Triple R/RRR brand (not TRIS). **[CONFIRM] the homepage hero video comes from TRIS** (oilcleaner.eu). Replace it with Triple R Europe's own footage or a still image.
+
+## Pass 1.15: copy round 1 from Word, mobile density, filter fixes
+
+- **Copy:** 34 changes from the client's Word document were applied via `copy/copytool.py import`. The main ones:
+  - vacuümontwateraar → **vacuümdroger**, now also in the catalogue, menu and search synonyms;
+  - Maxim Van Uytven → **Managing Director**;
+  - "propere olie";
+  - "drie soorten vervuiling" (the section still shows 4 cards; [CONFIRM]).
+- **Reference carousel:** both lists are now identical (14 names). Typos fixed: "multinations" → "multinationals", "KMO's" → "kmo's".
+  - **[CONFIRM]** whether "Apiroc" should be "Epiroc".
+  - **[CONFIRM]** logo permissions.
+- **Mobile type scale:** `tokens.css` has a `max-width: 559px` block (display 36, h1 30, h2 26, h3 19, lead 16, body 15 px).
+- **Marc icon** at 330 px for sharp retina display.
+- **Pointer cursor** on the header button.
+- **Catalogue:**
+  - the filter fields used class `.kf`, which clashed with an old `.kf` (two columns) and is now `.kff`; the sidebar column is constrained to `minmax(0,1fr)`;
+  - the category bar has scroll arrows and a faded edge when more tabs exist than fit;
+  - long spec values in tiles now wrap.
+- **Product photos:** the oilcleaner.eu photos all carry a "Triple R | TRIS" watermark. They are **not** used, and the watermark is not removed. Request the originals from TRIS or Triple R Japan.

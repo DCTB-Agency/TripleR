@@ -38,7 +38,14 @@
 .qempty svg{width:40px;height:40px;color:var(--grey-400)}
 .qempty p{color:var(--grey-600);max-width:30rem}
 .qmore h3{font-size:var(--fs-sm);font-weight:600;margin-bottom:10px}
+.qfind{display:flex;align-items:center;gap:8px;height:44px;padding:0 12px;border:1px solid var(--grey-200);border-radius:12px;margin-bottom:10px}
+.qfind:focus-within{border-color:var(--blue-700);box-shadow:0 0 0 3px var(--blue-50)}
+.qfind svg{width:16px;height:16px;color:var(--grey-600);flex:none}
+.qfind input{flex:1;min-width:0;border:0;outline:none;background:none;font:inherit;font-size:14.5px}
+.qfind__h{font-size:12.5px;color:var(--grey-600);margin-bottom:8px}
+.qall{display:inline-block;margin-top:10px;font-size:13.5px;font-weight:500}
 .qchips{display:flex;flex-wrap:wrap;gap:8px}
+.qchips small{font:500 11.5px var(--font-mono);color:var(--grey-600)}
 .qchips button{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 13px;border-radius:var(--radius-pill);border:1px solid var(--grey-200);background:#fff;font:500 13px var(--font-sans);color:var(--ink);cursor:pointer}
 .qchips button:hover{border-color:var(--blue-700);color:var(--blue-700)}
 .qchips button:focus-visible{outline:none;box-shadow:var(--focus)}
@@ -62,7 +69,7 @@
 .qdone{display:grid;gap:var(--s-4);justify-items:start}
 .qdone svg{width:48px;height:48px;color:var(--ok-700)}
 @media (max-width:1023px){.qlay{grid-template-columns:1fr}.qform{position:static}}
-@media (max-width:559px){.qi{grid-template-columns:56px minmax(0,1fr)}.qi__img{width:56px;height:52px}.qi__ctl{grid-row:auto;grid-column:2;justify-content:space-between}.qi__note{grid-column:1 / -1}.two,.qrent{grid-template-columns:1fr}}
+@media (max-width:559px){.qi{grid-template-columns:56px minmax(0,1fr);grid-template-areas:"img t" "img d" "ctl ctl" "note note";gap:4px 12px}.qi__img{grid-area:img;grid-row:auto;width:56px;height:52px}.qi__t{grid-area:t}.qi__d{grid-area:d}.qi__ctl{grid-area:ctl;grid-row:auto;justify-content:space-between;margin-top:6px}.qi__note{grid-area:note;width:100%}.two,.qrent{grid-template-columns:1fr}}
 </style>
 {{HEADER}}
 <main id="main">
@@ -90,7 +97,7 @@
         <div class="f"><label for="r-to">Tot</label><input id="r-to" type="date"></div>
         <div class="f"><label for="r-loc">Locatie <em>(stad)</em></label><input id="r-loc" type="text" autocomplete="address-level2"></div>
       </div>
-      <div class="qmore"><h3 id="q-more-h">Nog iets toevoegen?</h3><div class="qchips" id="q-more" role="group" aria-labelledby="q-more-h"></div></div>
+      <div class="qmore"><h3>Nog iets toevoegen?</h3><div class="btns"><a class="btn btn--secondary btn--sm" href="producten.html">Naar de producten</a><a class="btn btn--secondary btn--sm" href="verhuur.html">Naar de huurtoestellen</a></div></div>
     </div>
 
     <div class="qcard qform" id="q-form-wrap">
@@ -120,7 +127,7 @@
 <script>
 (() => {
   const Q = window.RRRQuote, C = Q.catalog;
-  const items = document.getElementById('q-items'), empty = document.getElementById('q-empty'), more = document.getElementById('q-more'), sum = document.getElementById('q-sum'), rent = document.getElementById('q-rent'), msg = document.getElementById('f-msg');
+  const items = document.getElementById('q-items'), empty = document.getElementById('q-empty'), sum = document.getElementById('q-sum'), rent = document.getElementById('q-rent'), msg = document.getElementById('f-msg');
   const qs = new URLSearchParams(location.search);
   if (qs.get('specifiek') === 'huur' && !Q.has('anders', 'huur')) Q.add('anders', { mode: 'huur' });
   const PH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M7 7h10M7 17h10"/></svg>';
@@ -148,11 +155,10 @@
         <span class="qi__t"><b>${esc(c[0])}</b><span class="mode ${x.mode}">${x.mode === 'huur' ? 'Huur' : 'Aankoop'}</span></span>
         <span class="qi__ctl"><span class="step"><button type="button" data-d="-1" aria-label="Eén minder ${esc(c[0])}">−</button><output aria-live="polite" aria-label="Aantal">${x.qty}</output><button type="button" data-d="1" aria-label="Eén meer ${esc(c[0])}">+</button></span><button type="button" class="qi__x" aria-label="${esc(c[0])} verwijderen">${X}</button></span>
         <span class="qi__d">${esc(c[2])}</span>
-        <input class="qi__note" type="text" value="${esc(x.note)}" placeholder="${x.id === 'anders' ? 'Welk toestel hebt u nodig?' : 'Uitvoering, spanning of opmerking (optioneel)'}" aria-label="Opmerking bij ${esc(c[0])}">
+        <input class="qi__note" type="text" value="${esc(x.note)}" placeholder="${x.id === 'anders' ? 'Welk toestel hebt u nodig?' : 'Opmerking, bv. uitvoering of spanning'}" aria-label="Opmerking bij ${esc(c[0])}">
       </li>`; }).join('');
     seen = new Set(l.map(x => x.id + '|' + x.mode));
     rent.hidden = !l.some(x => x.mode === 'huur');
-    more.innerHTML = Object.entries(C).filter(([id]) => id !== 'anders' && !Q.has(id)).map(([id, c]) => `<button type="button" data-quote-add="${id}" data-toggle="no">+ ${esc(c[0])}</button>`).join('');
     syncMsg();
   }
   items.addEventListener('click', e => {

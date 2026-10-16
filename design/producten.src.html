@@ -45,7 +45,7 @@
     <div class="hero__copy" style="gap:0">
       <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Producten</li></ol>
       <h1 id="h1">Bypassfilters en <span>oliereinigers</span></h1>
-      <p class="lead">Kies uit 46 Triple R-systemen en 27 filterelementen en voorfilters: van een compacte bypassfilter op de drukleiding tot mobiele reinigers, ontwateraars en centrifuges. Filter op categorie, olievolume en vloeistof, bekijk de specificaties per model en voeg ze toe aan uw offerteaanvraag.</p>
+      <p class="lead">Kies uit 46 Triple R-systemen en 27 filterelementen en voorfilters: van een compacte bypassfilter op de drukleiding tot mobiele reinigers, vacuümdrogers en centrifuges. Filter op categorie, olievolume en vloeistof, bekijk de specificaties per model en voeg ze toe aan uw offerteaanvraag.</p>
     </div>
     <div class="trio" aria-hidden="true"><img class="a" src="img/se.png" alt=""><img class="b" src="img/BU-Series.png" alt=""><img class="c" src="img/osca.png" alt=""></div>
   </div>
@@ -55,15 +55,15 @@
 <section class="sec kat-sec" id="catalogus" aria-labelledby="h-kat" data-annot="Catalogus · categorietabs + filters (zoeken, olievolume, vloeistof, uitvoering, serie) · URL bewaart de filters (?cat=&amp;serie=&amp;vol=) · tegels per model, gegroepeerd per serie · ‘Offerte’ zet het model in de offerteaanvraag">
   <div class="wrap">
     <h2 id="h-kat" class="vh">Alle producten</h2>
-    <div class="ktabs" role="tablist" aria-label="Categorie" id="ktabs"></div>
+    <div class="ktabs-w" id="ktabs-w"><button type="button" class="ktabs-arr l" data-d="-1" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4l-6 6 6 6"/></svg></button><div class="ktabs" role="tablist" aria-label="Categorie" id="ktabs"></div><button type="button" class="ktabs-arr r" data-d="1" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4l6 6-6 6"/></svg></button></div>
     <div class="kat">
       <aside class="kfil" id="kfil" aria-label="Filters">
         <div class="kfil__head"><b>Filters</b><button type="button" class="kfil__reset" id="kreset" hidden>Wis filters</button></div>
-        <div class="kf"><label for="kq">Zoek op model of artikelnummer</label><div class="kq"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18"/></svg><input id="kq" type="search" placeholder="Bv. BU100E of EL10006" autocomplete="off"></div></div>
-        <div class="kf" id="kvol-f"><label for="kvol">Olievolume van uw systeem</label><div class="num"><input id="kvol" type="text" inputmode="numeric" placeholder="bv. 600" aria-describedby="kvol-h"><span>liter</span></div><p class="kh" id="kvol-h">Toont de modellen die de datasheet voor dit volume aanraadt.</p></div>
-        <fieldset class="kf" id="kfl"><legend>Vloeistof</legend></fieldset>
-        <fieldset class="kf" id="kver"><legend>Uitvoering</legend></fieldset>
-        <fieldset class="kf" id="kser"><legend>Serie</legend></fieldset>
+        <div class="kff"><label for="kq">Zoek op model of artikelnummer</label><div class="kq"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18"/></svg><input id="kq" type="search" placeholder="Bv. BU100E of EL10006" autocomplete="off"></div></div>
+        <div class="kff" id="kvol-f"><label for="kvol">Olievolume van uw systeem</label><div class="num"><input id="kvol" type="text" inputmode="numeric" placeholder="bv. 600" aria-describedby="kvol-h"><span>liter</span></div><p class="kh" id="kvol-h">Toont de modellen die de datasheet voor dit volume aanraadt.</p></div>
+        <fieldset class="kff" id="kfl"><legend>Vloeistof</legend></fieldset>
+        <fieldset class="kff" id="kver"><legend>Uitvoering</legend></fieldset>
+        <fieldset class="kff" id="kser"><legend>Serie</legend></fieldset>
       </aside>
       <div class="kres">
         <div class="kbar"><button type="button" class="btn btn--secondary btn--sm kfil-btn" id="kfil-btn" aria-controls="kfil" aria-expanded="false">Filters</button><p id="kcount" aria-live="polite"></p><label class="ksort"><span>Sorteer</span><select id="ksort" aria-label="Sorteer"><option value="serie">per serie</option><option value="flow">debiet</option><option value="naam">naam</option></select></label></div>
@@ -98,7 +98,7 @@
     <div class="askembed">
       <div><h2>Zoekt u iets specifieks in een datasheet?</h2><p>Marc doorzoekt alle productpagina’s én de PDF’s, en toont de exacte pagina.</p></div>
       <form data-ask-embed role="search" aria-label="Vraag het aan Marc"><label class="vh" for="ae-q">Stel uw vraag</label><input id="ae-q" type="text" placeholder="Bv. welke viscositeit kan de OSCA-serie aan?"><button class="btn btn--light btn--sm" type="submit">Vraag</button></form>
-      <div class="chips"><button type="button" data-q="Wat is het maximale debiet van de SS-serie?">Debiet SS-serie</button><button type="button" data-q="Welke elementen passen in de TR-serie?">Elementen TR-serie</button><button type="button" data-q="Wat staat er in het testrapport van de vacuümontwateraar?">Testrapport vacuümontwateraar</button></div>
+      <div class="chips"><button type="button" data-q="Wat is het maximale debiet van de SS-serie?">Debiet SS-serie</button><button type="button" data-q="Welke elementen passen in de TR-serie?">Elementen TR-serie</button><button type="button" data-q="Wat staat er in het testrapport van de vacuümdroger?">Testrapport vacuümdroger</button></div>
     </div>
   </div>
 </section>
@@ -109,7 +109,7 @@
     <div class="cta">
       <div><h2 id="h-cta">Twijfelt u tussen twee series?</h2><p class="lead">Beschrijf uw installatie in 2 minuten; een specialist adviseert welke serie en welke elementen passen.</p>
         <div class="btns"><a class="btn btn--light" href="homepage.html#contact">Vraag advies aan</a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div></div>
-      <div class="person"><img src="img/team.jpg" alt="Het Triple R-team in Aartselaar" width="768" height="1024" loading="lazy"><div class="person__who"><div><h3>Maxim Van Uytven</h3><p class="role">Sales Manager</p></div><div class="links"><a href="tel:+3238254647">+32 (0)3 825 46 47</a><a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a></div></div></div>
+      <div class="person"><img src="img/team.jpg" alt="Het Triple R-team in Aartselaar" width="768" height="1024" loading="lazy"><div class="person__who"><div><h3>Maxim Van Uytven</h3><p class="role">Managing Director</p></div><div class="links"><a href="tel:+3238254647">+32 (0)3 825 46 47</a><a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a></div></div></div>
     </div>
   </div>
 </section>
@@ -196,10 +196,17 @@
   document.addEventListener('quote:change', () => document.querySelectorAll('.kcard [data-quote-add]').forEach(b => { const on = Q.has(b.dataset.quoteAdd); b.classList.toggle('is-in', on); b.setAttribute('aria-pressed', on); b.querySelector('[data-t]').textContent = on ? 'In offerte' : 'Offerte'; }));
   render();
 
+  /* categoriebalk: pijlen en vervaagde rand zodra er meer tabs zijn dan er passen */
+  const tw = $('ktabs-w');
+  const tabSync = () => { const max = tabs.scrollWidth - tabs.clientWidth; tw.classList.toggle('can-l', tabs.scrollLeft > 4); tw.classList.toggle('can-r', tabs.scrollLeft < max - 4); };
+  tabs.addEventListener('scroll', tabSync, { passive: true }); addEventListener('resize', tabSync); tabSync();
+  tw.querySelectorAll('.ktabs-arr').forEach(b => b.addEventListener('click', () => tabs.scrollBy({ left: +b.dataset.d * tabs.clientWidth * .7, behavior: document.documentElement.classList.contains('motion') ? 'smooth' : 'auto' })));
+  tabs.querySelector('[aria-selected="true"]')?.scrollIntoView({ inline: 'center', block: 'nearest' });
+
   /* ---------- downloads ---------- */
   const DOCS = { 'BU-2023-UK-.pdf': ['BU-serie datasheet', 447], 'BU-100E-Wind-S.pdf': ['BU-100E-Wind, technische tekening', 2282], 'STEEL-housing-HP.pdf': ['Stalen huizen HP (compressoren)', 540], 'TR-2019-ENGLISH.pdf': ['TR-serie datasheet', 1196], 'SS-2019-ENGLISH-.pdf': ['SS-serie datasheet', 618],
     'SE-2019-ENGLISH.pdf': ['SE-serie datasheet', 660], 'SE-Mobile-2023-ENGLISH.pdf': ['SE Mobile datasheet', 741], 'SE-Mobile-HF-ENGLISH.pdf': ['SE200E Mobile High Flow', 933], 'se100e-bh.pdf': ['SE100E-BH, 3D-weergave', 1057], 'se100e-wh.pdf': ['SE100E-WH (wand), 3D-weergave', 917],
-    'OSCA-2019-ENGLISH.pdf': ['OSCA-serie datasheet', 955], 'VacuumDehydrator-TRVS-N30E-ENG.pdf': ['Vacuümontwateraar TRVS-N30E', 664], 'vacuum_system_test.pdf': ['Vacuümontwateraar, testrapport', 78], 'WS-2019-ENGLISH.pdf': ['WS-serie datasheet', 578],
+    'OSCA-2019-ENGLISH.pdf': ['OSCA-serie datasheet', 955], 'VacuumDehydrator-TRVS-N30E-ENG.pdf': ['Vacuümdroger TRVS-N30E', 664], 'vacuum_system_test.pdf': ['Vacuümdroger, testrapport', 78], 'WS-2019-ENGLISH.pdf': ['WS-serie datasheet', 578],
     'QUICKTORON-2023-ENGLISH.pdf': ['Quicktoron datasheet', 633], 'Centrifuges_2014_UK-1.pdf': ['Centrifuges brochure', 688], 'Elements-ENGLISH.pdf': ['Filterelementen brochure', 2664], 'Element-data-sheet-2023.pdf': ['Element data sheet 2023', 163], 'V100-ENGLISH.pdf': ['V100 varnish-element', 777],
     'windmill.pdf': ['Toepassing windturbines', 503], 'Recommended-cleanliness4.pdf': ['Aanbevolen reinheid', 82], 'iso440637534.pdf': ['ISO 4406-tabel', 210], 'nas1638-kopie.pdf': ['NAS 1638-tabel', 388] };
   document.getElementById('dl').innerHTML = Object.entries(DOCS).map(([f, [t, kb]]) => `<a href="pdf/${encodeURIComponent(f)}" target="_blank" rel="noopener"><span class="ic">PDF</span><b>${t}</b><span class="m">Engels · ${kb >= 1000 ? (kb / 1024).toFixed(1).replace('.', ',') + ' MB' : kb + ' KB'}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg></a>`).join('');
