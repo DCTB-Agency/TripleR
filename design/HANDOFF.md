@@ -422,7 +422,7 @@ The mobile rules live in the last block of `site.css` (≤ 767 px). They make pa
   - "propere olie";
   - "drie soorten vervuiling" (the section still shows 4 cards; [CONFIRM]).
 - **Reference carousel:** both lists are now identical (14 names). Typos fixed: "multinations" → "multinationals", "KMO's" → "kmo's".
-  - **[CONFIRM]** whether "Apiroc" should be "Epiroc".
+  - "Apiroc" corrected to "Epiroc" (confirmed by the client).
   - **[CONFIRM]** logo permissions.
 - **Mobile type scale:** `tokens.css` has a `max-width: 559px` block (display 36, h1 30, h2 26, h3 19, lead 16, body 15 px).
 - **Marc icon** at 330 px for sharp retina display.
