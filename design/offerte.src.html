@@ -1,0 +1,184 @@
+<title>Offerte aanvragen · Triple R</title>
+<meta name="description" content="Stel uw offerteaanvraag samen: kies producten of huurtoestellen, vul uw gegevens in en ontvang een offerte op maat van een Triple R-specialist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.qlay{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s-6);align-items:start}
+.qlay>*{min-width:0}
+.qcard{background:#fff;border-radius:28px;box-shadow:var(--shadow-card);border:var(--border);padding:clamp(1.25rem,1rem + 1.5vw,2rem);display:grid;gap:var(--s-5)}
+.qcard h2{font-size:var(--fs-h3);letter-spacing:-.025em}
+.qhead{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-4)}
+.qhead small{color:var(--grey-600);font-size:var(--fs-sm)}
+.qitems{list-style:none;display:grid;gap:10px;margin:0;padding:0}
+.qi{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:6px 16px;align-items:center;padding:12px;border-radius:18px;border:var(--border);background:#fff}
+.motion .qi.new{animation:fabin .3s var(--ease)}
+.qi__img{grid-row:span 2;width:72px;height:64px;border-radius:12px;background:radial-gradient(80% 70% at 50% 45%,#fff,#EEF2F7);display:grid;place-items:center;padding:6px}
+.qi__img img{max-width:100%;max-height:100%;mix-blend-mode:multiply}
+.qi__img svg{width:28px;height:28px;color:var(--grey-400)}
+.qi__t{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.qi__t b{font-weight:600}
+.qi__t .mode{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:var(--radius-pill);background:var(--blue-50);color:var(--blue-800)}
+.qi__t .mode.huur{background:#FFF1D6;color:#7A4E00}
+.qi__d{font-size:12.5px;color:var(--grey-600)}
+.qi__ctl{grid-row:span 2;display:flex;align-items:center;gap:8px}
+.step{display:flex;align-items:center;border:1px solid var(--grey-200);border-radius:var(--radius-pill);height:40px}
+.step button{width:36px;height:38px;border:0;background:none;font-size:18px;color:var(--ink);cursor:pointer;border-radius:var(--radius-pill)}
+.step button:hover{background:var(--grey-50)}
+.step output{min-width:26px;text-align:center;font:500 14px var(--font-mono)}
+.qi__x{width:36px;height:36px;border:0;border-radius:50%;background:none;color:var(--grey-600);cursor:pointer;display:grid;place-items:center}
+.qi__x:hover{background:#FBE4E1;color:var(--err-700)}
+.qi__x svg{width:16px;height:16px}
+.qi__note{grid-column:2 / -1;height:38px;padding:0 12px;border:1px solid var(--grey-200);border-radius:10px;font:inherit;font-size:13.5px;background:var(--grey-50)}
+.qi__note:focus{outline:none;border-color:var(--blue-700);background:#fff;box-shadow:0 0 0 3px var(--blue-50)}
+.step button:focus-visible,.qi__x:focus-visible{outline:none;box-shadow:var(--focus)}
+.qempty{text-align:center;padding:var(--s-8) var(--s-4);border-radius:18px;border:1.5px dashed var(--grey-200);display:grid;gap:var(--s-3);justify-items:center}
+.qempty svg{width:40px;height:40px;color:var(--grey-400)}
+.qempty p{color:var(--grey-600);max-width:30rem}
+.qmore h3{font-size:var(--fs-sm);font-weight:600;margin-bottom:10px}
+.qchips{display:flex;flex-wrap:wrap;gap:8px}
+.qchips button{display:inline-flex;align-items:center;gap:6px;min-height:38px;padding:0 13px;border-radius:var(--radius-pill);border:1px solid var(--grey-200);background:#fff;font:500 13px var(--font-sans);color:var(--ink);cursor:pointer}
+.qchips button:hover{border-color:var(--blue-700);color:var(--blue-700)}
+.qchips button:focus-visible{outline:none;box-shadow:var(--focus)}
+.qrent{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:var(--s-4);border-radius:18px;background:#FFF8EA}
+.qrent[hidden]{display:none}
+.qrent p{grid-column:1 / -1;font-size:var(--fs-sm);font-weight:600}
+.qform{position:sticky;top:100px}
+.qform form{display:grid;gap:var(--s-4)}
+.f{display:grid;gap:6px}
+.f label{font-size:var(--fs-sm);font-weight:500}
+.f label em{font-style:normal;font-weight:400;color:var(--grey-600)}
+.f input,.f select,.f textarea{height:46px;padding:0 14px;border:1px solid var(--grey-200);border-radius:var(--radius);font:inherit;background:#fff;color:var(--ink);width:100%}
+.f textarea{height:150px;padding:12px 14px;resize:vertical;line-height:1.5}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blue-50)}
+.f [aria-invalid="true"]{border-color:var(--err-700)}
+.f .err{font-size:12.5px;color:var(--err-700);font-weight:500}
+.f .hint{font-size:12.5px;color:var(--grey-600)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--grey-600)}
+.chk input{width:20px;height:20px;margin-top:1px;accent-color:var(--blue-700);flex:none}
+.qdone{display:grid;gap:var(--s-4);justify-items:start}
+.qdone svg{width:48px;height:48px;color:var(--ok-700)}
+@media (max-width:1023px){.qlay{grid-template-columns:1fr}.qform{position:static}}
+@media (max-width:559px){.qi{grid-template-columns:56px minmax(0,1fr)}.qi__img{width:56px;height:52px}.qi__ctl{grid-row:auto;grid-column:2;justify-content:space-between}.qi__note{grid-column:1 / -1}.two,.qrent{grid-template-columns:1fr}}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page" aria-labelledby="h1" data-annot="Offerteaanvraag · prijsloos ‘winkelmandje’ · selectie bewaard per bezoeker (localStorage) · selectie staat als prefix in het bericht · event lead_offerte">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li><a href="producten.html">Producten</a></li><li aria-current="page">Offerte aanvragen</li></ol>
+      <h1 id="h1">Offerte <span>aanvragen</span></h1>
+      <p class="lead">Stel uw aanvraag samen zonder prijzen of verplichtingen. Voeg producten toe vanuit het productoverzicht, de Filtration Systembuilder of de verhuurpagina, vul uw gegevens in en een specialist van Triple R bezorgt u een offerte op maat van uw installatie.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" aria-label="Uw offerteaanvraag">
+  <div class="wrap qlay">
+    <div class="qcard">
+      <div class="qhead"><h2>Uw selectie</h2><small id="q-sum" aria-live="polite"></small></div>
+      <ul class="qitems" id="q-items"></ul>
+      <div class="qempty" id="q-empty" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h5"/></svg><b>Nog geen producten gekozen</b><p>Kies hieronder wat u wilt aanvragen, of ga naar het <a href="producten.html">productoverzicht</a>. Twijfelt u? Gebruik de <a href="filtration-systembuilder.html" lang="en">Filtration Systembuilder</a>.</p></div>
+      <div class="qrent" id="q-rent" hidden>
+        <p>Huurperiode</p>
+        <div class="f"><label for="r-from">Vanaf</label><input id="r-from" type="date"></div>
+        <div class="f"><label for="r-to">Tot</label><input id="r-to" type="date"></div>
+        <div class="f"><label for="r-loc">Locatie <em>(stad)</em></label><input id="r-loc" type="text" autocomplete="address-level2"></div>
+      </div>
+      <div class="qmore"><h3 id="q-more-h">Nog iets toevoegen?</h3><div class="qchips" id="q-more" role="group" aria-labelledby="q-more-h"></div></div>
+    </div>
+
+    <div class="qcard qform" id="q-form-wrap">
+      <h2>Uw gegevens</h2>
+      <form id="q-form" novalidate>
+        <div class="two">
+          <div class="f"><label for="f-name">Naam</label><input id="f-name" name="name" type="text" autocomplete="name" required><span class="err" id="f-name-e" hidden>Vul uw naam in.</span></div>
+          <div class="f"><label for="f-co">Bedrijf</label><input id="f-co" name="company" type="text" autocomplete="organization" required><span class="err" id="f-co-e" hidden>Vul uw bedrijfsnaam in.</span></div>
+        </div>
+        <div class="two">
+          <div class="f"><label for="f-mail">E-mail</label><input id="f-mail" name="email" type="email" autocomplete="email" required><span class="err" id="f-mail-e" hidden>Vul een geldig e-mailadres in.</span></div>
+          <div class="f"><label for="f-tel">Telefoon <em>(optioneel)</em></label><input id="f-tel" name="phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="f"><label for="f-land">Land</label><select id="f-land" name="country"><option>België</option><option>Nederland</option><option>Luxemburg</option><option>Frankrijk</option><option>Duitsland</option><option>Ander land</option></select></div>
+        <div class="f"><label for="f-msg">Bericht</label><textarea id="f-msg" name="message" aria-describedby="f-msg-h"></textarea><span class="hint" id="f-msg-h">Uw selectie staat al bovenaan. Vul aan met uw installatie, aantallen of vragen.</span></div>
+        <label class="chk"><input type="checkbox" id="f-ok" required><span>Ik ga akkoord dat Triple R mijn gegevens gebruikt om deze aanvraag te beantwoorden (<a href="#">privacybeleid</a>).</span></label>
+        <span class="err" id="f-ok-e" hidden>Vink dit aan om te versturen.</span>
+        <button class="btn btn--primary" type="submit" id="q-submit">Vraag een offerte aan</button>
+        <p class="hint" style="font-size:12.5px;color:var(--grey-600)">U ontvangt een offerte op maat; prijzen staan niet online.<i class="tb" title="Te bevestigen: antwoordtermijn"></i></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>
+<script>
+(() => {
+  const Q = window.RRRQuote, C = Q.catalog;
+  const items = document.getElementById('q-items'), empty = document.getElementById('q-empty'), more = document.getElementById('q-more'), sum = document.getElementById('q-sum'), rent = document.getElementById('q-rent'), msg = document.getElementById('f-msg');
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('specifiek') === 'huur' && !Q.has('anders', 'huur')) Q.add('anders', { mode: 'huur' });
+  const PH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M7 7h10M7 17h10"/></svg>';
+  const X = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>';
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  let seen = new Set();
+
+  /* het bericht begint met de selectie (prefix); wat de bezoeker eronder typt, blijft staan */
+  const MARK = 'Uw bericht:';
+  function prefix() {
+    const l = Q.list(); if (!l.length) return '';
+    return 'Offerteaanvraag voor:\n' + l.map(x => `- ${x.qty} × ${C[x.id] ? C[x.id][0] : x.id}${x.mode === 'huur' ? ' (huur)' : ''}${x.note ? ': ' + x.note : ''}`).join('\n') + '\n\n' + MARK + '\n';
+  }
+  function syncMsg() {
+    const v = msg.value, i = v.indexOf(MARK), own = i >= 0 ? v.slice(i + MARK.length).replace(/^\n/, '') : (v.startsWith('Offerteaanvraag voor:') ? '' : v);
+    msg.value = prefix() + own;
+  }
+  function render() {
+    const l = Q.list(), n = Q.count();
+    sum.textContent = n ? `${n} product${n === 1 ? '' : 'en'}` : '';
+    empty.hidden = !!l.length;
+    items.innerHTML = l.map(x => { const c = C[x.id] || [x.id, null, '']; const k = x.id + '|' + x.mode;
+      return `<li class="qi ${seen.has(k) ? '' : 'new'}" data-id="${x.id}" data-mode="${x.mode}">
+        <span class="qi__img">${c[1] ? `<img src="img/${c[1]}" alt="">` : PH}</span>
+        <span class="qi__t"><b>${esc(c[0])}</b><span class="mode ${x.mode}">${x.mode === 'huur' ? 'Huur' : 'Aankoop'}</span></span>
+        <span class="qi__ctl"><span class="step"><button type="button" data-d="-1" aria-label="Eén minder ${esc(c[0])}">−</button><output aria-live="polite" aria-label="Aantal">${x.qty}</output><button type="button" data-d="1" aria-label="Eén meer ${esc(c[0])}">+</button></span><button type="button" class="qi__x" aria-label="${esc(c[0])} verwijderen">${X}</button></span>
+        <span class="qi__d">${esc(c[2])}</span>
+        <input class="qi__note" type="text" value="${esc(x.note)}" placeholder="${x.id === 'anders' ? 'Welk toestel hebt u nodig?' : 'Uitvoering, spanning of opmerking (optioneel)'}" aria-label="Opmerking bij ${esc(c[0])}">
+      </li>`; }).join('');
+    seen = new Set(l.map(x => x.id + '|' + x.mode));
+    rent.hidden = !l.some(x => x.mode === 'huur');
+    more.innerHTML = Object.entries(C).filter(([id]) => id !== 'anders' && !Q.has(id)).map(([id, c]) => `<button type="button" data-quote-add="${id}" data-toggle="no">+ ${esc(c[0])}</button>`).join('');
+    syncMsg();
+  }
+  items.addEventListener('click', e => {
+    const li = e.target.closest('.qi'); if (!li) return;
+    const id = li.dataset.id, mode = li.dataset.mode, x = Q.list().find(y => y.id === id && y.mode === mode);
+    const d = e.target.closest('[data-d]');
+    if (d) { const q = x.qty + +d.dataset.d; q < 1 ? Q.remove(id, mode) : Q.set(id, mode, { qty: q }); }
+    if (e.target.closest('.qi__x')) Q.remove(id, mode);
+  });
+  items.addEventListener('change', e => { const li = e.target.closest('.qi'); if (li && e.target.matches('.qi__note')) Q.set(li.dataset.id, li.dataset.mode, { note: e.target.value.trim() }); });
+  document.addEventListener('quote:change', render);
+  render();
+
+  /* versturen (prototype: valideert, toont bevestiging, stuurt event) */
+  const form = document.getElementById('q-form');
+  const need = [['f-name', v => v.trim()], ['f-co', v => v.trim()], ['f-mail', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)]];
+  form.addEventListener('submit', e => {
+    e.preventDefault(); let first = null;
+    need.forEach(([id, ok]) => { const el = document.getElementById(id), bad = !ok(el.value); el.setAttribute('aria-invalid', bad); el.toggleAttribute('aria-errormessage', bad); if (bad) el.setAttribute('aria-errormessage', id + '-e'); document.getElementById(id + '-e').hidden = !bad; if (bad && !first) first = el; });
+    const ok = document.getElementById('f-ok'); document.getElementById('f-ok-e').hidden = ok.checked; if (!ok.checked && !first) first = ok;
+    if (first) { first.focus(); window.dataLayer?.push({ event: 'form_error', form: 'offerte' }); return; }
+    const l = Q.list();
+    window.dataLayer?.push({ event: 'lead_offerte', items: l.map(x => x.id + ':' + x.mode + ':' + x.qty).join(','), country: document.getElementById('f-land').value });
+    const wrap = document.getElementById('q-form-wrap');
+    wrap.innerHTML = `<div class="qdone" role="status" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><h2>Bedankt, uw aanvraag is verstuurd</h2><p>We bekijken uw selectie${l.length ? ` (${l.length} item${l.length === 1 ? '' : 's'})` : ''} en nemen contact met u op met een offerte op maat.<i class="tb" title="Te bevestigen: antwoordtermijn"></i></p><a class="btn btn--secondary" href="producten.html">Terug naar de producten</a></div>`;
+    wrap.querySelector('.qdone').focus(); Q.clear();
+  });
+})();
+</script>

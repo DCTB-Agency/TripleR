@@ -13,8 +13,9 @@
 .trio .c{right:0;bottom:8%;width:40%;height:62%}
 .trio::after{content:"";position:absolute;left:8%;right:8%;bottom:-2%;height:40px;border-radius:50%;background:radial-gradient(closest-side,rgb(92 184 235 / .4),transparent)}
 .motion .trio img{animation:rise .9s var(--ease) both}.motion .trio .b{animation-delay:.12s}.motion .trio .c{animation-delay:.24s}
+@media (max-width:1023px){.trio{display:none}}
 
-/* ===== Find My Oil Cleaner-teaser ============================================== */
+/* ===== Filtration Systembuilder-teaser ============================================== */
 .dnat{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s-6);align-items:center;padding:clamp(1.75rem,1rem + 3vw,3.5rem);border-radius:28px;background:var(--brand-gradient);color:#fff;box-shadow:var(--shadow-float);overflow:hidden;position:relative;isolation:isolate}
 .dnat h2{color:#fff}.dnat .eyebrow{color:#CFE6F5}.dnat p.lead{color:#E2E0F0;margin-top:var(--s-3)}
 .dnat ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:var(--s-5) 0}
@@ -22,57 +23,6 @@
 .mt{display:grid;grid-template-columns:minmax(0,1fr) 32px minmax(0,.9fr);align-items:center;gap:6px}.mt__in{display:grid;gap:6px}.mt__in span{display:grid;padding:7px 10px;border-radius:10px;background:#fff;color:var(--grey-600);font-size:10.5px}.mt__in b{font:500 13px var(--font-mono);color:var(--ink)}.mt__arr{width:26px;height:26px;color:#5CB8EB}.mt__out{display:grid;justify-items:center;gap:4px;padding:12px;border-radius:16px;background:rgb(255 255 255 / .08);border:1px solid rgb(255 255 255 / .16);text-align:center}.mt__out img{height:96px;width:auto;background:#fff;border-radius:10px;padding:6px}.mt__out b{color:#fff}.mt__out small{font-size:12px;color:#CFE6F5}
 .dnat a:focus-visible{box-shadow:var(--focus-dark)}
 @media (max-width:1023px){.dnat{grid-template-columns:1fr}.mt{display:none}}
-
-/* ===== Filterbare productlijst ======================================= */
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:var(--s-8)}
-.filters button{min-height:42px;padding:0 16px;border-radius:var(--radius-pill);border:1px solid var(--grey-200);background:#fff;font:500 var(--fs-sm) var(--font-sans);color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all var(--dur) var(--ease)}
-.filters button:hover{border-color:var(--ink)}
-.filters button[aria-pressed="true"]{background:var(--night-950);color:#fff;border-color:var(--night-950)}
-.filters button span{font-size:12px;color:var(--grey-600);font-weight:400}
-.filters button[aria-pressed="true"] span{color:#A9B0D6}
-.plist{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-5)}
-.pl{scroll-margin-top:120px;transition:opacity .35s var(--ease),transform .35s var(--ease)}
-.pl.hide{display:none}
-.pl .prod__img .ph{width:100%;height:100%;display:grid;place-items:center;align-content:center;gap:8px;color:var(--grey-600);font-size:12px;text-align:center}
-.pl .prod__img .ph svg{width:64px;height:64px;color:var(--grey-400)}
-.pl .dots{display:flex;gap:6px;margin-top:var(--s-3);flex-wrap:wrap}
-.pl .dots span{font-size:11.5px;padding:3px 9px;border-radius:var(--radius-pill);background:var(--blue-50);color:var(--blue-800)}
-.pl .row{display:flex;justify-content:space-between;align-items:center;gap:var(--s-3);margin-top:var(--s-4);padding-top:var(--s-4);border-top:var(--border);font-size:13px}
-.pl .row a{font-weight:500;text-decoration:none}
-.pl .row a:hover{text-decoration:underline}
-.pl.target{box-shadow:0 0 0 3px var(--blue-500),var(--shadow-float);border-color:transparent}
-.cmpbox{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--grey-600);cursor:pointer}
-.cmpbox input{width:18px;height:18px;accent-color:var(--blue-700)}
-@media (max-width:1023px){.plist{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:559px){.plist{grid-template-columns:1fr}}
-.pl .row svg{width:16px;height:16px;flex:none}
-@media (max-width:767px){html .pl .dots{display:none}.pl .row a{display:inline-flex;align-items:center;gap:4px}}
-
-/* vergelijkbalk */
-.cmpbar{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);z-index:90;display:flex;align-items:center;gap:var(--s-4);padding:10px 10px 10px 18px;background:var(--night-950);color:#fff;border-radius:var(--radius-pill);box-shadow:var(--shadow-float);transition:transform .4s var(--ease);font-size:var(--fs-sm);max-width:calc(100% - 32px)}
-.cmpbar.show{transform:translate(-50%,0)}
-.cmpbar:not(.show){opacity:0;visibility:hidden}
-.cmpbar .btn{min-height:40px}
-@media (max-width:767px){.cmpbar{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
-
-/* ===== Vergelijkingstabel =========================================== */
-.tablewrap{overflow-x:auto;border-radius:20px;border:var(--border);background:#fff;box-shadow:var(--shadow-card)}
-table.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:1000px;font-size:var(--fs-sm)}
-.cmp th,.cmp td{text-align:left;padding:14px 16px;border-bottom:var(--border);vertical-align:top}
-.cmp thead th{position:sticky;top:0;background:var(--grey-50);font-size:12px;font-weight:500;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--grey-600);white-space:nowrap}
-.cmp tbody th{position:sticky;left:0;background:#fff;font-weight:600;white-space:nowrap;z-index:1}
-.cmp tbody tr{transition:background var(--dur)}
-.cmp tbody tr:hover td,.cmp tbody tr:hover th{background:#F7FAFD}
-.cmp tbody tr.sel td,.cmp tbody tr.sel th{background:#EEF6FC}
-.cmp tbody tr.dim{opacity:.35}
-.cmp .mono{font-size:13px;white-space:nowrap}
-.cmp .rm{display:flex;gap:4px}
-.cmp .rm i{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-size:10.5px;font-weight:600;background:var(--grey-50);color:#B3B8C2}
-.cmp .rm i.on{background:var(--blue-700);color:#fff}
-.cmp td a{font-weight:500;text-decoration:none;white-space:nowrap}
-.cmp td a:hover{text-decoration:underline}
-.legend{display:flex;flex-wrap:wrap;gap:var(--s-5);margin-top:var(--s-4);font-size:12.5px;color:var(--grey-600)}
-.legend i{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:5px;background:var(--blue-700);color:#fff;font-style:normal;font-size:10px;font-weight:600;margin-right:6px}
 
 /* ===== Downloads + vraag ============================================= */
 .dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-3)}
@@ -89,26 +39,48 @@ table.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:1000px;
 {{HEADER}}
 <main id="main">
 
-<section class="hero hero--page" aria-labelledby="h1" data-annot="Producthub · donkere pagina-hero (compact) · breadcrumb · answer-first intro (BRIEF §6.4)">
+<section class="hero hero--page" aria-labelledby="h1" data-annot="Productcatalogus per model (73 producten uit de datasheets) · donkere pagina-hero (compact) · breadcrumb · answer-first intro (BRIEF §6.4)">
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="wrap hero__grid">
     <div class="hero__copy" style="gap:0">
       <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Producten</li></ol>
       <h1 id="h1">Bypassfilters en <span>oliereinigers</span></h1>
-      <p class="lead">Triple R maakt tien productseries die vaste deeltjes, varnish, water en lucht uit industriële olie halen: van een compacte bypassfilter op de drukleiding tot mobiele reinigers, ontwateraars en centrifuges. Allemaal rond hetzelfde 3-in-1 filterelement.</p>
+      <p class="lead">Kies uit 46 Triple R-systemen en 27 filterelementen en voorfilters: van een compacte bypassfilter op de drukleiding tot mobiele reinigers, ontwateraars en centrifuges. Filter op categorie, olievolume en vloeistof, bekijk de specificaties per model en voeg ze toe aan uw offerteaanvraag.</p>
     </div>
     <div class="trio" aria-hidden="true"><img class="a" src="img/se.png" alt=""><img class="b" src="img/BU-Series.png" alt=""><img class="c" src="img/osca.png" alt=""></div>
   </div>
 </section>
 
 <!-- MIJN TRIPLE R TEASER -->
-<section class="sec band" id="keuze" aria-labelledby="h-keuze" data-annot="Teaser naar Find My Oil Cleaner (vervangt de 4-vragen-keuzehulp) · anker #keuze blijft werken">
+<section class="sec kat-sec" id="catalogus" aria-labelledby="h-kat" data-annot="Catalogus · categorietabs + filters (zoeken, olievolume, vloeistof, uitvoering, serie) · URL bewaart de filters (?cat=&amp;serie=&amp;vol=) · tegels per model, gegroepeerd per serie · ‘Offerte’ zet het model in de offerteaanvraag">
+  <div class="wrap">
+    <h2 id="h-kat" class="vh">Alle producten</h2>
+    <div class="ktabs" role="tablist" aria-label="Categorie" id="ktabs"></div>
+    <div class="kat">
+      <aside class="kfil" id="kfil" aria-label="Filters">
+        <div class="kfil__head"><b>Filters</b><button type="button" class="kfil__reset" id="kreset" hidden>Wis filters</button></div>
+        <div class="kf"><label for="kq">Zoek op model of artikelnummer</label><div class="kq"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18"/></svg><input id="kq" type="search" placeholder="Bv. BU100E of EL10006" autocomplete="off"></div></div>
+        <div class="kf" id="kvol-f"><label for="kvol">Olievolume van uw systeem</label><div class="num"><input id="kvol" type="text" inputmode="numeric" placeholder="bv. 600" aria-describedby="kvol-h"><span>liter</span></div><p class="kh" id="kvol-h">Toont de modellen die de datasheet voor dit volume aanraadt.</p></div>
+        <fieldset class="kf" id="kfl"><legend>Vloeistof</legend></fieldset>
+        <fieldset class="kf" id="kver"><legend>Uitvoering</legend></fieldset>
+        <fieldset class="kf" id="kser"><legend>Serie</legend></fieldset>
+      </aside>
+      <div class="kres">
+        <div class="kbar"><button type="button" class="btn btn--secondary btn--sm kfil-btn" id="kfil-btn" aria-controls="kfil" aria-expanded="false">Filters</button><p id="kcount" aria-live="polite"></p><label class="ksort"><span>Sorteer</span><select id="ksort" aria-label="Sorteer"><option value="serie">per serie</option><option value="flow">debiet</option><option value="naam">naam</option></select></label></div>
+        <div id="kgrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEMBUILDER TEASER -->
+<section class="sec band" id="keuze" aria-labelledby="h-keuze" data-annot="Teaser naar Filtration Systembuilder (vervangt de 4-vragen-keuzehulp) · anker #keuze blijft werken">
   <div class="wrap">
     <div class="dnat">
-      <div><p class="eyebrow" lang="en">Find My Oil Cleaner</p><h2 id="h-keuze">Welke Triple R past bij uw installatie?</h2>
+      <div><p class="eyebrow" lang="en">Filtration Systembuilder</p><h2 id="h-keuze">Welke Triple R past bij uw installatie?</h2>
         <p class="lead">Vul zelf uw gegevens in en vind live de Triple R op maat van uw installatie, met de reden bij elke keuze.</p>
         <ul><li>vloeistof</li><li>volume</li><li>viscositeit</li><li>druk</li><li>probleem</li></ul>
-        <div class="btns"><a class="btn btn--light" href="find-my-oil-cleaner.html">Vind uw oliereiniger</a><a class="btn btn--ghost-light" href="homepage.html#contact">Liever meteen advies</a></div></div>
+        <div class="btns"><a class="btn btn--light" href="filtration-systembuilder.html">Vind uw oliereiniger</a><a class="btn btn--ghost-light" href="homepage.html#contact">Liever meteen advies</a></div></div>
       <div class="mt" aria-hidden="true">
         <div class="mt__in"><span>Vloeistof<b>Hydrauliekolie</b></span><span>Volume<b>400 l</b></span><span>Druk<b>120 bar</b></span><span>Probleem<b>Water</b></span></div>
         <svg class="mt__arr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15M14 6l6 6-6 6"/></svg>
@@ -118,32 +90,14 @@ table.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:1000px;
   </div>
 </section>
 
-<!-- PRODUCT LIST -->
-<section class="sec" id="overzicht" aria-labelledby="h-over" data-annot="Productoverzicht · filterchips (aria-pressed) · tegels met echte foto · ‘Vergelijk’ markeert rijen in de tabel (max. 3) · anker #p-{serie}">
-  <div class="wrap">
-    <div class="head"><div><h2 id="h-over">Tien series, één filterprincipe</h2></div><div class="side"><p class="lead">Filter op toepassing of op wat u uit de olie wilt halen.</p></div></div>
-    <div class="filters" role="group" aria-label="Filter producten" id="filters"></div>
-    <div class="plist" id="plist"></div>
-  </div>
-</section>
-
-<!-- COMPARE -->
-<section class="sec band" id="vergelijk" aria-labelledby="h-cmp" data-annot="Vergelijkingstabel (HTML, niet als beeld) · eerste kolom sticky · horizontaal scrollen op mobiel · geselecteerde series gemarkeerd">
-  <div class="wrap">
-    <div class="head"><div><h2 id="h-cmp">Alle series naast elkaar</h2></div><div class="side"><p class="lead">Waarden uit de datasheets. Klik op een datasheet om de PDF te openen.</p></div></div>
-    <div class="tablewrap" tabindex="0" role="region" aria-label="Vergelijkingstabel, horizontaal scrollbaar"><table class="cmp" id="cmp"><thead><tr><th scope="col">Serie</th><th scope="col">Principe</th><th scope="col">Druk</th><th scope="col">Debiet</th><th scope="col">Volume / viscositeit</th><th scope="col">Verwijdert</th><th scope="col">Typische toepassing</th><th scope="col">Datasheet</th></tr></thead><tbody></tbody></table></div>
-    <p class="legend"><span><i>D</i>vaste deeltjes</span><span><i>V</i>varnish &amp; sludge</span><span><i>W</i>water</span><span><i>L</i>lucht</span><span>n.v.t. = niet van toepassing of niet vermeld in de datasheet</span></p>
-  </div>
-</section>
-
 <!-- DOWNLOADS -->
-<section class="sec" id="downloads" aria-labelledby="h-dl" data-annot="Downloads · ongated (BRIEF §3.2) · event download_datasheet · zachte advies-offer eronder · ‘Vraag het aan Triple R’ ingebed (BRIEF §17.1)">
+<section class="sec" id="downloads" aria-labelledby="h-dl" data-annot="Downloads · ongated (BRIEF §3.2) · event download_datasheet · zachte advies-offer eronder · ‘Vraag het aan Marc’ ingebed (BRIEF §17.1)">
   <div class="wrap">
     <div class="head"><div><h2 id="h-dl">Datasheets en technische documenten</h2></div><div class="side"><p class="lead">Vrij te downloaden, zonder formulier.</p></div></div>
     <div class="dl" id="dl" data-more="5" data-more-label="Toon alle documenten"></div>
     <div class="askembed">
-      <div><h2>Zoekt u iets specifieks in een datasheet?</h2><p>“Vraag het aan Triple R” doorzoekt alle productpagina’s én de PDF’s, en toont de exacte pagina.</p></div>
-      <form data-ask-embed role="search" aria-label="Vraag het aan Triple R"><label class="vh" for="ae-q">Stel uw vraag</label><input id="ae-q" type="text" placeholder="Bv. welke viscositeit kan de OSCA-serie aan?"><button class="btn btn--light btn--sm" type="submit">Vraag</button></form>
+      <div><h2>Zoekt u iets specifieks in een datasheet?</h2><p>Marc doorzoekt alle productpagina’s én de PDF’s, en toont de exacte pagina.</p></div>
+      <form data-ask-embed role="search" aria-label="Vraag het aan Marc"><label class="vh" for="ae-q">Stel uw vraag</label><input id="ae-q" type="text" placeholder="Bv. welke viscositeit kan de OSCA-serie aan?"><button class="btn btn--light btn--sm" type="submit">Vraag</button></form>
       <div class="chips"><button type="button" data-q="Wat is het maximale debiet van de SS-serie?">Debiet SS-serie</button><button type="button" data-q="Welke elementen passen in de TR-serie?">Elementen TR-serie</button><button type="button" data-q="Wat staat er in het testrapport van de vacuümontwateraar?">Testrapport vacuümontwateraar</button></div>
     </div>
   </div>
@@ -161,64 +115,94 @@ table.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:1000px;
 </section>
 </main>
 {{FOOTER}}
-<div class="cmpbar" id="cmpbar" role="status" aria-live="polite"><span id="cmpbar-t">0 series geselecteerd</span><a class="btn btn--light btn--sm" href="#vergelijk">Vergelijk</a></div>
 <script src="site.js"></script>
 <script>
 (() => {
-  const PH = '<div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M7 7h10M7 17h10M10 3V1.5h4V3"/></svg>Productfoto volgt<i class="tb" title="Te bevestigen: productfoto TR-serie"></i></div>';
-  const S = [
-    { id: 'elementen', n: 'Filterelementen', img: 'elements.png', cat: ['druk', 'offline'], rm: 'DVW', s: '3-in-1 dieptefilter van 114 mm. Het hart van elke Triple R-unit.', k: [['Fijnheid', '1–10 µm abs.'], ['Viscositeit', '3–320 cSt']], principle: 'Cellulose-dieptefilter, 3 lagen', druk: 'n.v.t.', debiet: 'n.v.t.', vol: 'tanks tot 1.000 l per element<i class="tb" title="Te bevestigen"></i>', app: 'Alle systemen; vervangingselementen', pdf: [] },
-    { id: 'bu', n: 'BU-serie', img: 'BU-Series.png', cat: ['druk'], rm: 'DVW', s: 'Bypassfilter direct op de hogedrukleiding, zonder pomp of motor.', k: [['Druk', 'tot 450 bar'], ['M-element', '2 µm abs.']], principle: 'Op drukleiding, zonder pomp', druk: 'tot 450 bar', debiet: 'n.v.t.', vol: 'n.v.t.', app: 'Spuitgieten, servo-/proportionele hydrauliek, persen', pdf: ['BU-2023-UK-.pdf'] },
-    { id: 'se', n: 'SE-serie', img: 'se.png', cat: ['offline'], rm: 'DVW', s: 'Offline oliereiniger met eigen motor-pompgroep, stationair of mobiel.', k: [['Uitvoering', 'vast of mobiel'], ['Optie', 'deeltjesteller']], principle: 'Offline, met motor-pomp', druk: 'n.v.t.', debiet: 'n.v.t.', vol: 'n.v.t.', app: 'Stationaire en mobiele hydrauliek, service', pdf: ['SE-2019-ENGLISH.pdf', 'SE-Mobile-2023-ENGLISH.pdf'] },
-    { id: 'tr', n: 'TR-serie', img: null, cat: ['druk'], rm: 'DVW', s: 'Bypassfilter voor motorolie, tandwielkasten en systemen onder 6 bar.', k: [['Druk', '< 6 bar'], ['Voor', 'motor- & tandwielolie']], principle: 'Bypass, lage druk', druk: '< 6 bar', debiet: 'n.v.t.', vol: 'n.v.t.', app: 'Vrachtwagens, mobiele machines, scheepsmotoren, windturbines', pdf: ['TR-2019-ENGLISH.pdf'] },
-    { id: 'osca', n: 'OSCA-serie', img: 'osca.png', cat: ['offline', 'lucht'], rm: 'DVWL', s: 'Offline reiniger met hoog debiet voor grote tanks en hoge viscositeit.', k: [['Debiet', '6 – > 60 l/min'], ['Volume', '> 50.000 l']], principle: 'Offline, hoog debiet', druk: 'n.v.t.', debiet: '6 – > 60 l/min', vol: '> 50.000 l', app: 'Grote tanks, smeerolie, flushing, persen', pdf: ['OSCA-2019-ENGLISH.pdf'] },
-    { id: 'ss', n: 'SS-serie', img: 'ss.png', cat: ['offline'], rm: 'DVW', s: 'Stalen filterhuizen voor 2 tot 6 elementen, ook voor hoge viscositeit.', k: [['Debiet', 'tot 60 l/min'], ['Druk', 'tot 15 bar']], principle: 'Stalen huis, 2–6 elementen', druk: 'tot 15 bar', debiet: 'tot 60 l/min', vol: 'n.v.t.', app: 'Grote hydraulische en smeersystemen, scheepvaart', pdf: ['SS-2019-ENGLISH-.pdf'] },
-    { id: 'vacuum', n: 'Vacuümontwateraar', img: 'vacuum.png', cat: ['water'], rm: 'WL', s: 'Verwijdert automatisch vrij en opgelost water en lucht, zonder verbruiksmateriaal.', k: [['Water', '80% opgelost · 100% vrij'], ['Optie', 'ATEX']], principle: 'Vacuümscheiding', druk: 'n.v.t.', debiet: 'n.v.t.', vol: '10–600 cSt', app: 'Petrochemie, scheepvaart, energie, staal', pdf: ['VacuumDehydrator-TRVS-N30E-ENG.pdf', 'vacuum_system_test.pdf'] },
-    { id: 'ws', n: 'WS-serie', img: 'ws.png', cat: ['water'], rm: 'W', s: 'Coalescer olie-waterafscheider met kijkglas voor continue waterinloop.', k: [['Principe', '2-traps coalescer'], ['Aftap', 'manueel']], principle: 'Coalescer + zwaartekracht', druk: 'n.v.t.', debiet: 'n.v.t.', vol: 'n.v.t.', app: 'Scheepvaart, papier, staal', pdf: ['WS-2019-ENGLISH.pdf'] },
-    { id: 'quicktoron', n: 'Quicktoron', img: 'quicktoron.png', cat: ['lucht'], rm: 'L', s: 'Cycloon-ontluchter tegen schuim, cavitatie en lawaai.', k: [['Luchtbellen', 'tot 95% eruit'], ['Vaak met', 'OSCA-serie']], principle: 'Cycloon', druk: 'n.v.t.', debiet: 'luchtuitlaat 5–7% van pompdebiet', vol: 'n.v.t.', app: 'Schuimvorming, cavitatie, lawaai', pdf: ['QUICKTORON-2023-ENGLISH.pdf'] },
-    { id: 'centrifuges', n: 'Centrifuges', img: 'centrifuge.png', cat: ['proces'], rm: 'D', s: 'Deeltjes tot 3 µm uit koelvloeistof, emulsies en proceswater, zonder filterverbruik.', k: [['Debiet', '15–200 l/min'], ['Fijnheid', 'tot 3 µm']], principle: 'Centrifugaal', druk: 'n.v.t.', debiet: '15–200 l/min', vol: 'oliën ≤ 20 cSt', app: 'Koelvloeistof, onderdelenwassers, proceswater', pdf: ['Centrifuges_2014_UK-1.pdf'] }
-  ];
-  const DOCS = { 'BU-2023-UK-.pdf': 'BU-serie datasheet', 'SE-2019-ENGLISH.pdf': 'SE-serie datasheet', 'SE-Mobile-2023-ENGLISH.pdf': 'SE-Mobile datasheet', 'TR-2019-ENGLISH.pdf': 'TR-serie datasheet', 'OSCA-2019-ENGLISH.pdf': 'OSCA-serie datasheet', 'SS-2019-ENGLISH-.pdf': 'SS-serie datasheet', 'WS-2019-ENGLISH.pdf': 'WS-serie datasheet', 'QUICKTORON-2023-ENGLISH.pdf': 'Quicktoron datasheet', 'VacuumDehydrator-TRVS-N30E-ENG.pdf': 'Vacuümontwateraar TRVS-N30E', 'vacuum_system_test.pdf': 'Vacuümontwateraar: testrapport', 'Centrifuges_2014_UK-1.pdf': 'Centrifuges brochure', 'se100e-bh.pdf': 'SE100E-BH datasheet', 'se100e-wh.pdf': 'SE100E-WH datasheet', 'windmill.pdf': 'Toepassing windturbines', 'Recommended-cleanliness4.pdf': 'Recommended cleanliness', 'iso440637534.pdf': 'ISO 4406 reinheidsklassen', 'nas1638-kopie.pdf': 'NAS 1638 reinheidsklassen' };
-  const SIZES = { 'BU-2023-UK-.pdf': 447, 'SE-2019-ENGLISH.pdf': 660, 'SE-Mobile-2023-ENGLISH.pdf': 741, 'TR-2019-ENGLISH.pdf': 1196, 'OSCA-2019-ENGLISH.pdf': 955, 'SS-2019-ENGLISH-.pdf': 618, 'WS-2019-ENGLISH.pdf': 578, 'QUICKTORON-2023-ENGLISH.pdf': 633, 'VacuumDehydrator-TRVS-N30E-ENG.pdf': 664, 'vacuum_system_test.pdf': 78, 'Centrifuges_2014_UK-1.pdf': 688, 'se100e-bh.pdf': 1057, 'se100e-wh.pdf': 917, 'windmill.pdf': 503, 'Recommended-cleanliness4.pdf': 82, 'iso440637534.pdf': 209, 'nas1638-kopie.pdf': 388 };
+  const C = window.RRR_CATALOG, P = C.products, SER = C.series, Q = window.RRRQuote;
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const nf = new Intl.NumberFormat('nl-BE');
   const arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>';
-  const byId = Object.fromEntries(S.map(x => [x.id, x]));
-  const pdfUrl = f => 'pdf/' + encodeURIComponent(f);
-  const RMN = { D: 'deeltjes', V: 'varnish', W: 'water', L: 'lucht' };
+  const PH = '<span class="kph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M7 7h10M7 17h10"/></svg>Foto volgt</span>';
+  const qs = new URLSearchParams(location.search);
+  const F = { cat: qs.get('cat') || 'alle', serie: new Set((qs.get('serie') || '').split(',').filter(Boolean)), fl: new Set(), ver: new Set(), vol: +qs.get('vol') || 0, q: qs.get('q') || '' };
+  if (F.serie.size && F.cat === 'alle') F.cat = SER[[...F.serie][0]]?.cat || 'alle';
+  const $ = id => document.getElementById(id);
+  const tabs = $('ktabs'), grid = $('kgrid');
+  $('kq').value = F.q; if (F.vol) $('kvol').value = F.vol;
 
-  /* ---------- productlijst + filters ---------- */
-  const FIL = [['alle', 'Alle'], ['druk', 'Op de drukleiding'], ['offline', 'Offline units'], ['water', 'Water'], ['lucht', 'Lucht & schuim'], ['proces', 'Koelvloeistof']];
-  const fEl = document.getElementById('filters'), list = document.getElementById('plist');
-  fEl.innerHTML = FIL.map(([k, l], i) => `<button type="button" data-f="${k}" aria-pressed="${i === 0}">${l} <span>${k === 'alle' ? S.length : S.filter(x => x.cat.includes(k)).length}</span></button>`).join('');
-  list.innerHTML = S.map(x => `<article class="prod pl" id="p-${x.id}" data-cat="${x.cat.join(' ')}">
-      <div class="prod__img">${x.img ? `<img src="img/${x.img}" alt="${x.n}" loading="lazy">` : PH}</div>
-      <div class="prod__body"><div class="prod__title"><h3>${x.n}</h3></div><p>${x.s}</p>
-        <dl>${x.k.map(([a, b]) => `<div><dt>${a}</dt><dd>${b}</dd></div>`).join('')}</dl>
-        <div class="dots" aria-label="Verwijdert">${[...x.rm].map(c => `<span>${RMN[c]}</span>`).join('')}</div>
-        <div class="row"><label class="cmpbox"><input type="checkbox" data-cmp="${x.id}"> Vergelijk</label>${x.pdf[0] ? `<a href="${pdfUrl(x.pdf[0])}" target="_blank" rel="noopener">Datasheet (PDF)</a>` : '<span class="muted">Datasheet volgt</span>'}<a href="homepage.html#contact">Advies ${arrow}</a></div></div></article>`).join('');
-  fEl.addEventListener('click', e => {
-    const b = e.target.closest('button'); if (!b) return;
-    fEl.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
-    const f = b.dataset.f;
-    list.querySelectorAll('.pl').forEach((el, i) => { const show = f === 'alle' || el.dataset.cat.split(' ').includes(f); el.classList.toggle('hide', !show); if (show && document.documentElement.classList.contains('motion')) { el.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 380, delay: i * 30, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' }); } });
-  });
-  const hl = () => { const id = location.hash.replace('#p-', ''); list.querySelectorAll('.pl').forEach(el => el.classList.toggle('target', el.id === 'p-' + id)); };
-  addEventListener('hashchange', hl); hl();
-
-  /* ---------- vergelijkingstabel ---------- */
-  const tb = document.querySelector('#cmp tbody');
-  tb.innerHTML = S.map(x => `<tr id="r-${x.id}"><th scope="row">${x.n}</th><td>${x.principle}</td><td class="mono">${x.druk}</td><td class="mono">${x.debiet}</td><td class="mono">${x.vol}</td><td><span class="rm" role="img" aria-label="Verwijdert: ${[...x.rm].map(c => RMN[c]).join(', ')}">${['D', 'V', 'W', 'L'].map(c => `<i class="${x.rm.includes(c) ? 'on' : ''}" aria-hidden="true">${c}</i>`).join('')}</span></td><td>${x.app}</td><td>${x.pdf.length ? x.pdf.map(f => `<a href="${pdfUrl(f)}" target="_blank" rel="noopener">PDF ↗</a>`).join('<br>') : 'n.v.t.'}</td></tr>`).join('');
-  const picked = new Set(), bar = document.getElementById('cmpbar');
-  list.addEventListener('change', e => {
-    const c = e.target.closest('[data-cmp]'); if (!c) return;
-    if (c.checked) { if (picked.size >= 3) { c.checked = false; document.getElementById('cmpbar-t').textContent = 'Maximaal 3 series tegelijk'; return; } picked.add(c.dataset.cmp); } else picked.delete(c.dataset.cmp);
-    tb.querySelectorAll('tr').forEach(tr => { const id = tr.id.slice(2); tr.classList.toggle('sel', picked.has(id)); tr.classList.toggle('dim', picked.size > 0 && !picked.has(id)); });
-    bar.classList.toggle('show', picked.size > 0);
-    document.getElementById('cmpbar-t').textContent = picked.size ? `${[...picked].map(i => byId[i].n).join(' · ')}` : '0 series geselecteerd';
-  });
+  const inCat = p => F.cat === 'alle' || p.cat === F.cat || (p.also || []).includes(F.cat);
+  const volLabel = p => p.vol ? (p.vol[0] ? `${nf.format(p.vol[0])} tot ${nf.format(p.vol[1])} l` : `tot ${nf.format(p.vol[1])} l`) : '';
+  const volFit = p => !F.vol ? 1 : !p.vol ? 0 : (F.vol >= p.vol[0] && F.vol <= p.vol[1]) ? 2 : (F.vol < p.vol[0] && p.vol[0] - F.vol <= p.vol[0] * .5) || (p.volGrey && F.vol > p.vol[1] && F.vol <= p.volGrey) ? 1 : 0;
+  function match(p, skip) {
+    if (!inCat(p)) return false;
+    if (skip !== 'serie' && F.serie.size && !F.serie.has(p.series)) return false;
+    if (skip !== 'fl' && F.fl.size && !p.fluid.some(f => F.fl.has(f))) return false;
+    if (skip !== 'ver' && F.ver.size && !p.version.some(v => F.ver.has(v))) return false;
+    if (F.vol && p.cat !== 'elementen' && !volFit(p)) return false;
+    if (F.vol && p.cat === 'elementen') return false;
+    const t = F.q.trim().toLowerCase().replace(/[\s-]/g, '');
+    if (t && ![p.n, p.art, p.old, SER[p.series].n].some(v => String(v || '').toLowerCase().replace(/[\s-]/g, '').includes(t))) return false;
+    return true;
+  }
+  function facets() {
+    const base = P.filter(p => inCat(p));
+    const opts = (key, src, labels, cnt) => Object.entries(labels).filter(([k]) => base.some(p => src(p).includes(k))).map(([k, l]) => `<label class="kc"><input type="checkbox" value="${k}" ${F[key].has(k) ? 'checked' : ''}><span>${esc(l)}</span><small>${cnt(k)}</small></label>`).join('');
+    $('kfl').innerHTML = '<legend>Vloeistof</legend>' + opts('fl', p => p.fluid, C.fluids, k => P.filter(p => match(p, 'fl') && p.fluid.includes(k)).length);
+    $('kver').innerHTML = '<legend>Uitvoering</legend>' + opts('ver', p => p.version, C.versions, k => P.filter(p => match(p, 'ver') && p.version.includes(k)).length);
+    const sers = Object.fromEntries(Object.entries(SER).filter(([k, v]) => F.cat === 'alle' || v.cat === F.cat).map(([k, v]) => [k, v.n]));
+    $('kser').innerHTML = '<legend>Serie</legend>' + opts('serie', p => [p.series], sers, k => P.filter(p => match(p, 'serie') && p.series === k).length);
+    $('kfl').hidden = !$('kfl').querySelector('input'); $('kver').hidden = !$('kver').querySelector('input');
+    $('kvol-f').hidden = F.cat === 'elementen';
+  }
+  function card(p) {
+    const fit = volFit(p), key = p.specs.slice(0, 3);
+    return `<article class="kcard">
+      <a class="kcard__img" href="product.html?id=${p.id}" tabindex="-1" aria-hidden="true">${p.img ? `<img src="img/${p.img}" alt="" loading="lazy">` : PH}${F.vol && fit === 2 ? '<span class="kfit">Aanbevolen voor uw volume</span>' : F.vol && fit === 1 ? '<span class="kfit kfit--g">Mogelijk, afhankelijk van de olie</span>' : ''}</a>
+      <div class="kcard__b">
+        <span class="kser">${esc(SER[p.series].n)}</span>
+        <h3><a href="product.html?id=${p.id}">${esc(p.n)}</a></h3>
+        ${p.art ? `<span class="kart">Art. ${esc(p.art)}</span>` : ''}
+        <dl>${key.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join('')}${p.vol ? `<div><dt>Olievolume</dt><dd>${volLabel(p)}</dd></div>` : ''}</dl>
+        <div class="kcard__act"><a class="btn btn--secondary btn--sm" href="product.html?id=${p.id}">Bekijk ${arrow}</a><button type="button" class="qadd qadd--sm" data-quote-add="${p.id}" data-off="Offerte" data-on="In offerte" aria-pressed="false" aria-label="${esc(p.n)} toevoegen aan offerte"><svg class="i-add" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg><svg class="i-ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span data-t>Offerte</span></button></div>
+      </div></article>`;
+  }
+  function render() {
+    tabs.innerHTML = [['alle', 'Alles', P.length], ...C.cats.map(c => [c.id, c.n, P.filter(p => p.cat === c.id || (p.also || []).includes(c.id)).length])].map(([id, n, c]) => `<button type="button" role="tab" aria-selected="${F.cat === id}" data-cat="${id}">${esc(n)} <span>${c}</span></button>`).join('');
+    facets();
+    let r = P.filter(p => match(p));
+    const sort = $('ksort').value;
+    if (sort === 'flow') r = r.slice().sort((a, b) => (a.flow ?? 1e9) - (b.flow ?? 1e9));
+    if (sort === 'naam') r = r.slice().sort((a, b) => a.n.localeCompare(b.n, 'nl', { numeric: true }));
+    if (F.vol) r = r.slice().sort((a, b) => volFit(b) - volFit(a));
+    $('kcount').textContent = `${r.length} ${r.length === 1 ? 'product' : 'producten'}`;
+    if (!r.length) grid.innerHTML = `<div class="kempty"><b>Geen producten met deze filters.</b><p>Wis een filter, of laat de <a href="filtration-systembuilder.html" lang="en">Filtration Systembuilder</a> een systeem voorstellen.</p></div>`;
+    else if (sort === 'serie' && !F.vol) {
+      const groups = []; r.forEach(p => { let g = groups.find(x => x.s === p.series); if (!g) groups.push(g = { s: p.series, l: [] }); g.l.push(p); });
+      grid.innerHTML = groups.map(g => `<section class="kgroup" aria-labelledby="kg-${g.s}"><div class="kgroup__h"><h3 id="kg-${g.s}">${esc(SER[g.s].n)}</h3><p>${esc(SER[g.s].s)}</p>${SER[g.s].pdf ? `<a href="pdf/${encodeURIComponent(SER[g.s].pdf)}" target="_blank" rel="noopener">Datasheet (PDF)</a>` : ''}</div><div class="kcards">${g.l.map(card).join('')}</div></section>`).join('');
+    } else grid.innerHTML = `<div class="kcards">${r.map(card).join('')}</div>`;
+    $('kreset').hidden = !(F.serie.size || F.fl.size || F.ver.size || F.vol || F.q);
+    const u = new URLSearchParams(); if (F.cat !== 'alle') u.set('cat', F.cat); if (F.serie.size) u.set('serie', [...F.serie].join(',')); if (F.vol) u.set('vol', F.vol); if (F.q) u.set('q', F.q);
+    history.replaceState(null, '', location.pathname + (u.toString() ? '?' + u : '') + location.hash);
+    document.dispatchEvent(new CustomEvent('quote:change'));
+  }
+  tabs.addEventListener('click', e => { const b = e.target.closest('[data-cat]'); if (!b) return; F.cat = b.dataset.cat; F.serie.clear(); F.fl.clear(); F.ver.clear(); render(); });
+  tabs.addEventListener('keydown', e => { if (!['ArrowRight', 'ArrowLeft'].includes(e.key)) return; const bs = [...tabs.children], i = bs.indexOf(document.activeElement); const n = bs[(i + (e.key === 'ArrowRight' ? 1 : -1) + bs.length) % bs.length]; n.focus(); n.click(); });
+  $('kfil').addEventListener('change', e => { const t = e.target; if (t.type !== 'checkbox') return; const key = t.closest('#kfl') ? 'fl' : t.closest('#kver') ? 'ver' : 'serie'; t.checked ? F[key].add(t.value) : F[key].delete(t.value); render(); });
+  let tq; $('kq').addEventListener('input', e => { clearTimeout(tq); tq = setTimeout(() => { F.q = e.target.value; render(); }, 150); });
+  $('kvol').addEventListener('input', e => { clearTimeout(tq); tq = setTimeout(() => { F.vol = parseInt(e.target.value.replace(/\D/g, '')) || 0; render(); }, 250); });
+  $('ksort').addEventListener('change', render);
+  $('kreset').addEventListener('click', () => { F.serie.clear(); F.fl.clear(); F.ver.clear(); F.vol = 0; F.q = ''; $('kq').value = ''; $('kvol').value = ''; render(); });
+  $('kfil-btn').addEventListener('click', e => { const o = document.getElementById('kfil').classList.toggle('open'); e.currentTarget.setAttribute('aria-expanded', o); });
+  document.addEventListener('quote:change', () => document.querySelectorAll('.kcard [data-quote-add]').forEach(b => { const on = Q.has(b.dataset.quoteAdd); b.classList.toggle('is-in', on); b.setAttribute('aria-pressed', on); b.querySelector('[data-t]').textContent = on ? 'In offerte' : 'Offerte'; }));
+  render();
 
   /* ---------- downloads ---------- */
-  document.getElementById('dl').innerHTML = Object.entries(DOCS).map(([f, t]) => `<a href="${pdfUrl(f)}" target="_blank" rel="noopener"><span class="ic">PDF</span><b>${t}</b><span class="m">Engels · ${SIZES[f] >= 1000 ? (SIZES[f] / 1024).toFixed(1).replace('.', ',') + ' MB' : SIZES[f] + ' KB'}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg></a>`).join('');
+  const DOCS = { 'BU-2023-UK-.pdf': ['BU-serie datasheet', 447], 'BU-100E-Wind-S.pdf': ['BU-100E-Wind, technische tekening', 2282], 'STEEL-housing-HP.pdf': ['Stalen huizen HP (compressoren)', 540], 'TR-2019-ENGLISH.pdf': ['TR-serie datasheet', 1196], 'SS-2019-ENGLISH-.pdf': ['SS-serie datasheet', 618],
+    'SE-2019-ENGLISH.pdf': ['SE-serie datasheet', 660], 'SE-Mobile-2023-ENGLISH.pdf': ['SE Mobile datasheet', 741], 'SE-Mobile-HF-ENGLISH.pdf': ['SE200E Mobile High Flow', 933], 'se100e-bh.pdf': ['SE100E-BH, 3D-weergave', 1057], 'se100e-wh.pdf': ['SE100E-WH (wand), 3D-weergave', 917],
+    'OSCA-2019-ENGLISH.pdf': ['OSCA-serie datasheet', 955], 'VacuumDehydrator-TRVS-N30E-ENG.pdf': ['Vacuümontwateraar TRVS-N30E', 664], 'vacuum_system_test.pdf': ['Vacuümontwateraar, testrapport', 78], 'WS-2019-ENGLISH.pdf': ['WS-serie datasheet', 578],
+    'QUICKTORON-2023-ENGLISH.pdf': ['Quicktoron datasheet', 633], 'Centrifuges_2014_UK-1.pdf': ['Centrifuges brochure', 688], 'Elements-ENGLISH.pdf': ['Filterelementen brochure', 2664], 'Element-data-sheet-2023.pdf': ['Element data sheet 2023', 163], 'V100-ENGLISH.pdf': ['V100 varnish-element', 777],
+    'windmill.pdf': ['Toepassing windturbines', 503], 'Recommended-cleanliness4.pdf': ['Aanbevolen reinheid', 82], 'iso440637534.pdf': ['ISO 4406-tabel', 210], 'nas1638-kopie.pdf': ['NAS 1638-tabel', 388] };
+  document.getElementById('dl').innerHTML = Object.entries(DOCS).map(([f, [t, kb]]) => `<a href="pdf/${encodeURIComponent(f)}" target="_blank" rel="noopener"><span class="ic">PDF</span><b>${t}</b><span class="m">Engels · ${kb >= 1000 ? (kb / 1024).toFixed(1).replace('.', ',') + ' MB' : kb + ' KB'}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg></a>`).join('');
   document.querySelectorAll('.askembed .chips button').forEach(b => b.addEventListener('click', () => { const f = document.querySelector('[data-ask-embed]'); f.querySelector('input').value = b.dataset.q; f.requestSubmit(); }));
-
 })();
 </script>

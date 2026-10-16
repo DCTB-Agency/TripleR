@@ -1,12 +1,12 @@
-<title>Find My Oil Cleaner · Triple R</title>
-<meta name="description" content="Find My Oil Cleaner: vul uw olie, volume, druk en probleem in en vind live de Triple R op maat van uw installatie.">
+<title>Filtration Systembuilder · Triple R</title>
+<meta name="description" content="Filtration Systembuilder: vul uw olie, volume, druk en probleem in en vind live de Triple R op maat van uw installatie.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="site.css">
 <style>
-/* ===== Find My Oil Cleaner ================================================= */
+/* ===== Filtration Systembuilder ================================================= */
 .hero--mt .hero__grid{grid-template-columns:minmax(0,7fr) minmax(0,5fr);align-items:center}
 .build{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,.85fr);align-items:center;gap:6px;justify-self:end;width:100%;max-width:520px}
 .build__in,.build__out{border-radius:20px;background:rgb(255 255 255 / .07);border:1px solid rgb(255 255 255 / .16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:16px;display:grid;gap:8px}
@@ -164,12 +164,12 @@
 {{HEADER}}
 <main id="main">
 
-<section class="hero hero--page hero--mt" aria-labelledby="h1" data-annot="Find My Oil Cleaner · productconfigurator (naam [CONFIRM]: lijkt op TRIS ‘Build My Oil Cleaner’) (betere versie van oilcleaner.eu ‘Build my oil cleaner’) · hero-demo: velden worden één voor één ‘getypt’ (45 ms/teken), daarna verschijnt het samengestelde product · statisch bij reduced motion">
+<section class="hero hero--page hero--mt" aria-labelledby="h1" data-annot="Filtration Systembuilder · productconfigurator (naam [CONFIRM]: lijkt op TRIS ‘Build My Oil Cleaner’) (betere versie van oilcleaner.eu ‘Build my oil cleaner’) · hero-demo: velden worden één voor één ‘getypt’ (45 ms/teken), daarna verschijnt het samengestelde product · statisch bij reduced motion">
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="wrap hero__grid">
     <div class="hero__copy" style="gap:0">
-      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li><a href="producten.html">Producten</a></li><li aria-current="page">Find My Oil Cleaner</li></ol>
-      <h1 id="h1"><span lang="en">Find My Oil Cleaner</span><span>: de Triple R op maat van uw installatie</span><i class="tb" title="Te bevestigen: naam en merkgebruik met Triple R (gelijkenis met ‘Build My Oil Cleaner’ van TRIS)"></i></h1>
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li><a href="producten.html">Producten</a></li><li aria-current="page">Filtration Systembuilder</li></ol>
+      <h1 id="h1"><span lang="en">Filtration Systembuilder</span><span>: de Triple R op maat van uw installatie</span><i class="tb" title="Te bevestigen: naam en merkgebruik met Triple R (gelijkenis met ‘Build My Oil Cleaner’ van TRIS)"></i></h1>
       <p class="lead">Vul zelf uw gegevens in: olie, volume, temperatuur, druk en probleem. Terwijl u typt, stellen wij live uw Triple R samen, met de reden bij elke keuze.</p>
     </div>
     <div class="build" aria-hidden="true">
@@ -476,6 +476,18 @@
   back.addEventListener('click', () => finished ? go(6, 'bwd') : go(step - 1, 'bwd'));
 
   /* ======================= resultaat ======================= */
+  const QID = { bu: 'bu', tr: 'tr', se: 'se', osca: 'osca', ss: 'ss', cen: 'centrifuges' };
+  /* concreet model uit de catalogus: selectietabel (olievolume) uit de datasheet */
+  function pickModel(sid) {
+    const C = window.RRR_CATALOG; if (!C) return null;
+    const ser = sid === 'bu' ? 'bu' : sid === 'se' ? (S.m === 'mob' ? 'se-mobile' : 'se') : sid === 'tr' ? 'tr' : sid === 'osca' ? 'osca' : sid === 'ss' ? 'ss' : sid === 'cen' ? 'centrifuges' : null;
+    let l = C.products.filter(x => x.series === ser);
+    if (ser === 'bu') l = l.filter(x => x.fluid.includes(S.f === 'wg' ? 'wg' : 'hyd'));
+    if (ser === 'se' && S.m === 'wall') l = l.filter(x => x.version.includes('wand')).concat(l);
+    const withVol = l.filter(x => x.vol);
+    if (withVol.length) return withVol.find(x => S.vol >= x.vol[0] && S.vol <= x.vol[1]) || withVol.find(x => x.volGrey && S.vol <= x.volGrey && S.vol > x.vol[1]) || (S.vol < withVol[0].vol[1] ? withVol[0] : withVol[withVol.length - 1]);
+    return l[0] || null;
+  }
   function shareUrl() {
     const p = new URLSearchParams({ f: S.f, vol: S.vol, t: S.t, c: S.c || 'unk', p: S.p, m: S.m, x: S.x, u: S.u });
     if (S.a) p.set('a', S.a); if (S.vg) p.set('vg', S.vg); if (S.pb.length) p.set('pb', S.pb.join(','));
@@ -488,13 +500,15 @@
     back.hidden = false; back.textContent = '← Antwoorden aanpassen'; next.hidden = true;
     const alt = ok.slice(1, 3);
     const failing = r.filter(x => x.fail).slice(0, 2);
+    const mdl = best ? pickModel(best.id) : null;
     q.innerHTML = `<div class="result" aria-live="polite">
       ${best ? `<div class="best"><div class="img">${best.p.img ? `<img src="${best.p.img}" alt="${best.p.n}">` : ''}</div><div><span class="tag">Uw oliereiniger · ${best.sc}% match</span><h3>${best.p.n}${el ? ' met ' + el[0] : ''}</h3><p class="small" style="color:var(--grey-600)">${best.p.line}</p><ul class="checklist">${best.ch.map(([s, t]) => `<li class="${s === 'ok' ? '' : s}">${t}</li>`).join('')}</ul></div></div>`
       : `<div class="eng"><h3 style="font-size:var(--fs-h3)">Uw installatie vraagt maatwerk</h3><p style="color:var(--grey-600)">Geen enkele standaardserie doorstaat alle technische controles. Dat is geen doodlopende weg: een specialist kijkt mee en stelt een configuratie op maat voor.</p><ul class="checklist">${failing.flatMap(x => x.ch.filter(c => c[0] === 'fail').map(c => `<li class="fail">${x.p.n}: ${c[1]}</li>`)).slice(0, 4).join('')}</ul></div>`}
+      ${best && mdl ? `<div class="elem"><b>Aanbevolen model:</b><a class="pill" href="product.html?id=${mdl.id}">${mdl.n}</a><span>${mdl.art ? 'art. ' + mdl.art + ' · ' : ''}${mdl.vol ? 'datasheet: ' + (mdl.vol[0] ? mdl.vol[0] + ' tot ' : 'tot ') + mdl.vol[1] + ' l olie' : (mdl.specs[0] || ['', ''])[1]}</span></div>` : ''}
       ${el ? `<div class="elem"><b>Aanbevolen filterelement:</b><span class="pill">${el[0]}</span><span>${el[1]}</span></div>` : ''}
-      ${ad.length ? `<div><h4 style="margin-bottom:10px">Aanvullend aanbevolen</h4><div class="alts">${ad.map(([k, s]) => `<a class="alt" href="producten.html#p-${k === 'vac' ? 'vacuum' : k === 'qt' ? 'quicktoron' : 'ws'}"><img src="${ADD[k].img}" alt=""><b>${ADD[k].n}${s === 'warn' ? ' <span style="color:#8A5A00">(te controleren)</span>' : ''}</b><span>${ADD[k].why}</span></a>`).join('')}</div></div>` : ''}
-      ${alt.length ? `<div><h4 style="margin-bottom:10px">Ook geschikt</h4><div class="alts">${alt.map(x => `<a class="alt" href="producten.html#p-${x.id === 'cen' ? 'centrifuges' : x.id}">${x.p.img ? `<img src="${x.p.img}" alt="">` : '<span></span>'}<span class="k">${x.sc}% match</span><b>${x.p.n}</b></a>`).join('')}</div></div>` : ''}
-      <div class="btns"><a class="btn btn--primary" href="homepage.html?config=${encodeURIComponent(cfgCode())}#contact">${best ? 'Vraag advies en prijs voor de ' + best.p.n : 'Laat een specialist meekijken'}</a>${best && best.p.pdf ? `<a class="btn btn--secondary" href="pdf/${encodeURIComponent(best.p.pdf)}" target="_blank" rel="noopener">Datasheet (PDF)</a>` : ''}<a class="btn btn--secondary" href="olieanalyse.html">Gratis olieanalyse</a></div>
+      ${ad.length ? `<div><h4 style="margin-bottom:10px">Aanvullend aanbevolen</h4><div class="alts">${ad.map(([k, s]) => `<a class="alt" href="producten.html?serie=${k === 'vac' ? 'vacuum' : k === 'qt' ? 'quicktoron' : 'ws'}"><img src="${ADD[k].img}" alt=""><b>${ADD[k].n}${s === 'warn' ? ' <span style="color:#8A5A00">(te controleren)</span>' : ''}</b><span>${ADD[k].why}</span></a>`).join('')}</div></div>` : ''}
+      ${alt.length ? `<div><h4 style="margin-bottom:10px">Ook geschikt</h4><div class="alts">${alt.map(x => `<a class="alt" href="producten.html?serie=${x.id === 'cen' ? 'centrifuges' : x.id}">${x.p.img ? `<img src="${x.p.img}" alt="">` : '<span></span>'}<span class="k">${x.sc}% match</span><b>${x.p.n}</b></a>`).join('')}</div></div>` : ''}
+      <div class="btns">${best ? `<button type="button" class="btn btn--primary" data-quote-add="${mdl ? mdl.id : QID[best.id]}" data-note="Systembuilder ${cfgCode()}${el ? ', element ' + el[0] : ''}" data-toggle="no" data-on="In uw offerteaanvraag">Vraag een offerte aan voor de ${mdl ? mdl.n : best.p.n}</button>` : '<a class="btn btn--primary" href="offerte.html">Laat een specialist meekijken</a>'}${best && best.p.pdf ? `<a class="btn btn--secondary" href="pdf/${encodeURIComponent(best.p.pdf)}" target="_blank" rel="noopener">Datasheet (PDF)</a>` : ''}<a class="btn btn--secondary" href="olieanalyse.html">Gratis olieanalyse</a></div>
       <div class="share"><button type="button" class="btn btn--secondary btn--sm" id="copy">Kopieer de link naar dit resultaat</button><span id="copy-t" role="status"></span><button type="button" class="btn btn--secondary btn--sm ghost" id="restart">Opnieuw beginnen</button></div>
     </div>`;
     drawStamps(); renderLive();

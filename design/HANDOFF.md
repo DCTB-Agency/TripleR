@@ -52,7 +52,7 @@ Date: 24 Sep 2026 · Status: **for review**
 The homepage only gives a short overview and sends visitors on; the detail lives on the subpages (BRIEF §5).
 
 **Homepage (`homepage.html`, 7 sections)**
-1. **Hero:** full-bleed video background (`media/hero-*.mp4`, poster `hero-poster.jpg`). The visible credit line has been removed at the client's request, but **[CONFIRM] permission from TRIS to use the footage remains open**. The video autoplays muted on a loop, has a pause button (WCAG 2.2.2), pauses when out of view and shows only the poster under reduced motion. Left column: H1, intro, CTAs → olieanalyse and Find My Oil Cleaner. **Right column: "Vraag het aan Triple R"** (see below). Under it: the reference names as a running carousel.
+1. **Hero:** full-bleed video background (`media/hero-*.mp4`, poster `hero-poster.jpg`). The visible credit line has been removed at the client's request, but **[CONFIRM] permission from TRIS to use the footage remains open**. The video autoplays muted on a loop, has a pause button (WCAG 2.2.2), pauses when out of view and shows only the poster under reduced motion. Left column: H1, intro, CTAs → olieanalyse and Filtration Systembuilder. **Right column: "Vraag het aan Triple R"** (see below). Under it: the reference names as a running carousel.
 2. **Four contaminants:** 4 cards → `oplossingen.html`.
 3. **Featured products:** 3 tiles → `producten.html` (the selector moved there).
 4. **Results:** on the oil photo, with a link to the calculator.
@@ -65,11 +65,11 @@ The homepage only gives a short overview and sends visitors on; the detail lives
 | Page | Brief | Content |
 |---|---|---|
 | `oplossingen.html` | /oplossingen/ | Problem + 80% claim + bar chart, 4 contaminants, 114 mm cross-section, results, Reduce · Reuse · Recycle |
-| `producten.html` | §6.4 | Find My Oil Cleaner teaser (anchor `#keuze`), filterable list of 10 series, comparison table, 17 downloads, embedded search |
+| `producten.html` | §6.4 | Filtration Systembuilder teaser (anchor `#keuze`), filterable list of 10 series, comparison table, 17 downloads, embedded search |
 | `sectoren.html` | /sectoren/ | Atmospheric photo + 12 sectors, cases with ISO before/after |
 | `olieanalyse.html` | §6.6 | Landing page with a **3-step form above the fold** (§3.3), what we measure (6 measurements), sample report (blurred values), 4-step process, FAQ |
 | `faq.html` | §6.9 (replaces the knowledge base) | Veelgestelde vragen: Vraag het aan Triple R in the hero, 15 questions in 4 themes with a sticky theme nav, the 3 existing articles under "Meer lezen". Not in the main menu (footer, drawer, internal links). |
-| `find-my-oil-cleaner.html` | §6.4 selector | **Find My Oil Cleaner**: product configurator (improved take on oilcleaner.eu “Build my oil cleaner”), see below |
+| `filtration-systembuilder.html` | §6.4 selector | **Filtration Systembuilder**: product configurator (improved take on oilcleaner.eu “Build my oil cleaner”), see below |
 | `besparingscalculator.html` | §3.7 | Calculator with adjustable assumptions and a report form |
 
 - **Navigation:** Oplossingen → `oplossingen.html`, Producten → mega menu (incl. "Alle producten"), Sectoren → `sectoren.html`, Diensten → `olieanalyse.html`, FAQ → `faq.html` (footer/drawer only). The active page is highlighted.
@@ -192,11 +192,11 @@ Everything hangs off `html.motion` and is off under reduced motion; the resting 
 - Components sheet
 
 
-## Find My Oil Cleaner (product configurator, pass 1.5)
+## Filtration Systembuilder (product configurator, pass 1.5)
 
-This page (`find-my-oil-cleaner.html`) replaces the 4-question selector. It is modelled on oilcleaner.eu's "Build my oil cleaner", but avoids its dead ends and gives the visitor more feedback along the way.
+This page (`filtration-systembuilder.html`) replaces the 4-question selector. It is modelled on oilcleaner.eu's "Build my oil cleaner", but avoids its dead ends and gives the visitor more feedback along the way.
 
-**Name:** "Find My Oil Cleaner" is used as the tool's brand name, marked `lang="en"`. The copy around it stays Dutch ("Vind uw oliereiniger", "Uw oliereiniger").
+**Name:** "Filtration Systembuilder" is used as the tool's brand name, marked `lang="en"`. The copy around it stays Dutch ("Vind uw oliereiniger", "Uw oliereiniger").
 - **[CONFIRM] name and trademark use with Triple R:** it is very close to TRIS's "Build My Oil Cleaner".
 - **[CONFIRM] EN/FR versions:** the brand name stays the same and only the explanatory copy is localised.
 
@@ -297,3 +297,119 @@ The mobile rules live in the last block of `site.css` (≤ 767 px). They make pa
   - (c) a still image instead of video.
 
   `prefers-reduced-motion` still shows only the poster image.
+
+## Pass 1.11: quote request, network, rental, Systembuilder, Word copy
+
+- **Header:**
+  - menu: Oplossingen · Producten ▾ · Sectoren · Diensten ▾ (Gratis olieanalyse, Filtration Systembuilder, Verhuur, Besparingscalculator) · Netwerk · Over ons;
+  - the main CTA is now **"Vraag het aan Triple R"** (blue gradient button) and replaces "Gratis olieanalyse". The free oil analysis stays in the hero, under Diensten and in the contact button;
+  - a quote icon with a counter appears as soon as something is in the quote request.
+- **Quote request (`offerte.html`)** ("winkelmandje" without prices):
+  - "Voeg toe aan offerte" sits on every product tile, on the rental cards (type *huur*) and on the Systembuilder result. The Systembuilder adds its configuration code as a note.
+  - The selection is stored per visitor in `localStorage` (`rrr-offerte-v1`). In production this becomes a cookie-free store or session storage.
+  - On the quote page you can change quantities, add a note or remove an item. If there is a rental item, extra fields appear for the rental period and location.
+  - **The selection is prefixed in the message field.**
+  - Events: `quote_add` and `lead_offerte` (items as `id:type:quantity`). **[CONFIRM] add these to BRIEF §12.**
+- **Netwerk (`netwerk.html`):**
+  - Data lives in `data/dealers.json`. Locations and coordinates come from the map markers on triple-r-europe.com/contact (Oct 2026). Uddevalla and Reykjavik had no marker, so they use city coordinates.
+  - **Company names are only filled in where a public source confirms them:**
+    - Triple R Europe nv (HQ);
+    - TRIPLE R Finland Oy AB (triple-r-europe.com/contact);
+    - ITC Hydraulic Services Ltd, Inverurie (triple-r.co.uk).
+  - The rest show as "Triple R <land>" with **[CONFIRM]**. TRIS B.V. (oilcleaner.eu) is deliberately left out: it is a separate European channel.
+  - The map is our own SVG made from Natural Earth (npm world-atlas@2), built with `tools/mkmap.py`, so it needs no map service before consent.
+  - Interaction: clicking a pin, country or list item zooms the map (700 ms) and shows a card; search filters both the list and the pins; "Heel Europa" resets the view.
+- **Verhuur (`verhuur.html`):**
+  - first selection: SE mobile, OSCA mobile, vacuum dehydrator **[CONFIRM]**;
+  - "Huur aanvragen" puts the device in the quote request;
+  - "Specifiek toestel" opens the quote page with a free-text line.
+- **Filtration Systembuilder:** new name and URL for the configurator (`filtration-systembuilder.html`, previously Find My Oil Cleaner). On the homepage it is a striking button with a running border.
+- **Homepage:**
+  - the products are now a carousel of all 10 series (scroll-snap, arrows and a progress bar);
+  - the "Vraag het aan Triple R" card has a glowing, rotating border (static under reduced motion).
+- **Word copy:** see `copy/LEESMIJ.md`.
+  - `copy/copytool.py export` writes all page copy (about 930 rows with an ID) to `copy/Triple-R-websiteteksten.docx`.
+  - `copy/copytool.py import file.docx` writes the "Nieuwe tekst" column back into the sources and builds the site.
+
+## Pass 1.12: catalogue per model, new datasheets, less whitespace
+
+- **Catalogue per model:**
+  - `tools/mkcatalog.py` writes `data/products.json` (the source for Astro content collections) and `catalog.js` (for the prototypes).
+  - 73 products from the datasheets (46 systems in 12 series, 27 elements and pre-filters). Each product carries the article number, specs, fluid, version, oil volume from the datasheet selection chart, compatible elements, the systems an element fits, the datasheet page and [CONFIRM] notes.
+- **Categories**, by installation method, inspired by oilcleaner.eu:
+  - Op de drukleiding: BU, BU-100E-Wind, steel housings HP;
+  - Bypass bij lage druk: TR, SS;
+  - Offline met eigen pomp: SE, SE Mobile, OSCA;
+  - Water verwijderen;
+  - Lucht en schuim;
+  - Koelvloeistof en proceswater;
+  - Filterelementen.
+- **`producten.html`:** category tabs plus filters (model or article-number search, oil volume, fluid, version, series), stored in the URL (`?cat=&serie=&vol=&q=`). Tiles are per model, grouped by series, with "Bekijk" and "Offerte".
+- **`product.html?id=…`:** a prototype template; in Astro this becomes one static page per model. It includes:
+  - breadcrumb Producten › category › series › model;
+  - key facts and oil volume;
+  - quantity plus quote button;
+  - switcher to the other models in the series;
+  - full spec table and series comparison table;
+  - matching elements, or for an element, the systems it fits;
+  - datasheet link with `#page=N`.
+- **Everything else uses the same catalogue:**
+  - the quote request (per model);
+  - the Systembuilder, which recommends a concrete model by oil volume;
+  - the assistant search, where every model and article number is indexed;
+  - the mega menu.
+- **New datasheets** (copied to `pdf/` and added to search and downloads):
+  - V100-ENGLISH;
+  - STEEL-housing-HP;
+  - SE-Mobile-HF-ENGLISH;
+  - Elements-ENGLISH;
+  - Element-data-sheet-2023;
+  - BU-100E-Wind-S (technical drawing, scanned).
+
+  The other 8 attachments are byte-identical to PDFs already on the site.
+- **[CONFIRM] found in the datasheets:**
+  - **BU pressure:** the datasheet says flow is guaranteed from 10 to 245 bar; the brief says "tot 450 bar"; oilcleaner.eu says 315 bar.
+  - **Steel housings HP:** page 1 says 25 bar, the table says 40 bar.
+  - **M300 article numbers:** the 2023 data sheet (EL30004 / EL30025) and the element brochure (EL30008 for both) disagree.
+  - **V100:** the datasheet says it fits all 100-size housings; the element brochure says it does not fit SU/SS housings.
+  - **Missing data:** OSCA has no article numbers; SE100E-WH has only a 3D render; per-model product photos are missing (series photos are used for now).
+  - **Element data sheet 2023** names competitors (CJC, Kleenoil) in its notice. [CONFIRM] whether it may be offered as a public download.
+- **Whitespace:** `--section-y` went from 72–128 px to 56–88 px, `.head` margin from 40–64 px to 28–44 px, and the producten hero image is hidden on mobile.
+
+## Pass 1.13: Marc, the digital assistant
+
+- **Name:** "Vraag het Triple R" is now called **Marc** ("Vraag het aan Marc") everywhere:
+  - header button;
+  - hero card on the homepage and the FAQ;
+  - answer panel;
+  - contact button;
+  - mobile menu;
+  - search block on producten.
+- **Face:** four poses cut from the supplied illustration (`img/marc/`, transparent PNG, 320–360 px wide), plus a round avatar (160 px):
+  - `marc-denkt` (chin in hand, speech bubble): hero card, plus the empty panel ("Dag, ik ben Marc. Waarmee kan ik helpen?");
+  - `marc-loep`: search state ("Marc zoekt in de webpagina's en datasheets…", gentle scan animation);
+  - `marc-knipoog`: no reliable answer, hand-off to a specialist;
+  - `marc-duim`: after "Nuttig" in the feedback ("Bedankt, dat hoort Marc graag!");
+  - `marc-avatar`: header button, input field, answer heading, contact button.
+- **AI transparency (EU AI Act art. 50):** Marc is always shown as an AI assistant: an "AI-assistent" badge, "Antwoord van Marc (AI)", and the footer line in the panel.
+- **[CONFIRM]:**
+  - consent from the person depicted to use the illustration as the bot's face;
+  - in production, convert the images to WebP/AVIF (PNG is about 180–210 KB per pose).
+- **Also fixed:**
+  - the PDF index cache key is now `rrr-pdf-index-v2`, so the 6 new datasheets are indexed;
+  - the example questions no longer use invalid listbox/option roles (keyboard navigation now uses `data-opt` + `.is-sel`);
+  - the send button has an accessible name on mobile.
+
+## Pass 1.14: Marc icon, product range per Triple R Europe
+
+- **Marc icon:** the round face crop is gone. Every small spot now uses the full magnifying-glass pose (`img/marc/marc-icoon.png`, transparent, no circle):
+  - header button (slightly larger than the button);
+  - mobile search button;
+  - input field in the panel;
+  - answer heading;
+  - contact button.
+- **Product range adjusted to what Triple R Europe actually does** (compared with oilcleaner.eu):
+  - **Added: category Vulpompen.** The SE200E Mobile High Flow is also listed there (`also: ['vullen']`). There is a placeholder "Vulpompen" with a [CONFIRM] request for models, article numbers, a photo and a datasheet.
+  - **Not offered:** LS/LL series (the LL suction filter TR-21000 has been removed), Crystal Products desiccant breathers, spare parts.
+  - **Options are handled differently and are not on the website:** the "Op aanvraag" rows have been removed from SE Mobile and SE200E-HF; the "Optie" mentions have been removed from rental, the mega menu and the assistant.
+- **Photos:** the product photos on the site carry the Triple R/RRR brand (not TRIS). **[CONFIRM] the homepage hero video comes from TRIS** (oilcleaner.eu). Replace it with Triple R Europe's own footage or a still image.

@@ -1,0 +1,98 @@
+<title>Product · Triple R</title>
+<meta name="description" content="Specificaties, filterelementen en datasheet van een Triple R-model. Vraag een offerte aan zonder verplichtingen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.hero--pd{padding-bottom:var(--s-10)}
+.hero--pd h1 span{display:inline}
+.pd-sec{padding-block:var(--s-10)}
+.pd-sec+.pd-sec{padding-top:0}
+.pd-sec h2{font-size:var(--fs-h3);letter-spacing:-.025em;margin-bottom:var(--s-4)}
+.pd-sec .sub{color:var(--grey-600);font-size:var(--fs-sm);margin:-8px 0 var(--s-4)}
+.pd-note{display:grid;gap:4px;padding:14px 16px;border-radius:14px;background:#FFF8EA;font-size:13px;color:#5C4200}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page hero--pd" aria-labelledby="h1" data-annot="Productpagina per model (prototype: product.html?id=…; in Astro één statische pagina per model uit data/products.json) · kruimelpad Producten › categorie › serie · H1 = modelnaam">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad" id="crumbs"><li><a href="homepage.html">Home</a></li><li><a href="producten.html">Producten</a></li></ol>
+      <h1 id="h1">Product</h1>
+      <p class="lead" id="lead"></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec pd-sec" aria-label="Product" data-annot="Foto · artikelnummer · kerngegevens · aantal + ‘Voeg toe aan offerte’ · andere modellen in de serie · datasheet met paginanummer">
+  <div class="wrap pd" id="pd"></div>
+</section>
+<section class="pd-sec" aria-labelledby="h-spec"><div class="wrap" id="spec"></div></section>
+<section class="pd-sec" aria-labelledby="h-cmp" id="cmp-sec"><div class="wrap" id="cmp"></div></section>
+<section class="pd-sec" aria-labelledby="h-rel" id="rel-sec"><div class="wrap" id="rel"></div></section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>
+<script>
+(() => {
+  const C = window.RRR_CATALOG, Q = window.RRRQuote, SER = C.series;
+  const byId = Object.fromEntries(C.products.map(p => [p.id, p]));
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const nf = new Intl.NumberFormat('nl-BE');
+  const p = byId[new URLSearchParams(location.search).get('id')];
+  const $ = id => document.getElementById(id);
+  if (!p) { $('h1').textContent = 'Product niet gevonden'; $('lead').innerHTML = 'Dit model bestaat niet of is verplaatst. Bekijk het <a href="producten.html">productoverzicht</a>.'; ['spec', 'cmp-sec', 'rel-sec'].forEach(i => $(i).remove()); return; }
+  const S = SER[p.series], cat = C.cats.find(c => c.id === p.cat), sibs = C.products.filter(x => x.series === p.series);
+  const tb = t => `<i class="tb" title="Te bevestigen: ${esc(t)}"></i>`;
+  const PH = '<span class="kph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M7 7h10M7 17h10"/></svg>Productfoto volgt</span>';
+  const volTxt = x => x.vol ? (x.vol[0] ? `${nf.format(x.vol[0])} tot ${nf.format(x.vol[1])} l` : `tot ${nf.format(x.vol[1])} l`) + (x.volGrey ? ` (tot ${nf.format(x.volGrey)} l afhankelijk van de olie)` : '') : null;
+
+  document.title = `${p.n}${p.art ? ' (' + p.art + ')' : ''} · Triple R`;
+  document.querySelector('meta[name=description]').content = `${p.n}: ${p.s} Specificaties, filterelementen en datasheet.`.slice(0, 155);
+  $('crumbs').insertAdjacentHTML('beforeend', `<li><a href="producten.html?cat=${p.cat}">${esc(cat.n)}</a></li><li><a href="producten.html?serie=${p.series}">${esc(S.n)}</a></li><li aria-current="page">${esc(p.n)}</li>`);
+  $('h1').innerHTML = `${esc(p.n)} <span>${esc(S.n === p.n ? '' : S.n)}</span>`;
+  $('lead').textContent = p.s;
+
+  const facts = p.specs.slice(0, 4);
+  const vt = volTxt(p);
+  $('pd').innerHTML = `
+    <div class="pd__img">${p.img ? `<img src="img/${p.img}" alt="${esc(p.n)}">` : PH}</div>
+    <div class="pd__info">
+      <div class="pd__meta">${p.art ? `<span class="kart">Art. ${esc(p.art)}</span>` : `<span class="kart">Artikelnummer volgt</span>`}${p.old ? `<span class="kart">(oud: ${esc(p.old)})</span>` : ''}${p.fluid.map(f => `<span class="tag">${esc(C.fluids[f])}</span>`).join('')}${p.version.map(v => `<span class="tag tag--g">${esc(C.versions[v])}</span>`).join('')}</div>
+      <dl class="pd__facts">${facts.map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join('')}${vt ? `<div style="grid-column:1/-1"><dt>Aanbevolen olievolume (datasheet)</dt><dd>${esc(vt)}</dd></div>` : ''}</dl>
+      <div class="pd__buy">
+        <span class="step"><button type="button" id="q-" aria-label="Eén minder">−</button><output id="qn" aria-label="Aantal">1</output><button type="button" id="q+" aria-label="Eén meer">+</button></span>
+        <button type="button" class="btn btn--primary" id="qadd">Voeg toe aan offerte</button>
+        <a class="btn btn--secondary" href="offerte.html">Bekijk offerteaanvraag</a>
+      </div>
+      <div class="pd__links">${p.pdf ? `<a href="pdf/${encodeURIComponent(p.pdf)}#page=${p.page}" target="_blank" rel="noopener">Datasheet (PDF, p. ${p.page})</a>` : '<span>Datasheet volgt</span>'}<a href="filtration-systembuilder.html" lang="en">Twijfelt u? Filtration Systembuilder</a><a href="homepage.html#contact">Advies van een specialist</a></div>
+      ${p.confirm.length ? `<div class="pd-note"><b>Nog te bevestigen door Triple R${tb(p.confirm.join('; '))}</b>${p.confirm.map(c => `<span>${esc(c)}</span>`).join('')}</div>` : ''}
+      ${sibs.length > 1 ? `<div><p style="font-weight:600;font-size:var(--fs-sm);margin-bottom:8px">Andere modellen in de ${esc(S.n)}</p><nav class="vars" aria-label="Modellen in de ${esc(S.n)}">${sibs.map(x => `<a href="product.html?id=${x.id}" ${x.id === p.id ? 'aria-current="page"' : ''}>${esc(x.n)}<small>${esc((x.specs[0] || ['', ''])[1])}</small></a>`).join('')}</nav></div>` : ''}
+    </div>`;
+  let qty = 1;
+  const setQ = n => { qty = Math.max(1, Math.min(99, n)); $('qn').textContent = qty; };
+  $('q-').addEventListener('click', () => setQ(qty - 1)); $('q+').addEventListener('click', () => setQ(qty + 1));
+  $('qadd').addEventListener('click', () => {
+    const cur = Q.list().find(x => x.id === p.id && x.mode === 'koop');
+    if (cur) Q.set(p.id, 'koop', { qty: cur.qty + qty }); else { Q.add(p.id); if (qty > 1) Q.set(p.id, 'koop', { qty }); }
+    $('qadd').textContent = 'Toegevoegd aan offerte'; setTimeout(() => { $('qadd').textContent = 'Voeg toe aan offerte'; }, 2200);
+  });
+
+  $('spec').innerHTML = `<h2 id="h-spec">Technische gegevens</h2><p class="sub">Volgens de datasheet van Triple R Europe.</p><div class="sptw"><table class="sptab"><tbody>${p.specs.map(([a, b]) => `<tr><th scope="row">${esc(a)}</th><td>${esc(b)}</td></tr>`).join('')}${p.art ? `<tr><th scope="row">Artikelnummer</th><td>${esc(p.art)}${p.old ? ` (oud ${esc(p.old)})` : ''}</td></tr>` : ''}${vt ? `<tr><th scope="row">Olievolume</th><td>${esc(vt)}</td></tr>` : ''}</tbody></table></div>`;
+
+  if (sibs.length > 1) {
+    const rows = [...new Set(sibs.flatMap(x => x.specs.map(s => s[0])))];
+    const val = (x, r) => (x.specs.find(s => s[0] === r) || [, '–'])[1];
+    $('cmp').innerHTML = `<h2 id="h-cmp">Vergelijk de modellen in de ${esc(S.n)}</h2><div class="cmpw" tabindex="0" role="region" aria-label="Vergelijkingstabel, horizontaal scrollbaar"><table class="cmpt"><thead><tr><th scope="col">Model</th>${sibs.map(x => `<th scope="col" class="${x.id === p.id ? 'cur' : ''}"><a href="product.html?id=${x.id}">${esc(x.n)}</a></th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr><th scope="row">${esc(r)}</th>${sibs.map(x => `<td class="${x.id === p.id ? 'cur' : ''}">${esc(val(x, r))}</td>`).join('')}</tr>`).join('')}${sibs.some(x => x.vol) ? `<tr><th scope="row">Olievolume</th>${sibs.map(x => `<td class="${x.id === p.id ? 'cur' : ''}">${x.vol ? esc(volTxt({ ...x, volGrey: null })) : '–'}</td>`).join('')}</tr>` : ''}</tbody></table></div>`;
+  } else $('cmp-sec').remove();
+
+  const rel = (p.elements.length ? p.elements : p.fits).map(id => byId[id]).filter(Boolean);
+  if (rel.length) $('rel').innerHTML = `<h2 id="h-rel">${p.elements.length ? 'Passende filterelementen' : 'Past in deze systemen'}</h2><div class="pdel">${rel.map(x => `<a href="product.html?id=${x.id}"><b>${esc(x.n)}</b><span>${esc(x.art || '')}${x.art ? ' · ' : ''}${esc(x.cat === 'elementen' ? (x.specs[0] || ['', ''])[1] : SER[x.series].n)}</span></a>`).join('')}</div>`;
+  else $('rel-sec').remove();
+  window.dataLayer?.push({ event: 'view_item', product: p.id });
+})();
+</script>

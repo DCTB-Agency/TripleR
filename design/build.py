@@ -19,9 +19,9 @@ LOGOS = {
 }
 HEADER = open('partials/header.html').read()
 FOOTER = open('partials/footer.html').read()
-PAGES = ['homepage', 'oplossingen', 'producten', 'find-my-oil-cleaner', 'sectoren', 'olieanalyse', 'faq', 'besparingscalculator', 'design-system']
+PAGES = ['homepage', 'oplossingen', 'producten', 'filtration-systembuilder', 'sectoren', 'olieanalyse', 'faq', 'besparingscalculator', 'netwerk', 'verhuur', 'offerte', 'product', 'design-system']
 import os, hashlib
-ASSET_V = {f: hashlib.md5(open(f, 'rb').read()).hexdigest()[:8] for f in ['tokens.css', 'site.css', 'site.js']}
+ASSET_V = {f: hashlib.md5(open(f, 'rb').read()).hexdigest()[:8] for f in ['tokens.css', 'site.css', 'site.js', 'catalog.js']}
 HEAD = ('<!doctype html>\n<html lang="nl">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n')
 
@@ -31,6 +31,8 @@ for name in PAGES:
     except FileNotFoundError:
         continue
     src = src.replace('{{HEADER}}', HEADER).replace('{{FOOTER}}', FOOTER)
+    if '{{EUROPE_MAP}}' in src:  # gegenereerd door tools/mkmap.py
+        src = src.replace('{{EUROPE_MAP}}', open('partials/europe-map.svg').read()).replace('{{DEALERS}}', open('partials/dealers.json').read())
     for k, v in LOGOS.items():
         src = src.replace(k, v)
     for f, h in ASSET_V.items():  # cache-busting: nieuwe versie zodra het bestand wijzigt

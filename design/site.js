@@ -1,4 +1,4 @@
-/* Triple R: gedeelde scripts: header, megamenu, drawer, "Vraag het aan Triple R" (incl. PDF-index), beweging, review */
+/* Triple R: gedeelde scripts: header, megamenu, drawer, "Vraag het aan Marc" (incl. PDF-index), beweging, review */
 (() => {
   const root = document.documentElement, params = new URLSearchParams(location.search);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -31,7 +31,7 @@
   drawer.addEventListener('click', e => { if (e.target.closest('.list a, .btn')) openDrawer(false); });
 
   /* =====================================================================
-     VRAAG HET AAN TRIPLE R: conversational search (designprototype, BRIEF §17)
+     VRAAG HET AAN MARC: conversational search (designprototype, BRIEF §17)
      • Webpagina's: vaste index (in productie: Pagefind op de gebouwde site).
      • PDF's: de échte datasheets uit /pdf/ worden per pagina uitgelezen met pdf.js
        (in productie gebeurt dit bij elke build → Pagefind + vectorindex).
@@ -69,23 +69,29 @@
     { f: 'windmill.pdf', t: 'Toepassing windturbines' },
     { f: 'Recommended-cleanliness4.pdf', t: 'Recommended cleanliness' },
     { f: 'iso440637534.pdf', t: 'ISO 4406-tabel' },
-    { f: 'nas1638-kopie.pdf', t: 'NAS 1638-tabel' }
+    { f: 'nas1638-kopie.pdf', t: 'NAS 1638-tabel' },
+    { f: 'V100-ENGLISH.pdf', t: 'V100 varnish-element datasheet', p: 'elementen' },
+    { f: 'Elements-ENGLISH.pdf', t: 'Filterelementen brochure', p: 'elementen' },
+    { f: 'Element-data-sheet-2023.pdf', t: 'Element data sheet 2023', p: 'elementen' },
+    { f: 'STEEL-housing-HP.pdf', t: 'Stalen huizen HP datasheet' },
+    { f: 'SE-Mobile-HF-ENGLISH.pdf', t: 'SE200E Mobile High Flow datasheet', p: 'se' },
+    { f: 'BU-100E-Wind-S.pdf', t: 'BU-100E-Wind tekening', p: 'bu' }
   ];
   const PAGES = [
-    { g: 'Producten', t: 'BU-serie', s: 'Bypassfilter direct op de hogedrukleiding tot 450 bar, zonder pomp of motor.', k: 'bu serie bypass 450 bar druk spuitgiet servo pressure', u: 'producten.html#p-bu' },
-    { g: 'Producten', t: 'SE-serie', s: 'Offline oliereiniger met motor-pompgroep, ook mobiel met deeltjesteller.', k: 'se serie offline mobiel pomp pump', u: 'producten.html#p-se' },
-    { g: 'Producten', t: 'OSCA-serie', s: 'Oliereiniger van 6 tot > 60 l/min voor volumes boven 50.000 l.', k: 'osca oscareeks debiet grote tank flushing flow', u: 'producten.html#p-osca' },
-    { g: 'Producten', t: 'TR-serie', s: 'Bypassfilter voor motorolie en systemen onder 6 bar.', k: 'tr serie motorolie tandwiel 6 bar engine', u: 'producten.html#p-tr' },
-    { g: 'Producten', t: 'SS-serie', s: 'Stalen filterhuizen voor 2 tot 6 elementen, tot 60 l/min en 15 bar.', k: 'ss serie staal huis housing', u: 'producten.html#p-ss' },
-    { g: 'Producten', t: 'Filterelementen', s: '3-in-1 dieptefilter, 1 tot 10 µm absoluut; WE100 absorbeert tot 900 ml water.', k: 'filterelement element v100 m100 we100 water varnish cartridge', u: 'producten.html#p-elementen' },
-    { g: 'Producten', t: 'Vacuümontwateraar', s: 'Verwijdert 80% opgelost en 100% vrij water, 10–600 cSt, optioneel ATEX.', k: 'vacuum vacuumontwateraar water ontwateren atex dehydrator', u: 'producten.html#p-vacuum' },
-    { g: 'Producten', t: 'WS-serie', s: 'Coalescer olie-waterafscheider voor continue waterinloop.', k: 'ws coalescer water afscheider separator', u: 'producten.html#p-ws' },
-    { g: 'Producten', t: 'Quicktoron', s: 'Cycloon-ontluchter die tot 95% van de luchtbellen verwijdert.', k: 'quicktoron quiktoron lucht schuim cavitatie air', u: 'producten.html#p-quicktoron' },
-    { g: 'Producten', t: 'Centrifuges', s: 'Deeltjes tot 3 µm uit koelvloeistof en proceswater, 15–200 l/min.', k: 'centrifuge koelvloeistof emulsie proceswater coolant', u: 'producten.html#p-centrifuges' },
+    { g: 'Producten', t: 'BU-serie', s: 'Bypassfilter direct op de hogedrukleiding tot 450 bar, zonder pomp of motor.', k: 'bu serie bypass 450 bar druk spuitgiet servo pressure', u: 'producten.html?serie=bu' },
+    { g: 'Producten', t: 'SE-serie', s: 'Offline oliereiniger met motor-pompgroep, ook mobiel met deeltjesteller.', k: 'se serie offline mobiel pomp pump', u: 'producten.html?serie=se' },
+    { g: 'Producten', t: 'OSCA-serie', s: 'Oliereiniger van 6 tot > 60 l/min voor volumes boven 50.000 l.', k: 'osca oscareeks debiet grote tank flushing flow', u: 'producten.html?serie=osca' },
+    { g: 'Producten', t: 'TR-serie', s: 'Bypassfilter voor motorolie en systemen onder 6 bar.', k: 'tr serie motorolie tandwiel 6 bar engine', u: 'producten.html?serie=tr' },
+    { g: 'Producten', t: 'SS-serie', s: 'Stalen filterhuizen voor 2 tot 6 elementen, tot 60 l/min en 15 bar.', k: 'ss serie staal huis housing', u: 'producten.html?serie=ss' },
+    { g: 'Producten', t: 'Filterelementen', s: '3-in-1 dieptefilter, 1 tot 10 µm absoluut; WE100 absorbeert tot 900 ml water.', k: 'filterelement element v100 m100 we100 water varnish cartridge', u: 'producten.html?cat=elementen' },
+    { g: 'Producten', t: 'Vacuümontwateraar', s: 'Verwijdert 80% opgelost en 100% vrij water, voor olie van 10 tot 600 cSt.', k: 'vacuum vacuumontwateraar water ontwateren atex dehydrator', u: 'producten.html?serie=vacuum' },
+    { g: 'Producten', t: 'WS-serie', s: 'Coalescer olie-waterafscheider voor continue waterinloop.', k: 'ws coalescer water afscheider separator', u: 'producten.html?serie=ws' },
+    { g: 'Producten', t: 'Quicktoron', s: 'Cycloon-ontluchter die tot 95% van de luchtbellen verwijdert.', k: 'quicktoron quiktoron lucht schuim cavitatie air', u: 'producten.html?serie=quicktoron' },
+    { g: 'Producten', t: 'Centrifuges', s: 'Deeltjes tot 3 µm uit koelvloeistof en proceswater, 15–200 l/min.', k: 'centrifuge koelvloeistof emulsie proceswater coolant', u: 'producten.html?serie=centrifuges' },
     { g: 'Oplossingen', t: 'Varnish verwijderen', s: 'Oxidatieresten die kleppen doen haperen, verwijderd met een 114 mm dieptefilter.', k: 'varnish sludge oxidatie klep', u: 'oplossingen.html' },
     { g: 'Oplossingen', t: 'Water in olie verwijderen', s: 'Oorzaken, gevolgen en ontwateren tot onder 100 ppm.', k: 'water ppm vocht ontwateren tandwiel', u: 'oplossingen.html' },
     { g: 'Oplossingen', t: 'Vuile olie filtreren (ISO 4406)', s: 'Breng uw olie naar de juiste reinheidsklasse.', k: 'deeltjes iso 4406 nas 1638 reinheid vuil', u: 'oplossingen.html' },
-    { g: 'Producten', t: 'Find My Oil Cleaner: de Triple R op maat', s: 'Vul uw gegevens in en stel live uw Triple R samen: vloeistof, volume, viscositeit, druk en probleem.', k: 'find my oil cleaner build vind uw oil cleaner op maat samenstellen configurator keuzehulp configurator welke filter past kiezen selector build my oil cleaner', u: 'find-my-oil-cleaner.html' },
+    { g: 'Producten', t: 'Filtration Systembuilder: de Triple R op maat', s: 'Vul uw gegevens in en stel live uw Triple R samen: vloeistof, volume, viscositeit, druk en probleem.', k: 'find my oil cleaner build vind uw oil cleaner op maat samenstellen configurator keuzehulp configurator welke filter past kiezen selector build my oil cleaner', u: 'filtration-systembuilder.html' },
     { g: 'Oplossingen', t: 'Besparingscalculator', s: 'Bereken wat schone olie u oplevert aan olie, stilstand en CO₂.', k: 'besparing calculator kosten roi co2 rendement', u: 'besparingscalculator.html' },
     { g: 'Veelgestelde vragen', t: 'Wat betekent een ISO 4406-code?', s: 'Wat de drie getallen betekenen, met tabel en voorbeelden.', k: 'iso 4406 21/18/16 code reinheid tabel', u: 'faq.html' },
     { g: 'Veelgestelde vragen', t: 'Wat is een bypassfilter?', s: 'Vergelijking met rekenvoorbeeld.', k: 'bypass full flow verschil nevenstroom', u: 'faq.html' },
@@ -93,6 +99,7 @@
     { g: 'Sectoren', t: 'Scheepvaart', s: 'Motoren, thrusters, kranen en lieren; ook ATEX.', k: 'scheepvaart schip marine thruster kraan', u: 'sectoren.html' },
     { g: 'Sectoren', t: 'Windenergie', s: 'Tandwielkastolie schoon en droog houden.', k: 'wind windturbine tandwiel gearbox', u: 'sectoren.html' }
   ];
+  if (window.RRR_CATALOG) RRR_CATALOG.products.forEach(p => PAGES.push({ g: p.cat === 'elementen' ? 'Filterelementen' : 'Producten', t: p.n + (p.art ? ' · ' + p.art : ''), s: p.s, k: [p.n, p.art, p.old, p.series, RRR_CATALOG.series[p.series].n].filter(Boolean).join(' ').toLowerCase(), u: 'product.html?id=' + p.id }));
   /* NL → EN-uitbreiding: de datasheets zijn Engelstalig */
   const SYN = {
     water: 'water moisture', vocht: 'moisture water humidity', deeltjes: 'particles particle contamination', deeltje: 'particle', vuil: 'dirt contamination', varnish: 'varnish sludge oxidation', sludge: 'sludge varnish',
@@ -108,7 +115,7 @@
   const expand = q => { const out = new Set(); tok(q).forEach(w => { out.add(w); if (SYN[w]) SYN[w].split(' ').forEach(x => out.add(x)); Object.keys(SYN).forEach(k => { if (w.length > 4 && w !== k && w.startsWith(k)) SYN[k].split(' ').forEach(x => out.add(x)); }); }); return [...out]; };
 
   /* ---------- PDF-index (pdf.js, lazy) ---------- */
-  const CACHE = 'rrr-pdf-index-v1';
+  const CACHE = 'rrr-pdf-index-v2';
   let pdfChunks = null, pdfLoading = null, df = new Map();
   try { const c = JSON.parse(localStorage.getItem(CACHE) || 'null'); if (c && c.length) { pdfChunks = c; buildDf(); } } catch (e) {}
   function buildDf() { df = new Map(); pdfChunks.forEach(ch => { ch.tf = ch.tf || termFreq(ch.text); Object.keys(ch.tf).forEach(t => df.set(t, (df.get(t) || 0) + 1)); }); }
@@ -177,22 +184,22 @@
 
   /* ---------- producten & voorbeeldantwoorden ---------- */
   const PROD = {
-    bu: { n: 'BU-serie', img: 'img/BU-Series.png', c: ['tot 450 bar', '2 µm absoluut (M)', 'geen pomp of motor'], pdf: 'BU-2023-UK-.pdf', u: 'producten.html#p-bu' },
-    vac: { n: 'Vacuümontwateraar', img: 'img/vacuum.png', c: ['80% opgelost water', '100% vrij water', 'optioneel ATEX'], pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', u: 'producten.html#p-vacuum' },
-    el: { n: 'Filterelementen', img: 'img/elements.png', c: ['1–10 µm absoluut', 'WE100: < 80 ppm', '3–320 cSt'], pdf: null, u: 'producten.html#p-elementen' }
+    bu: { n: 'BU-serie', img: 'img/BU-Series.png', c: ['tot 450 bar', '2 µm absoluut (M)', 'geen pomp of motor'], pdf: 'BU-2023-UK-.pdf', u: 'producten.html?serie=bu' },
+    vac: { n: 'Vacuümontwateraar', img: 'img/vacuum.png', c: ['80% opgelost water', '100% vrij water', '30 l/min'], pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', u: 'producten.html?serie=vacuum' },
+    el: { n: 'Filterelementen', img: 'img/elements.png', c: ['1–10 µm absoluut', 'WE100: < 80 ppm', '3–320 cSt'], pdf: null, u: 'producten.html?cat=elementen' }
   };
   const ANSWERS = [
     { m: /spuitgiet|injectie|400 ?l/, prod: 'bu', lead: 'Advies over de BU-serie',
       blocks: [['p', 'Voor een spuitgietmachine wordt meestal de BU-serie ingezet: een bypassfilter die rechtstreeks op de hogedrukleiding komt, zonder eigen pomp of motor [1].'],
         ['ul', ['Werkdruk tot 450 bar; het M-element filtert 2 µm absoluut [2].', 'Geschikt voor servo- en proportionele hydrauliek, typisch in kunststofinjectie [1][3].', 'Wilt u los van de machine filtreren, dan is de SE-serie met eigen motor-pompgroep een alternatief [4].']],
         ['p', 'Het aantal en type elementen voor 400 l olie hangt af van uw olie en vervuiling. Laat dat bevestigen door een specialist of via een gratis olieanalyse.']],
-      src: [{ page: 'BU-serie · Voor welke toepassingen?', u: 'producten.html#p-bu' }, { pdf: 'BU-2023-UK-.pdf', q: 'pressure bar micron' }, { page: 'Hydraulische systemen', u: 'sectoren.html' }, { pdf: 'SE-2019-ENGLISH.pdf', q: 'pump motor offline' }],
+      src: [{ page: 'BU-serie · Voor welke toepassingen?', u: 'producten.html?serie=bu' }, { pdf: 'BU-2023-UK-.pdf', q: 'pressure bar micron' }, { page: 'Hydraulische systemen', u: 'sectoren.html' }, { pdf: 'SE-2019-ENGLISH.pdf', q: 'pump motor offline' }],
       follow: ['Hoeveel elementen heb ik nodig voor 400 l?', 'Wat is het verschil tussen BU en SE?', 'Welke reinheid hebben servokleppen nodig?'] },
     { m: /water|vocht|tandwiel/, prod: 'vac', lead: 'Advies over water in olie',
       blocks: [['p', 'Water uit tandwielolie haalt u, afhankelijk van de hoeveelheid, op drie manieren:'],
         ['ul', ['Beperkte hoeveelheden: de cellulose van een Triple R-element absorbeert water tot onder 100 ppm; het WE100-element neemt tot 900 ml op en haalt < 80 ppm [1].', 'Continue waterinloop: een WS-coalescer scheidt het water af [2].', 'Veel of opgelost water: een vacuümontwateraar verwijdert 80% van het opgeloste en 100% van het vrije water, zonder verbruiksmateriaal [3].']],
         ['p', 'Welke oplossing past, hangt af van het watergehalte in uw olie. Een olieanalyse meet dat in ppm.']],
-      src: [{ page: 'Filterelementen · WE100', u: 'producten.html#p-elementen' }, { pdf: 'WS-2019-ENGLISH.pdf', q: 'water coalescing separator' }, { pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', q: 'water dissolved free removal' }],
+      src: [{ page: 'Filterelementen · WE100', u: 'producten.html?cat=elementen' }, { pdf: 'WS-2019-ENGLISH.pdf', q: 'water coalescing separator' }, { pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', q: 'water dissolved free removal' }],
       follow: ['Hoe neem ik een oliestaal uit een tandwielkast?', 'Is de vacuümontwateraar ook ATEX?', 'Wat staat er in het testrapport van de vacuümontwateraar?'] },
     { m: /iso|4406|21\/18|reinheid|nas/, prod: 'el', lead: 'Laat uw reinheid meten',
       blocks: [['p', 'Een ISO 4406-code telt de deeltjes per ml olie in drie groottes: groter dan 4, 6 en 14 µm [1].'],
@@ -209,11 +216,12 @@
     askQ.value = prefill || ''; render(); askQ.focus(); ensurePdfIndex();
   }
   function closeAsk() { clearInterval(streamTimer); ask.hidden = true; document.body.style.overflow = ''; (lastFocus || document.getElementById('ask-open')).focus(); }
-  function render() { const v = askQ.value.trim(); askGo.disabled = !v; askQ.setAttribute('aria-expanded', 'true'); sel = -1; v ? renderResults(v) : renderEmpty(); }
+  function render() { const v = askQ.value.trim(); askGo.disabled = !v; sel = -1; v ? renderResults(v) : renderEmpty(); }
   function hl(text, terms) { let h = esc(text); terms.filter(t => t.length > 2).forEach(t => { h = h.replace(new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>'); }); return h; }
 
+  const MARC = n => `img/marc/marc-${n}.png`;
   function renderEmpty() {
-    askBody.innerHTML = `<div class="cols"><div><h3 class="lbl">Voorbeeldvragen</h3><ul class="qlist" role="listbox" aria-label="Voorbeeldvragen">${SUGGEST.map(s => `<li><button type="button" role="option" data-ask="${esc(s)}">${I.q}${esc(s)}</button></li>`).join('')}</ul></div>
+    askBody.innerHTML = `<div class="marc-hi"><img src="${MARC('denkt')}" alt="" width="340" height="333"><div><p class="marc-hi__n">Dag, ik ben Marc.</p><p>De digitale assistent van Triple R. Ik zoek het antwoord in onze webpagina’s en ${PDFS.length} datasheets, en toon altijd waar het staat. Waarmee kan ik helpen?</p><small>AI-assistent · controleer technische keuzes met een specialist</small></div></div><div class="cols"><div><h3 class="lbl">Voorbeeldvragen</h3><ul class="qlist" aria-label="Voorbeeldvragen">${SUGGEST.map(s => `<li><button type="button" data-opt data-ask="${esc(s)}">${I.q}${esc(s)}</button></li>`).join('')}</ul></div>
       <div><h3 class="lbl">Populaire producten</h3>${['bu', 'el', 'vac'].map(k => `<a class="pmini" href="${PROD[k].u}" data-close-go><img src="${PROD[k].img}" alt=""><span><b>${PROD[k].n}</b><span>${PROD[k].c.slice(0, 2).join(' · ')}</span></span></a>`).join('')}
       <h3 class="lbl" style="margin-top:var(--s-4)">Datasheets</h3>${PDFS.slice(0, 3).map(d => `<a class="pmini" href="${pdfHref(d.f, 1)}" target="_blank" rel="noopener"><span class="ty pdf" style="font-size:11px;padding:2px 8px;border-radius:999px;background:#FDECEA;color:#9B2C1F">PDF</span><span><b>${esc(d.t)}</b><span>Engelstalig</span></span></a>`).join('')}</div></div>`;
   }
@@ -221,12 +229,12 @@
     const terms = expand(v);
     const pageHits = PAGES.map(it => { const hay = norm(it.t + ' ' + it.s + ' ' + it.k); const sc = terms.reduce((a, t) => a + (hay.includes(t) ? (norm(it.t).includes(t) ? 3 : 1) : 0), 0); return { it, sc }; }).filter(x => x.sc > 0).sort((a, b) => b.sc - a.sc);
     const pdfHits = scorePdf(terms, detectProduct(v)).slice(0, 4);
-    let html = `<button type="button" class="askrow" role="option" data-ask="${esc(v)}"><span class="spark">${I.spark}</span><span>Stel deze vraag: <b>“${esc(v)}”</b></span><span class="kbd" aria-hidden="true">↵</span></button>`;
+    let html = `<button type="button" class="askrow" data-opt data-ask="${esc(v)}"><span class="spark">${I.spark}</span><span>Stel deze vraag: <b>“${esc(v)}”</b></span><span class="kbd" aria-hidden="true">↵</span></button>`;
     let any = false;
     ['Producten', 'Oplossingen', 'Kennisbank', 'Sectoren'].forEach(g => { const list = pageHits.filter(h => h.it.g === g).slice(0, 3); if (!list.length) return; any = true;
-      html += `<div class="grp"><h3 class="lbl">${g}</h3>${list.map(({ it }) => `<a class="res" role="option" href="${it.u}" data-close-go><span class="ty">${{ Producten: 'Product', Oplossingen: 'Oplossing', Kennisbank: 'Artikel', Sectoren: 'Sector' }[g]}</span><b>${hl(it.t, terms)}</b><span class="sn">${hl(it.s, terms)}</span></a>`).join('')}</div>`; });
+      html += `<div class="grp"><h3 class="lbl">${g}</h3>${list.map(({ it }) => `<a class="res" data-opt href="${it.u}" data-close-go><span class="ty">${{ Producten: 'Product', Oplossingen: 'Oplossing', Kennisbank: 'Artikel', Sectoren: 'Sector' }[g]}</span><b>${hl(it.t, terms)}</b><span class="sn">${hl(it.s, terms)}</span></a>`).join('')}</div>`; });
     if (pdfHits.length) { any = true;
-      html += `<div class="grp"><h3 class="lbl">Downloads · in de PDF’s gevonden</h3>${pdfHits.map(({ ch }) => `<a class="res" role="option" href="${pdfHref(ch.f, ch.page)}" target="_blank" rel="noopener"><span class="ty pdf">PDF</span><b>${esc(ch.t)} <span class="srcpg">· p. ${ch.page}</span></b><span class="sn">${hl(snippet(ch.text, terms), terms)}</span></a>`).join('')}</div>`; }
+      html += `<div class="grp"><h3 class="lbl">Downloads · in de PDF’s gevonden</h3>${pdfHits.map(({ ch }) => `<a class="res" data-opt href="${pdfHref(ch.f, ch.page)}" target="_blank" rel="noopener"><span class="ty pdf">PDF</span><b>${esc(ch.t)} <span class="srcpg">· p. ${ch.page}</span></b><span class="sn">${hl(snippet(ch.text, terms), terms)}</span></a>`).join('')}</div>`; }
     else if (!pdfChunks) html += `<p class="none">De PDF’s worden nog geïndexeerd; resultaten uit datasheets verschijnen zo meteen.</p>`;
     if (!any && pdfChunks) html += `<p class="none">Geen directe resultaten. Stel de vraag hierboven, dan zoekt de assistent verder in alle pagina’s en datasheets.</p>`;
     askBody.innerHTML = html;
@@ -244,7 +252,7 @@
     const nq = norm(q), terms = expand(q);
     const offtopic = /prijs|kost|kosten|concurrent|cjc|hydac|pall|weer|voetbal|recept/.test(nq);
     const a = !offtopic && ANSWERS.find(x => x.m.test(nq));
-    askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p><p class="ai busy"><span class="dot"></span><span>Zoekt in webpagina’s en PDF’s…</span></p>`;
+    askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p><div class="marc-busy" role="status"><img src="${MARC('loep')}" alt="" width="360" height="311"><p class="ai busy"><span class="dot"></span><span>Marc zoekt in de webpagina’s en datasheets…</span></p></div>`;
     if (!pdfChunks) { try { await ensurePdfIndex(); } catch (e) {} }
     if (askQ.value !== q) return;
     const pk = detectProduct(q);
@@ -265,7 +273,7 @@
     }
     const docs = new Set((pdfChunks || []).map(c => c.f)).size;
     askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p>
-      <p class="ai busy" id="ai-l"><span class="dot"></span><span id="ai-t">AI-antwoord wordt opgesteld…</span></p>
+      <p class="ai busy marc-ai" id="ai-l"><img class="marc-av" src="${MARC('icoon')}" alt="" width="150" height="129"><span class="dot"></span><span id="ai-t">Marc stelt een antwoord op…</span></p>
       <div class="ans" id="ans" aria-live="polite" aria-busy="true"></div>
       <div id="after" hidden>
         ${mode === 'ext' ? src.map((s, i) => `<blockquote class="quote">“${hl(s.quote, terms)}”<cite>${esc(s.title)} · p. ${s.pageNo} <sup><a href="#src-${i + 1}">${i + 1}</a></sup> · Engelstalige datasheet</cite></blockquote>`).join('') : ''}
@@ -276,7 +284,7 @@
         <div class="fb"><span>Was dit antwoord nuttig?</span><button type="button" aria-pressed="false" aria-label="Nuttig" data-fb>${I.up}</button><button type="button" aria-pressed="false" aria-label="Niet nuttig" data-fb>${I.down}</button><span id="fb-t" role="status"></span></div>
       </div>`;
     const ans = document.getElementById('ans'), toks = tokens(blocks);
-    const finish = () => { ans.querySelector('.caret')?.remove(); ans.setAttribute('aria-busy', 'false'); document.getElementById('ai-l').classList.remove('busy'); document.getElementById('ai-t').textContent = mode === 'gen' ? 'AI-antwoord op basis van Triple R-documentatie' : 'Gevonden in de documentatie (letterlijke passages)'; document.getElementById('after').hidden = false; };
+    const finish = () => { ans.querySelector('.caret')?.remove(); ans.setAttribute('aria-busy', 'false'); document.getElementById('ai-l').classList.remove('busy'); document.getElementById('ai-t').textContent = mode === 'gen' ? 'Antwoord van Marc (AI), op basis van Triple R-documentatie' : 'Marc vond deze passages in de documentatie (letterlijk)'; document.getElementById('after').hidden = false; };
     if (reduce) { toks.forEach(t => appendBlock(ans, t, wordsHtml(t.words).join(''))); finish(); return; }
     let bi = 0, wi = 0, words = null, el = null;
     streamTimer = setInterval(() => {
@@ -289,7 +297,7 @@
   }
   function noAnswer(q) {
     askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p>
-      <div class="noans" role="status"><p class="ai"><span class="dot"></span>AI-antwoord</p><p><b>Daar vind ik geen betrouwbaar antwoord op in de documentatie van Triple R.</b></p><p class="small muted">Ik heb gezocht in de webpagina’s en alle datasheets, maar geef liever geen gok. Een specialist beantwoordt uw vraag persoonlijk.<i class="tb" title="Te bevestigen: responstijd"></i></p></div>
+      <div class="noans marc-no" role="status"><img src="${MARC('knipoog')}" alt="" width="320" height="396"><div><p class="ai"><img class="marc-av" src="${MARC('icoon')}" alt="" width="150" height="129">Marc (AI-assistent)</p><p><b>Daar vind ik geen betrouwbaar antwoord op in de documentatie van Triple R.</b></p><p class="small muted">Ik heb gezocht in de webpagina’s en alle datasheets, maar geef liever geen gok. Een specialist beantwoordt uw vraag persoonlijk.<i class="tb" title="Te bevestigen: responstijd"></i></p></div></div>
       ${handoff('Stel uw vraag aan een specialist', q)}`;
   }
   function appendBlock(ans, t, html) {
@@ -314,14 +322,14 @@
     if (t.hasAttribute('data-ask')) answer(t.dataset.ask);
     else if (t.hasAttribute('data-back')) { clearInterval(streamTimer); render(); askQ.focus(); }
     else if (t.hasAttribute('data-close') || t.hasAttribute('data-close-go')) closeAsk();
-    else if (t.hasAttribute('data-fb')) { t.parentElement.querySelectorAll('[data-fb]').forEach(b => b.setAttribute('aria-pressed', b === t)); document.getElementById('fb-t').textContent = 'Bedankt voor uw feedback.'; }
+    else if (t.hasAttribute('data-fb')) { t.parentElement.querySelectorAll('[data-fb]').forEach(b => b.setAttribute('aria-pressed', b === t)); const up = t.getAttribute('aria-label') === 'Nuttig'; document.getElementById('fb-t').innerHTML = up ? `<span class="marc-thx"><img src="${MARC('duim')}" alt="" width="320" height="398">Bedankt, dat hoort Marc graag!</span>` : 'Bedankt. Marc leert hiervan; een specialist kijkt mee.'; }
   });
   ask.addEventListener('keydown', e => {
     if (e.key === 'Escape') { e.preventDefault(); closeAsk(); return; }
-    const opts = [...askBody.querySelectorAll('[role="option"]')];
+    const opts = [...askBody.querySelectorAll('[data-opt]')];
     if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && opts.length && document.activeElement === askQ) {
       e.preventDefault(); sel = (sel + (e.key === 'ArrowDown' ? 1 : -1) + opts.length) % opts.length;
-      opts.forEach((o, i) => o.setAttribute('aria-selected', i === sel)); opts[sel].scrollIntoView({ block: 'nearest' });
+      opts.forEach((o, i) => o.classList.toggle('is-sel', i === sel)); opts[sel].scrollIntoView({ block: 'nearest' });
     }
     if (e.key === 'Enter' && document.activeElement === askQ) { e.preventDefault(); if (sel >= 0 && opts[sel]) opts[sel].click(); else if (askQ.value.trim()) answer(askQ.value.trim()); }
     if (e.key === 'Tab') { const f = [...ask.querySelectorAll('a[href],button:not([disabled]),input')].filter(x => x.offsetParent !== null); if (!f.length) return; const first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
@@ -389,12 +397,6 @@
     });
   });
 
-  /* ---------- header-zoekbalk verbergen zolang een grote zoekbalk op de pagina in beeld is ---------- */
-  const heroAsk = document.querySelector('.heroask');
-  if (heroAsk) {
-    root.classList.add('has-heroask');
-    new IntersectionObserver(([e]) => root.classList.toggle('heroask-gone', !e.isIntersecting), { rootMargin: '-80px 0px 0px 0px' }).observe(heroAsk);
-  }
 
   /* ---------- contactknop rechtsonder ---------- */
   const fab = document.getElementById('fab-btn'), fabPop = document.getElementById('fab-pop');
@@ -412,4 +414,74 @@
     e.preventDefault(); t.scrollIntoView({ behavior: root.classList.contains('motion') ? 'smooth' : 'auto' });
     const h = t.querySelector('h2'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); }
   }));
+
+  /* ---------- Diensten-dropdown ---------- */
+  const ddBtn = document.getElementById('dd-btn'), dd = document.getElementById('dd-diensten');
+  if (ddBtn) {
+    const setDd = open => { dd.hidden = !open; ddBtn.setAttribute('aria-expanded', open); };
+    ddBtn.addEventListener('click', e => { e.stopPropagation(); setDd(dd.hidden); });
+    document.addEventListener('click', e => { if (!e.target.closest('.dd')) setDd(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !dd.hidden) { setDd(false); ddBtn.focus(); } });
+    if (['olieanalyse.html', 'verhuur.html', 'filtration-systembuilder.html', 'besparingscalculator.html'].includes(here)) ddBtn.classList.add('is-cur');
+  }
+
+  /* ---------- offerteaanvraag (prijsloos ‘winkelmandje’, per bezoeker in localStorage) ---------- */
+  const CATALOG = {
+    elementen: ['Filterelementen', 'elements.png', '3-in-1 dieptefilter, 1–10 µm absoluut'],
+    bu: ['BU-serie', 'BU-Series.png', 'Bypassfilter op de drukleiding, tot 450 bar'],
+    se: ['SE-serie', 'se.png', 'Offline reiniger met eigen pomp, ook mobiel'],
+    tr: ['TR-serie', null, 'Bypassfilter voor motorolie, onder 6 bar'],
+    osca: ['OSCA-serie', 'osca.png', 'Hoog debiet voor grote volumes'],
+    ss: ['SS-serie', 'ss.png', 'Stalen huizen voor 2 tot 6 elementen'],
+    vacuum: ['Vacuümontwateraar', 'vacuum.png', 'Vrij en opgelost water eruit'],
+    ws: ['WS-serie', 'ws.png', 'Coalescer olie-waterafscheider'],
+    quicktoron: ['Quicktoron', 'quicktoron.png', 'Tot 95% van de luchtbellen eruit'],
+    centrifuges: ['Centrifuges', 'centrifuge.png', 'Koelvloeistof en proceswater'],
+    anders: ['Ander of specifiek toestel', null, 'Omschrijf hieronder wat u nodig hebt']
+  };
+  if (window.RRR_CATALOG) RRR_CATALOG.products.forEach(p => { CATALOG[p.id] = [p.n, p.img, p.s, p.art]; });
+  const QKEY = 'rrr-offerte-v1';
+  const qRead = () => { try { return JSON.parse(localStorage.getItem(QKEY)) || []; } catch (e) { return []; } };
+  let qMem = qRead();
+  const qWrite = l => { qMem = l; try { localStorage.setItem(QKEY, JSON.stringify(l)); } catch (e) {} qSync(); document.dispatchEvent(new CustomEvent('quote:change')); };
+  const qKey = (id, mode) => id + '|' + (mode || 'koop');
+  const quote = {
+    catalog: CATALOG,
+    list: () => qMem.slice(),
+    count: () => qMem.reduce((n, x) => n + x.qty, 0),
+    has: (id, mode) => qMem.some(x => qKey(x.id, x.mode) === qKey(id, mode)),
+    add(id, opts = {}) {
+      const l = qMem.slice(), k = qKey(id, opts.mode), f = l.find(x => qKey(x.id, x.mode) === k);
+      if (f) { f.qty += 1; if (opts.note) f.note = opts.note; }
+      else l.push({ id, mode: opts.mode || 'koop', qty: 1, note: opts.note || '' });
+      qWrite(l); qToast(`${CATALOG[id] ? CATALOG[id][0] : id} staat in uw offerteaanvraag.`);
+      window.dataLayer?.push({ event: 'quote_add', product: id, mode: opts.mode || 'koop' });
+    },
+    remove(id, mode) { qWrite(qMem.filter(x => qKey(x.id, x.mode) !== qKey(id, mode))); },
+    set(id, mode, patch) { qWrite(qMem.map(x => qKey(x.id, x.mode) === qKey(id, mode) ? { ...x, ...patch } : x)); },
+    clear() { qWrite([]); }
+  };
+  window.RRRQuote = quote;
+  function qSync() {
+    const n = quote.count();
+    document.querySelectorAll('[data-quote-count]').forEach(e => { e.textContent = n; });
+    document.querySelectorAll('[data-quote-link]').forEach(e => { e.hidden = !n; e.setAttribute('aria-label', `Offerteaanvraag, ${n} product${n === 1 ? '' : 'en'}`); });
+    document.querySelectorAll('[data-quote-li]').forEach(e => { e.hidden = !n; });
+    document.querySelectorAll('[data-quote-add]').forEach(b => { const on = quote.has(b.dataset.quoteAdd, b.dataset.mode); b.classList.toggle('is-in', on); b.setAttribute('aria-pressed', on); const t = b.querySelector('[data-t]'); if (t) t.textContent = on ? (b.dataset.on || 'In uw offerte') : (b.dataset.off || 'Voeg toe aan offerte'); });
+  }
+  let toastT;
+  function qToast(msg) {
+    let t = document.getElementById('qtoast');
+    if (!t) { t = document.createElement('div'); t.id = 'qtoast'; t.className = 'qtoast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
+    t.innerHTML = `<span>${msg}</span><a href="offerte.html">Bekijk offerte</a>`; t.classList.add('show');
+    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 4200);
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-quote-add]'); if (!b) return;
+    e.preventDefault();
+    if (quote.has(b.dataset.quoteAdd, b.dataset.mode) && b.dataset.toggle !== 'no') quote.remove(b.dataset.quoteAdd, b.dataset.mode);
+    else quote.add(b.dataset.quoteAdd, { mode: b.dataset.mode, note: b.dataset.note });
+  });
+  addEventListener('storage', e => { if (e.key === QKEY) { qMem = qRead(); qSync(); document.dispatchEvent(new CustomEvent('quote:change')); } });
+  document.addEventListener('DOMContentLoaded', qSync); qSync();
 })();

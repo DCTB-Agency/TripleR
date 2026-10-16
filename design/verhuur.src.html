@@ -1,0 +1,104 @@
+<title>Verhuur van oliereinigers · Triple R</title>
+<meta name="description" content="Huur een Triple R-oliereiniger of vacuümontwateraar voor flushing, inbedrijfstelling of een proefperiode. Kies een toestel of vraag een specifiek toestel aan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.rents{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-5)}
+.rent{display:grid;grid-template-rows:auto 1fr;border-radius:var(--radius-lg);border:var(--border);background:#fff;overflow:hidden}
+.rent__img{aspect-ratio:5/4;padding:var(--s-6);background:radial-gradient(80% 70% at 50% 45%,#fff 0%,#F1F4F8 60%,#E3E8EF 100%);display:grid;place-items:center}
+.rent__img img{max-width:100%;max-height:100%;mix-blend-mode:multiply}
+.rent__body{padding:var(--s-6);display:grid;gap:var(--s-3);align-content:start}
+.rent__body p{font-size:var(--fs-sm);color:var(--grey-600)}
+.rent dl{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-3);margin:0;padding-top:var(--s-3);border-top:var(--border)}
+.rent dt{font-size:12px;color:var(--grey-600)}
+.rent dd{margin:2px 0 0;font-weight:600}
+.rent .qadd{justify-content:center;margin-top:var(--s-2)}
+.special{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--s-6);align-items:center;padding:clamp(1.5rem,1rem + 2vw,2.5rem);border-radius:28px;background:var(--grey-50);border:var(--border)}
+.special h2{font-size:var(--fs-h3);letter-spacing:-.025em}
+.special p{color:var(--grey-600);margin-top:var(--s-2)}
+.special .btns{justify-content:flex-end}
+.how3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.how3 div{border-top:2px solid var(--ink);padding-top:var(--s-4);display:grid;gap:6px}
+.how3 p{font-size:var(--fs-sm);color:var(--grey-600)}
+@media (max-width:1023px){.rents{grid-template-columns:1fr 1fr}.special{grid-template-columns:1fr}.special .btns{justify-content:flex-start}}
+@media (max-width:767px){.rents{grid-template-columns:1fr}.how3{grid-template-columns:1fr}}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page" aria-labelledby="h1" data-annot="Verhuur · selectie huurtoestellen wordt later aangevuld [CONFIRM] · ‘Huur aanvragen’ zet het toestel in de offerteaanvraag met type huur · specifieke aanvraag via offerte.html?specifiek=huur">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Verhuur</li></ol>
+      <h1 id="h1">Verhuur: <span>tijdelijk schone olie</span></h1>
+      <p class="lead">Hebt u een oliereiniger maar tijdelijk nodig, bijvoorbeeld voor een flushing na een revisie, een inbedrijfstelling of om eerst het resultaat te zien? Huur dan een Triple R-toestel. Kies hieronder een toestel of vraag een specifiek toestel aan; wij bevestigen beschikbaarheid en prijs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-rent">
+  <div class="wrap">
+    <div class="head"><div><h2 id="h-rent">Toestellen te huur</h2></div><div class="side"><p class="lead">Een eerste selectie; het aanbod wordt nog uitgebreid.<i class="tb" title="Te bevestigen: welke toestellen te huur zijn"></i></p></div></div>
+    <div class="rents"><article class="rent">
+        <div class="rent__img"><img src="img/se.png" alt="SE-serie, mobiel" loading="lazy"></div>
+        <div class="rent__body"><h3>SE-serie, mobiel</h3><p>Offline oliereiniger met eigen pomp op wielen. Rijdt van machine naar machine.</p><dl><div><dt>Uitvoering</dt><dd>mobiel</dd></div><div><dt>Debiet</dt><dd>5 of 9 l/min</dd></div></dl><button type="button" class="qadd" data-quote-add="se" data-mode="huur" data-off="Huur aanvragen" data-on="In uw aanvraag" aria-pressed="false"><svg class="i-add" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg><svg class="i-ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span data-t>Huur aanvragen</span></button></div>
+      </article><article class="rent">
+        <div class="rent__img"><img src="img/osca.png" alt="OSCA-serie, mobiel" loading="lazy"></div>
+        <div class="rent__body"><h3>OSCA-serie, mobiel</h3><p>Hoog debiet voor grote tanks, flushing en smeerolie met hoge viscositeit.</p><dl><div><dt>Debiet</dt><dd>6 – > 60 l/min</dd></div><div><dt>Volume</dt><dd>> 50.000 l</dd></div></dl><button type="button" class="qadd" data-quote-add="osca" data-mode="huur" data-off="Huur aanvragen" data-on="In uw aanvraag" aria-pressed="false"><svg class="i-add" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg><svg class="i-ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span data-t>Huur aanvragen</span></button></div>
+      </article><article class="rent">
+        <div class="rent__img"><img src="img/vacuum.png" alt="Vacuümontwateraar" loading="lazy"></div>
+        <div class="rent__body"><h3>Vacuümontwateraar</h3><p>Haalt vrij en opgelost water uit de olie, zonder verbruiksmateriaal.</p><dl><div><dt>Water</dt><dd>80% opgelost · 100% vrij</dd></div><div><dt>Debiet</dt><dd>30 l/min</dd></div></dl><button type="button" class="qadd" data-quote-add="vacuum" data-mode="huur" data-off="Huur aanvragen" data-on="In uw aanvraag" aria-pressed="false"><svg class="i-add" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M8 3v10M3 8h10"/></svg><svg class="i-ok" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span data-t>Huur aanvragen</span></button></div>
+      </article></div>
+  </div>
+</section>
+
+<section class="sec band" aria-labelledby="h-spec">
+  <div class="wrap">
+    <div class="special">
+      <div><h2 id="h-spec">Specifiek toestel nodig?</h2><p>Zoekt u een ander toestel, een andere spanning of een ATEX-uitvoering? Omschrijf wat u nodig hebt en wij zoeken het voor u uit.</p></div>
+      <div class="btns"><a class="btn btn--primary" href="offerte.html?specifiek=huur">Vraag een specifiek toestel aan</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-how">
+  <div class="wrap">
+    <div class="head"><div><h2 id="h-how">Zo werkt huren</h2></div></div>
+    <div class="how3">
+      <div><h3 class="h4">1 · Aanvragen</h3><p>Kies een of meer toestellen en geef de gewenste periode en locatie door.</p></div>
+      <div><h3 class="h4">2 · Bevestiging</h3><p>We bevestigen beschikbaarheid, huurprijs en levering.<i class="tb" title="Te bevestigen: huurvoorwaarden"></i></p></div>
+      <div><h3 class="h4">3 · Levering en ophaling</h3><p>Het toestel wordt geleverd en na de huurperiode weer opgehaald.<i class="tb" title="Te bevestigen: levering, opstart en ophaling"></i></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact" aria-labelledby="h-cta" data-annot="S13 Slot-CTA · afgerond paneel (28px) in logoverloop blauw → indigo · teamfoto tot portretshoot">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2 id="h-cta">Bespreek uw installatie met een specialist</h2>
+        <p class="lead">Beschrijf uw machines in 2 minuten en ontvang vrijblijvend advies over de juiste filteroplossing.</p>
+        <div class="btns"><a class="btn btn--light" href="#">Vraag advies aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div>
+      </div>
+      <div class="person">
+        <img src="img/team.jpg" alt="Het Triple R-team in het hoofdkantoor in Aartselaar" width="768" height="1024" loading="lazy">
+        <div class="person__who">
+          <div><h3>Maxim Van Uytven</h3><p class="role">Sales Manager</p></div>
+          <div class="links">
+            <a href="tel:+3238254647"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.4 20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg>+32 (0)3 825 46 47<i class="tb" title="Te bevestigen: direct nummer"></i></a>
+            <a href="mailto:info@triple-r-europe.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>info@triple-r-europe.com</a>
+          </div>
+        </div>
+        <p class="cap">Team Triple R Europe, Aartselaar. Portret volgt na de fotoshoot.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>

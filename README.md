@@ -13,8 +13,15 @@ Nieuwe website voor **Triple R Europe nv** (Aartselaar, BE): een Nederlandstalig
 | Sectoren en cases | `design/sectoren.html` |
 | Gratis olieanalyse (landingspagina + formulier) | `design/olieanalyse.html` |
 | Veelgestelde vragen (artikels + FAQ) | `design/faq.html` |
-| Find My Oil Cleaner (productconfigurator) | `design/find-my-oil-cleaner.html` |
+| Filtration Systembuilder (productconfigurator) | `design/filtration-systembuilder.html` |
+| Netwerk van distributeurs | `design/netwerk.html` |
+| Verhuur | `design/verhuur.html` |
+| Offerte aanvragen | `design/offerte.html` |
+| Productpagina (per model) | `design/product.html?id=bu100e` |
 | Besparingscalculator | `design/besparingscalculator.html` |
+
+Websiteteksten nalezen in Word: zie `design/copy/LEESMIJ.md`.
+Productcatalogus per model: `design/tools/mkcatalog.py` → `design/data/products.json` + `design/catalog.js`.
 | Design system | `design/design-system.html` |
 | Desktop + mobiel naast elkaar | `design/preview.html` |
 
