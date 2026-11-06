@@ -170,6 +170,13 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
 </script>
 <script>
 (() => {
+  /* eerste scherm op gsm: rustig, de contactknop verschijnt zodra de bezoeker scrolt */
+  const set = () => document.documentElement.classList.toggle('at-top', scrollY < 80);
+  set(); addEventListener('scroll', set, { passive: true });
+})();
+</script>
+<script>
+(() => {
   const inp = document.getElementById('hcta-q'), go = inp.form.querySelector('[type=submit]');
   const Q = ['ik wil een gratis olieanalyse', 'hoe haal ik water uit hydraulische olie?', 'welke filter past op een drukleiding van 300 bar?', 'wat is varnish en hoe verwijder ik het?', 'welke elementen passen in de TR-serie?'];
   let cur = Q[0], k = 1, stop = false;
@@ -186,25 +193,23 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
   const box = document.getElementById('cw'), stage = document.getElementById('cw-stage'), pause = document.getElementById('cw-pause');
   const tabs = [...box.querySelectorAll('.cw__nav li button')], panels = [...box.querySelectorAll('.cw__p')];
   const moving = document.documentElement.classList.contains('motion'), MS = 5000;
-  let i = 0, timer = null, stopped = !moving, hover = false, seen = false;
+  let i = 0, timer = null, playing = moving;
+  /* loopt altijd door: scrollen, hover of aanraken stoppen niets; alleen de pauzeknop (WCAG 2.2.2) */
   const show = n => {
     i = (n + tabs.length) % tabs.length;
     tabs.forEach((t, x) => { t.setAttribute('aria-pressed', x === i); t.classList.remove('run'); });
     panels.forEach((p, x) => p.classList.toggle('is-on', x === i));
     stage.dataset.k = tabs[i].dataset.k;
-    if (play()) { void tabs[i].offsetWidth; tabs[i].classList.add('run'); }
+    clearTimeout(timer);
+    if (playing) { void tabs[i].offsetWidth; tabs[i].classList.add('run'); timer = setTimeout(() => show(i + 1), MS); }
   };
-  const play = () => !stopped && !hover && seen;
-  const tick = () => { clearTimeout(timer); if (play()) timer = setTimeout(() => show(i + 1), MS); };
-  const refresh = () => { box.classList.toggle('is-paused', !play()); tick(); if (play()) tabs[i].classList.add('run'); else tabs[i].classList.remove('run'); };
-  tabs.forEach((t, x) => t.addEventListener('click', () => { stopped = true; pause.setAttribute('aria-pressed', 'true'); pause.setAttribute('aria-label', 'Speel animatie af'); show(x); refresh(); }));
-  pause.addEventListener('click', () => { stopped = !stopped; pause.setAttribute('aria-pressed', stopped); pause.setAttribute('aria-label', stopped ? 'Speel animatie af' : 'Pauzeer animatie'); refresh(); });
-  box.addEventListener('mouseenter', () => { hover = true; refresh(); });
-  box.addEventListener('mouseleave', () => { hover = false; refresh(); });
-  box.addEventListener('focusin', () => { hover = true; refresh(); });
-  box.addEventListener('focusout', () => { hover = false; refresh(); });
-  new IntersectionObserver(([e]) => { seen = e.isIntersecting; refresh(); }, { threshold: .3 }).observe(box);
-  if (!moving) { pause.hidden = true; box.classList.add('is-paused'); }
+  tabs.forEach((t, x) => t.addEventListener('click', () => show(x)));
+  pause.addEventListener('click', () => {
+    playing = !playing;
+    pause.setAttribute('aria-pressed', !playing); pause.setAttribute('aria-label', playing ? 'Pauzeer animatie' : 'Speel animatie af');
+    box.classList.toggle('is-paused', !playing); show(i);
+  });
+  if (moving) show(0); else { pause.hidden = true; box.classList.add('is-paused'); }
 })();
 </script>
 <script>

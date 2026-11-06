@@ -1282,3 +1282,50 @@ h1,h2,h3{overflow-wrap:break-word;hyphens:auto}
 }
 @media (max-width:1023px){.hero--video .trust{padding-bottom:48px}}
 @media (max-width:559px){.btn{white-space:normal;text-align:center;max-width:100%;line-height:1.25;padding-block:10px}}
+
+/* iPhone en tablet: eerste scherm vult precies de zichtbare hoogte (svh = met adresbalk), pijl net erboven */
+@media (max-width:1023px){
+  .hero--video{--hero-top:calc(var(--hdr-h,64px) - 77px);display:flex;flex-direction:column;min-height:calc(100vh - var(--hero-top));min-height:calc(100svh - var(--hero-top));padding-top:calc(77px + clamp(2rem,6svh,3.5rem))}
+  .hero--video>.wrap{flex:1;justify-content:space-between;gap:clamp(1.75rem,4.5svh,3rem);width:100%}
+  .hero--video h1{margin-bottom:0;line-height:1.08}
+  .hero--video .hero__copy{gap:clamp(1.75rem,4svh,2.5rem)}
+  .hero--video .hero__copy .lead{line-height:1.6}
+  .hero--video .hcta{margin-top:0;gap:var(--s-3)}
+  .hero--video .trust{margin-top:0;padding-block:0 84px}
+  .has-cue>.scrollcue{margin-top:-68px}
+}
+@media (max-width:767px){
+  .hero--video{--hdr-h:65px}
+  .hero--video h1{font-size:clamp(1.625rem,7.7vw,2.5rem);letter-spacing:-.035em}
+  .hero--video h1 span{white-space:nowrap}
+}
+@media (max-width:1023px){
+  .fab{transition:opacity var(--dur) var(--ease),visibility var(--dur) var(--ease)}
+  .at-top .fab{opacity:0;visibility:hidden}
+}
+@media (max-width:767px){html[lang=fr] .hero--video h1 span{white-space:normal}}
+@media (min-width:768px) and (max-width:1023px){
+  .hero--video>.wrap{justify-content:flex-start;gap:var(--s-8)}
+  .hero--video .trust{margin-top:auto}
+  .hero--video{padding-top:calc(77px + clamp(3rem,10svh,6rem))}
+  .hero--video .hero__copy .lead{max-width:40rem}
+}
+/* lage telefoons (13 mini, SE, Frans langer): compacter zodat de pijl zichtbaar blijft */
+@media (max-width:767px) and (max-height:720px){
+  .hero--video{padding-top:calc(77px + 1.25rem)}
+  .hero--video>.wrap{gap:1.125rem}
+  .hero--video .hero__copy{gap:1.125rem}
+  .hero--video .hero__copy .lead{font-size:.9375rem;line-height:1.5}
+  .hero--video .trust{padding-bottom:76px}
+  .has-cue>.scrollcue{margin-top:-62px}
+  .hero--video .hcta{gap:var(--s-2)}
+}
+@media (max-width:767px) and (max-height:640px){
+  .hero--video .trust{padding-bottom:70px}
+  .hero--video .trust p{display:none}
+  .hero--video .trust{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:767px) and (max-height:600px){
+  .hero--video .trust{display:block;padding-bottom:64px}
+  .hero--video .trust .marquee{display:none}
+}
