@@ -7,7 +7,11 @@ Inhoud die op de site staat, maar nog door Triple R bevestigd moet worden. De ma
 - [ ] **Hoofdclaims op de homepage en oplossingen:** 50.000 uur olielevensduur, 90% minder oliegerelateerde kosten, 2–5× langere levensduur, tot 99% en 95% verwijderd, 20+ jaar dezelfde olie. Kloppen ze en mogen ze zo?
 - [ ] **Klantenlogo's en -namen:** mogen Komatsu, Rolls-Royce, Ferrari, Castrol enzovoort genoemd worden? De sectorpagina's bevatten ook referentielijsten van de oude site.
 - [ ] **Ervaring:** de oude teksten noemen 30, 33, 40 en 45 jaar. Op de sectorpagina's staat nog "40 jaar". Eén formulering kiezen.
-- [ ] **Oprichting en mijlpalen:** 1992, 2013, 2019 en 2022 (Over ons). Certificaten ISO 9001 en 14001 staan bewust niet op de site tot ze bevestigd zijn.
+- [ ] **Oprichting en mijlpalen:** 1992, 2013, 2019 en 2022 (Over ons).
+- [ ] **Tijdlijn Over ons:** de oude site zet de uitvinding in 1976, de overname van het octrooi in 1974 en de ontwikkeling in de jaren 1960. Op de nieuwe pagina staat "Jaren 1960". Welk jaar klopt?
+- [ ] **30 jaar Triple R Europe (2020):** de oprichting staat op 1992, dat is 28 jaar. Klopt het jaartal?
+- [ ] **Slogan en marktleider:** "de originele en nog steeds de beste" en "onbetwiste marktleider" zijn overgenomen. Willen jullie die claims en de 45 en 40 jaar zo gebruiken?
+- [ ] **ISO 14001 en ISO 9001:** staan nu als geschiedenis in de tijdlijn (2004 en 2012). Zijn ze nog geldig?
 - [ ] **Functie Maxim Van Uytven:** de site zegt Managing Director, de brief Sales Manager.
 - [ ] **Gratis olieanalyse:** voorwaarden (1 staal, Benelux en Frankrijk, alleen bedrijven), exacte metingen en doorlooptijd. De [X] werkdagen is weggehaald tot er een termijn is.
 - [ ] **Prijs filterelement** (€ 25 tot € 90) en de aannames in de besparingscalculator.
