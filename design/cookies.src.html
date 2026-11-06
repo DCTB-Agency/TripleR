@@ -1,0 +1,57 @@
+<title>Cookiebeleid</title>
+<meta name="description" content="Cookiebeleid">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.f{display:grid;gap:6px}
+.f label{font-size:var(--fs-sm);font-weight:500}
+.f label em{font-style:normal;font-weight:400;color:var(--grey-600)}
+.f input,.f select,.f textarea{height:46px;padding:0 14px;border:1px solid var(--grey-200);border-radius:var(--radius);font:inherit;background:#fff;color:var(--ink);width:100%}
+.f textarea{height:150px;padding:12px 14px;resize:vertical;line-height:1.5}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blue-50)}
+.f [aria-invalid="true"]{border-color:var(--err-700)}
+.f .err{font-size:12.5px;color:var(--err-700);font-weight:500}
+.f .hint{font-size:12.5px;color:var(--grey-600)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--grey-600)}
+.chk input{width:20px;height:20px;margin-top:1px;accent-color:var(--blue-700);flex:none}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page" aria-labelledby="h1">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Cookiebeleid</li></ol>
+      <h1 id="h1">Cookiebeleid</h1>
+      <p class="lead">Triple R Europe plaatst alleen wat nodig is om de site te laten werken. Statistiek- en marketingcookies komen er pas na uw toestemming. Hier leest u wat we gebruiken, waarvoor en hoelang, en hoe u uw keuze op elk moment aanpast.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap prose">
+    <h2>Noodzakelijk</h2>
+    <p>Deze opslag is nodig voor de werking van de site en vraagt geen toestemming.</p>
+    <table>
+      <thead><tr><th>Naam</th><th>Doel</th><th>Bewaartermijn</th></tr></thead>
+      <tbody>
+        <tr><td>rrr_consent</td><td>Onthoudt uw cookiekeuze</td><td>180 dagen</td></tr>
+        <tr><td>rrr-offerte-v1</td><td>Onthoudt de producten in uw offerteaanvraag</td><td>Tot u ze verwijdert</td></tr>
+        <tr><td>rrr_utm</td><td>Onthoudt via welke campagne u de site bereikte, zodat we uw aanvraag kunnen plaatsen</td><td>Tot u de browser sluit</td></tr>
+      </tbody>
+    </table>
+    <h2>Statistieken</h2>
+    <p>Met uw toestemming laden we Google Tag Manager en Google Analytics. Die tonen ons hoe bezoekers de site gebruiken.</p>
+    <h2>Marketing</h2>
+    <p>Met uw toestemming meten we via Google Tag Manager de resultaten van onze advertenties en kunnen we relevante advertenties tonen.</p>
+    <h2>Uw keuze aanpassen</h2>
+    <p>Via de link Cookie-instellingen onderaan elke pagina wijzigt of trekt u uw toestemming op elk moment in. Na 180 dagen vragen we uw keuze opnieuw.</p>
+    <p><a href="#" data-cookie-settings>Cookie-instellingen openen</a></p>
+  </div>
+</section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>

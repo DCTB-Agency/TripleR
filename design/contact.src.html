@@ -1,0 +1,90 @@
+<title>Contact</title>
+<meta name="description" content="Contact">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.f{display:grid;gap:6px}
+.f label{font-size:var(--fs-sm);font-weight:500}
+.f label em{font-style:normal;font-weight:400;color:var(--grey-600)}
+.f input,.f select,.f textarea{height:46px;padding:0 14px;border:1px solid var(--grey-200);border-radius:var(--radius);font:inherit;background:#fff;color:var(--ink);width:100%}
+.f textarea{height:150px;padding:12px 14px;resize:vertical;line-height:1.5}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blue-50)}
+.f [aria-invalid="true"]{border-color:var(--err-700)}
+.f .err{font-size:12.5px;color:var(--err-700);font-weight:500}
+.f .hint{font-size:12.5px;color:var(--grey-600)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--grey-600)}
+.chk input{width:20px;height:20px;margin-top:1px;accent-color:var(--blue-700);flex:none}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page" aria-labelledby="h1">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Contact</li></ol>
+      <h1 id="h1">Contact</h1>
+      <p class="lead">Bel, mail of stuur ons een bericht. Het team van Triple R Europe in Aartselaar helpt u graag verder met advies over oliefiltratie, filterelementen, olieanalyse of distributie. Vul het formulier in, dan neemt een specialist contact met u op.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap ct-grid">
+    <div class="ct-info">
+      <div>
+        <h2>Direct contact</h2>
+        <address>
+          <b>Triple R Europe nv</b>
+          <span>Cleydaellaan 16, unit 8</span><span>2630 Aartselaar, België</span>
+          <a href="tel:+3238254647">+32 (0)3 825 46 47</a>
+          <a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a>
+        </address>
+      </div>
+      <div>
+        <h2>Partner in Finland</h2>
+        <address>
+          <b>Triple R Finland Oy AB</b>
+          <span>Murikantie 2B, 68410 Alaveteli</span>
+          <a href="tel:+358400258091">+358 40 025 8091</a>
+        </address>
+      </div>
+      <p><a href="netwerk.html">Zoek een distributeur bij u in de buurt</a></p>
+    </div>
+    <form class="ct-form" id="ct-form" novalidate>
+      <h2>Stuur ons een bericht</h2>
+      <div class="f"><label for="c-subj">Onderwerp</label><select id="c-subj" name="subject"><option>Advies over een installatie</option><option>Gratis olieanalyse</option><option>Filterelementen</option><option>Distributeur worden</option><option>Andere vraag</option></select></div>
+      <div class="f"><label for="c-name">Naam</label><input id="c-name" name="name" type="text" autocomplete="name" required aria-describedby="c-name-e"><span class="err" id="c-name-e" hidden>Vul uw volledige naam in.</span></div>
+      <div class="f"><label for="c-co">Bedrijf</label><input id="c-co" name="company" type="text" autocomplete="organization" required aria-describedby="c-co-e"><span class="err" id="c-co-e" hidden>Vul uw bedrijfsnaam in.</span></div>
+      <div class="f"><label for="c-mail">E-mail</label><input id="c-mail" name="email" type="email" autocomplete="email" required aria-describedby="c-mail-e"><span class="err" id="c-mail-e" hidden>Vul een geldig e-mailadres in.</span></div>
+      <div class="f"><label for="c-tel">Telefoon <em>(optioneel)</em></label><input id="c-tel" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="f"><label for="c-land">Land</label><select id="c-land" name="country"><option>België</option><option>Nederland</option><option>Luxemburg</option><option>Frankrijk</option><option>Duitsland</option><option value="Finland">Finland</option><option>Ander land</option></select></div>
+      <div class="f"><label for="c-msg">Bericht</label><textarea id="c-msg" name="message" required aria-describedby="c-msg-e"></textarea><span class="err" id="c-msg-e" hidden>Vul uw bericht in.</span></div>
+      <label class="chk"><input type="checkbox" id="c-ok" required><span>Ik ga akkoord dat Triple R mijn gegevens gebruikt om deze aanvraag te beantwoorden (<a href="privacy.html">privacybeleid</a>).</span></label>
+      <span class="err" id="c-ok-e" hidden style="font-size:12.5px;color:var(--err-700);font-weight:500">Vink dit aan om te versturen.</span>
+      <button class="btn btn--primary" type="submit">Verstuur bericht</button>
+    </form>
+  </div>
+</section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>
+<script>
+(() => {
+  const form = document.getElementById('ct-form'), v = new URLSearchParams(location.search).get('vraag');
+  if (v) document.getElementById('c-msg').value = v.slice(0, 500);
+  const need = [['c-name', x => x.trim()], ['c-co', x => x.trim()], ['c-mail', x => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x)], ['c-msg', x => x.trim()]];
+  form.addEventListener('submit', async e => {
+    e.preventDefault(); let first = null;
+    need.forEach(([id, ok]) => { const el = document.getElementById(id), bad = !ok(el.value); el.setAttribute('aria-invalid', bad); document.getElementById(id + '-e').hidden = !bad; if (bad && !first) first = el; });
+    const c = document.getElementById('c-ok'); document.getElementById('c-ok-e').hidden = c.checked; if (!c.checked && !first) first = c;
+    if (first) { first.focus(); return; }
+    if (!await window.RRRLead.send('contact', form, { email: 'c-mail', name: 'c-name', company: 'c-co', phone: 'c-tel', country: 'c-land', message: 'c-msg', consent: 'c-ok' })) return;
+    window.dataLayer?.push({ event: 'lead_advies' });
+    form.innerHTML = '<div role="status" tabindex="-1"><h2>Bedankt, uw bericht is verstuurd</h2><p style="margin-top:8px">Een specialist neemt contact met u op.</p></div>';
+    form.firstElementChild.focus();
+  });
+})();
+</script>

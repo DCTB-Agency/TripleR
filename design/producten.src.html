@@ -1,8 +1,6 @@
 <title>Triple R Producten</title>
 <meta name="description" content="Designvoorstel productenoverzicht Triple R Europe">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="site.css">
 <style>
@@ -91,6 +89,7 @@
 </section>
 
 <!-- DOWNLOADS -->
+{{ALL_MODELS}}
 <section class="sec" id="downloads" aria-labelledby="h-dl" data-annot="Downloads · ongated (BRIEF §3.2) · event download_datasheet · zachte advies-offer eronder · ‘Vraag het aan Marc’ ingebed (BRIEF §17.1)">
   <div class="wrap">
     <div class="head"><div><h2 id="h-dl">Datasheets en technische documenten</h2></div><div class="side"><p class="lead">Vrij te downloaden, zonder formulier.</p></div></div>
@@ -120,7 +119,7 @@
 (() => {
   const C = window.RRR_CATALOG, P = C.products, SER = C.series, Q = window.RRRQuote;
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-  const nf = new Intl.NumberFormat('nl-BE');
+  const nf = new Intl.NumberFormat(document.documentElement.lang);
   const arrow = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>';
   const PH = '<span class="kph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M7 7h10M7 17h10"/></svg>Foto volgt</span>';
   const qs = new URLSearchParams(location.search);

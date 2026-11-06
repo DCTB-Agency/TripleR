@@ -1,8 +1,7 @@
 <title>Triple R Homepage</title>
 <meta name="description" content="Triple R-bypassfilters reinigen hydraulische olie en smeerolie. Minder stilstand, langere olielevensduur en lagere kosten.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="media/hero-poster.webp" as="image" fetchpriority="high">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="site.css">
 <style>
@@ -16,7 +15,7 @@
 overlay: merkblauw verloop links (tekst) → transparant rechts · poster = eerste frame · pauzeknop (WCAG 2.2.2) · reduced-motion: alleen poster
 LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaartjes rechtsonder">
   <div class="hero__media" aria-hidden="true">
-    <video class="hero__video" id="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/hero-poster.jpg" disablepictureinpicture>
+    <video class="hero__video" id="hero-video" muted loop playsinline preload="none" poster="media/hero-poster.webp" disablepictureinpicture>
       <source src="media/hero-720.mp4" type="video/mp4" media="(max-width: 767px)">
       <source src="media/hero-1280.mp4" type="video/mp4">
     </video>
@@ -27,17 +26,16 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
       <h1 id="h1"><span>Stop met olie verversen.</span><span>Begin met olie reinigen.</span></h1>
       <div class="hero__copy">
         <p class="lead">Triple R-bypassfilters verwijderen vaste deeltjes, varnish, water en luchtbellen uit hydraulische olie en smeerolie, met één filterconcept.<span class="m-hide"> Minder stilstand, langere olielevensduur, lagere kosten.</span></p>
-        <div class="btns">
-          <a class="btn btn--light" href="olieanalyse.html">Vraag een gratis olieanalyse aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
-          <a class="sbtn" href="filtration-systembuilder.html"><span class="sbtn__ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h8M15 5h2M3 10h3M10 10h7M3 15h10"/><circle cx="13" cy="5" r="2"/><circle cx="8" cy="10" r="2"/><circle cx="15" cy="15" r="2"/></svg></span><span class="sbtn__t"><b lang="en">Filtration Systembuilder</b><small>Stel uw filtersysteem samen in 2 minuten</small></span><svg class="sbtn__go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <div class="hcta">
+          <form class="hcta__b hcta__b--main hcta__b--marc" data-ask-embed role="search" aria-label="Vraag het aan Marc">
+            <img class="hcta__av" src="img/marc/marc-icoon.png" alt="" width="330" height="285" loading="eager">
+            <div class="hcta__ask">
+              <label for="hcta-q"><b>Vraag het aan Marc</b><span class="ai-badge">AI-assistent</span></label>
+              <div class="hcta__field"><input id="hcta-q" type="text" autocomplete="off" placeholder="Bv. ik wil een gratis olieanalyse"><button type="submit" aria-label="Stel vraag"><svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
+            </div>
+          </form>
+          <a class="hcta__b" href="filtration-systembuilder.html"><span><b lang="en">Filtration Systembuilder</b><small>Stel uw filtersysteem samen in 2 minuten</small></span><svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
         </div>
-      </div>
-      <div class="hero__side">
-        <div class="heroask" data-annot="Vraag het aan Marc · prominent in de hero (BRIEF §17.1) · placeholder typt voorbeeldvragen (45 ms/teken, wisselt elke 3,5 s, stopt bij focus) · Enter of chip opent het antwoordpaneel">
-      <div class="heroask__lbl"><img class="marc-pose" src="img/marc/marc-denkt.png" alt="" width="340" height="333"><div><b>Vraag het aan Marc <span class="ai-badge">AI-assistent</span></b><small>Onze digitale olie-expert. Hij zoekt het antwoord in alle Triple R-datasheets en toont de bron.</small></div></div>
-      <form data-ask-embed role="search" aria-label="Vraag het aan Marc"><label class="vh" for="ha-q">Stel uw vraag aan Marc</label><svg class="heroask__ic" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18"/></svg><input id="ha-q" type="text" autocomplete="off" placeholder="Stel een vraag, bv. hoe haal ik water uit hydraulische olie?"><button class="btn btn--light" type="submit">Vraag</button></form>
-      <div class="chips" aria-label="Voorbeeldvragen"><button type="button" data-q="Hoe verwijder ik varnish uit hydraulische olie?">Varnish verwijderen</button><button type="button" data-q="Welke filter past op een drukleiding van 300 bar?">Filter voor 300 bar</button><button type="button" data-q="Hoeveel water haalt de vacuümdroger uit de olie?">Water uit olie</button></div>
-    </div>
       </div>
     </div>
     <div class="trust" data-annot="Vertrouwensbalk · namen lopen als carrousel (40 s per ronde, lineair, pauzeert bij hover/focus, randen vervagen) · statisch en wrappend bij reduced motion · tekst-placeholders tot logo's (grijs SVG, 28px hoog) goedgekeurd zijn">
@@ -50,24 +48,22 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
 <!-- CONTAMINANTS -->
 <section class="sec has-cue" id="contaminanten" aria-labelledby="h-cont" data-annot="S03 Vier contaminanten · kaarten radius 20 · icoon op blue-50 (14px radius) · hover: −3px + schaduw (200ms)">
   <a class="scrollcue" href="#contaminanten" aria-label="Scroll naar de inhoud" data-annot="Scroll-hint · rond, 56px, op de naad hero/blok 2 · pijl veert 1,8 s op en neer · klik scrolt zacht naar blok 2 · stil bij reduced motion"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
-  <div class="wrap">
-    <div class="head">
-      <div><h2 id="h-cont">Eén filterelement tegen drie soorten vervuiling</h2></div>
-      <div class="side"><a class="btn btn--secondary btn--sm" href="oplossingen.html">Hoe werkt het? <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+  <div class="wrap cw">
+    <div class="cw__intro">
+      <h2 id="h-cont">Eén filterelement tegen drie soorten vervuiling</h2>
+      <p class="lead">Een Triple R-element van 114 mm houdt vaste deeltjes, varnish en water vast. Lucht en schuim haalt de Quicktoron eruit.</p>
+      <div class="btns"><a class="btn btn--secondary btn--sm" href="oplossingen.html">Hoe werkt het? <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--primary btn--sm" href="olieanalyse.html">Gratis olieanalyse <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
     </div>
-    <div class="four four--compact">
-      <a class="ccard" href="oplossingen.html"><span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l3-1.5 2 2.5-1.5 3L6 12.5zM17 6l2-1 1.5 1.5-1 2-2.5-.5zM18 17l3.5-1.5 2 3-2 3-3.5-1zM7 19l2-1 1.5 2-1 2-2.5-.5z"/><circle cx="14" cy="14" r="1"/></svg></span>
-        <h3>Vaste deeltjes</h3><p>Slijtagemetaal, stof en silica slijpen pompen, kleppen en cilinders.</p>
-        <span class="foot"><span>Tot 99% verwijderd</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
-      <a class="ccard" href="oplossingen.html"><span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 16c4-2 6 2 11 0s7-2 11 0M3 21c4-2 6 2 11 0s7-2 11 0M8 9h8M19 9h3"/></svg></span>
-        <h3>Varnish &amp; sludge</h3><p>Oxidatieresten zetten zich af op kleppen; servo- en proportionele kleppen gaan haperen.</p>
-        <span class="foot"><span>V-element: 1 µm absoluut</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
-      <a class="ccard" href="oplossingen.html"><span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M14 4s-7 8.5-7 13a7 7 0 0 0 14 0c0-4.5-7-13-7-13z"/><path d="M11 17.5a3 3 0 0 0 3 3"/></svg></span>
-        <h3>Water</h3><p>Water versnelt oxidatie en corrosie. De cellulose in het element absorbeert het.</p>
-        <span class="foot"><span>Tot &lt; 100 ppm</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
-      <a class="ccard" href="oplossingen.html"><span class="ico"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="17" r="5"/><circle cx="19" cy="9" r="3.5"/><circle cx="21" cy="20" r="2.5"/><circle cx="8" cy="7" r="1.5"/></svg></span>
-        <h3>Lucht &amp; schuim</h3><p>Luchtbellen veroorzaken cavitatie en lawaai. De Quicktoron ontlucht de olie.</p>
-        <span class="foot"><span>Tot 95% verwijderd</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
+    <div class="cw__box" id="cw">
+      <div class="cw__stage" id="cw-stage" data-k="deeltjes" aria-hidden="true"><svg viewBox="0 0 520 180" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="cw-oil" x1="0" x2="1"><stop offset="0" stop-color="#5A3A12"/><stop offset=".5" stop-color="#8F6318"/><stop offset=".62" stop-color="#E0A92F"/><stop offset="1" stop-color="#F4CE63"/></linearGradient></defs><rect width="520" height="180" fill="url(#cw-oil)"/><g class="cw__dots"><circle class="d" cx="0" cy="44" r="5" style="--t:0s"/><circle class="d" cx="0" cy="92" r="7" style="--t:0.5s"/><circle class="d" cx="0" cy="132" r="4" style="--t:1s"/><circle class="d" cx="0" cy="66" r="6" style="--t:1.5s"/><circle class="d" cx="0" cy="112" r="5" style="--t:2s"/><circle class="d" cx="0" cy="148" r="6" style="--t:2.5s"/><circle class="d" cx="0" cy="30" r="4" style="--t:3s"/><circle class="d" cx="0" cy="82" r="5" style="--t:3.5s"/></g><g class="cw__el"><rect x="262" width="30" height="180" fill="#EFE7D6"/><rect x="292" width="30" height="180" fill="#E0D5BC"/><rect x="322" width="30" height="180" fill="#CFC09F"/></g><g class="cw__flow" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2" stroke-dasharray="10 16"><path d="M366 50h154"/><path d="M366 90h154"/><path d="M366 130h154"/></g></svg></div>
+      <div class="cw__panels">
+        <div class="cw__p is-on" id="cw-deeltjes" data-k="deeltjes"><p class="cw__stat">Tot 99% verwijderd</p><h3>Vaste deeltjes</h3><p>Slijtagemetaal, stof en silica slijpen pompen, kleppen en cilinders.</p><a href="kb-deeltjes.html">Meer over vaste deeltjes <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+        <div class="cw__p" id="cw-varnish" data-k="varnish"><p class="cw__stat">V-element: 1 µm absoluut</p><h3>Varnish &amp; sludge</h3><p>Oxidatieresten zetten zich af op kleppen; servo- en proportionele kleppen gaan haperen.</p><a href="kb-varnish.html">Meer over varnish <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+        <div class="cw__p" id="cw-water" data-k="water"><p class="cw__stat">Tot &lt; 100 ppm</p><h3>Water</h3><p>Water versnelt oxidatie en corrosie. De cellulose in het element absorbeert het.</p><a href="kb-water.html">Meer over water in olie <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+        <div class="cw__p" id="cw-lucht" data-k="lucht"><p class="cw__stat">Tot 95% verwijderd</p><h3>Lucht &amp; schuim</h3><p>Luchtbellen veroorzaken cavitatie en lawaai. De Quicktoron ontlucht de olie.</p><a href="kb-lucht.html">Meer over lucht en schuim <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+      </div>
+      <div class="cw__nav"><ul aria-label="Vervuiling per soort"><li><button type="button" data-k="deeltjes" aria-controls="cw-deeltjes" aria-pressed="true"><span>Vaste deeltjes</span><i aria-hidden="true"></i></button></li><li><button type="button" data-k="varnish" aria-controls="cw-varnish" aria-pressed="false"><span>Varnish &amp; sludge</span><i aria-hidden="true"></i></button></li><li><button type="button" data-k="water" aria-controls="cw-water" aria-pressed="false"><span>Water</span><i aria-hidden="true"></i></button></li><li><button type="button" data-k="lucht" aria-controls="cw-lucht" aria-pressed="false"><span>Lucht &amp; schuim</span><i aria-hidden="true"></i></button></li></ul><button type="button" class="cw__pause" id="cw-pause" aria-pressed="false" aria-label="Pauzeer animatie"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path class="i-p" d="M4 3h3v10H4zM9 3h3v10H9z"/><path class="i-s" d="M4 3l9 5-9 5z"/></svg></button></div>
+      <noscript><style>.cw__panels{display:block}.cw__p{visibility:visible;opacity:1;margin-bottom:1.5rem}.cw__nav,.cw__stage{display:none}</style></noscript>
     </div>
   </div>
 </section>
@@ -108,7 +104,7 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
 </section>
 
 <!-- RESULTS on photo -->
-<section class="sec photo-band" aria-labelledby="h-res" data-annot="S06 Resultaten · full-bleed foto 'schone olie' (bestaand beeld) + verloop night-950 94% → 15% · cijfers 64px/500">
+<section class="sec photo-band photo-band--c" id="sectoren" aria-labelledby="h-res">
   <img src="img/oil-gold.jpg" alt="" width="1600" height="845" loading="lazy">
   <div class="wrap">
     <h2 id="h-res">Wat propere olie oplevert</h2>
@@ -118,15 +114,8 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
       <div><b>2–5×</b><span>langere levensduur van full-flowfilters<i class="tb" title="Te bevestigen"></i></span></div>
       <div><b>&gt; <span data-count="90">90</span>%</b><span>minder pomp- en klepfalen<i class="tb" title="Te bevestigen"></i></span></div>
     </div>
-    <p style="margin-top:var(--s-10)"><a class="btn btn--ghost-light btn--sm" href="besparingscalculator.html">Bereken uw besparing <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></p>
-  </div>
-</section>
-
-<!-- SECTORS (compact) -->
-<section class="sec band" id="sectoren" aria-labelledby="h-sec" data-annot="S05 Sectoren (compact) · 6 tekst-pills + ‘Alle sectoren’ · details op /sectoren/">
-  <div class="wrap">
-    <div class="head"><div><h2 id="h-sec">Van spuitgietmachine tot scheepsmotor</h2></div></div>
-    <ul class="pills pills--plain"><li><a href="sectoren.html">Hydraulische systemen</a></li><li><a href="sectoren.html">Scheepvaart</a></li><li><a href="sectoren.html">Windenergie</a></li><li><a href="sectoren.html">Energie</a></li><li><a href="sectoren.html">Petrochemie</a></li><li><a href="sectoren.html">Staal &amp; metaal</a></li><li><a href="sectoren.html"><b>Alle sectoren →</b></a></li></ul>
+    <p class="photo-band__cta"><a class="btn btn--light" href="besparingscalculator.html">Bereken uw besparing <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></p>
+    <div class="secline"><p>Van spuitgietmachine tot scheepsmotor</p><ul><li><a href="s-hyd.html">Hydraulische systemen</a></li><li><a href="s-marine.html">Scheepvaart</a></li><li><a href="s-wind.html">Windenergie</a></li><li><a href="s-energie.html">Energie</a></li><li><a href="s-petro.html">Petrochemie</a></li><li><a href="s-staal.html">Staal &amp; metaal</a></li><li><a href="sectoren.html">Alle sectoren →</a></li></ul></div>
   </div>
 </section>
 
@@ -137,7 +126,7 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
     </figure>
     <div>
       <h2 id="h-oa">Weet hoe proper uw olie écht is</h2>
-      <p class="lead" style="margin-top:var(--s-5)">Een labo-analyse van uw olie met persoonlijk advies van een Triple R-specialist. Resultaat binnen [X] werkdagen.<i class="tb" title="Te bevestigen: doorlooptijd"></i></p>
+      <p class="lead" style="margin-top:var(--s-5)">Een labo-analyse van uw olie met persoonlijk advies van een Triple R-specialist.<i class="tb" title="Te bevestigen: doorlooptijd"></i></p>
       <div class="btns" style="margin-top:var(--s-8)"><a class="btn btn--primary" href="olieanalyse.html">Vraag een gratis olieanalyse aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
     </div>
   </div>
@@ -150,7 +139,7 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
       <div>
         <h2 id="h-cta">Bespreek uw installatie met een specialist</h2>
         <p class="lead">Beschrijf uw machines in 2 minuten en ontvang vrijblijvend advies over de juiste filteroplossing.</p>
-        <div class="btns"><a class="btn btn--light" href="#">Vraag advies aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div>
+        <div class="btns"><a class="btn btn--light" href="contact.html">Vraag advies aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div>
       </div>
       <div class="person">
         <img src="img/team.jpg" alt="Het Triple R-team in het hoofdkantoor in Aartselaar" width="768" height="1024" loading="lazy">
@@ -161,7 +150,7 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
             <a href="mailto:info@triple-r-europe.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>info@triple-r-europe.com</a>
           </div>
         </div>
-        <p class="cap">Team Triple R Europe, Aartselaar. Portret volgt na de fotoshoot.</p>
+        <p class="cap">Team Triple R Europe, Aartselaar.</p>
       </div>
     </div>
   </div>
@@ -181,15 +170,41 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
 </script>
 <script>
 (() => {
-  const box = document.querySelector('.heroask'), f = box.querySelector('form'), inp = f.querySelector('input');
-
-  box.querySelectorAll('.chips button').forEach(b => b.addEventListener('click', () => { inp.value = b.dataset.q; f.requestSubmit(); }));
-  if (!document.documentElement.classList.contains('motion')) return;
-  const Q = ['hoe haal ik water uit hydraulische olie?', 'welke filter past op een drukleiding van 300 bar?', 'wat is varnish en hoe verwijder ik het?', 'welke elementen passen in de TR-serie?', 'wat kost een olieanalyse?'];
-  let k = 0, stop = false;
+  const inp = document.getElementById('hcta-q'), go = inp.form.querySelector('[type=submit]');
+  const Q = ['ik wil een gratis olieanalyse', 'hoe haal ik water uit hydraulische olie?', 'welke filter past op een drukleiding van 300 bar?', 'wat is varnish en hoe verwijder ik het?', 'welke elementen passen in de TR-serie?'];
+  let cur = Q[0], k = 1, stop = false;
+  /* pijl of Enter zonder eigen tekst: Marc beantwoordt de zichtbare voorbeeldvraag */
+  go.addEventListener('click', () => { if (!inp.value.trim() && !stop) { inp.value = cur[0].toUpperCase() + cur.slice(1); setTimeout(() => { inp.value = ''; }, 0); } });
   inp.addEventListener('focus', () => { stop = true; inp.placeholder = 'Stel uw vraag…'; });
+  if (!document.documentElement.classList.contains('motion')) return;
   const wait = ms => new Promise(r => setTimeout(r, ms));
-  (async () => { for (;;) { const q = 'Bv. ' + Q[k++ % Q.length]; for (let i = 1; i <= q.length; i++) { if (stop) return; inp.placeholder = q.slice(0, i); await wait(45); } await wait(3500); } })();
+  (async () => { await wait(5000); for (;;) { if (stop) return; cur = Q[k++ % Q.length]; const q = 'Bv. ' + cur; for (let i = 1; i <= q.length; i++) { if (stop) return; inp.placeholder = q.slice(0, i); await wait(45); } await wait(4000); } })();
+})();
+</script>
+<script>
+(() => {
+  const box = document.getElementById('cw'), stage = document.getElementById('cw-stage'), pause = document.getElementById('cw-pause');
+  const tabs = [...box.querySelectorAll('.cw__nav li button')], panels = [...box.querySelectorAll('.cw__p')];
+  const moving = document.documentElement.classList.contains('motion'), MS = 5000;
+  let i = 0, timer = null, stopped = !moving, hover = false, seen = false;
+  const show = n => {
+    i = (n + tabs.length) % tabs.length;
+    tabs.forEach((t, x) => { t.setAttribute('aria-pressed', x === i); t.classList.remove('run'); });
+    panels.forEach((p, x) => p.classList.toggle('is-on', x === i));
+    stage.dataset.k = tabs[i].dataset.k;
+    if (play()) { void tabs[i].offsetWidth; tabs[i].classList.add('run'); }
+  };
+  const play = () => !stopped && !hover && seen;
+  const tick = () => { clearTimeout(timer); if (play()) timer = setTimeout(() => show(i + 1), MS); };
+  const refresh = () => { box.classList.toggle('is-paused', !play()); tick(); if (play()) tabs[i].classList.add('run'); else tabs[i].classList.remove('run'); };
+  tabs.forEach((t, x) => t.addEventListener('click', () => { stopped = true; pause.setAttribute('aria-pressed', 'true'); pause.setAttribute('aria-label', 'Speel animatie af'); show(x); refresh(); }));
+  pause.addEventListener('click', () => { stopped = !stopped; pause.setAttribute('aria-pressed', stopped); pause.setAttribute('aria-label', stopped ? 'Speel animatie af' : 'Pauzeer animatie'); refresh(); });
+  box.addEventListener('mouseenter', () => { hover = true; refresh(); });
+  box.addEventListener('mouseleave', () => { hover = false; refresh(); });
+  box.addEventListener('focusin', () => { hover = true; refresh(); });
+  box.addEventListener('focusout', () => { hover = false; refresh(); });
+  new IntersectionObserver(([e]) => { seen = e.isIntersecting; refresh(); }, { threshold: .3 }).observe(box);
+  if (!moving) { pause.hidden = true; box.classList.add('is-paused'); }
 })();
 </script>
 <script>
@@ -198,6 +213,8 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
   if (!v) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); return; }
   /* pauzeer buiten beeld: spaart batterij en CPU */
-  new IntersectionObserver(([e]) => { e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }, { threshold: .1 }).observe(v);
+  if (navigator.connection?.saveData) return;
+  /* start pas na het laden: de poster houdt de eerste weergave licht */
+  addEventListener('load', () => setTimeout(() => new IntersectionObserver(([e]) => { e.isIntersecting ? v.play().catch(() => {}) : v.pause(); }, { threshold: .1 }).observe(v), 2500));
 })();
 </script>

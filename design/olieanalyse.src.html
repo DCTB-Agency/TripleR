@@ -1,8 +1,6 @@
 <title>Triple R Gratis olieanalyse</title>
 <meta name="description" content="Designvoorstel landingspagina gratis olieanalyse Triple R Europe">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="site.css">
 <style>
@@ -66,7 +64,7 @@
     <div class="hero__copy" style="gap:0">
       <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Gratis olieanalyse</li></ol>
       <h1 id="h1">Gratis olieanalyse: weet hoe proper uw olie <span>écht</span> is</h1>
-      <p class="lead">Laat uw olie gratis analyseren door een labo en krijg persoonlijk advies van een Triple R-specialist. U ziet meteen hoeveel deeltjes, water en varnish er in uw olie zitten, en wat u eraan kunt doen.</p><ul class="checks"><li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>Deeltjestelling ISO 4406 en NAS 1638, water, viscositeit, TAN en varnish<i class="tb" title="Te bevestigen: scope"></i></li><li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>Staalnamekit per post of een bezoek ter plaatse</li><li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>Rapport met concreet advies binnen [X] werkdagen<i class="tb" title="Te bevestigen: doorlooptijd"></i></li></ul>
+      <p class="lead">Laat uw olie gratis analyseren door een labo en krijg persoonlijk advies van een Triple R-specialist. U ziet meteen hoeveel deeltjes, water en varnish er in uw olie zitten, en wat u eraan kunt doen.</p><ul class="checks"><li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>Deeltjestelling ISO 4406 en NAS 1638, water, viscositeit, TAN en varnish<i class="tb" title="Te bevestigen: scope"></i></li><li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>Staalnamekit per post of een bezoek ter plaatse</li><li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>Rapport met concreet advies<i class="tb" title="Te bevestigen: doorlooptijd"></i></li></ul>
     </div>
     <form class="ofrm" id="aanvraag" novalidate aria-labelledby="of-h" data-annot="Aanvraagformulier (BRIEF §3.3) · 3 stappen + voortgang · validatie per stap · events form_start / form_step_2 / form_step_3 / lead_olieanalyse · verborgen: UTM, gclid, pagina, taal">
       <div class="top"><p class="st" id="of-st">Stap 1 van 3 · Uw installatie</p><div class="bar" aria-hidden="true"><i class="on"></i><i></i><i></i></div></div>
@@ -93,19 +91,19 @@
         <legend class="vh">Bevestiging</legend>
         <div class="f full"><span class="lbl2" id="of-ct-l">Hoe mogen we u contacteren?</span><div class="chips2" role="radiogroup" aria-labelledby="of-ct-l"><label><input type="radio" name="ct" value="telefoon" checked><span>Telefoon</span></label><label><input type="radio" name="ct" value="e-mail"><span>E-mail</span></label></div></div>
         <div class="f full"><label for="of-rm">Opmerkingen <em>(optioneel)</em></label><textarea id="of-rm" placeholder="bv. merk en type machine, symptomen"></textarea></div>
-        <label class="chk full"><input type="checkbox" id="of-gd" required> <span>Ik ga akkoord met de verwerking van mijn gegevens volgens het <a href="#">privacybeleid</a>.</span></label>
+        <label class="chk full"><input type="checkbox" id="of-gd" required> <span>Ik ga akkoord met de verwerking van mijn gegevens volgens het <a href="privacy.html">privacybeleid</a>.</span></label>
         <span class="err full" id="of-gd-e" hidden>Vink dit aan om uw aanvraag te versturen.</span>
         <label class="chk full"><input type="checkbox" id="of-nl"> <span>Stuur mij af en toe praktische tips over olie-onderhoud.</span></label>
       </fieldset>
       <div class="nav"><button type="button" class="btn btn--secondary btn--sm ghost" id="of-back" hidden>← Vorige</button><button type="submit" class="btn btn--primary" id="of-next" style="margin-left:auto">Volgende <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></button></div>
-      <p class="small2">Voor bedrijven · 1 staal per installatie · Benelux en Frankrijk<i class="tb" title="Te bevestigen: voorwaarden"></i> · Prototype: er wordt niets verzonden.</p>
+      <p class="small2">Voor bedrijven · 1 staal per installatie · Benelux en Frankrijk<i class="tb" title="Te bevestigen: voorwaarden"></i></p>
     </form>
   </div>
 </section>
 
 <section class="sec band" aria-labelledby="h-meas" data-annot="Wat we meten · 6 tegels · scope te bevestigen">
   <div class="wrap">
-    <div class="head"><div><h2 id="h-meas">Zes metingen, één duidelijk rapport</h2></div><div class="side"><p class="lead">Welke metingen in de gratis analyse zitten, bevestigt Triple R nog.<i class="tb" title="Te bevestigen: scope gratis versie"></i></p></div></div>
+    <div class="head"><div><h2 id="h-meas">Zes metingen, één duidelijk rapport</h2></div></div>
     <div class="meas rail" role="region" aria-label="Wat we meten, horizontaal scrollbaar" tabindex="0">
       <div><span class="k">ISO 4406</span><b>Deeltjestelling</b><p>Aantal deeltjes groter dan 4, 6 en 14 µm per ml olie.</p></div>
       <div><span class="k">NAS 1638</span><b>Reinheidsklasse</b><p>De oudere norm, nog vaak gevraagd door machinebouwers.</p></div>
@@ -141,7 +139,7 @@
     </figure>
     <div>
       <h2 id="h-oa">Zo werkt de gratis olieanalyse</h2>
-      <p class="lead" style="margin-top:var(--s-5)">Een labo-analyse van uw olie met persoonlijk advies van een Triple R-specialist. Resultaat binnen [X] werkdagen.<i class="tb" title="Te bevestigen: doorlooptijd"></i></p>
+      <p class="lead" style="margin-top:var(--s-5)">Een labo-analyse van uw olie met persoonlijk advies van een Triple R-specialist.<i class="tb" title="Te bevestigen: doorlooptijd"></i></p>
       <ol>
         <li><h3 class="h4">Aanvraag online</h3><p>Beschrijf uw installatie in 2 minuten.</p></li>
         <li><h3 class="h4">Staalname</h3><p>Wij sturen een staalnamekit of komen langs.</p></li>
@@ -172,7 +170,7 @@
       <div>
         <h2 id="h-cta">Bespreek uw installatie met een specialist</h2>
         <p class="lead">Beschrijf uw machines in 2 minuten en ontvang vrijblijvend advies over de juiste filteroplossing.</p>
-        <div class="btns"><a class="btn btn--light" href="#">Vraag advies aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div>
+        <div class="btns"><a class="btn btn--light" href="contact.html">Vraag advies aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div>
       </div>
       <div class="person">
         <img src="img/team.jpg" alt="Het Triple R-team in het hoofdkantoor in Aartselaar" width="768" height="1024" loading="lazy">
@@ -183,7 +181,7 @@
             <a href="mailto:info@triple-r-europe.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>info@triple-r-europe.com</a>
           </div>
         </div>
-        <p class="cap">Team Triple R Europe, Aartselaar. Portret volgt na de fotoshoot.</p>
+        <p class="cap">Team Triple R Europe, Aartselaar.</p>
       </div>
     </div>
   </div>
@@ -218,12 +216,13 @@
     return ok;
   }
   back.addEventListener('click', () => { if (i > 0) show(--i); });
-  f.addEventListener('submit', e => {
+  f.addEventListener('submit', async e => {
     e.preventDefault();
     if (!valid(i)) return;
     if (i < 2) { show(++i); push('form_step_' + (i + 1)); return; }
-    const name = document.getElementById('of-fn').value.trim().replace(/</g, ''), how = f.querySelector('[name=ct]:checked').value;
-    f.innerHTML = `<div class="done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><h2>Bedankt, ${name}. Uw aanvraag is ontvangen.</h2><p class="small2" style="font-size:var(--fs-sm)">Zo gaat het verder:</p><ol><li>Een specialist neemt binnen [X] werkdagen contact met u op per ${how}.</li><li>U ontvangt een staalnamekit met uitleg, of we plannen een bezoek.</li><li>Het labo analyseert uw staal; u krijgt het rapport met advies.</li></ol><p class="small2">Prototype: er is niets verzonden.</p><a class="btn btn--secondary btn--sm" href="faq.html" style="justify-self:start">Hoe neemt u een oliestaal?</a></div>`;
+    if (!await window.RRRLead.send('olieanalyse', f, { email: 'of-em', first: 'of-fn', last: 'of-ln', company: 'of-co', phone: 'of-ph', country: 'of-pc', message: 'of-rm', consent: 'of-gd', newsletter: 'of-nl' })) return;
+    const name = document.getElementById('of-fn').value.trim().replace(/</g, ''), how = f.querySelector('[name=ct]:checked').closest('label').textContent.trim().toLowerCase();
+    f.innerHTML = `<div class="done" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><h2>Bedankt, ${name}. Uw aanvraag is ontvangen.</h2><p class="small2" style="font-size:var(--fs-sm)">Zo gaat het verder:</p><ol><li>Een specialist neemt contact met u op per ${how}.</li><li>U ontvangt een staalnamekit met uitleg, of we plannen een bezoek.</li><li>Het labo analyseert uw staal; u krijgt het rapport met advies.</li></ol><a class="btn btn--secondary btn--sm" href="faq.html" style="justify-self:start">Hoe neemt u een oliestaal?</a></div>`;
     push('lead_olieanalyse');
   });
   f.querySelectorAll('[required]').forEach(el => el.addEventListener('change', () => { if (el.getAttribute('aria-invalid') === 'true') valid(i); }));

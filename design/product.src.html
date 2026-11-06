@@ -1,8 +1,6 @@
 <title>Product · Triple R</title>
 <meta name="description" content="Specificaties, filterelementen en datasheet van een Triple R-model. Vraag een offerte aan zonder verplichtingen.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="site.css">
 <style>
@@ -42,14 +40,14 @@
   const C = window.RRR_CATALOG, Q = window.RRRQuote, SER = C.series;
   const byId = Object.fromEntries(C.products.map(p => [p.id, p]));
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-  const nf = new Intl.NumberFormat('nl-BE');
-  const p = byId[new URLSearchParams(location.search).get('id')];
+  const nf = new Intl.NumberFormat(document.documentElement.lang);
+  const p = byId[window.RRR_PID || new URLSearchParams(location.search).get('id')];
   const $ = id => document.getElementById(id);
   if (!p) { $('h1').textContent = 'Product niet gevonden'; $('lead').innerHTML = 'Dit model bestaat niet of is verplaatst. Bekijk het <a href="producten.html">productoverzicht</a>.'; ['spec', 'cmp-sec', 'rel-sec'].forEach(i => $(i).remove()); return; }
   const S = SER[p.series], cat = C.cats.find(c => c.id === p.cat), sibs = C.products.filter(x => x.series === p.series);
   const tb = t => `<i class="tb" title="Te bevestigen: ${esc(t)}"></i>`;
   const PH = '<span class="kph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M7 7h10M7 17h10"/></svg>Productfoto volgt</span>';
-  const volTxt = x => x.vol ? (x.vol[0] ? `${nf.format(x.vol[0])} tot ${nf.format(x.vol[1])} l` : `tot ${nf.format(x.vol[1])} l`) + (x.volGrey ? ` (tot ${nf.format(x.volGrey)} l afhankelijk van de olie)` : '') : null;
+  const volTxt = x => x.vol ? (x.vol[0] ? `${nf.format(x.vol[0])} tot ${nf.format(x.vol[1])} l` : `tot ${nf.format(x.vol[1])} l`) + (x.volGrey ? ` (tot ${nf.format(x.volGrey)} l, afhankelijk van de olie)` : '') : null;
 
   document.title = `${p.n}${p.art ? ' (' + p.art + ')' : ''} · Triple R`;
   document.querySelector('meta[name=description]').content = `${p.n}: ${p.s} Specificaties, filterelementen en datasheet.`.slice(0, 155);

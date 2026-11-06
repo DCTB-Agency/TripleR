@@ -1,0 +1,21 @@
+// Test de leadlogica zonder netwerk: geen mail, geen opslag.
+import assert from 'node:assert';
+const m = await import('../netlify/functions/lead.mjs').catch(async () => { const fs = await import('node:fs'); const s = fs.readFileSync(new URL('../netlify/functions/lead.mjs', import.meta.url), 'utf8').replace(/import \{ getStore \}.*\n/, 'const getStore = () => { throw new Error("x"); };\n'); fs.writeFileSync(new URL('./.lead.tmp.mjs', import.meta.url), s); return import('./.lead.tmp.mjs'); });
+const base = { type: 'contact', lang: 'fr', email: 'jan@bedrijf.be', name: 'Jan', company: 'Bedrijf', country: 'België', message: 'Vraag', consent: true, fields: [{ label: 'Bericht', value: 'Vraag over servokleppen, dringend' }], elapsed: 9000 };
+let d = m.clean(base);
+assert.equal(m.validate(d, base), '');
+assert.equal(m.route(d).to, 'maxim.vanuytven@triple-r-europe.com');
+assert.equal(m.route(d).bcc, 'marc.vanuytven@triple-r-europe.com');
+const fi = m.clean({ ...base, country: 'Finland' });
+assert.equal(m.route(fi).to, 'sf.edustus@co.inet.fi');
+assert.equal(m.route(fi).bcc, 'maxim.vanuytven@triple-r-europe.com');
+assert.equal(m.validate(d, { ...base, website: 'x' }), 'spam');
+assert.equal(m.validate(d, { ...base, elapsed: 500 }), 'spam');
+assert.equal(m.validate(m.clean({ ...base, email: 'x' }), base), 'email');
+assert.equal(m.validate(m.clean({ ...base, consent: false }), base), 'consent');
+assert.equal(m.validate(m.clean({ ...base, type: 'x' }), base), 'type');
+assert.ok(m.score(d) >= 7);
+assert.ok(m.score(m.clean({ ...base, email: 'jan@gmail.com' })) < m.score(d));
+assert.ok(m.allowedOrigin('https://www.triple-r-europe.com') && !m.allowedOrigin('https://evil.example') && !m.allowedOrigin(null));
+assert.ok(m.render(d, 7).includes('Bericht: Vraag over servokleppen'));
+console.log('leadlogica: alle tests geslaagd');

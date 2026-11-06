@@ -1,8 +1,6 @@
 <title>Triple R Besparingscalculator</title>
 <meta name="description" content="Designvoorstel besparingscalculator Triple R Europe">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="site.css">
 <style>
@@ -105,6 +103,24 @@ details.ass[open] summary::after{transform:rotate(45deg)}
 .method th{font-weight:500;color:var(--ink)}
 @media (max-width:1023px){.rep{grid-template-columns:1fr}}
 @media (max-width:559px){.form{grid-template-columns:1fr}}
+.out .kpis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-3);margin-top:var(--s-5);padding-block:var(--s-4);border-block:1px solid rgb(255 255 255 / .16)}
+.out .kpi{padding:0;border:0;border-radius:0;background:none}
+.out .kpi b{font-size:1.125rem;white-space:nowrap}
+.out .kpi span{font-size:12.5px;color:#DCD9EE}
+.out h3.lbl{margin-top:var(--s-5)}
+.posts{display:grid;margin:var(--s-2) 0 0}
+.posts div{display:flex;justify-content:space-between;gap:var(--s-4);padding-block:9px;font-size:var(--fs-sm)}
+.posts div+div{border-top:1px solid rgb(255 255 255 / .1)}
+.posts dt{color:#DCD9EE}
+.posts dd{margin:0;font-weight:500;font-variant-numeric:tabular-nums}
+.out .btns{margin-top:var(--s-5)}
+.out .btns .btn{width:100%}
+details.pay{display:block;margin-top:var(--s-4);padding:0;border:0}
+details.pay summary{cursor:pointer;font-size:var(--fs-sm);font-weight:500;min-height:44px;display:flex;align-items:center;justify-content:center}
+details.pay summary:focus-visible{outline:none;box-shadow:var(--focus-dark)}
+.pay__in{display:grid;grid-template-columns:1fr auto;gap:8px 16px;align-items:center;padding-top:var(--s-2);font-size:var(--fs-sm)}
+.pay__in output{grid-column:1/-1;color:#DCD9EE}
+.out .disc{margin-top:var(--s-3);text-align:center}
 </style>
 {{HEADER}}
 <main id="main">
@@ -131,7 +147,7 @@ details.ass[open] summary::after{transform:rotate(45deg)}
       <details class="ass">
         <summary>Aannames bekijken en aanpassen</summary>
         <div class="ass__grid" id="ass"></div>
-        <p class="ass__note">Alle aannames komen uit de huidige Triple R-documentatie en moeten nog bevestigd worden.<i class="tb" title="Te bevestigen: formule en aannames afstemmen met de bestaande rekenmachine"></i> Ze staan in één configuratiebestand, zodat Triple R ze zelf kan bijwerken.</p>
+        <p class="ass__note">Deze aannames zijn richtwaarden op basis van de Triple R-documentatie.<i class="tb" title="Te bevestigen: formule en aannames afstemmen met de bestaande rekenmachine"></i> Pas ze aan uw situatie aan.</p>
       </details>
     </form>
 
@@ -144,14 +160,17 @@ details.ass[open] summary::after{transform:rotate(45deg)}
         <div class="kpi"><b id="r-co2">0 kg</b><span>CO₂ vermeden</span></div>
         <div class="kpi"><b id="r-dt">0 u</b><span>minder stilstand</span></div>
       </div>
-      <div class="bars2" id="bars" aria-label="Kosten per jaar: nu en met Triple R"></div>
-      <p class="leg"><span><i style="background:rgb(255 255 255 / .35)"></i>Nu</span><span><i style="background:#5CB8EB"></i>Met Triple R</span></p>
-      <div class="pay">
-        <label for="inv">Investering in filterunits <span style="color:#C9C5E0">(optioneel)</span></label>
-        <div class="num"><input id="inv" type="text" inputmode="numeric" placeholder="bv. 15000"><span>€</span></div>
-        <output id="r-pay" for="inv">Vul uw investering in voor de terugverdientijd.</output>
-      </div>
-      <div class="btns"><a class="btn btn--light" href="#rapport">Ontvang uw rapport als PDF</a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div>
+      <h3 class="lbl" id="h-post">Uw besparing per post</h3>
+      <dl class="posts" id="bars" aria-labelledby="h-post"></dl>
+      <div class="btns"><a class="btn btn--light" href="#rapport">Ontvang uw rapport als PDF <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></div>
+      <details class="pay">
+        <summary>Terugverdientijd berekenen</summary>
+        <div class="pay__in">
+          <label for="inv">Investering in filterunits</label>
+          <div class="num"><input id="inv" type="text" inputmode="numeric" placeholder="bv. 15000"><span>€</span></div>
+          <output id="r-pay" for="inv">Vul uw investering in voor de terugverdientijd.</output>
+        </div>
+      </details>
       <p class="disc">Indicatieve berekening, geen offerte. Werkelijke resultaten hangen af van uw olie, installatie en vervuiling.</p>
     </section>
   </div>
@@ -179,10 +198,10 @@ details.ass[open] summary::after{transform:rotate(45deg)}
       <div class="f"><label for="rf-e">Zakelijk e-mailadres</label><input type="email" id="rf-e" autocomplete="email" required aria-describedby="rf-e-e"><span class="err" id="rf-e-e" hidden>Vul een volledig e-mailadres in, bv. naam@bedrijf.be.</span></div>
       <div class="f"><label for="rf-t">Telefoon <em>(optioneel)</em></label><input type="tel" id="rf-t" autocomplete="tel"></div>
       <label class="chk full"><input type="checkbox" id="rf-call" checked> Bel mij om het rapport te bespreken</label>
-      <label class="chk full"><input type="checkbox" id="rf-gdpr" required aria-describedby="rf-g-e"> <span>Ik ga akkoord met de verwerking van mijn gegevens volgens het <a href="#">privacybeleid</a>.</span></label>
+      <label class="chk full"><input type="checkbox" id="rf-gdpr" required aria-describedby="rf-g-e"> <span>Ik ga akkoord met de verwerking van mijn gegevens volgens het <a href="privacy.html">privacybeleid</a>.</span></label>
       <span class="err full" id="rf-g-e" hidden style="font-size:12.5px;color:var(--err-700);font-weight:500">Vink dit aan om het rapport te ontvangen.</span>
       <div class="full"><button class="btn btn--primary" type="submit">Stuur mij het rapport</button></div>
-      <p class="full" style="font-size:12.5px;color:var(--grey-600)">We gebruiken uw gegevens alleen om het rapport te sturen en u te contacteren. Prototype: er wordt niets verzonden.</p>
+      <p class="full" style="font-size:12.5px;color:var(--grey-600)">We gebruiken uw gegevens alleen om het rapport te sturen en u te contacteren.</p>
     </form>
   </div>
 </section>
@@ -191,7 +210,7 @@ details.ass[open] summary::after{transform:rotate(45deg)}
 <script src="site.js"></script>
 <script>
 (() => {
-  const nf = new Intl.NumberFormat('nl-BE', { maximumFractionDigits: 0 });
+  const nf = new Intl.NumberFormat(document.documentElement.lang, { maximumFractionDigits: 0 });
   const eur = v => '€ ' + nf.format(Math.round(v));
   /* Alle aannames in één config; in productie: src/data/calculator.ts */
   const ASS = [
@@ -248,10 +267,8 @@ details.ass[open] summary::after{transform:rotate(45deg)}
   function update() {
     const r = calc();
     tween('r-total', r.total, eur); document.getElementById('r-mini').textContent = eur(r.total); tween('r-oil', r.oilL, v => nf.format(v) + ' l'); tween('r-co2', r.co2, v => nf.format(v) + ' kg'); tween('r-dt', r.dtH, v => nf.format(v) + ' u');
-    const max = Math.max(...r.rows.flatMap(x => [x[1], x[2]]), 1);
     const bars = document.getElementById('bars');
-    if (!bars.children.length) bars.innerHTML = r.rows.map((x, i) => `<div class="b2"><div class="t"><span>${x[0]}</span><b id="bt-${i}"></b></div><div class="tr"><i class="now" id="bn-${i}"></i></div><div class="tr"><i class="rrr" id="br-${i}"></i></div></div>`).join('');
-    r.rows.forEach((x, i) => { document.getElementById('bn-' + i).style.width = (x[1] / max * 100) + '%'; document.getElementById('br-' + i).style.width = Math.max(x[2] ? .6 : 0, x[2] / max * 100) + '%'; document.getElementById('bt-' + i).textContent = i === 3 ? '+ ' + eur(x[2]) : eur(x[1]) + ' → ' + eur(x[2]); });
+    bars.innerHTML = r.rows.map(x => { const v = x[1] - x[2]; return `<div><dt>${x[0]}</dt><dd>${v < 0 ? '− ' : ''}${eur(Math.abs(v))}</dd></div>`; }).join('');
     const inv = parseFloat((document.getElementById('inv').value || '').replace(/\./g, '').replace(',', '.'));
     const pay = document.getElementById('r-pay');
     const mo = Math.max(1, Math.round(inv / (r.total / 12)));
@@ -273,15 +290,16 @@ details.ass[open] summary::after{transform:rotate(45deg)}
 
   /* rapportformulier */
   const rf = document.getElementById('rep-form');
-  rf.addEventListener('submit', e => {
+  rf.addEventListener('submit', async e => {
     e.preventDefault();
     const req = [['rf-n', v => v.trim().length > 1], ['rf-c', v => v.trim().length > 1], ['rf-e', v => /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v.trim())]];
     let ok = true, first = null;
     req.forEach(([id, t]) => { const el = document.getElementById(id), good = t(el.value); el.setAttribute('aria-invalid', !good); document.getElementById(id + '-e').hidden = good; if (!good) { ok = false; first ||= el; } });
     const g = document.getElementById('rf-gdpr'); document.getElementById('rf-g-e').hidden = g.checked; if (!g.checked) { ok = false; first ||= g; }
     if (!ok) { first.focus(); return; }
+    if (!await window.RRRLead.send('besparing', rf, { email: 'rf-e', name: 'rf-n', company: 'rf-c', phone: 'rf-t', consent: 'rf-gdpr' }, { Besparing: document.getElementById('r-total').textContent + ' / jaar', Berekening: window.RRRLead.collect(document.getElementById('calc')).map(x => x.label + ': ' + x.value).join('\n') })) return;
     const name = document.getElementById('rf-n').value.trim().split(' ')[0], mail = document.getElementById('rf-e').value.trim();
-    rf.innerHTML = `<div class="ok-panel" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><div><b>Bedankt, ${name.replace(/</g, '')}.</b><p style="margin-top:4px">Uw rapport met een geschatte besparing van <b>${document.getElementById('r-total').textContent}</b> per jaar wordt naar ${mail.replace(/</g, '')} gestuurd.${document.getElementById('rf-call').checked ? ' Een specialist belt u om het te bespreken.' : ''} (Prototype: er is niets verzonden.)</p></div></div>`;
+    rf.innerHTML = `<div class="ok-panel" role="status"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><div><b>Bedankt, ${name.replace(/</g, '')}.</b><p style="margin-top:4px">Uw rapport met een geschatte besparing van <b>${document.getElementById('r-total').textContent}</b> per jaar wordt naar ${mail.replace(/</g, '')} gestuurd.${document.getElementById('rf-call').checked ? ' Een specialist belt u om het te bespreken.' : ''} ()</p></div></div>`;
     window.dataLayer?.push({ event: 'roi_report_request' });
   });
 })();

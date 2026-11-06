@@ -5,18 +5,12 @@
   if (!reduce) root.classList.add('motion');
 
   /* ---------- review-balk ---------- */
-  const tTb = document.getElementById('t-tb'), tAn = document.getElementById('t-annot');
-  const setTb = on => { root.classList.toggle('no-tb', !on); tTb.setAttribute('aria-pressed', on); };
-  const setAn = on => { root.classList.toggle('annot', on); tAn.setAttribute('aria-pressed', on); };
-  tTb.addEventListener('click', () => setTb(tTb.getAttribute('aria-pressed') !== 'true'));
-  tAn.addEventListener('click', () => setAn(tAn.getAttribute('aria-pressed') !== 'true'));
-  if (params.has('annot')) setAn(true);
-  if (params.has('clean')) setTb(false);
+  root.classList.add('no-tb');
 
   /* ---------- actieve pagina in de navigatie ---------- */
-  const here = location.pathname.split('/').pop() || 'homepage.html';
-  document.querySelectorAll('.nl[href], .drawer .list a').forEach(a => { if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page'); });
-  if (here === 'producten.html') document.getElementById('mm-btn')?.classList.add('is-cur');
+  const here = location.pathname;
+  document.querySelectorAll('.nl[href], .drawer .list a').forEach(a => { if (new URL(a.href).pathname === here) a.setAttribute('aria-current', 'page'); });
+  if (/\/(producten|products|produits)\//.test(here)) document.getElementById('mm-btn')?.classList.add('is-cur');
 
   /* ---------- megamenu + drawer ---------- */
   const mmBtn = document.getElementById('mm-btn'), mm = document.getElementById('mm');
@@ -126,7 +120,7 @@
   function ensurePdfIndex() {
     if (pdfChunks) { statusReady(); return Promise.resolve(); }
     if (pdfLoading) return pdfLoading;
-    const V = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+    const V = 'vendor/pdfjs/';
     pdfLoading = (async () => {
       try {
         setStatus('PDF’s worden geïndexeerd…', true);
@@ -189,6 +183,12 @@
     el: { n: 'Filterelementen', img: 'img/elements.png', c: ['1–10 µm absoluut', 'WE100: < 80 ppm', '3–320 cSt'], pdf: null, u: 'producten.html?cat=elementen' }
   };
   const ANSWERS = [
+    { m: /olie ?analyse|oil analysis|analyse d.?huile/, lead: 'Vraag uw gratis olieanalyse aan', go: 'olieanalyse.html',
+      blocks: [['p', 'Graag. U vraagt de gratis olieanalyse in 2 minuten online aan [1]. Zo gaat het:'],
+        ['ul', ['U beschrijft uw installatie in het aanvraagformulier.', 'Wij sturen een staalnamekit of komen langs.', 'Het labo meet deeltjes, water, viscositeit, TAN en varnish.', 'U ontvangt het rapport met concreet advies van een specialist.']],
+        ['p', 'De analyse en het advies zijn gratis voor bedrijven, voor één staal per installatie [1].']],
+      src: [{ page: 'Gratis olieanalyse', u: 'olieanalyse.html' }],
+      follow: ['Wat betekent ISO 4406 21/18/16?', 'Hoe verwijder ik water uit tandwielolie?'] },
     { m: /spuitgiet|injectie|400 ?l/, prod: 'bu', lead: 'Advies over de BU-serie',
       blocks: [['p', 'Voor een spuitgietmachine wordt meestal de BU-serie ingezet: een bypassfilter die rechtstreeks op de hogedrukleiding komt, zonder eigen pomp of motor [1].'],
         ['ul', ['Werkdruk tot 450 bar; het M-element filtert 2 µm absoluut [2].', 'Geschikt voor servo- en proportionele hydrauliek, typisch in kunststofinjectie [1][3].', 'Wilt u los van de machine filtreren, dan is de SE-serie met eigen motor-pompgroep een alternatief [4].']],
@@ -250,7 +250,7 @@
     clearInterval(streamTimer);
     askQ.value = q; askGo.disabled = false;
     const nq = norm(q), terms = expand(q);
-    const offtopic = /prijs|kost|kosten|concurrent|cjc|hydac|pall|weer|voetbal|recept/.test(nq);
+    const offtopic = /prijs|kost|kosten|concurrent|cjc|hydac|pall|weer|voetbal|recept/.test(nq) && !/olie ?analyse/.test(nq);
     const a = !offtopic && ANSWERS.find(x => x.m.test(nq));
     askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p><div class="marc-busy" role="status"><img src="${MARC('loep')}" alt="" width="360" height="311"><p class="ai busy"><span class="dot"></span><span>Marc zoekt in de webpagina’s en datasheets…</span></p></div>`;
     if (!pdfChunks) { try { await ensurePdfIndex(); } catch (e) {} }
@@ -279,7 +279,7 @@
         ${mode === 'ext' ? src.map((s, i) => `<blockquote class="quote">“${hl(s.quote, terms)}”<cite>${esc(s.title)} · p. ${s.pageNo} <sup><a href="#src-${i + 1}">${i + 1}</a></sup> · Engelstalige datasheet</cite></blockquote>`).join('') : ''}
         <h3 class="lbl" style="margin-top:var(--s-5)">Bronnen <span style="text-transform:none;letter-spacing:0">· gezocht in ${PAGES.length} webpagina’s en ${docs} PDF’s</span></h3><div class="srcs">${src.map(srcCard).join('')}</div>
         ${prod ? `<div class="pcard"><img src="${prod.img}" alt=""><div><b>${prod.n}</b><div class="chips">${prod.c.map(c => `<span>${c}</span>`).join('')}</div><div class="links"><a href="${prod.u}" data-close-go>Bekijk product</a>${prod.pdf ? `<a href="${pdfHref(prod.pdf, 1)}" target="_blank" rel="noopener">Datasheet (PDF)</a>` : ''}</div></div></div>` : ''}
-        ${handoff(lead, q)}
+        ${handoff(lead, q, a && a.go)}
         <div class="follow" aria-label="Vervolgvragen">${follow.map(f => `<button type="button" data-ask="${esc(f)}">${esc(f)}</button>`).join('')}</div>
         <div class="fb"><span>Was dit antwoord nuttig?</span><button type="button" aria-pressed="false" aria-label="Nuttig" data-fb>${I.up}</button><button type="button" aria-pressed="false" aria-label="Niet nuttig" data-fb>${I.down}</button><span id="fb-t" role="status"></span></div>
       </div>`;
@@ -304,9 +304,11 @@
     if (t.open === 'li') { let ul = ans.lastElementChild; if (!ul || ul.tagName !== 'UL') { ul = document.createElement('ul'); ans.appendChild(ul); } const li = document.createElement('li'); li.innerHTML = html; ul.appendChild(li); return li; }
     const p = document.createElement('p'); p.innerHTML = html; ans.appendChild(p); return p;
   }
-  function handoff(lead, q) {
+  function handoff(lead, q, go) {
+    if (go) return `<div class="handoff"><p>Volgende stap. Vul het aanvraagformulier in; dat duurt 2 minuten.</p>
+      <div class="btns"><a class="btn btn--primary" href="${go}" data-close-go>${esc(lead)}</a><a class="btn btn--secondary" href="tel:+3238254647">Bel +32 3 825 46 47</a></div></div>`;
     return `<div class="handoff"><p>Volgende stap. Het adviesformulier opent vooraf ingevuld met uw vraag; u kunt alles nog aanpassen.</p>
-      <div class="btns"><a class="btn btn--primary" href="#?advies&vraag=${encodeURIComponent(q)}">${esc(lead)}</a><a class="btn btn--secondary" href="olieanalyse.html" data-close-go>Gratis olieanalyse</a><a class="btn btn--secondary" href="tel:+3238254647">Bel +32 3 825 46 47</a></div></div>`;
+      <div class="btns"><a class="btn btn--primary" href="contact.html?vraag=${encodeURIComponent(q)}">${esc(lead)}</a><a class="btn btn--secondary" href="olieanalyse.html" data-close-go>Gratis olieanalyse</a><a class="btn btn--secondary" href="tel:+3238254647">Bel +32 3 825 46 47</a></div></div>`;
   }
 
   document.querySelectorAll('[data-ask-open]').forEach(b => {
@@ -322,7 +324,7 @@
     if (t.hasAttribute('data-ask')) answer(t.dataset.ask);
     else if (t.hasAttribute('data-back')) { clearInterval(streamTimer); render(); askQ.focus(); }
     else if (t.hasAttribute('data-close') || t.hasAttribute('data-close-go')) closeAsk();
-    else if (t.hasAttribute('data-fb')) { t.parentElement.querySelectorAll('[data-fb]').forEach(b => b.setAttribute('aria-pressed', b === t)); const up = t.getAttribute('aria-label') === 'Nuttig'; document.getElementById('fb-t').innerHTML = up ? `<span class="marc-thx"><img src="${MARC('duim')}" alt="" width="320" height="398">Bedankt, dat hoort Marc graag!</span>` : 'Bedankt. Marc leert hiervan; een specialist kijkt mee.'; }
+    else if (t.hasAttribute('data-fb')) { t.parentElement.querySelectorAll('[data-fb]').forEach(b => b.setAttribute('aria-pressed', b === t)); const up = t.getAttribute('aria-label') === 'Nuttig'; document.getElementById('fb-t').innerHTML = up ? `<span class="marc-thx"><img src="${MARC('duim')}" alt="" width="320" height="398">Bedankt, dat hoort Marc graag!</span>` : 'Bedankt voor uw feedback.'; }
   });
   ask.addEventListener('keydown', e => {
     if (e.key === 'Escape') { e.preventDefault(); closeAsk(); return; }
@@ -352,7 +354,7 @@
   const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { ticking = false; hdr.classList.toggle('scrolled', scrollY > 60); if (bar) bar.style.setProperty('--p', Math.min(1, scrollY / Math.max(1, document.documentElement.scrollHeight - innerHeight)).toFixed(4)); }); };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
-  const fmt = new Intl.NumberFormat('nl-BE');
+  const fmt = new Intl.NumberFormat(document.documentElement.lang);
   const countUp = el => { const to = +el.dataset.count, t0 = performance.now(), D = 1400; const step = now => { const k = Math.min(1, (now - t0) / D), v = Math.round(to * (1 - Math.pow(1 - k, 3))); el.textContent = fmt.format(v); if (k < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); };
   if (!reduce && 'IntersectionObserver' in window) {
     const SEL = '.ccard,.prod,.case,.sectors li,.oa ol li,.results>div,.facts>div,.rrr li,.arts li,.faq details,.steps li,.how figure,.head,.sect__img,.oa__img,.sus figure,.co2,.finder,.cta,[data-reveal]';
@@ -422,7 +424,7 @@
     ddBtn.addEventListener('click', e => { e.stopPropagation(); setDd(dd.hidden); });
     document.addEventListener('click', e => { if (!e.target.closest('.dd')) setDd(false); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && !dd.hidden) { setDd(false); ddBtn.focus(); } });
-    if (['olieanalyse.html', 'verhuur.html', 'filtration-systembuilder.html', 'besparingscalculator.html'].includes(here)) ddBtn.classList.add('is-cur');
+    if ([...document.querySelectorAll('#dd-diensten a')].some(x => new URL(x.href).pathname === here)) ddBtn.classList.add('is-cur');
   }
 
   /* ---------- offerteaanvraag (prijsloos ‘winkelmandje’, per bezoeker in localStorage) ---------- */
@@ -484,4 +486,102 @@
   });
   addEventListener('storage', e => { if (e.key === QKEY) { qMem = qRead(); qSync(); document.dispatchEvent(new CustomEvent('quote:change')); } });
   document.addEventListener('DOMContentLoaded', qSync); qSync();
+})();
+
+/* ---------- leads: alle formulieren posten naar /api/lead ---------- */
+(() => {
+  const qs = new URLSearchParams(location.search), KEY = 'rrr_utm', LOADED = Date.now();
+  const UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'];
+  try { if (UTM.some(k => qs.has(k))) sessionStorage.setItem(KEY, JSON.stringify(Object.fromEntries(UTM.filter(k => qs.has(k)).map(k => [k, qs.get(k)])))); } catch (e) {}
+  const clean = el => (el?.textContent || '').replace(/\s+/g, ' ').trim();
+  const labelOf = (form, el) => {
+    if (el.id) { const l = form.querySelector(`label[for="${el.id}"]`); if (l) { const c = l.cloneNode(true); c.querySelector('em')?.remove(); return clean(c); } }
+    const g = el.closest('[aria-labelledby]');
+    if (g) { const c = document.getElementById(g.getAttribute('aria-labelledby'))?.cloneNode(true); c?.querySelector('em')?.remove(); return clean(c); }
+    return clean(el.closest('label')) || el.name || el.id;
+  };
+  function collect(form, skip = []) {
+    const out = [];
+    [...form.elements].forEach(el => {
+      if (!el.tagName || /^(BUTTON|FIELDSET)$/.test(el.tagName) || el.type === 'hidden' || el.name === 'website' || skip.includes(el.id)) return;
+      if ((el.type === 'checkbox' || el.type === 'radio')) { if (el.checked) { const g = labelOf(form, el), v = clean(el.closest('label')); const hit = out.find(x => x.label === g); if (hit && hit.value !== v) hit.value += ', ' + v; else if (!hit) out.push({ label: g, value: v }); } return; }
+      const v = (el.value || '').trim();
+      if (v) out.push({ label: labelOf(form, el), value: el.tagName === 'SELECT' ? clean(el.selectedOptions[0]) : v });
+    });
+    return out;
+  }
+  const hp = form => { if (form.querySelector('[name=website]')) return; const i = document.createElement('input'); i.type = 'text'; i.name = 'website'; i.tabIndex = -1; i.autocomplete = 'off'; i.setAttribute('aria-hidden', 'true'); i.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px'; form.append(i); };
+  document.addEventListener('DOMContentLoaded', () => ['aanvraag', 'q-form', 'rep-form', 'ct-form'].forEach(id => { const f = document.getElementById(id); if (f) hp(f); }));
+  async function send(type, form, map, extra = {}) {
+    const val = id => { const el = document.getElementById(map[id] || ''); return el ? (el.type === 'checkbox' ? el.checked : el.value.trim()) : ''; };
+    const btn = form.querySelector('[type=submit]'), old = form.querySelector('.lead-err');
+    old?.remove(); if (btn) btn.disabled = true;
+    let utm = {}; try { utm = JSON.parse(sessionStorage.getItem(KEY) || '{}'); } catch (e) {}
+    const body = {
+      type, lang: document.documentElement.lang.slice(0, 2), page: location.pathname, referrer: document.referrer, utm, elapsed: Date.now() - LOADED,
+      website: form.querySelector('[name=website]')?.value || '',
+      email: val('email'), name: map.name ? val('name') : `${val('first')} ${val('last')}`.trim(), company: val('company'), phone: val('phone'), country: val('country'),
+      message: val('message'), consent: !!val('consent'), newsletter: !!val('newsletter'),
+      fields: collect(form, [map.consent, map.newsletter]), extra
+    };
+    try {
+      const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      if (!r.ok) throw new Error(r.status);
+      return true;
+    } catch (e) {
+      const p = document.createElement('p'); p.className = 'lead-err'; p.setAttribute('role', 'alert');
+      p.textContent = 'Verzenden is niet gelukt. Probeer het opnieuw of bel +32 (0)3 825 46 47.';
+      (btn?.parentElement || form).after(p); if (btn) btn.disabled = false;
+      window.dataLayer?.push({ event: 'form_error', form: type });
+      return false;
+    }
+  }
+  window.RRRLead = { send, collect };
+})();
+
+/* ---------- cookies: niets van derden vóór toestemming (Consent Mode v2) ---------- */
+(() => {
+  const KEY = 'rrr_consent', VERSION = 1, MAX_AGE = 180 * 864e5, GTM = 'GTM-NSM4G6X9';
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
+  const read = () => { try { const c = JSON.parse(localStorage.getItem(KEY)); return c && c.v === VERSION && Date.now() - c.ts < MAX_AGE ? c : null; } catch (e) { return null; } };
+  let loaded = false;
+  const loadGtm = () => { if (loaded) return; loaded = true; window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' }); const s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM; document.head.append(s); };
+  const apply = c => {
+    gtag('consent', 'update', { analytics_storage: c.analytics ? 'granted' : 'denied', ad_storage: c.marketing ? 'granted' : 'denied', ad_user_data: c.marketing ? 'granted' : 'denied', ad_personalization: c.marketing ? 'granted' : 'denied' });
+    if (c.analytics || c.marketing) loadGtm();
+  };
+  let box;
+  const save = (analytics, marketing) => {
+    const had = loaded; const c = { v: VERSION, ts: Date.now(), analytics, marketing };
+    try { localStorage.setItem(KEY, JSON.stringify(c)); } catch (e) {}
+    apply(c); window.dataLayer.push({ event: 'consent_update', analytics, marketing }); box.hidden = true;
+    if (had && !analytics && !marketing) location.reload();
+  };
+  function build() {
+    box = document.createElement('section'); box.className = 'ck'; box.hidden = true; box.setAttribute('role', 'dialog'); box.setAttribute('aria-labelledby', 'ck-h');
+    box.innerHTML = `<h2 id="ck-h">Uw cookievoorkeuren</h2><p>We gebruiken noodzakelijke opslag om de site te laten werken. Statistiek- en marketingcookies plaatsen we alleen met uw toestemming. <a href="cookies.html">Lees ons cookiebeleid</a>.</p>
+      <div class="ck__opts" id="ck-opts" hidden>
+        <label><input type="checkbox" checked disabled><span>Noodzakelijk<small>Altijd actief: nodig voor uw keuze en uw offerteaanvraag.</small></span></label>
+        <label><input type="checkbox" id="ck-a"><span>Statistieken<small>Helpen ons begrijpen hoe de site gebruikt wordt.</small></span></label>
+        <label><input type="checkbox" id="ck-m"><span>Marketing<small>Meten advertenties en maken relevante advertenties mogelijk.</small></span></label>
+      </div>
+      <div class="ck__btns"><button type="button" data-ck="none">Alles weigeren</button><button type="button" data-ck="all">Alles accepteren</button><button type="button" data-ck="opts">Voorkeuren kiezen</button><button type="button" data-ck="save" hidden>Keuze opslaan</button></div>`;
+    document.body.append(box);
+    box.addEventListener('click', e => {
+      const a = e.target.closest('[data-ck]')?.dataset.ck; if (!a) return;
+      if (a === 'none') save(false, false);
+      if (a === 'all') save(true, true);
+      if (a === 'opts') { box.querySelector('#ck-opts').hidden = false; e.target.hidden = true; box.querySelector('[data-ck=save]').hidden = false; box.querySelector('#ck-a').focus(); }
+      if (a === 'save') save(box.querySelector('#ck-a').checked, box.querySelector('#ck-m').checked);
+    });
+  }
+  const open = () => { const c = read(); box.querySelector('#ck-a').checked = !!c?.analytics; box.querySelector('#ck-m').checked = !!c?.marketing; box.hidden = false; };
+  const init = () => {
+    build();
+    const c = read(); if (c) apply(c); else open();
+    document.addEventListener('click', e => { const t = e.target.closest('[data-cookie-settings]'); if (t) { e.preventDefault(); open(); box.querySelector('button').focus(); } });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

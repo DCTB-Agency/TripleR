@@ -1,0 +1,56 @@
+<title>Over ons</title>
+<meta name="description" content="Over ons">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.f{display:grid;gap:6px}
+.f label{font-size:var(--fs-sm);font-weight:500}
+.f label em{font-style:normal;font-weight:400;color:var(--grey-600)}
+.f input,.f select,.f textarea{height:46px;padding:0 14px;border:1px solid var(--grey-200);border-radius:var(--radius);font:inherit;background:#fff;color:var(--ink);width:100%}
+.f textarea{height:150px;padding:12px 14px;resize:vertical;line-height:1.5}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blue-50)}
+.f [aria-invalid="true"]{border-color:var(--err-700)}
+.f .err{font-size:12.5px;color:var(--err-700);font-weight:500}
+.f .hint{font-size:12.5px;color:var(--grey-600)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--grey-600)}
+.chk input{width:20px;height:20px;margin-top:1px;accent-color:var(--blue-700);flex:none}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page" aria-labelledby="h1">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Over ons</li></ol>
+      <h1 id="h1">Over <span>Triple R Europe</span></h1>
+      <p class="lead">Triple R Europe levert vanuit Aartselaar bypass-oliefiltratie aan bedrijven in heel Europa. Wij reinigen olie in plaats van ze te verversen: met filterelementen uit Japan, een eigen assemblage in België en een netwerk van distributeurs dat dicht bij uw machines werkt.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap ab-grid">
+  <div class="prose">
+    <h2>Wat we doen</h2>
+    <p>Triple R ontwikkelt bypassfilters die vaste deeltjes, varnish en water uit industriële olie halen. Bedrijven gebruiken ze om hun olie langer te laten meegaan, stilstand te beperken en minder afgewerkte olie te produceren.</p>
+    <p>Vanuit ons Europese hoofdkantoor in Aartselaar adviseren we klanten, assembleren we systemen en leveren we filterelementen. De filterelementen worden gemaakt door Triple R Industry Co. Ltd. in Japan.</p>
+    <h2>Mijlpalen</h2>
+    <div class="ab-tl">
+      <div><b>1992</b><span>Triple R Europe nv wordt opgericht in Antwerpen.</span></div>
+      <div><b>2013</b><span>Nieuwe geautomatiseerde fabriek voor filterelementen in Ohira, Japan.</span></div>
+      <div><b>2019</b><span>Nieuw Europees hoofdkantoor in Aartselaar, met assemblage en magazijn.</span></div>
+      <div><b>2022</b><span>Een nieuwe generatie van de familie Van Uytven neemt het management op zich.</span></div>
+    </div>
+    <h2>Team</h2>
+    <p>Marc Van Uytven is CEO. Maxim Van Uytven is Managing Director. Samen met het team in Aartselaar en de distributeurs in Europa helpen zij u de juiste oplossing voor uw installatie te vinden.</p>
+    <div class="btns" style="margin-top:var(--s-5)"><a class="btn btn--primary" href="contact.html">Neem contact op</a><a class="btn btn--secondary" href="olieanalyse.html">Gratis olieanalyse</a></div>
+  </div>
+  <figure class="ab-team"><img src="img/team.jpg" alt="Het Triple R-team in het hoofdkantoor in Aartselaar" width="768" height="1024" loading="eager"><figcaption>Het Triple R-team in Aartselaar</figcaption></figure>
+  </div>
+</section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>

@@ -3,7 +3,7 @@
 Nieuwe website voor **Triple R Europe nv** (Aartselaar, BE): een Nederlandstalige B2B-site (NL/EN/FR) voor bypass-oliefiltratie, gericht op leads (*Gratis olieanalyse*, *Advies aanvragen*).
 
 ## Status
-**Stap 1 — design (pass 1).** De visuele richting en de eerste pagina's staan als klikbare prototypes in [`design/`](design/). De Astro-build (stap 2) moet nog starten.
+**Klaar voor staging.** `design/` is de Nederlandse bron, `i18n/` en `content/` bevatten vertalingen en inhoud, en `npm run build` maakt `dist/` met NL, EN en FR. `npm run check` controleert alles. Go-live: [`docs/migratie/go-live.md`](docs/migratie/go-live.md). Open vragen: [`docs/open-questions.md`](docs/open-questions.md).
 
 | Pagina | Bestand |
 |---|---|
@@ -35,7 +35,7 @@ python3 -m http.server 4321 --directory design
 Open daarna http://localhost:4321/homepage.html.
 
 ### Online (Netlify)
-`netlify.toml` publiceert de map `design/` (geen build nodig) en toont de homepage op `/`. Elke push naar `main` zet een nieuwe versie online. Alle pagina's krijgen de header `X-Robots-Tag: noindex`, zodat het prototype niet in Google komt.
+`netlify.toml` bouwt `dist/`. Elke push naar `main` zet een nieuwe versie op staging, met `X-Robots-Tag: noindex` zolang `SITE_ENV` niet op `production` staat.
 
 ### Designbronnen aanpassen
 Pagina's worden opgebouwd uit `*.src.html` + `partials/` (gedeelde header, footer en zoekpaneel):

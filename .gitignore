@@ -7,3 +7,6 @@ dist/
 !.env.example
 .claude/
 *.log
+build/.missing.json
+build/__pycache__/
+build/.lead.tmp.mjs

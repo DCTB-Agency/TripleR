@@ -269,7 +269,8 @@
    "img": "BU-Series.png",
    "cat": "druk",
    "pdf": "BU-2023-UK-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "bu100e",
@@ -346,7 +347,8 @@
    "img": "BU-Series.png",
    "cat": "druk",
    "pdf": "BU-2023-UK-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "bu200e",
@@ -420,7 +422,8 @@
    "img": "BU-Series.png",
    "cat": "druk",
    "pdf": "BU-2023-UK-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "bu300e",
@@ -494,7 +497,8 @@
    "img": "BU-Series.png",
    "cat": "druk",
    "pdf": "BU-2023-UK-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "bu100ew",
@@ -565,7 +569,8 @@
    "img": "BU-Series.png",
    "cat": "druk",
    "pdf": "BU-2023-UK-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "bu200ew",
@@ -636,7 +641,8 @@
    "img": "BU-Series.png",
    "cat": "druk",
    "pdf": "BU-2023-UK-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "bu300ew",
@@ -707,7 +713,8 @@
    "img": "BU-Series.png",
    "cat": "druk",
    "pdf": "BU-2023-UK-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "bu100e-wind",
@@ -769,7 +776,8 @@
    "img": "BU-Series.png",
    "cat": "druk",
    "pdf": "BU-100E-Wind-S.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "bf-15",
@@ -835,7 +843,8 @@
    "img": null,
    "cat": "druk",
    "pdf": "STEEL-housing-HP.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "bf-20",
@@ -901,7 +910,8 @@
    "img": null,
    "cat": "druk",
    "pdf": "STEEL-housing-HP.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "al100-hp",
@@ -967,7 +977,8 @@
    "img": null,
    "cat": "druk",
    "pdf": "STEEL-housing-HP.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "al100",
@@ -1026,7 +1037,8 @@
    "img": null,
    "cat": "lagedruk",
    "pdf": "TR-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "al200",
@@ -1085,7 +1097,8 @@
    "img": null,
    "cat": "lagedruk",
    "pdf": "TR-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "al300",
@@ -1144,7 +1157,8 @@
    "img": null,
    "cat": "lagedruk",
    "pdf": "TR-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "al400",
@@ -1203,7 +1217,8 @@
    "img": null,
    "cat": "lagedruk",
    "pdf": "TR-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ss102",
@@ -1265,7 +1280,8 @@
    "img": "ss.png",
    "cat": "lagedruk",
    "pdf": "SS-2019-ENGLISH-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ss103",
@@ -1327,7 +1343,8 @@
    "img": "ss.png",
    "cat": "lagedruk",
    "pdf": "SS-2019-ENGLISH-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ss104",
@@ -1385,7 +1402,8 @@
    "img": "ss.png",
    "cat": "lagedruk",
    "pdf": "SS-2019-ENGLISH-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ss305",
@@ -1446,7 +1464,8 @@
    "img": "ss.png",
    "cat": "lagedruk",
    "pdf": "SS-2019-ENGLISH-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ss306",
@@ -1506,7 +1525,8 @@
    "img": "ss.png",
    "cat": "lagedruk",
    "pdf": "SS-2019-ENGLISH-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ss12pf20",
@@ -1562,7 +1582,8 @@
    "img": "ss.png",
    "cat": "lagedruk",
    "pdf": "SS-2019-ENGLISH-.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "se50e-bh",
@@ -1628,7 +1649,8 @@
    "img": "se.png",
    "cat": "offline",
    "pdf": "SE-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "se100e-bh",
@@ -1699,7 +1721,8 @@
    "img": "se.png",
    "cat": "offline",
    "pdf": "SE-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "se200e-bh",
@@ -1770,7 +1793,8 @@
    "img": "se.png",
    "cat": "offline",
    "pdf": "SE-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "se400e-bh",
@@ -1841,7 +1865,8 @@
    "img": "se.png",
    "cat": "offline",
    "pdf": "SE-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "se600e-bh",
@@ -1912,7 +1937,8 @@
    "img": "se.png",
    "cat": "offline",
    "pdf": "SE-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "se100e-wh",
@@ -1958,7 +1984,8 @@
    "img": "se100e-wh.jpg",
    "cat": "offline",
    "pdf": "SE-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "se200e-mh",
@@ -2024,7 +2051,8 @@
    "img": "se.png",
    "cat": "offline",
    "pdf": "SE-Mobile-2023-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "se400e-mh",
@@ -2090,7 +2118,8 @@
    "img": "se.png",
    "cat": "offline",
    "pdf": "SE-Mobile-2023-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "se200e-hf",
@@ -2174,7 +2203,8 @@
    "pdf": "SE-Mobile-2023-ENGLISH.pdf",
    "also": [
     "vullen"
-   ]
+   ],
+   "hidden": false
   },
   {
    "id": "cs-su102-h114-2r",
@@ -2245,7 +2275,8 @@
    "img": "osca.png",
    "cat": "offline",
    "pdf": "OSCA-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "cs-su103-h114-2r",
@@ -2316,7 +2347,8 @@
    "img": "osca.png",
    "cat": "offline",
    "pdf": "OSCA-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "cs-su103-h114-3r",
@@ -2387,7 +2419,8 @@
    "img": "osca.png",
    "cat": "offline",
    "pdf": "OSCA-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "cs-ss305-h114-1r",
@@ -2457,7 +2490,8 @@
    "img": "osca.png",
    "cat": "offline",
    "pdf": "OSCA-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "cs-ss305-h114-2r",
@@ -2527,7 +2561,8 @@
    "img": "osca.png",
    "cat": "offline",
    "pdf": "OSCA-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "cs-ss306-h80-2r",
@@ -2596,7 +2631,8 @@
    "img": "osca.png",
    "cat": "offline",
    "pdf": "OSCA-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "trvs-n30e",
@@ -2656,7 +2692,8 @@
    "img": "vacuum.png",
    "cat": "water",
    "pdf": "VacuumDehydrator-TRVS-N30E-ENG.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ws-wd",
@@ -2715,7 +2752,8 @@
    "img": "ws.png",
    "cat": "water",
    "pdf": "WS-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ws-wd-1pf",
@@ -2773,7 +2811,8 @@
    "img": "ws.png",
    "cat": "water",
    "pdf": "WS-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ws-su103-1r-ws20",
@@ -2831,7 +2870,8 @@
    "img": "ws.png",
    "cat": "water",
    "pdf": "WS-2019-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "trqt-50-sus",
@@ -2891,7 +2931,8 @@
    "img": "quicktoron.png",
    "cat": "lucht",
    "pdf": "QUICKTORON-2023-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "trqt-100-sus",
@@ -2951,7 +2992,8 @@
    "img": "quicktoron.png",
    "cat": "lucht",
    "pdf": "QUICKTORON-2023-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "trs30-m",
@@ -3010,7 +3052,8 @@
    "img": "centrifuge.png",
    "cat": "proces",
    "pdf": "Centrifuges_2014_UK-1.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "trs50-m",
@@ -3069,7 +3112,8 @@
    "img": "centrifuge.png",
    "cat": "proces",
    "pdf": "Centrifuges_2014_UK-1.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "trs100-a",
@@ -3128,7 +3172,8 @@
    "img": "centrifuge.png",
    "cat": "proces",
    "pdf": "Centrifuges_2014_UK-1.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "trs200-a",
@@ -3187,7 +3232,8 @@
    "img": "centrifuge.png",
    "cat": "proces",
    "pdf": "Centrifuges_2014_UK-1.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "m30",
@@ -3245,7 +3291,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "m50",
@@ -3303,7 +3350,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "m100",
@@ -3378,7 +3426,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "m300-h114",
@@ -3439,7 +3488,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "m300-h80",
@@ -3499,7 +3549,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "e30",
@@ -3557,7 +3608,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "e50",
@@ -3615,7 +3667,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "e100",
@@ -3690,7 +3743,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "e300-h114",
@@ -3749,7 +3803,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "e300-h80",
@@ -3807,7 +3862,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "x30",
@@ -3865,7 +3921,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "x50",
@@ -3923,7 +3980,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "x100",
@@ -3998,7 +4056,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "x300-h114",
@@ -4057,7 +4116,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "x300-h80",
@@ -4115,7 +4175,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "d100",
@@ -4190,7 +4251,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "d300",
@@ -4249,7 +4311,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "v100-m",
@@ -4305,7 +4368,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "V100-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "v100-e",
@@ -4361,7 +4425,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "V100-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "v100-x",
@@ -4417,7 +4482,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "V100-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "we100",
@@ -4472,7 +4538,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "wg100",
@@ -4523,7 +4590,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "dwg100",
@@ -4574,7 +4642,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "ws10",
@@ -4612,7 +4681,8 @@
    "img": "elements.png",
    "cat": "elementen",
    "pdf": "Element-data-sheet-2023.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "pre-se",
@@ -4647,7 +4717,8 @@
    "img": null,
    "cat": "elementen",
    "pdf": "Elements-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "pre-osca",
@@ -4682,7 +4753,8 @@
    "img": null,
    "cat": "elementen",
    "pdf": "Elements-ENGLISH.pdf",
-   "also": []
+   "also": [],
+   "hidden": false
   },
   {
    "id": "vulpomp",
@@ -4716,7 +4788,8 @@
    "img": null,
    "cat": "vullen",
    "pdf": null,
-   "also": []
+   "also": [],
+   "hidden": false
   }
  ]
 }

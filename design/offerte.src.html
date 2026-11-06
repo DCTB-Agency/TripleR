@@ -1,8 +1,6 @@
 <title>Offerte aanvragen · Triple R</title>
 <meta name="description" content="Stel uw offerteaanvraag samen: kies producten of huurtoestellen, vul uw gegevens in en ontvang een offerte op maat van een Triple R-specialist.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="site.css">
 <style>
@@ -113,7 +111,7 @@
         </div>
         <div class="f"><label for="f-land">Land</label><select id="f-land" name="country"><option>België</option><option>Nederland</option><option>Luxemburg</option><option>Frankrijk</option><option>Duitsland</option><option>Ander land</option></select></div>
         <div class="f"><label for="f-msg">Bericht</label><textarea id="f-msg" name="message" aria-describedby="f-msg-h"></textarea><span class="hint" id="f-msg-h">Uw selectie staat al bovenaan. Vul aan met uw installatie, aantallen of vragen.</span></div>
-        <label class="chk"><input type="checkbox" id="f-ok" required><span>Ik ga akkoord dat Triple R mijn gegevens gebruikt om deze aanvraag te beantwoorden (<a href="#">privacybeleid</a>).</span></label>
+        <label class="chk"><input type="checkbox" id="f-ok" required><span>Ik ga akkoord dat Triple R mijn gegevens gebruikt om deze aanvraag te beantwoorden (<a href="privacy.html">privacybeleid</a>).</span></label>
         <span class="err" id="f-ok-e" hidden>Vink dit aan om te versturen.</span>
         <button class="btn btn--primary" type="submit" id="q-submit">Vraag een offerte aan</button>
         <p class="hint" style="font-size:12.5px;color:var(--grey-600)">U ontvangt een offerte op maat; prijzen staan niet online.<i class="tb" title="Te bevestigen: antwoordtermijn"></i></p>
@@ -175,12 +173,13 @@
   /* versturen (prototype: valideert, toont bevestiging, stuurt event) */
   const form = document.getElementById('q-form');
   const need = [['f-name', v => v.trim()], ['f-co', v => v.trim()], ['f-mail', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)]];
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault(); let first = null;
     need.forEach(([id, ok]) => { const el = document.getElementById(id), bad = !ok(el.value); el.setAttribute('aria-invalid', bad); el.toggleAttribute('aria-errormessage', bad); if (bad) el.setAttribute('aria-errormessage', id + '-e'); document.getElementById(id + '-e').hidden = !bad; if (bad && !first) first = el; });
     const ok = document.getElementById('f-ok'); document.getElementById('f-ok-e').hidden = ok.checked; if (!ok.checked && !first) first = ok;
     if (first) { first.focus(); window.dataLayer?.push({ event: 'form_error', form: 'offerte' }); return; }
     const l = Q.list();
+    if (!await window.RRRLead.send('offerte', form, { email: 'f-mail', name: 'f-name', company: 'f-co', phone: 'f-tel', country: 'f-land', message: 'f-msg', consent: 'f-ok' }, { Selectie: l.map(x => `${x.qty} × ${C[x.id] ? C[x.id][0] : x.id} (${x.mode})${x.note ? ': ' + x.note : ''}`).join('\n') })) return;
     window.dataLayer?.push({ event: 'lead_offerte', items: l.map(x => x.id + ':' + x.mode + ':' + x.qty).join(','), country: document.getElementById('f-land').value });
     const wrap = document.getElementById('q-form-wrap');
     wrap.innerHTML = `<div class="qdone" role="status" tabindex="-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg><h2>Bedankt, uw aanvraag is verstuurd</h2><p>We bekijken uw selectie${l.length ? ` (${l.length} item${l.length === 1 ? '' : 's'})` : ''} en nemen contact met u op met een offerte op maat.<i class="tb" title="Te bevestigen: antwoordtermijn"></i></p><a class="btn btn--secondary" href="producten.html">Terug naar de producten</a></div>`;

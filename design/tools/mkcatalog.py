@@ -270,7 +270,19 @@ for p in P:  # alleen bestaande verwijzingen
     p['pdf'] = SERIES[p['series']]['pdf']
     p['also'] = ['vullen'] if p['id'] == 'se200e-hf' else []
     p['img'] = p['img'] or SERIES[p['series']]['img']
+# productselectie van Triple R (tools/productselectie.py): 'Nee' = niet op de site, wel in products.json
+import os
+SEL = json.load(open('data/product-selectie.json')) if os.path.exists('data/product-selectie.json') else {}
+for p in P:
+    p['hidden'] = SEL.get(p['id'], {}).get('keep') == 'Nee'
 out = dict(cats=[dict(id=c, n=n, s=s) for c, n, s in CATS], fluids=FLUIDS, versions=VERSIONS, series=SERIES, products=P)
 json.dump(out, open('data/products.json', 'w'), ensure_ascii=False, indent=1)
-open('catalog.js', 'w').write('/* gegenereerd door tools/mkcatalog.py; niet met de hand aanpassen */\nwindow.RRR_CATALOG=' + json.dumps(out, ensure_ascii=False, separators=(',', ':')) + ';\n')
-print(f'{len(P)} producten in {len(SERIES)} series; catalog.js {len(open("catalog.js").read()) // 1024} KB')
+vis = [p for p in P if not p['hidden']]
+hidden_ids = {p['id'] for p in P if p['hidden']}
+for p in vis:
+    p['elements'] = [e for e in p['elements'] if e not in hidden_ids]
+    p['fits'] = [f for f in p['fits'] if f not in hidden_ids]
+used = {p['series'] for p in vis}
+web = dict(out, products=vis, series={k: v for k, v in SERIES.items() if k in used})
+open('catalog.js', 'w').write('/* gegenereerd door tools/mkcatalog.py; niet met de hand aanpassen */\nwindow.RRR_CATALOG=' + json.dumps(web, ensure_ascii=False, separators=(',', ':')) + ';\n')
+print(f'{len(P)} producten ({len(hidden_ids)} verborgen) in {len(SERIES)} series; catalog.js {len(open("catalog.js").read()) // 1024} KB')
