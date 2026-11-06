@@ -11,6 +11,7 @@ sys.path.insert(0, os.path.join(ROOT, 'build'))
 from pages import LANGS, PAGES, PRODUCTS_SLUG
 from kb_meta import KB, SECTION, PARENT
 import kb_render as R
+from kb_topics import TOPIC, UI as TOPIC_UI, LABEL as TOPIC_LABEL
 D, OUT, I18N = os.path.join(ROOT, 'design'), os.path.join(ROOT, 'dist'), os.path.join(ROOT, 'i18n')
 SITE = 'https://www.triple-r-europe.com'
 ENV = os.environ.get('SITE_ENV', 'staging')
@@ -258,7 +259,7 @@ def jsonld(lang, url, crumbs, extra=None):
     if crumbs:
         g.append({'@type': 'BreadcrumbList', 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': n, 'item': SITE + u} for i, (n, u) in enumerate(crumbs)]})
     if extra:
-        g.append(extra)
+        g.extend(extra if isinstance(extra, list) else [extra])
     return '<script type="application/ld+json">' + json.dumps({'@context': 'https://schema.org', '@graph': g}, ensure_ascii=False).replace('</', '<\\/') + '</script>'
 
 
@@ -473,6 +474,15 @@ def main():
             i = list(KB).index(key)
             sib = sorted(sib, key=lambda k: (list(KB).index(k) - i) % len(KB))[:4]
             rel = ''.join(f'<li><a href="{route(k, l)}">{R.e(KB[k][l][0])}</a></li>' for k in sib)
+            if key in TOPIC:
+                TOPIC[key]['_names'] = {x: [(k, KB[k][x][0]) for k in TOPIC[key]['products']] for x in LANGS}
+                crumb = f'<ol class="crumbs" aria-label="Kruimelpad"><li><a href="{route("homepage", l)}">{HOME[l]}</a></li><li><a href="{route(parent, l)}">{CRUMB[parent][l]}</a></li><li aria-current="page">{R.e(TOPIC_LABEL[key][LANGS.index(l)])}</li></ol>'
+                upd = f'{t["upd"]}: <time datetime="{date.today().isoformat()}">{t["date"]}</time> · {R.e(t["by"])}'
+                body_ = R.topic(key, l, h1, lead, blocks_, TOPIC, TOPIC_UI, TOPIC_LABEL, route, crumb, upd)
+                faq = {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': x}} for q, x in TOPIC[key][l]['faq']]}
+                ld = {'@type': 'TechArticle', 'headline': h1, 'name': h1, 'description': desc, 'inLanguage': l, 'url': SITE + alts[l], 'dateModified': date.today().isoformat(), 'publisher': {'@id': ORG['@id']}, 'author': {'@id': ORG['@id']}}
+                build_page('kb', l, ver, parts, alts, title, desc, crumbs, extra_ld=[ld, faq], blocks={'{{KB}}': body_})
+                continue
             html_body = f'''<section class="hero hero--page" aria-labelledby="h1"><div class="hero__bg" aria-hidden="true"></div><div class="wrap"><div class="hero__copy" style="gap:0">
 <ol class="crumbs" aria-label="Kruimelpad"><li><a href="{route('homepage', l)}">{HOME[l]}</a></li><li><a href="{route(parent, l)}">{CRUMB[parent][l]}</a></li><li aria-current="page">{R.e(h1)}</li></ol>
 <h1 id="h1">{R.e(h1)}</h1><p class="lead">{R.e(lead)}</p></div></div></section>

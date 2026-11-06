@@ -13,11 +13,14 @@
   if (/\/(producten|products|produits)\//.test(here)) document.getElementById('mm-btn')?.classList.add('is-cur');
 
   /* ---------- megamenu + drawer ---------- */
-  const mmBtn = document.getElementById('mm-btn'), mm = document.getElementById('mm');
-  const closeMm = () => { mm.hidden = true; mmBtn.setAttribute('aria-expanded', 'false'); };
-  mmBtn.addEventListener('click', () => { const o = mm.hidden; mm.hidden = !o; mmBtn.setAttribute('aria-expanded', o); });
-  document.addEventListener('click', e => { if (!mm.hidden && !mm.contains(e.target) && !mmBtn.contains(e.target)) closeMm(); });
-  mm.addEventListener('click', e => { if (e.target.closest('a')) closeMm(); });
+  /* Producten en Diensten: zelfde paneel onder het menu; er staat er altijd maar één open */
+  const MENUS = [['mm-btn', 'mm'], ['dd-btn', 'dd-diensten']].map(([b, p]) => ({ btn: document.getElementById(b), panel: document.getElementById(p) }));
+  const closeMm = () => MENUS.forEach(m => { m.panel.hidden = true; m.btn.setAttribute('aria-expanded', 'false'); });
+  MENUS.forEach(m => {
+    m.btn.addEventListener('click', () => { const open = m.panel.hidden; closeMm(); m.panel.hidden = !open; m.btn.setAttribute('aria-expanded', open); });
+    m.panel.addEventListener('click', e => { if (e.target.closest('a')) closeMm(); });
+  });
+  document.addEventListener('click', e => { if (!MENUS.some(m => m.panel.contains(e.target) || m.btn.contains(e.target))) closeMm(); });
   const drawer = document.getElementById('drawer'), mOpen = document.getElementById('m-open');
   const openDrawer = (v, f) => { drawer.hidden = !v; mOpen.setAttribute('aria-expanded', v); document.body.style.overflow = v ? 'hidden' : ''; (v ? document.getElementById(f || 'm-close') : mOpen).focus(); };
   mOpen.addEventListener('click', () => openDrawer(true));
@@ -343,7 +346,7 @@
   document.addEventListener('keydown', e => {
     const typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
     if (((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) && ask.hidden) { e.preventDefault(); openAsk(); }
-    if (e.key === 'Escape' && ask.hidden) { closeMm(); if (!drawer.hidden) openDrawer(false); }
+    if (e.key === 'Escape' && ask.hidden) { const m = MENUS.find(x => !x.panel.hidden); closeMm(); m?.btn.focus(); if (!drawer.hidden) openDrawer(false); }
   });
 
   /* =====================================================================
@@ -418,14 +421,7 @@
   }));
 
   /* ---------- Diensten-dropdown ---------- */
-  const ddBtn = document.getElementById('dd-btn'), dd = document.getElementById('dd-diensten');
-  if (ddBtn) {
-    const setDd = open => { dd.hidden = !open; ddBtn.setAttribute('aria-expanded', open); };
-    ddBtn.addEventListener('click', e => { e.stopPropagation(); setDd(dd.hidden); });
-    document.addEventListener('click', e => { if (!e.target.closest('.dd')) setDd(false); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !dd.hidden) { setDd(false); ddBtn.focus(); } });
-    if ([...document.querySelectorAll('#dd-diensten a')].some(x => new URL(x.href).pathname === here)) ddBtn.classList.add('is-cur');
-  }
+  if ([...document.querySelectorAll('#dd-diensten a')].some(x => new URL(x.href).pathname === here)) document.getElementById('dd-btn').classList.add('is-cur');
 
   /* ---------- offerteaanvraag (prijsloos ‘winkelmandje’, per bezoeker in localStorage) ---------- */
   const CATALOG = {

@@ -271,3 +271,12 @@ Uw besparing per post ¦ Your saving per item ¦ Votre économie par poste
 Terugverdientijd berekenen ¦ Calculate payback time ¦ Calculer le délai d'amortissement
 Besparing ¦ Saving ¦ Économie
 Berekening ¦ Calculation ¦ Calcul
+Analyse en advies ¦ Analysis and advice ¦ Analyse et conseils
+Totaal oliebeheer ¦ Total oil management ¦ Gestion totale de l'huile
+Meten, reinigen en opvolgen ¦ Measure, clean and monitor ¦ Mesurer, nettoyer et suivre
+Olieanalyse uitgelegd ¦ Oil analysis explained ¦ L'analyse d'huile expliquée
+Rapport lezen en oliestaal nemen ¦ Reading the report and taking a sample ¦ Lire le rapport et prélever un échantillon
+Online hulpmiddelen ¦ Online tools ¦ Outils en ligne
+Verhuur en offerte ¦ Rental and quotes ¦ Location et devis
+Op maat van uw installatie ¦ Tailored to your installation ¦ Adapté à votre installation
+Een labo-analyse met persoonlijk advies. ¦ A lab analysis with personal advice. ¦ Une analyse en laboratoire avec des conseils personnalisés.
