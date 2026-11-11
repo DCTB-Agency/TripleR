@@ -12,7 +12,10 @@ Inhoud die op de site staat, maar nog door Triple R bevestigd moet worden. De ma
 - [ ] **30 jaar Triple R Europe (2020):** de oprichting staat op 1992, dat is 28 jaar. Klopt het jaartal?
 - [ ] **Slogan en marktleider:** "de originele en nog steeds de beste" en "onbetwiste marktleider" zijn overgenomen. Willen jullie die claims en de 45 en 40 jaar zo gebruiken?
 - [ ] **ISO 14001 en ISO 9001:** staan nu als geschiedenis in de tijdlijn (2004 en 2012). Zijn ze nog geldig?
-- [ ] **Functie Maxim Van Uytven:** de site zegt Managing Director, de brief Sales Manager.
+- [ ] **Vacature servicetechnicus:** de tekst zegt "37 jaar", de Over ons-pagina "45 jaar" en "meer dan 40 jaar". Welk getal gebruiken we?
+- [ ] **Tweede vacature:** tekst aanleveren; het overzicht en de build zijn er klaar voor (`content/vacatures.py`).
+- [ ] **Bewaartermijn cv's:** sollicitaties en cv's worden bewaard in Netlify (opslag `leads` en `cvs`). Hoelang bewaren we ze, en wie ruimt ze op?
+- [x] **Functie Maxim Van Uytven:** CEO (bevestigd 11/11/2026, overal aangepast).
 - [ ] **Gratis olieanalyse:** voorwaarden (1 staal, Benelux en Frankrijk, alleen bedrijven), exacte metingen en doorlooptijd. De [X] werkdagen is weggehaald tot er een termijn is.
 - [ ] **Prijs filterelement** (€ 25 tot € 90) en de aannames in de besparingscalculator.
 - [ ] **Besparingsrapport als PDF:** de site belooft een PDF. Die wordt nog niet automatisch gemaakt: sales krijgt de waarden per mail en stuurt het rapport zelf.
@@ -87,3 +90,27 @@ Inhoud die op de site staat, maar nog door Triple R bevestigd moet worden. De ma
 - prijs tonen: “n type en maat. Eén element volstaat voor tanks tot 1.000 l.”
 - voorwaarden: “ zijn gratis voor bedrijven, voor één staal per installatie.”
 - direct nummer: “20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/> +32 (0)3 825 46 47”
+
+## Ronde 'Website attentie puntjes' (11/11/2026)
+- [x] **Tijdwinst-cijfer**: geen cijfer; 'Minder stilstand' blijft zonder cijfer.
+- **Reuse '30 jaar'**: de tekst zegt nu 'sommige klanten al meer dan 30 jaar' (was 20). Klopt dit, en waar gaat het over (dezelfde olie, of dezelfde machine)?
+- **Marc**: in de begroeting staat 'u' in plaats van 'je', zoals de rest van de site. Akkoord?
+- **Team**: foto's van Maxim, Lily en Valérie komen van LinkedIn; akkoord gegeven (11/11/2026). Naam Lily Bastiaens – Van Uytven, zoals op LinkedIn (bevestigd). Foto van Shani ontbreekt nog.
+- [x] **CEO vs managing director**: overal CEO (bevestigd).
+- **Tijdlijn**: historische foto's per jaartal (nu alleen 2019 = kantoor en 2022 = team; de rest heeft een icoon).
+- **Sectorfoto's**: de foto's van de oude site zijn maar 300 px breed en worden wat wazig op grote schermen. Grotere versies?
+- **Filterelement-doorsnede**: de tekening van de oude site is 507 px. Een grotere versie of de bronfile (Illustrator/PDF)?
+- **Diensten-pagina** (voorbeeld TRIS): bestaat er een aparte Diensten-pagina met kaarten (assemblage & engineering, diensten ter plaatse, olieanalyse, installatie & reparatie, verhuur)? Welke diensten biedt Triple R Europe zelf aan, en met welke foto's?
+- **Video homepage**: wordt vervangen; nieuwe video volgt van de klant.
+
+## Productlijst opgekuist (11/11/2026)
+- Verwijderd: TR-serie, centrifuges, BF-15, BF-20, SE50E-BH, WS-WD-1PF, WS-SU103-1R-WS20. Oude URL's van de TR-serie en centrifuges verwijzen nu door naar het productoverzicht.
+- SE200E Mobile High Flow staat niet meer onder Vulpompen (wel nog bij SE Mobile). Te bevestigen of hij volledig weg moet.
+- Nieuw: VP20 vul- en overpomp, 20 l/min. Nog nodig: foto, artikelnummer, datasheet.
+- Foto AL100-HP (stalen huis): bestand nodig; de foto in de chat kon niet als bestand worden opgeslagen.
+
+## Over ons – copycheck (11/11/2026)
+- **Oprichtingsjaar**: de tijdlijn zegt "1992 oprichting Triple R Europe NV" en "2020: 30 jaar Triple R Europe" (dat wijst op 1990). Zo staat het ook op de huidige site. Welk jaar klopt?
+- **Jubileumclaims**: "45 jaar" en "meer dan 40 jaar" (oude tekst) spraken elkaar tegen en passen niet bij "jaren 1960". Nu neutraal geformuleerd als "decennia". Een exact aantal jaren mag terug als het bevestigd is.
+- **Tijdlijnfoto's** 1974, 1992 en 2013 komen uit de eigen mediabibliotheek van de huidige site (filterelementen, nieuwe elementen, assemblage-unit): illustratief, geen historische foto's. Echte archieffoto's zijn welkom.
+- **Valérie**: op LinkedIn met accent ("Valérie"), op de site "Valerie". Welke schrijfwijze?

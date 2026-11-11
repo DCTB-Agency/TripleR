@@ -418,7 +418,7 @@ The mobile rules live in the last block of `site.css` (≤ 767 px). They make pa
 
 - **Copy:** 34 changes from the client's Word document were applied via `copy/copytool.py import`. The main ones:
   - vacuümontwateraar → **vacuümdroger**, now also in the catalogue, menu and search synonyms;
-  - Maxim Van Uytven → **Managing Director**;
+  - Maxim Van Uytven → **CEO**;
   - "propere olie";
   - "drie soorten vervuiling" (the section still shows 4 cards; [CONFIRM]).
 - **Reference carousel:** both lists are now identical (14 names). Typos fixed: "multinations" → "multinationals", "KMO's" → "kmo's".

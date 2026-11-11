@@ -31,11 +31,6 @@
    "s": "Ontluchters op basis van het cycloonprincipe."
   },
   {
-   "id": "proces",
-   "n": "Koelvloeistof en proceswater",
-   "s": "Centrifuges zonder verbruiksmateriaal."
-  },
-  {
    "id": "elementen",
    "n": "Filterelementen",
    "s": "Vervangelementen en voorfilters voor alle Triple R-systemen."
@@ -74,16 +69,9 @@
   "hp": {
    "n": "Stalen huizen HP",
    "cat": "druk",
-   "img": null,
+   "img": "al100-hp.png",
    "pdf": "STEEL-housing-HP.pdf",
    "s": "Stalen bypasshuizen voor (koel)compressoren."
-  },
-  "tr": {
-   "n": "TR-serie",
-   "cat": "lagedruk",
-   "img": null,
-   "pdf": "TR-2019-ENGLISH.pdf",
-   "s": "Motorolie-reinigers voor dieselmotoren en generatoren, systemen onder 6 bar."
   },
   "ss": {
    "n": "SS-serie",
@@ -118,7 +106,7 @@
    "cat": "vullen",
    "img": null,
    "pdf": null,
-   "s": "Pompen om olie gefilterd over te pompen en machines te vullen."
+   "s": "Pompen om olie te vullen en over te pompen."
   },
   "vacuum": {
    "n": "Vacuümdroger",
@@ -140,13 +128,6 @@
    "img": "quicktoron.png",
    "pdf": "QUICKTORON-2023-ENGLISH.pdf",
    "s": "Cycloon-ontluchter in roestvast staal."
-  },
-  "centrifuges": {
-   "n": "Centrifuges",
-   "cat": "proces",
-   "img": "centrifuge.png",
-   "pdf": "Centrifuges_2014_UK-1.pdf",
-   "s": "Deeltjes en slib uit koelvloeistof en proceswater."
   },
   "el-m": {
    "n": "M-elementen",
@@ -780,140 +761,6 @@
    "hidden": false
   },
   {
-   "id": "bf-15",
-   "series": "hp",
-   "n": "BF-15",
-   "art": "TR-18100",
-   "old": null,
-   "s": "Stalen bypasshuis voor (koel)compressoren, direct op de drukleiding, met M-element dat ammoniak verdraagt.",
-   "specs": [
-    [
-     "Debiet",
-     "ca, 1,5 l/min"
-    ],
-    [
-     "Max. druk",
-     "40 bar"
-    ],
-    [
-     "Aansluiting in/uit",
-     "1/4\" x 1/4\" BSPT"
-    ],
-    [
-     "Element",
-     "M30"
-    ],
-    [
-     "Gewicht",
-     "8 kg"
-    ],
-    [
-     "Afmetingen",
-     "168 x 154 mm"
-    ],
-    [
-     "Materiaal",
-     "staal 52/3"
-    ],
-    [
-     "Certificaat",
-     "drukproefcertificaat per huis"
-    ]
-   ],
-   "fluid": [
-    "comp"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": [
-    0,
-    300
-   ],
-   "volGrey": null,
-   "flow": 1.5,
-   "elements": [
-    "m30"
-   ],
-   "fits": [],
-   "page": 2,
-   "confirm": [
-    "Datasheet: pagina 1 vermeldt 25 bar, de specificatietabel 40 bar"
-   ],
-   "img": null,
-   "cat": "druk",
-   "pdf": "STEEL-housing-HP.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "bf-20",
-   "series": "hp",
-   "n": "BF-20",
-   "art": "TR-18120",
-   "old": null,
-   "s": "Stalen bypasshuis voor (koel)compressoren, direct op de drukleiding, met M-element dat ammoniak verdraagt.",
-   "specs": [
-    [
-     "Debiet",
-     "ca, 2,0 l/min"
-    ],
-    [
-     "Max. druk",
-     "40 bar"
-    ],
-    [
-     "Aansluiting in/uit",
-     "1/4\" x 3/8\" BSPT"
-    ],
-    [
-     "Element",
-     "M50"
-    ],
-    [
-     "Gewicht",
-     "12 kg"
-    ],
-    [
-     "Afmetingen",
-     "189 x 250 mm"
-    ],
-    [
-     "Materiaal",
-     "staal 52/3"
-    ],
-    [
-     "Certificaat",
-     "drukproefcertificaat per huis"
-    ]
-   ],
-   "fluid": [
-    "comp"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": [
-    300,
-    450
-   ],
-   "volGrey": 300,
-   "flow": 2.0,
-   "elements": [
-    "m50"
-   ],
-   "fits": [],
-   "page": 2,
-   "confirm": [
-    "Datasheet: pagina 1 vermeldt 25 bar, de specificatietabel 40 bar"
-   ],
-   "img": null,
-   "cat": "druk",
-   "pdf": "STEEL-housing-HP.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
    "id": "al100-hp",
    "series": "hp",
    "n": "AL100-HP",
@@ -974,249 +821,9 @@
    "confirm": [
     "Datasheet: pagina 1 vermeldt 25 bar, de specificatietabel 40 bar"
    ],
-   "img": null,
+   "img": "al100-hp.png",
    "cat": "druk",
    "pdf": "STEEL-housing-HP.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "al100",
-   "series": "tr",
-   "n": "AL100",
-   "art": "TR-10450",
-   "old": null,
-   "s": "Bypassfilter voor motorolie, voor motoren met minder dan 45 l olie.",
-   "specs": [
-    [
-     "Motorolievolume",
-     "< 45 l"
-    ],
-    [
-     "Max. debiet",
-     "< 0,5 l/min"
-    ],
-    [
-     "Max. druk",
-     "6 bar"
-    ],
-    [
-     "Aansluiting in/uit",
-     "1/4\" x 3/8\" BSPT"
-    ],
-    [
-     "Elementen",
-     "E100, X100 of D100"
-    ],
-    [
-     "Gewicht",
-     "5,5 kg"
-    ]
-   ],
-   "fluid": [
-    "eng",
-    "lube"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": [
-    0,
-    45
-   ],
-   "volGrey": null,
-   "flow": 0.5,
-   "elements": [
-    "e100",
-    "x100",
-    "d100"
-   ],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": null,
-   "cat": "lagedruk",
-   "pdf": "TR-2019-ENGLISH.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "al200",
-   "series": "tr",
-   "n": "AL200",
-   "art": "TR-121048",
-   "old": null,
-   "s": "Bypassfilter voor motorolie, voor motoren met minder dan 100 l olie.",
-   "specs": [
-    [
-     "Motorolievolume",
-     "< 100 l"
-    ],
-    [
-     "Max. debiet",
-     "< 1,0 l/min"
-    ],
-    [
-     "Max. druk",
-     "6 bar"
-    ],
-    [
-     "Aansluiting in/uit",
-     "1/4\" x 3/8\" BSPT"
-    ],
-    [
-     "Elementen",
-     "E100, X100 of D100"
-    ],
-    [
-     "Gewicht",
-     "12 kg"
-    ]
-   ],
-   "fluid": [
-    "eng",
-    "lube"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": [
-    0,
-    100
-   ],
-   "volGrey": null,
-   "flow": 1.0,
-   "elements": [
-    "e100",
-    "x100",
-    "d100"
-   ],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": null,
-   "cat": "lagedruk",
-   "pdf": "TR-2019-ENGLISH.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "al300",
-   "series": "tr",
-   "n": "AL300",
-   "art": "TR-121049",
-   "old": null,
-   "s": "Bypassfilter voor motorolie, voor motoren met minder dan 150 l olie.",
-   "specs": [
-    [
-     "Motorolievolume",
-     "< 150 l"
-    ],
-    [
-     "Max. debiet",
-     "< 1,5 l/min"
-    ],
-    [
-     "Max. druk",
-     "6 bar"
-    ],
-    [
-     "Aansluiting in/uit",
-     "1/4\" x 3/8\" BSPT"
-    ],
-    [
-     "Elementen",
-     "E100, X100 of D100"
-    ],
-    [
-     "Gewicht",
-     "18 kg"
-    ]
-   ],
-   "fluid": [
-    "eng",
-    "lube"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": [
-    0,
-    150
-   ],
-   "volGrey": null,
-   "flow": 1.5,
-   "elements": [
-    "e100",
-    "x100",
-    "d100"
-   ],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": null,
-   "cat": "lagedruk",
-   "pdf": "TR-2019-ENGLISH.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "al400",
-   "series": "tr",
-   "n": "AL400",
-   "art": "TR-121051",
-   "old": null,
-   "s": "Bypassfilter voor motorolie, voor motoren met minder dan 200 l olie.",
-   "specs": [
-    [
-     "Motorolievolume",
-     "< 200 l"
-    ],
-    [
-     "Max. debiet",
-     "< 2,0 l/min"
-    ],
-    [
-     "Max. druk",
-     "6 bar"
-    ],
-    [
-     "Aansluiting in/uit",
-     "1/4\" x 3/8\" BSPT"
-    ],
-    [
-     "Elementen",
-     "E100, X100 of D100"
-    ],
-    [
-     "Gewicht",
-     "25 kg"
-    ]
-   ],
-   "fluid": [
-    "eng",
-    "lube"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": [
-    0,
-    200
-   ],
-   "volGrey": null,
-   "flow": 2.0,
-   "elements": [
-    "e100",
-    "x100",
-    "d100"
-   ],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": null,
-   "cat": "lagedruk",
-   "pdf": "TR-2019-ENGLISH.pdf",
    "also": [],
    "hidden": false
   },
@@ -1582,73 +1189,6 @@
    "img": "ss.png",
    "cat": "lagedruk",
    "pdf": "SS-2019-ENGLISH-.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "se50e-bh",
-   "series": "se",
-   "n": "SE50E-BH",
-   "art": "SE50BH",
-   "old": null,
-   "s": "Offline oliereiniger met eigen motor-pompgroep en 1 element, CE-gecertificeerd.",
-   "specs": [
-    [
-     "Debiet",
-     "1,6 l/min"
-    ],
-    [
-     "Motor",
-     "230 V x 1 of 400 V x 3, 50/60 Hz"
-    ],
-    [
-     "Vermogen",
-     "0,12 kW (230 V) / 0,18 kW (400 V)"
-    ],
-    [
-     "Aansluiting",
-     "1/2\" in en uit"
-    ],
-    [
-     "Elementen",
-     "1 × 50-formaat"
-    ],
-    [
-     "Overdrukventiel",
-     "6,0 bar"
-    ],
-    [
-     "Gewicht",
-     "17,0 kg"
-    ],
-    [
-     "Afmetingen",
-     "363 x 230 x 460 mm"
-    ]
-   ],
-   "fluid": [
-    "hyd"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": [
-    0,
-    500
-   ],
-   "volGrey": null,
-   "flow": 1.6,
-   "elements": [
-    "m50",
-    "e50",
-    "x50"
-   ],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": "se.png",
-   "cat": "offline",
-   "pdf": "SE-2019-ENGLISH.pdf",
    "also": [],
    "hidden": false
   },
@@ -2201,9 +1741,7 @@
    "img": "se.png",
    "cat": "offline",
    "pdf": "SE-Mobile-2023-ENGLISH.pdf",
-   "also": [
-    "vullen"
-   ],
+   "also": [],
    "hidden": false
   },
   {
@@ -2756,124 +2294,6 @@
    "hidden": false
   },
   {
-   "id": "ws-wd-1pf",
-   "series": "ws",
-   "n": "WS-WD-1PF",
-   "art": "TR-16100",
-   "old": null,
-   "s": "Olie-waterafscheider op basis van coalescentie, met kijkglas en snelle waterafvoer.",
-   "specs": [
-    [
-     "Debiet",
-     "1,8 l/min"
-    ],
-    [
-     "Motor",
-     "230 V x 1 of 400 V x 3, 50 Hz"
-    ],
-    [
-     "Vermogen",
-     "0,12 kW (230 V) / 0,37 kW (400 V)"
-    ],
-    [
-     "Elementen",
-     "1 × WS10 + 1 × PF10"
-    ],
-    [
-     "Overdrukventiel",
-     "4,5 bar"
-    ],
-    [
-     "Gewicht",
-     "27,4 kg"
-    ],
-    [
-     "Afmetingen",
-     "570 x 300 x 500 mm"
-    ]
-   ],
-   "fluid": [
-    "hyd",
-    "lube"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": null,
-   "volGrey": null,
-   "flow": 1.8,
-   "elements": [
-    "ws10"
-   ],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": "ws.png",
-   "cat": "water",
-   "pdf": "WS-2019-ENGLISH.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "ws-su103-1r-ws20",
-   "series": "ws",
-   "n": "WS-SU103-1R-WS20",
-   "art": "TR-16300",
-   "old": null,
-   "s": "Olie-waterafscheider op basis van coalescentie, met kijkglas en snelle waterafvoer.",
-   "specs": [
-    [
-     "Debiet",
-     "6,0 l/min"
-    ],
-    [
-     "Motor",
-     "230 V x 1 of 400 V x 3, 50 Hz"
-    ],
-    [
-     "Vermogen",
-     "0,12 kW (230 V) / 0,37 kW (400 V)"
-    ],
-    [
-     "Elementen",
-     "3 × WG100 + 3 × WS20"
-    ],
-    [
-     "Overdrukventiel",
-     "4,5 bar"
-    ],
-    [
-     "Gewicht",
-     "95,0 kg"
-    ],
-    [
-     "Afmetingen",
-     "440 x 955 x 1045 mm"
-    ]
-   ],
-   "fluid": [
-    "hyd",
-    "lube"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": null,
-   "volGrey": null,
-   "flow": 6.0,
-   "elements": [
-    "wg100"
-   ],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": "ws.png",
-   "cat": "water",
-   "pdf": "WS-2019-ENGLISH.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
    "id": "trqt-50-sus",
    "series": "quicktoron",
    "n": "Quicktoron TRQT-50-SUS",
@@ -2992,246 +2412,6 @@
    "img": "quicktoron.png",
    "cat": "lucht",
    "pdf": "QUICKTORON-2023-ENGLISH.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "trs30-m",
-   "series": "centrifuges",
-   "n": "Centrifuge TRS30-M",
-   "art": "TRS30-M",
-   "old": null,
-   "s": "Manueele centrifuge voor koelvloeistof, emulsies en proceswater, zonder verbruiksmateriaal.",
-   "specs": [
-    [
-     "Max. debiet",
-     "30 l/min (waterbasis; bij olie 50%)"
-    ],
-    [
-     "Motor",
-     "400 V x 3, 50 Hz"
-    ],
-    [
-     "Vermogen",
-     "0,75 kW"
-    ],
-    [
-     "Toerental",
-     "2.810 tpm"
-    ],
-    [
-     "Bediening",
-     "manueel"
-    ],
-    [
-     "Afmetingen",
-     "300 x 500 x 377 mm"
-    ],
-    [
-     "Gewicht",
-     "55 kg"
-    ],
-    [
-     "Olie",
-     "max. 20 cSt bij werktemperatuur"
-    ]
-   ],
-   "fluid": [
-    "cool"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": null,
-   "volGrey": null,
-   "flow": 30,
-   "elements": [],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": "centrifuge.png",
-   "cat": "proces",
-   "pdf": "Centrifuges_2014_UK-1.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "trs50-m",
-   "series": "centrifuges",
-   "n": "Centrifuge TRS50-M",
-   "art": "TRS50-M",
-   "old": null,
-   "s": "Manueele centrifuge voor koelvloeistof, emulsies en proceswater, zonder verbruiksmateriaal.",
-   "specs": [
-    [
-     "Max. debiet",
-     "50 l/min (waterbasis; bij olie 50%)"
-    ],
-    [
-     "Motor",
-     "400 V x 3, 50 Hz"
-    ],
-    [
-     "Vermogen",
-     "1,5 kW"
-    ],
-    [
-     "Toerental",
-     "1.881 tpm"
-    ],
-    [
-     "Bediening",
-     "manueel"
-    ],
-    [
-     "Afmetingen",
-     "380 x 650 x 422 mm"
-    ],
-    [
-     "Gewicht",
-     "100 kg"
-    ],
-    [
-     "Olie",
-     "max. 20 cSt bij werktemperatuur"
-    ]
-   ],
-   "fluid": [
-    "cool"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": null,
-   "volGrey": null,
-   "flow": 50,
-   "elements": [],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": "centrifuge.png",
-   "cat": "proces",
-   "pdf": "Centrifuges_2014_UK-1.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "trs100-a",
-   "series": "centrifuges",
-   "n": "Centrifuge TRS100-A",
-   "art": "TRS100-A",
-   "old": null,
-   "s": "Automatische centrifuge voor koelvloeistof, emulsies en proceswater, zonder verbruiksmateriaal.",
-   "specs": [
-    [
-     "Max. debiet",
-     "100 l/min (waterbasis; bij olie 50%)"
-    ],
-    [
-     "Motor",
-     "400 V x 3, 50 Hz"
-    ],
-    [
-     "Vermogen",
-     "3,7 kW"
-    ],
-    [
-     "Toerental",
-     "3.000 tpm"
-    ],
-    [
-     "Bediening",
-     "automatisch"
-    ],
-    [
-     "Afmetingen",
-     "630 x 1100 x 1768 mm"
-    ],
-    [
-     "Gewicht",
-     "650 kg"
-    ],
-    [
-     "Olie",
-     "max. 20 cSt bij werktemperatuur"
-    ]
-   ],
-   "fluid": [
-    "cool"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": null,
-   "volGrey": null,
-   "flow": 100,
-   "elements": [],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": "centrifuge.png",
-   "cat": "proces",
-   "pdf": "Centrifuges_2014_UK-1.pdf",
-   "also": [],
-   "hidden": false
-  },
-  {
-   "id": "trs200-a",
-   "series": "centrifuges",
-   "n": "Centrifuge TRS200-A",
-   "art": "TRS200-A",
-   "old": null,
-   "s": "Automatische centrifuge voor koelvloeistof, emulsies en proceswater, zonder verbruiksmateriaal.",
-   "specs": [
-    [
-     "Max. debiet",
-     "200 l/min (waterbasis; bij olie 50%)"
-    ],
-    [
-     "Motor",
-     "400 V x 3, 50 Hz"
-    ],
-    [
-     "Vermogen",
-     "5,5 kW"
-    ],
-    [
-     "Toerental",
-     "2.500 tpm"
-    ],
-    [
-     "Bediening",
-     "automatisch"
-    ],
-    [
-     "Afmetingen",
-     "730 x 1200 x 1768 mm"
-    ],
-    [
-     "Gewicht",
-     "750 kg"
-    ],
-    [
-     "Olie",
-     "max. 20 cSt bij werktemperatuur"
-    ]
-   ],
-   "fluid": [
-    "cool"
-   ],
-   "version": [
-    "stationair"
-   ],
-   "vol": null,
-   "volGrey": null,
-   "flow": 200,
-   "elements": [],
-   "fits": [],
-   "page": 2,
-   "confirm": [],
-   "img": "centrifuge.png",
-   "cat": "proces",
-   "pdf": "Centrifuges_2014_UK-1.pdf",
    "also": [],
    "hidden": false
   },
@@ -4757,16 +3937,20 @@
    "hidden": false
   },
   {
-   "id": "vulpomp",
+   "id": "vp20",
    "series": "vp",
-   "n": "Vulpompen",
+   "n": "VP20",
    "art": null,
    "old": null,
-   "s": "Vulpompen om olie gefilterd over te pompen en machines te vullen. Modellen en specificaties volgen.",
+   "s": "Pomp om olie te vullen en over te pompen, met een debiet van 20 l/min.",
    "specs": [
     [
+     "Debiet",
+     "20 l/min"
+    ],
+    [
      "Toepassing",
-     "olie overpompen en machines vullen"
+     "olie vullen en overpompen"
     ]
    ],
    "fluid": [
@@ -4778,12 +3962,12 @@
    ],
    "vol": null,
    "volGrey": null,
-   "flow": null,
+   "flow": 20.0,
    "elements": [],
    "fits": [],
    "page": 2,
    "confirm": [
-    "Modellen, artikelnummers, foto en datasheet van de vulpompen aanleveren"
+    "Foto, artikelnummer en datasheet van de VP20 aanleveren"
    ],
    "img": null,
    "cat": "vullen",

@@ -1,0 +1,44 @@
+<title>Vacatures</title>
+<meta name="description" content="Vacatures">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.f{display:grid;gap:6px}
+.f label{font-size:var(--fs-sm);font-weight:500}
+.f label em{font-style:normal;font-weight:400;color:var(--grey-600)}
+.f input,.f select,.f textarea{height:46px;padding:0 14px;border:1px solid var(--grey-200);border-radius:var(--radius);font:inherit;background:#fff;color:var(--ink);width:100%}
+.f textarea{height:150px;padding:12px 14px;resize:vertical;line-height:1.5}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--blue-700);box-shadow:0 0 0 4px var(--blue-50)}
+.f [aria-invalid="true"]{border-color:var(--err-700)}
+.f .err{font-size:12.5px;color:var(--err-700);font-weight:500}
+.f .hint{font-size:12.5px;color:var(--grey-600)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--grey-600)}
+.chk input{width:20px;height:20px;margin-top:1px;accent-color:var(--blue-700);flex:none}
+</style>
+{{HEADER}}
+<main id="main">
+{{KB}}
+</main>
+{{FOOTER}}
+<script src="site.js"></script>
+<script>
+(() => {
+  const f = document.querySelector('form[data-apply]'); if (!f) return;
+  const $ = id => document.getElementById(id);
+  const ok = { 'a-name': v => v.trim().length > 1, 'a-mail': v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) };
+  const cvOk = () => { const x = $('a-cv').files[0]; return !!x && x.size <= 4 * 1024 * 1024 && /\.(pdf|docx?)$/i.test(x.name); };
+  f.addEventListener('submit', async e => {
+    e.preventDefault(); let first = null;
+    Object.entries(ok).forEach(([id, t]) => { const el = $(id), bad = !t(el.value); el.setAttribute('aria-invalid', bad); $(id + '-e').hidden = !bad; if (bad && !first) first = el; });
+    const cv = cvOk(); $('a-cv').setAttribute('aria-invalid', !cv); $('a-cv-e').hidden = cv; if (!cv && !first) first = $('a-cv');
+    const c = $('a-ok'); $('a-ok-e').hidden = c.checked; if (!c.checked && !first) first = c;
+    if (first) { first.focus(); return; }
+    if (!await window.RRRLead.send('sollicitatie', f, { email: 'a-mail', name: 'a-name', phone: 'a-tel', message: 'a-msg', consent: 'a-ok' }, { Vacature: f.dataset.job })) return;
+    window.dataLayer?.push({ event: 'lead_sollicitatie', job: f.dataset.jobId });
+    f.innerHTML = `<div role="status" tabindex="-1"><h3>${f.dataset.thanks}</h3><p style="margin-top:8px">${f.dataset.thanksP}</p></div>`;
+    f.firstElementChild.focus();
+  });
+})();
+</script>

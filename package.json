@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "python3 build/site.py",
-    "check": "python3 build/site.py && python3 build/check.py && node build/lead.test.mjs"
+    "build": "python3 build/i18n_merge.py && python3 build/site.py",
+    "check": "python3 build/i18n_merge.py && python3 build/site.py && python3 build/check.py && node build/lead.test.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^8.1.0"

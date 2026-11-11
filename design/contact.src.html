@@ -15,6 +15,10 @@
 .f .hint{font-size:12.5px;color:var(--grey-600)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4)}
 .chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--grey-600)}
+.ct-tips{padding:var(--s-4) var(--s-5);border-radius:var(--radius);background:var(--blue-50);font-size:var(--fs-sm)}
+.ct-tips ul{margin:var(--s-2) 0 0;padding-left:1.1em;columns:2;column-gap:var(--s-6)}
+.ct-tips li{margin-bottom:3px;break-inside:avoid}
+@media (max-width:559px){.ct-tips ul{columns:1}}
 .chk input{width:20px;height:20px;margin-top:1px;accent-color:var(--blue-700);flex:none}
 </style>
 {{HEADER}}
@@ -61,7 +65,8 @@
       <div class="f"><label for="c-mail">E-mail</label><input id="c-mail" name="email" type="email" autocomplete="email" required aria-describedby="c-mail-e"><span class="err" id="c-mail-e" hidden>Vul een geldig e-mailadres in.</span></div>
       <div class="f"><label for="c-tel">Telefoon <em>(optioneel)</em></label><input id="c-tel" name="phone" type="tel" autocomplete="tel"></div>
       <div class="f"><label for="c-land">Land</label><select id="c-land" name="country"><option>België</option><option>Nederland</option><option>Luxemburg</option><option>Frankrijk</option><option>Duitsland</option><option value="Finland">Finland</option><option>Ander land</option></select></div>
-      <div class="f"><label for="c-msg">Bericht</label><textarea id="c-msg" name="message" required aria-describedby="c-msg-e"></textarea><span class="err" id="c-msg-e" hidden>Vul uw bericht in.</span></div>
+      <div class="ct-tips" id="c-tips"><p><b>Handig om te vermelden voor een snellere service</b></p><ul><li>Type olie</li><li>Merk olie</li><li>Viscositeit</li><li>Volume olietank</li><li>Applicatie of toepassing</li><li>Doel of gewenst resultaat</li><li>Mobiele of stationaire oplossing</li><li>Probleem (vaste deeltjes, water, varnish, luchtbellen, …)</li></ul></div>
+      <div class="f"><label for="c-msg">Bericht</label><textarea id="c-msg" name="message" required aria-describedby="c-tips c-msg-e"></textarea><span class="err" id="c-msg-e" hidden>Vul uw bericht in.</span></div>
       <label class="chk"><input type="checkbox" id="c-ok" required><span>Ik ga akkoord dat Triple R mijn gegevens gebruikt om deze aanvraag te beantwoorden (<a href="privacy.html">privacybeleid</a>).</span></label>
       <span class="err" id="c-ok-e" hidden style="font-size:12.5px;color:var(--err-700);font-weight:500">Vink dit aan om te versturen.</span>
       <button class="btn btn--primary" type="submit">Verstuur bericht</button>

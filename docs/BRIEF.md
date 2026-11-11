@@ -38,7 +38,7 @@ All facts below come from the current website (scraped 24 Sep 2026). Items with 
 | Phone | +32 3 825 46 47 (display: +32 (0)3 825 46 47) |
 | Email | info@triple-r-europe.com |
 | VAT / KBO | BE 0448.276.293 |
-| People | Marc Van Uytven (CEO), Maxim Van Uytven (Sales Manager) |
+| People | Maxim Van Uytven (CEO), Lily Bastiaens – Van Uytven (CFO), Valerie Van Uytven (Marketing), Shani Catthoor (Office Manager). Marc Van Uytven (voormalig CEO, overleden) niet meer vermelden. |
 | Partner | Triple R Finland Oy AB — Murikantie 2B, 68410 Alaveteli, FI — Tony Skog (CEO) — +358 40 025 8091 |
 | Social | LinkedIn: https://www.linkedin.com/company/10456623/ |
 | Channel | Also sold via ERIKS (shop.eriks.nl lists "TRIPLE R Bypass filter olie reiniger") |
@@ -350,7 +350,7 @@ Convert every existing PDF case into an HTML page: Klant/sector, Uitdaging, Oplo
 10. Tandwielkastolie in windturbines schoon houden
 11. Varnish in kunststofinjectiemachines voorkomen
 12. Vacuümontwateraar, coalescer of cellulosefilter: welke waterverwijdering kiest u?
-Keep the 2 existing EN posts (translate/improve), add dates + author (Maxim or Marc Van Uytven, with Person schema) **[CONFIRM who signs]**.
+Keep the 2 existing EN posts (translate/improve), add dates + author (Maxim Van Uytven, with Person schema) **[CONFIRM who signs]**.
 
 ### 6.10 Over ons
 Story (US patent → Japan → Belgium 1992 → Aartselaar 2019 → new generation 2022), timeline component, team, facilities (Aartselaar HQ assembly & warehouse, Japanese element production), certifications, network (Finland partner, dealers), values (Reduce-Reuse-Recycle), CTA.

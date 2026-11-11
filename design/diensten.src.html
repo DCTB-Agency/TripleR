@@ -1,0 +1,188 @@
+<title>Diensten · Triple R</title>
+<meta name="description" content="Diensten van Triple R Europe">
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="site.css">
+<style>
+.dv-cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.dv-card{display:grid;grid-template-rows:auto 1fr;height:100%;border-radius:var(--radius-lg);overflow:hidden;background:#fff;border:var(--border);color:var(--ink);text-decoration:none;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.dv-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-float);color:var(--ink)}
+.dv-card:focus-visible{outline:none;box-shadow:var(--focus)}
+.dv-card__img{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:radial-gradient(80% 70% at 50% 45%,#fff 0%,#F1F4F8 60%,#E3E8EF 100%)}
+.dv-card__img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.dv-card__img--c img{object-fit:contain;padding:18px;mix-blend-mode:multiply}
+.dv-card:hover .dv-card__img img{transform:scale(1.04)}
+.dv-n{position:absolute;left:14px;top:14px;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--night-950);color:#fff;font:600 13px var(--font-mono)}
+.dv-card__b{display:grid;gap:8px;align-content:start;padding:var(--s-6) var(--s-6) var(--s-5)}
+.dv-k{font-size:var(--fs-xs);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:var(--blue-700)}
+.dv-card h3{font-size:1.375rem;letter-spacing:-.02em}
+.dv-card p{font-size:var(--fs-sm);color:var(--grey-600)}
+.dv-go{display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-weight:600;font-size:var(--fs-sm);color:var(--blue-700)}
+.dv-go svg{width:16px;height:16px;transition:transform var(--dur) var(--ease)}
+.dv-card:hover .dv-go svg{transform:translateX(3px)}
+.dv{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:clamp(2.5rem,1rem + 5vw,6rem);align-items:center;scroll-margin-top:90px}
+.dv--flip>figure{order:-1}
+.dv h2{font-size:var(--fs-h2);letter-spacing:var(--track-head)}
+.dv .dv-k{display:block;margin-bottom:var(--s-3)}
+.dv .lead{margin-top:var(--s-5)}
+.dv ul{list-style:none;margin:var(--s-6) 0 0;padding:0;display:grid;gap:10px}
+.dv li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start}
+.dv li svg{width:22px;height:22px;padding:4px;border-radius:50%;background:var(--blue-50);color:var(--blue-700)}
+.sec--tint .dv li svg{background:#fff}
+.dv .btns{margin-top:var(--s-8)}
+.dv figure{margin:0;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/3;background:radial-gradient(80% 70% at 50% 45%,#fff 0%,#F1F4F8 60%,#E3E8EF 100%)}
+.dv figure img{width:100%;height:100%;object-fit:cover;display:block}
+.dv figure.dv-c img{object-fit:contain;padding:8%;mix-blend-mode:multiply}
+.dv-tools{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-4);margin-top:var(--s-6)}
+.dv-tools a{display:grid;gap:6px;padding:var(--s-5);border-radius:var(--radius-lg);background:#fff;border:var(--border);color:var(--ink);text-decoration:none}
+.dv-tools a:hover{box-shadow:var(--shadow-card);color:var(--ink)}
+.dv-tools b{font-size:1.0625rem}
+.dv-tools span{font-size:var(--fs-sm);color:var(--grey-600)}
+@media (max-width:1023px){.dv-cards{grid-template-columns:1fr 1fr}.dv{grid-template-columns:1fr}.dv--flip>figure{order:0}}
+@media (max-width:599px){.dv-cards{grid-template-columns:1fr}.dv-tools{grid-template-columns:1fr}}
+</style>
+{{HEADER}}
+<main id="main">
+
+<section class="hero hero--page" aria-labelledby="h1">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero__copy" style="gap:0">
+      <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Diensten</li></ol>
+      <h1 id="h1">Diensten: van advies tot <span>onderhoud ter plaatse</span></h1>
+      <p class="lead">Triple R Europe levert meer dan filters. In onze werkplaats in Aartselaar stellen we units op maat samen en testen we ze. We installeren ze bij u, onderhouden ze ter plaatse, analyseren uw olie en verhuren toestellen. Zo blijft uw olie proper, van de eerste vraag tot jaren later.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="h-ov">
+  <div class="wrap">
+    <h2 id="h-ov" class="vh">Onze diensten</h2>
+    <ul class="dv-cards">
+      <li><a class="dv-card" href="#assemblage"><span class="dv-card__img"><img src="img/engineering.jpg" alt="" width="1200" height="900" loading="eager"><span class="dv-n">01</span></span><span class="dv-card__b"><span class="dv-k">Werkplaats in Aartselaar</span><h3>Assemblage en units op maat</h3><p>Units samengesteld, getest en gekeurd in onze eigen werkplaats.</p><span class="dv-go">Meer over assemblage <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span></a></li>
+      <li><a class="dv-card" href="#installatie"><span class="dv-card__img"><img src="img/industry.jpg" alt="" width="1800" height="1200"><span class="dv-n">02</span></span><span class="dv-card__b"><span class="dv-k">Bij u op de site</span><h3>Installatie en ingebruikname</h3><p>We plaatsen uw systeem en nemen het samen met u in gebruik.</p><span class="dv-go">Meer over installatie <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span></a></li>
+      <li><a class="dv-card" href="#onderhoud"><span class="dv-card__img"><img src="img/element-change.jpg" alt="" width="800" height="533"><span class="dv-n">03</span></span><span class="dv-card__b"><span class="dv-k">Technische ondersteuning</span><h3>Onderhoud ter plaatse</h3><p>Elementen vervangen, oliestalen nemen en storingen opsporen.</p><span class="dv-go">Meer over onderhoud <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span></a></li>
+      <li><a class="dv-card" href="#olieanalyse"><span class="dv-card__img"><img src="img/oil-samples.jpg" alt="" width="1400" height="933"><span class="dv-n">04</span></span><span class="dv-card__b"><span class="dv-k">Meten en opvolgen</span><h3>Olieanalyse en oliebeheer</h3><p>Weet hoe proper uw olie is, en houd ze zo.</p><span class="dv-go">Meer over olieanalyse <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span></a></li>
+      <li><a class="dv-card" href="#verhuur"><span class="dv-card__img dv-card__img--c"><img src="img/se.png" alt="" width="766" height="480"><span class="dv-n">05</span></span><span class="dv-card__b"><span class="dv-k">Tijdelijke capaciteit</span><h3>Verhuur</h3><p>Een oliereiniger of vacuümdroger tijdelijk huren.</p><span class="dv-go">Meer over verhuur <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span></a></li>
+      <li><a class="dv-card" href="#hulpmiddelen"><span class="dv-card__img dv-card__img--c"><img src="img/BU-Series.png" alt="" width="766" height="480"><span class="dv-n">06</span></span><span class="dv-card__b"><span class="dv-k">Online</span><h3>Systembuilder en besparingscalculator</h3><p>Stel zelf uw systeem samen en bereken wat schone olie oplevert.</p><span class="dv-go">Meer over de hulpmiddelen <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec sec--tint">
+  <div class="wrap dv" id="assemblage">
+    <div>
+      <span class="dv-k">01 · Werkplaats in Aartselaar</span>
+      <h2>Assemblage en units op maat</h2>
+      <p class="lead">In onze werkplaats in Aartselaar assembleren we Triple R-filtratie-units: filterhuizen, tandwielpompen, elektromotoren, manometers, kleppen, leidingwerk en frames. Van compacte wandunits en mobiele trolleys tot grote systemen met meerdere huizen.</p>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Een unit afgestemd op uw installatie.</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Elke unit getest en gekeurd voor ze vertrekt: druk, debiet, draairichting van de motor en lekdichtheid.</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Met testrapport en leveringsdocumenten.</span></li>
+      </ul>
+      <div class="btns"><a class="btn btn--primary" href="offerte.html">Vraag een unit op maat aan</a><a class="btn btn--secondary" href="filtration-systembuilder.html" lang="en">Filtration Systembuilder</a></div>
+    </div>
+    <figure><img src="img/engineering.jpg" alt="Een technicus assembleert een Triple R-unit in de werkplaats" width="1200" height="900" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap dv dv--flip" id="installatie">
+    <div>
+      <span class="dv-k">02 · Bij u op de site</span>
+      <h2>Installatie en ingebruikname</h2>
+      <p class="lead">We installeren uw systeem en nemen het in gebruik bij u op de site, bij industriële klanten in België en Nederland, en af en toe verder in het buitenland.</p>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Installatie en inbedrijfstelling op uw machine.</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Uitleg aan uw onderhoudsteam over de bediening en het onderhoud van het systeem.</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Een helder interventierapport.</span></li>
+      </ul>
+      <div class="btns"><a class="btn btn--primary" href="contact.html">Neem contact op</a></div>
+    </div>
+    <figure><img src="img/industry.jpg" alt="Onderhoudstechnicus bij een grote turbine in een industriële hal" width="1800" height="1200" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="sec sec--tint">
+  <div class="wrap dv" id="onderhoud">
+    <div>
+      <span class="dv-k">03 · Technische ondersteuning</span>
+      <h2>Onderhoud ter plaatse</h2>
+      <p class="lead">Ook na de installatie volgen we uw systeem op. Onze technicus komt langs om uw units in topconditie te houden.</p>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Filterelementen vervangen, zonder morsen: de afvalzak zit in de middenbuis.</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Oliestalen nemen.</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Storingen opsporen en verhelpen.</span></li>
+      </ul>
+      <div class="btns"><a class="btn btn--primary" href="contact.html">Plan een onderhoud</a><a class="btn btn--secondary" href="producten.html?cat=elementen">Filterelementen</a></div>
+    </div>
+    <figure><img src="img/element-change.jpg" alt="Een gebruikt Triple R-filterelement in het geopende filterhuis" width="800" height="533" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap dv dv--flip" id="olieanalyse">
+    <div>
+      <span class="dv-k">04 · Meten en opvolgen</span>
+      <h2>Olieanalyse en oliebeheer</h2>
+      <p class="lead">Een labo-analyse van uw olie met persoonlijk advies van een Triple R-specialist. Met ons oliebeheerprogramma nemen we een oliestaal voor en na het reinigen, en reinigen we de olie terwijl uw machine blijft draaien.</p>
+      <ul>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Deeltjestelling (ISO 4406), water, viscositeit en varnish.</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Een oliestaal voor en na het reinigen.</span></li>
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg><span>Reinigen zonder dat uw machine stilvalt.</span></li>
+      </ul>
+      <div class="btns"><a class="btn btn--primary" href="olieanalyse.html">Vraag een gratis olieanalyse aan</a><a class="btn btn--secondary" href="kb-beheer.html">Totaal oliebeheer</a></div>
+    </div>
+    <figure><img src="img/oil-samples.jpg" alt="Een oliestaal wordt in het labo overgegoten in een glazen kolf" width="1400" height="933" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="sec sec--tint">
+  <div class="wrap dv" id="verhuur">
+    <div>
+      <span class="dv-k">05 · Tijdelijke capaciteit</span>
+      <h2>Verhuur</h2>
+      <p class="lead">Hebt u een oliereiniger maar tijdelijk nodig, bijvoorbeeld voor een flushing na een revisie, een inbedrijfstelling of om eerst het resultaat te zien? Huur dan een Triple R-toestel.</p>
+      <div class="btns"><a class="btn btn--primary" href="verhuur.html">Bekijk de huurtoestellen</a></div>
+    </div>
+    <figure class="dv-c"><img src="img/se.png" alt="SE-serie offline oliereiniger" width="766" height="480" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap dv dv--flip" id="hulpmiddelen">
+    <div>
+      <span class="dv-k">06 · Online</span>
+      <h2>Systembuilder en besparingscalculator</h2>
+      <p class="lead">Twee hulpmiddelen om zelf aan de slag te gaan, voor u een specialist spreekt.</p>
+      <div class="dv-tools">
+        <a href="filtration-systembuilder.html"><b lang="en">Filtration Systembuilder</b><span>Stel uw filtersysteem samen</span></a>
+        <a href="besparingscalculator.html"><b>Besparingscalculator</b><span>Wat levert schone olie op?</span></a>
+      </div>
+    </div>
+    <figure class="dv-c"><img src="img/BU-Series.png" alt="BU-serie bypassfilters" width="766" height="480" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact" aria-labelledby="h-cta">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2 id="h-cta">Bespreek uw installatie met een specialist</h2>
+        <p class="lead">Beschrijf uw machines in 2 minuten en ontvang vrijblijvend advies over de juiste filteroplossing.</p>
+        <div class="btns"><a class="btn btn--light" href="contact.html">Vraag advies aan <svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div>
+      </div>
+      <div class="person">
+        <img src="img/team.jpg" alt="Het Triple R-team in het hoofdkantoor in Aartselaar" width="768" height="1024" loading="lazy">
+        <div class="person__links">
+          <a href="tel:+3238254647"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.4 20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg>+32 (0)3 825 46 47</a>
+          <a href="mailto:info@triple-r-europe.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>info@triple-r-europe.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+{{FOOTER}}
+<script src="site.js"></script>

@@ -225,7 +225,7 @@
     <div class="cta">
       <div><h2 id="h-cta">Laat eerst uw olie analyseren</h2><p class="lead">Weet u de viscositeit of het watergehalte niet? Een gratis olieanalyse geeft het antwoord, met persoonlijk advies.</p>
         <div class="btns"><a class="btn btn--light" href="olieanalyse.html">Gratis olieanalyse</a><a class="btn btn--ghost-light" href="tel:+3238254647">Bel +32 (0)3 825 46 47</a></div></div>
-      <div class="person"><img src="img/team.jpg" alt="Het Triple R-team in Aartselaar" width="768" height="1024" loading="lazy"><div class="person__who"><div><h3>Maxim Van Uytven</h3><p class="role">Managing Director</p></div><div class="links"><a href="tel:+3238254647">+32 (0)3 825 46 47</a><a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a></div></div></div>
+      <div class="person"><img src="img/team.jpg" alt="Het Triple R-team in Aartselaar" width="768" height="1024" loading="lazy"><div class="person__links"><a href="tel:+3238254647"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.4 20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg>+32 (0)3 825 46 47</a><a href="mailto:info@triple-r-europe.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>info@triple-r-europe.com</a></div></div>
     </div>
   </div>
 </section>
@@ -241,7 +241,6 @@
     ['eng', 'Motorolie', 'scheeps-, gas- en dieselmotoren', '<path d="M4 9h3l2-2h5l2 2h3v7h-3l-2 2H9l-2-2H4z"/>'],
     ['tur', 'Turbineolie', 'stoom-, gas- en waterturbines', '<circle cx="12" cy="12" r="2"/><path d="M12 10c0-4 2-6 5-6M14 12c4 0 6 2 6 5M12 14c0 4-2 6-5 6M10 12c-4 0-6-2-6-5"/>'],
     ['wg', 'Water-glycol', 'brandveilige hydrauliek', '<path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/><path d="M9 14h6"/>'],
-    ['cool', 'Koelvloeistof of emulsie', 'bewerkingsmachines, wassers', '<path d="M12 3v18M5 7l14 10M19 7L5 17"/>'],
     ['oth', 'Andere vloeistof', 'we bekijken het samen', '<circle cx="12" cy="12" r="8"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5M12 16.5v.5"/>']
   ];
   const APPS = {
@@ -258,11 +257,9 @@
   const VG_DEFAULT = { hyd: 46, lube: 220, eng: 100, tur: 32, wg: 46, oth: 46 };
   const P = {
     bu: { n: 'BU-serie', img: 'img/BU-Series.png', pdf: 'BU-2023-UK-.pdf', conn: 'press', pmax: 450, fl: ['hyd', 'lube', 'wg'], vis: [3, 320], apps: ['Spuitgietmachines', 'Persen', 'Mobiele hydrauliek', 'Powerpacks', 'Maritieme hydrauliek', 'Spuitgieten', 'Brandveilige hydrauliek'], vol: [0, 2000], line: 'Bypassfilter op de drukleiding, zonder pomp of motor' },
-    tr: { n: 'TR-serie', img: null, pdf: 'TR-2019-ENGLISH.pdf', conn: 'press', pmax: 6, fl: ['eng', 'lube'], vis: [3, 320], apps: ['Scheepsmotoren', 'Generatoren', 'Vrachtwagens en bouwmachines', 'Tandwielkasten', 'Windturbines'], vol: [0, 2000], line: 'Bypassfilter voor motorolie en systemen onder 6 bar' },
     se: { n: 'SE-serie', img: 'img/se.png', pdf: 'SE-2019-ENGLISH.pdf', conn: 'off', fl: ['hyd', 'lube', 'wg', 'tur'], vis: [3, 320], apps: ['Powerpacks', 'Testbanken', 'Mobiele hydrauliek', 'Lagers en smeercircuits'], vol: [0, 5000], mob: true, wall: true, line: 'Offline reiniger met eigen motor-pompgroep' },
     osca: { n: 'OSCA-serie', img: 'img/osca.png', pdf: 'OSCA-2019-ENGLISH.pdf', conn: 'off', fl: ['hyd', 'lube', 'tur', 'eng'], vis: [3, 320], apps: ['Tandwielkasten', 'Windturbines', 'Papiermachines', 'Persen', 'Stoom- en gasturbines', 'Testbanken'], vol: [1000, 1e9], mob: true, line: 'Offline reiniger met hoog debiet, 6 tot > 60 l/min' },
-    ss: { n: 'SS-serie', img: 'img/ss.png', pdf: 'SS-2019-ENGLISH-.pdf', conn: 'both', pmax: 15, fl: ['hyd', 'lube'], vis: [3, 600], apps: ['Persen', 'Tandwielkasten', 'Maritieme hydrauliek', 'Papiermachines'], vol: [1000, 1e9], line: 'Stalen huis voor 2 tot 6 elementen, tot 60 l/min' },
-    cen: { n: 'Centrifuges', img: 'img/centrifuge.png', pdf: 'Centrifuges_2014_UK-1.pdf', conn: 'off', fl: ['cool', 'hyd', 'oth'], vis: [0, 20], apps: ['Bewerkingsmachines', 'Onderdelenwassers', 'Lakstraten', 'Draadtrekken'], vol: [0, 1e9], line: 'Deeltjes tot 3 µm uit koelvloeistof en proceswater' }
+    ss: { n: 'SS-serie', img: 'img/ss.png', pdf: 'SS-2019-ENGLISH-.pdf', conn: 'both', pmax: 15, fl: ['hyd', 'lube'], vis: [3, 600], apps: ['Persen', 'Tandwielkasten', 'Maritieme hydrauliek', 'Papiermachines'], vol: [1000, 1e9], line: 'Stalen huis voor 2 tot 6 elementen, tot 60 l/min' }
   };
   const ADD = {
     vac: { n: 'Vacuümdroger', img: 'img/vacuum.png', pdf: 'VacuumDehydrator-TRVS-N30E-ENG.pdf', why: 'verwijdert 80% van het opgeloste en 100% van het vrije water (10–600 cSt, 15–60 °C)' },

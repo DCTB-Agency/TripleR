@@ -43,7 +43,7 @@
     <div class="hero__copy" style="gap:0">
       <ol class="crumbs" aria-label="Kruimelpad"><li><a href="homepage.html">Home</a></li><li aria-current="page">Producten</li></ol>
       <h1 id="h1">Bypassfilters en <span>oliereinigers</span></h1>
-      <p class="lead">Kies uit 46 Triple R-systemen en 27 filterelementen en voorfilters: van een compacte bypassfilter op de drukleiding tot mobiele reinigers, vacuümdrogers en centrifuges. Filter op categorie, olievolume en vloeistof, bekijk de specificaties per model en voeg ze toe aan uw offerteaanvraag.</p>
+      <p class="lead">Kies uit 33 Triple R-systemen en 27 filterelementen en voorfilters: van een compacte bypassfilter op de drukleiding tot mobiele reinigers en vacuümdrogers. Filter op categorie, olievolume en vloeistof, bekijk de specificaties per model en voeg ze toe aan uw offerteaanvraag.</p>
     </div>
     <div class="trio" aria-hidden="true"><img class="a" src="img/se.png" alt=""><img class="b" src="img/BU-Series.png" alt=""><img class="c" src="img/osca.png" alt=""></div>
   </div>
@@ -97,7 +97,7 @@
     <div class="askembed">
       <div><h2>Zoekt u iets specifieks in een datasheet?</h2><p>Marc doorzoekt alle productpagina’s én de PDF’s, en toont de exacte pagina.</p></div>
       <form data-ask-embed role="search" aria-label="Vraag het aan Marc"><label class="vh" for="ae-q">Stel uw vraag</label><input id="ae-q" type="text" placeholder="Bv. welke viscositeit kan de OSCA-serie aan?"><button class="btn btn--light btn--sm" type="submit">Vraag</button></form>
-      <div class="chips"><button type="button" data-q="Wat is het maximale debiet van de SS-serie?">Debiet SS-serie</button><button type="button" data-q="Welke elementen passen in de TR-serie?">Elementen TR-serie</button><button type="button" data-q="Wat staat er in het testrapport van de vacuümdroger?">Testrapport vacuümdroger</button></div>
+      <div class="chips"><button type="button" data-q="Wat is het maximale debiet van de SS-serie?">Debiet SS-serie</button><button type="button" data-q="Welke elementen passen in de SE-serie?">Elementen SE-serie</button><button type="button" data-q="Wat staat er in het testrapport van de vacuümdroger?">Testrapport vacuümdroger</button></div>
     </div>
   </div>
 </section>
@@ -108,7 +108,7 @@
     <div class="cta">
       <div><h2 id="h-cta">Twijfelt u tussen twee series?</h2><p class="lead">Beschrijf uw installatie in 2 minuten; een specialist adviseert welke serie en welke elementen passen.</p>
         <div class="btns"><a class="btn btn--light" href="homepage.html#contact">Vraag advies aan</a><a class="btn btn--ghost-light" href="olieanalyse.html">Gratis olieanalyse</a></div></div>
-      <div class="person"><img src="img/team.jpg" alt="Het Triple R-team in Aartselaar" width="768" height="1024" loading="lazy"><div class="person__who"><div><h3>Maxim Van Uytven</h3><p class="role">Managing Director</p></div><div class="links"><a href="tel:+3238254647">+32 (0)3 825 46 47</a><a href="mailto:info@triple-r-europe.com">info@triple-r-europe.com</a></div></div></div>
+      <div class="person"><img src="img/team.jpg" alt="Het Triple R-team in Aartselaar" width="768" height="1024" loading="lazy"><div class="person__links"><a href="tel:+3238254647"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 3.5h3.5l1.8 4.6-2.3 1.5a11 11 0 0 0 6.4 6.4l1.5-2.3 4.6 1.8V19a1.5 1.5 0 0 1-1.6 1.5C10.4 20 4 13.6 3.5 5.1A1.5 1.5 0 0 1 5 3.5z"/></svg>+32 (0)3 825 46 47</a><a href="mailto:info@triple-r-europe.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>info@triple-r-europe.com</a></div></div>
     </div>
   </div>
 </section>
@@ -129,6 +129,10 @@
   const tabs = $('ktabs'), grid = $('kgrid');
   $('kq').value = F.q; if (F.vol) $('kvol').value = F.vol;
 
+  /* volgorde: eerst de filterelementen, dan BU, SE en OSCA */
+  const CAT_ORDER = ['elementen', 'druk', 'offline', 'lagedruk', 'water', 'lucht', 'proces', 'vullen'];
+  const SER_ORDER = ['el-m', 'el-e', 'el-x', 'el-d', 'el-v', 'el-w', 'el-pre', 'bu', 'bu-wind', 'se', 'se-mobile', 'osca', 'hp', 'tr', 'ss', 'vacuum', 'ws', 'quicktoron', 'centrifuges', 'vp'];
+  const CAT_IMG = { elementen: 'elements.png', druk: 'BU-Series.png', offline: 'se.png', lagedruk: 'ss.png', water: 'vacuum.png', lucht: 'quicktoron.png', proces: 'centrifuge.png', vullen: 'osca.png' };
   const inCat = p => F.cat === 'alle' || p.cat === F.cat || (p.also || []).includes(F.cat);
   const volLabel = p => p.vol ? (p.vol[0] ? `${nf.format(p.vol[0])} tot ${nf.format(p.vol[1])} l` : `tot ${nf.format(p.vol[1])} l`) : '';
   const volFit = p => !F.vol ? 1 : !p.vol ? 0 : (F.vol >= p.vol[0] && F.vol <= p.vol[1]) ? 2 : (F.vol < p.vol[0] && p.vol[0] - F.vol <= p.vol[0] * .5) || (p.volGrey && F.vol > p.vol[1] && F.vol <= p.volGrey) ? 1 : 0;
@@ -166,10 +170,12 @@
       </div></article>`;
   }
   function render() {
-    tabs.innerHTML = [['alle', 'Alles', P.length], ...C.cats.map(c => [c.id, c.n, P.filter(p => p.cat === c.id || (p.also || []).includes(c.id)).length])].map(([id, n, c]) => `<button type="button" role="tab" aria-selected="${F.cat === id}" data-cat="${id}">${esc(n)} <span>${c}</span></button>`).join('');
+    const cats = C.cats.slice().sort((a, b) => CAT_ORDER.indexOf(a.id) - CAT_ORDER.indexOf(b.id));
+    tabs.innerHTML = [['alle', 'Alles', P.length], ...cats.map(c => [c.id, c.n, P.filter(p => p.cat === c.id || (p.also || []).includes(c.id)).length])].map(([id, n, c]) => `<button type="button" role="tab" aria-selected="${F.cat === id}" data-cat="${id}"><span class="kt__img" aria-hidden="true">${CAT_IMG[id] ? `<img src="img/${CAT_IMG[id]}" alt="" loading="lazy">` : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>'}</span><b>${esc(n)}</b> <span class="kt__n">${c}</span></button>`).join('');
     facets();
     let r = P.filter(p => match(p));
     const sort = $('ksort').value;
+    if (sort === 'serie') r = r.slice().sort((a, b) => (SER_ORDER.indexOf(a.series) + 1 || 99) - (SER_ORDER.indexOf(b.series) + 1 || 99));
     if (sort === 'flow') r = r.slice().sort((a, b) => (a.flow ?? 1e9) - (b.flow ?? 1e9));
     if (sort === 'naam') r = r.slice().sort((a, b) => a.n.localeCompare(b.n, 'nl', { numeric: true }));
     if (F.vol) r = r.slice().sort((a, b) => volFit(b) - volFit(a));
@@ -203,10 +209,10 @@
   tabs.querySelector('[aria-selected="true"]')?.scrollIntoView({ inline: 'center', block: 'nearest' });
 
   /* ---------- downloads ---------- */
-  const DOCS = { 'BU-2023-UK-.pdf': ['BU-serie datasheet', 447], 'BU-100E-Wind-S.pdf': ['BU-100E-Wind, technische tekening', 2282], 'STEEL-housing-HP.pdf': ['Stalen huizen HP (compressoren)', 540], 'TR-2019-ENGLISH.pdf': ['TR-serie datasheet', 1196], 'SS-2019-ENGLISH-.pdf': ['SS-serie datasheet', 618],
+  const DOCS = { 'BU-2023-UK-.pdf': ['BU-serie datasheet', 447], 'BU-100E-Wind-S.pdf': ['BU-100E-Wind, technische tekening', 2282], 'STEEL-housing-HP.pdf': ['Stalen huizen HP (compressoren)', 540], 'SS-2019-ENGLISH-.pdf': ['SS-serie datasheet', 618],
     'SE-2019-ENGLISH.pdf': ['SE-serie datasheet', 660], 'SE-Mobile-2023-ENGLISH.pdf': ['SE Mobile datasheet', 741], 'SE-Mobile-HF-ENGLISH.pdf': ['SE200E Mobile High Flow', 933], 'se100e-bh.pdf': ['SE100E-BH, 3D-weergave', 1057], 'se100e-wh.pdf': ['SE100E-WH (wand), 3D-weergave', 917],
     'OSCA-2019-ENGLISH.pdf': ['OSCA-serie datasheet', 955], 'VacuumDehydrator-TRVS-N30E-ENG.pdf': ['Vacuümdroger TRVS-N30E', 664], 'vacuum_system_test.pdf': ['Vacuümdroger, testrapport', 78], 'WS-2019-ENGLISH.pdf': ['WS-serie datasheet', 578],
-    'QUICKTORON-2023-ENGLISH.pdf': ['Quicktoron datasheet', 633], 'Centrifuges_2014_UK-1.pdf': ['Centrifuges brochure', 688], 'Elements-ENGLISH.pdf': ['Filterelementen brochure', 2664], 'Element-data-sheet-2023.pdf': ['Element data sheet 2023', 163], 'V100-ENGLISH.pdf': ['V100 varnish-element', 777],
+    'QUICKTORON-2023-ENGLISH.pdf': ['Quicktoron datasheet', 633], 'Elements-ENGLISH.pdf': ['Filterelementen brochure', 2664], 'Element-data-sheet-2023.pdf': ['Element data sheet 2023', 163], 'V100-ENGLISH.pdf': ['V100 varnish-element', 777],
     'windmill.pdf': ['Toepassing windturbines', 503], 'Recommended-cleanliness4.pdf': ['Aanbevolen reinheid', 82], 'iso440637534.pdf': ['ISO 4406-tabel', 210], 'nas1638-kopie.pdf': ['NAS 1638-tabel', 388] };
   document.getElementById('dl').innerHTML = Object.entries(DOCS).map(([f, [t, kb]]) => `<a href="pdf/${encodeURIComponent(f)}" target="_blank" rel="noopener"><span class="ic">PDF</span><b>${t}</b><span class="m">Engels · ${kb >= 1000 ? (kb / 1024).toFixed(1).replace('.', ',') + ' MB' : kb + ' KB'}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v9M4 7l4 4 4-4M2.5 14h11"/></svg></a>`).join('');
   document.querySelectorAll('.askembed .chips button').forEach(b => b.addEventListener('click', () => { const f = document.querySelector('[data-ask-embed]'); f.querySelector('input').value = b.dataset.q; f.requestSubmit(); }));

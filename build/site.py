@@ -12,6 +12,10 @@ from pages import LANGS, PAGES, PRODUCTS_SLUG
 from kb_meta import KB, SECTION, PARENT
 import kb_render as R
 from kb_topics import TOPIC, UI as TOPIC_UI, LABEL as TOPIC_LABEL
+import jobs as J
+sys.path.insert(0, os.path.join(ROOT, 'content'))
+import vacatures as V
+JOBS = [j for j in V.JOBS if j.get('published')]
 D, OUT, I18N = os.path.join(ROOT, 'design'), os.path.join(ROOT, 'dist'), os.path.join(ROOT, 'i18n')
 SITE = 'https://www.triple-r-europe.com'
 ENV = os.environ.get('SITE_ENV', 'staging')
@@ -191,6 +195,11 @@ def tr_file(path, lang):
     return re.sub(r'(<script\b[^>]*>)(.*?)(</script>)', lambda m: m.group(1) + tr_js(strip_js_comments(m.group(2)), lang, path) + m.group(3), s, flags=re.S)
 
 
+def job_url(j, lang):
+    i = LANGS.index(lang)
+    return f"/{lang}/{PAGES['vacatures']['slug'][i]}/{j['slug'][i]}/"
+
+
 def route(page, lang):
     if page in KB:
         i = LANGS.index(lang)
@@ -243,7 +252,7 @@ def clean(s):
 
 def lang_links(alts, lang):
     hdr = ''.join(f'<a href="{alts[l]}" lang="{l}" hreflang="{l}">{LANG_NAME[l]}</a>' for l in LANGS if l != lang)
-    header = f'<details class="langsw"><summary aria-label="{TAAL[lang]}: {LANG_NAME[lang]}">{lang.upper()}</summary><nav aria-label="{TAAL[lang]}">{hdr}</nav></details>'
+    header = f'<details class="langsw"><summary aria-label="{TAAL[lang]}: {LANG_NAME[lang]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>{lang.upper()}<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><nav aria-label="{TAAL[lang]}">{hdr}</nav></details>'
     footer = ''.join(f'<a href="{alts[l]}" lang="{l}" hreflang="{l}"' + (' aria-current="true"' if l == lang else '') + f'>{l.upper()}</a>' for l in LANGS)
     return header, footer
 
@@ -286,6 +295,19 @@ def dealers(lang):
     return json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
 
 
+def dealer_list(lang):
+    """Alle vestigingen als vaste lijst (zoals op de oude site), sorteerbaar per land; knoppen tonen de vestiging op de kaart."""
+    d = json.load(open('partials/dealers.json', encoding='utf-8'))
+    rows = []
+    for r in d['europe']:
+        c = tr(r['country'], lang, 'dealers')
+        rows.append((0 if r['type'] == 'hq' else 1, c, r.get('city') or '', r['id'], r['type'] == 'hq', r.get('company') if r['type'] == 'hq' else None))
+    rows.sort(key=lambda x: (x[0], x[1].lower(), x[2]))
+    hqc = ' class="hq"'
+    li = ''.join('<li><button type="button" data-id="' + i + '"' + (hqc if hq else '') + '><b>' + html.escape(co or 'Triple R ' + c) + '</b>' + (' <span>@ ' + html.escape(city) + '</span>' if city else '') + '</button></li>' for _, c, city, i, hq, co in rows)
+    return f'<ul class="alld">{li}</ul>'
+
+
 def faq_ld(body):
     qs = re.findall(r'<details>\s*<summary>(.*?)</summary>(.*?)</details>', body, re.S)
     strip = lambda x: re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', x)).strip()
@@ -296,7 +318,7 @@ def build_page(name, lang, ver, parts, alts, title, desc, crumbs, noindex=False,
     src = tr_file(f'{name}.src.html', lang)
     src = src.replace('{{HEADER}}', parts[lang]['header']).replace('{{FOOTER}}', parts[lang]['footer'])
     if '{{EUROPE_MAP}}' in src:
-        src = src.replace('{{EUROPE_MAP}}', open('partials/europe-map.svg', encoding='utf-8').read()).replace('{{DEALERS}}', dealers(lang))
+        src = src.replace('{{EUROPE_MAP}}', open('partials/europe-map.svg', encoding='utf-8').read()).replace('{{DEALERS}}', dealers(lang)).replace('{{DEALER_ALL}}', dealer_list(lang))
     for k, v in LOGOS.items():
         src = src.replace(k, v)
     for k, v in (blocks or {}).items():
@@ -365,10 +387,15 @@ def catalog(lang):
 CRUMB = {'oplossingen': {'nl': 'Oplossingen', 'en': 'Solutions', 'fr': 'Solutions'}, 'sectoren': {'nl': 'Sectoren', 'en': 'Industries', 'fr': 'Secteurs'}, 'producten': {'nl': 'Producten', 'en': 'Products', 'fr': 'Produits'}}
 
 
+KB_IMG = {'kb-filtratie': 'industry.jpg', 'kb-varnish': 'sludge.jpg', 'kb-water': 'water-drops.jpg', 'kb-deeltjes': 'particles.jpg', 'kb-lucht': 'air-bubbles.jpg',
+          'kb-bypass': 'element-change.jpg', 'kb-schoon': 'oil-gold.jpg', 'kb-analyse': 'oil-samples.jpg', 'kb-beheer': 'engineering.jpg', 'kb-techniek': 'element-cut.png',
+          'kb-rendement': 'sec-wind.jpg', 'kb-tribologie': 'engine.jpg'}
+
+
 def kb_links(l):
     t = R.T[l]
-    items = ''.join(f'<li><a href="{route(k, l)}">{R.e(m[l][0])}</a></li>' for k, m in KB.items() if m['sec'] == 'opl')
-    return f'<section class="sec"><div class="wrap prose"><h2>{t["topics"]}</h2><p>{t["topics_s"]}</p><ul>{items}</ul></div></section>'
+    items = ''.join(f'<li><a class="tcard" href="{route(k, l)}"><span class="tcard__img{" tcard__img--contain" if KB_IMG.get(k, "").endswith(".png") else ""}"><img src="img/{KB_IMG.get(k, "industry.jpg")}" alt="" loading="lazy"></span><span class="tcard__b"><b>{R.e(m[l][0])}</b><span>{R.e(m[l][2])}</span></span></a></li>' for k, m in KB.items() if m['sec'] == 'opl')
+    return f'<section class="sec sec--tint"><div class="wrap"><div class="head"><div><h2>{t["topics"]}</h2></div><div class="side"><p class="lead">{t["topics_s"]}</p></div></div><ul class="tcards">{items}</ul></div></section>'
 
 
 def all_models(cat, l):
@@ -383,9 +410,9 @@ def all_models(cat, l):
 
 def llms(kb, cats):
     head = {'nl': '## Nederlands', 'en': '## English', 'fr': '## Français'}
-    intro = {'nl': 'Triple R Europe nv (Aartselaar, België) levert bypass-oliefiltratie voor de industrie: filterelementen van 114 mm die vaste deeltjes, varnish en water uit hydraulische olie en smeerolie verwijderen, in systemen van compacte bypassfilters tot mobiele oliereinigers, vacuümdrogers en centrifuges.',
-             'en': 'Triple R Europe nv (Aartselaar, Belgium) supplies bypass oil filtration for industry: 114 mm filter elements that remove solid particles, varnish and water from hydraulic and lubricating oil, in systems ranging from compact bypass filters to mobile oil cleaners, vacuum dehydrators and centrifuges.',
-             'fr': 'Triple R Europe nv (Aartselaar, Belgique) fournit la filtration d\'huile en dérivation pour l\'industrie : éléments filtrants de 114 mm qui éliminent particules solides, vernis et eau des huiles hydrauliques et de lubrification, dans des systèmes allant du filtre compact à l\'épurateur mobile, au déshydrateur sous vide et à la centrifugeuse.'}
+    intro = {'nl': 'Triple R Europe nv (Aartselaar, België) levert bypass-oliefiltratie voor de industrie: filterelementen van 114 mm die vaste deeltjes, varnish en water uit hydraulische olie en smeerolie verwijderen, in systemen van compacte bypassfilters tot mobiele oliereinigers en vacuümdrogers.',
+             'en': 'Triple R Europe nv (Aartselaar, Belgium) supplies bypass oil filtration for industry: 114 mm filter elements that remove solid particles, varnish and water from hydraulic and lubricating oil, in systems ranging from compact bypass filters to mobile oil cleaners and vacuum dehydrators.',
+             'fr': 'Triple R Europe nv (Aartselaar, Belgique) fournit la filtration d\'huile en dérivation pour l\'industrie : éléments filtrants de 114 mm qui éliminent particules solides, vernis et eau des huiles hydrauliques et de lubrification, dans des systèmes allant du filtre compact à l\'épurateur mobile et au déshydrateur sous vide.'}
     a = ['# Triple R Europe', '', '> Industrial bypass oil filtration. Head office: Cleydaellaan 16, unit 8, 2630 Aartselaar, Belgium. +32 3 825 46 47, info@triple-r-europe.com.', '']
     f = list(a)
     for l in LANGS:
@@ -442,8 +469,22 @@ def main():
             crumbs = [(HOME[l], f'/{l}/')] + ([] if name == 'homepage' else [(title.split(' – ')[0].split(':')[0], alts[l])])
             prod_url = lambda x: f"/{l}/{PRODUCTS_SLUG[l]}/{x['id']}/"
             blocks = {'{{KB_LINKS}}': kb_links(l), '{{ALL_MODELS}}': all_models(cats[l], l)}
+            if name == 'vacatures':
+                cr = f'<ol class="crumbs" aria-label="Kruimelpad"><li><a href="{route("homepage", l)}">{HOME[l]}</a></li><li aria-current="page">{R.e(V.OVERVIEW[l]["h1"])}</li></ol>'
+                blocks['{{KB}}'] = J.overview(l, V.OVERVIEW, V.UI, JOBS, job_url, cr)
             build_page(name, l, ver, parts, alts, title, desc, crumbs, blocks=blocks)
         urls.append((alts, p['prio']))
+    # vacatures
+    for j in JOBS:
+        alts = {l: job_url(j, l) for l in LANGS}
+        for l in LANGS:
+            t = j[l]
+            crumbs = [(HOME[l], f'/{l}/'), (V.OVERVIEW[l]['h1'], route('vacatures', l)), (t['h1'], alts[l])]
+            cr = f'<ol class="crumbs" aria-label="Kruimelpad"><li><a href="{route("homepage", l)}">{HOME[l]}</a></li><li><a href="{route("vacatures", l)}">{R.e(V.OVERVIEW[l]["h1"])}</a></li><li aria-current="page">{R.e(t["h1"])}</li></ol>'
+            body_ = J.detail(j, l, V.UI, cr, j['posted_txt'][LANGS.index(l)])
+            desc_html = ''.join(f'<h3>{R.e(h)}</h3>' + ''.join(f'<p>{R.e(p)}</p>' for p in ps) + (('<ul>' + ''.join(f'<li>{R.e(x)}</li>' for x in lis) + '</ul>') if lis else '') for h, ps, lis in t['sections'])
+            build_page('vacatures', l, ver, parts, alts, t['title'], t['desc'], crumbs, extra_ld=J.posting(j, l, desc_html, SITE + alts[l], ORG), blocks={'{{KB}}': body_}, img='/assets/img/team.jpg')
+        urls.append((alts, '0.6'))
     # inhoudspagina's
     kb_data = json.load(open(os.path.join(ROOT, 'content', 'kb.json'), encoding='utf-8'))
     for key, m in KB.items():
@@ -536,6 +577,8 @@ def main():
     open(os.path.join(OUT, '_headers'), 'w').write('\n'.join(h) + '\n')
     shutil.copy(os.path.join(ROOT, 'build', '_redirects'), os.path.join(OUT, '_redirects'))
     json.dump({'html': MISSING, 'js': JS_MISS}, open(os.path.join(ROOT, 'build', '.missing.json'), 'w'), ensure_ascii=False, indent=0)
+    if os.environ.get('MISSING_OUT'):
+        json.dump(MISSING, open(os.environ['MISSING_OUT'], 'w'), ensure_ascii=False, indent=1)
     print('pagina\'s:', sum(1 for _ in os.walk(OUT) for f in _[2] if f.endswith('.html')), '| niet vertaald EN', len(MISSING['en']), 'FR', len(MISSING['fr']))
 
 

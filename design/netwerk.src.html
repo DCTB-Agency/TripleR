@@ -82,6 +82,33 @@
 .join a:focus-visible{box-shadow:var(--focus-dark)}
 @media (max-width:1023px){.net{grid-template-columns:1fr}.dfind{position:static;max-height:520px}.join{grid-template-columns:1fr}.join .btns{justify-content:flex-start}}
 @media (max-width:559px){.map{border-radius:20px;margin-inline:calc(-1 * var(--s-2))}.map__legend{display:none}.card{position:relative;left:auto;bottom:auto;width:auto;margin:8px;padding:14px}.world{grid-template-columns:1fr}.pin b{display:none}.pin.sel b{display:block}}
+.map{background:radial-gradient(120% 90% at 30% 20%,#F4F9FD 0%,#E3EFF8 60%,#D5E6F3 100%)!important}
+.map::after{background:none!important}
+.map__svg .c{fill:#FFFFFF!important;stroke:#C5D6E6!important}
+.map__svg .c.p{fill:#BFDDF2!important;stroke:#8DBEE0!important}
+.map__svg .c.p:hover{fill:#9ACCEE!important}
+.map__svg .c.p.on{fill:#5CB8EB!important}
+.pin i{background:#006BA6!important;box-shadow:0 0 0 3px rgb(0 107 166 / .2),0 0 10px 1px rgb(0 107 166 / .35)!important}
+.pin.hq i{background:#fff!important;box-shadow:0 0 0 4px #0086CD,0 0 18px 4px rgb(0 134 205 / .45)!important}
+.pin.dim i{background:#AFC3D6!important}
+.map__legend{background:rgb(255 255 255 / .85)!important;color:var(--ink)!important}
+.map__legend i{background:#006BA6!important}
+.map__ui button{background:#fff!important;color:var(--ink)!important;border-color:var(--grey-200)!important}
+.alld{list-style:none;margin:var(--s-6) 0 0;padding:0;columns:3;column-gap:var(--gap)}
+.alld li{break-inside:avoid;margin-bottom:2px}
+.alld button{display:block;width:100%;text-align:left;padding:8px 12px 8px 26px;border:0;border-radius:10px;background:none;font:inherit;font-size:var(--fs-sm);color:var(--ink);cursor:pointer;position:relative}
+.alld button::before{content:"";position:absolute;left:10px;top:15px;width:7px;height:7px;border-radius:50%;background:var(--blue-500)}
+.alld button.hq::before{background:var(--night-950);box-shadow:0 0 0 3px var(--blue-50)}
+.alld button:hover{background:var(--blue-50)}
+.alld button:focus-visible{outline:none;box-shadow:var(--focus)}
+.alld b{font-weight:600}.alld span{color:var(--grey-600)}
+.world-band{background:var(--brand-gradient);color:#fff}
+.world-band h2{color:#fff}.world-band .lead{color:#E2E0F0}
+.world-band .world h3{color:#BFE6FA}
+.world-band .world li{background:rgb(255 255 255 / .1);border-color:rgb(255 255 255 / .22);color:#fff}
+.join-top{padding-block:clamp(2rem,1.5rem + 2vw,3rem) 0}
+@media (max-width:1023px){.alld{columns:2}}
+@media (max-width:559px){.alld{columns:1}}
 </style>
 {{HEADER}}
 <main id="main">
@@ -97,6 +124,14 @@
   </div>
 </section>
 
+<section class="sec join-top" aria-labelledby="h-join">
+  <div class="wrap">
+    <div class="join" id="dealer-worden">
+      <div><h2 id="h-join">Word distributeur van Triple R</h2><p>We zoeken nieuwe distributeurs in verschillende regio's in Europa. Interesse? Neem contact op met ons hoofdkantoor.</p></div>
+      <div class="btns"><a class="btn btn--light" href="mailto:info@triple-r-europe.com?subject=Distributeur%20worden">Neem contact op</a><a class="btn btn--ghost-light" href="tel:+3238254647">+32 (0)3 825 46 47</a></div>
+    </div>
+  </div>
+</section>
 <section class="sec band" aria-labelledby="h-map" data-annot="Kaart · klik op een pin, land of naam: kaart zoomt in (700 ms) en toont een kaartje · zoeken filtert lijst én pins · ‘Heel Europa’ zet terug · pins zijn knoppen (toetsenbord), landen alleen voor de muis">
   <div class="wrap">
     <h2 id="h-map" class="vh">Kaart van het distributienetwerk</h2>
@@ -121,21 +156,20 @@
   </div>
 </section>
 
-<section class="sec" aria-labelledby="h-world">
+<section class="sec" aria-labelledby="h-all">
+  <div class="wrap">
+    <div class="head"><div><h2 id="h-all">Alle vestigingen in Europa</h2></div><div class="side"><p class="lead">Klik op een vestiging om ze op de kaart te tonen.</p></div></div>
+    {{DEALER_ALL}}
+  </div>
+</section>
+<section class="sec world-band" aria-labelledby="h-world">
   <div class="wrap">
     <div class="head"><div><h2 id="h-world">Buiten Europa</h2></div><div class="side"><p class="lead">Ook buiten Europa werkt Triple R met lokale distributeurs. Wij brengen u graag in contact.</p></div></div>
     <div class="world" id="world"></div>
   </div>
 </section>
 
-<section class="sec band" aria-labelledby="h-join">
-  <div class="wrap">
-    <div class="join" id="dealer-worden">
-      <div><h2 id="h-join">Word distributeur van Triple R</h2><p>We zoeken nieuwe distributeurs in verschillende regio's in Europa. Interesse? Neem contact op met ons hoofdkantoor.</p></div>
-      <div class="btns"><a class="btn btn--light" href="mailto:info@triple-r-europe.com?subject=Distributeur%20worden">Neem contact op</a><a class="btn btn--ghost-light" href="tel:+3238254647">+32 (0)3 825 46 47</a></div>
-    </div>
-  </div>
-</section>
+
 </main>
 {{FOOTER}}
 <script src="site.js"></script>
@@ -215,6 +249,7 @@
   q.addEventListener('input', () => { if (cur) { cur = null; card.hidden = true; mark(null); } filter(); });
   q.addEventListener('keydown', e => { if (e.key === 'Enter') { const b = list.querySelector('button[data-id]'); if (b) select(b.dataset.id, 'list'); } });
   list.addEventListener('click', e => { const b = e.target.closest('button[data-id]'); if (b) select(b.dataset.id, 'list'); });
+  document.querySelector('.alld')?.addEventListener('click', e => { const b = e.target.closest('button[data-id]'); if (!b) return; select(b.dataset.id); stage.scrollIntoView({ behavior: root.classList.contains('motion') ? 'smooth' : 'auto', block: 'center' }); });
   pinsEl.addEventListener('click', e => { const p = e.target.closest('.pin'); if (p) select(p.dataset.id); });
   zoom.querySelector('.map__svg').addEventListener('click', e => {
     const cc = NAME[e.target.dataset && e.target.dataset.n]; if (!cc) return;

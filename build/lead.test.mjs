@@ -24,4 +24,15 @@ assert.ok(!lm.html.includes('<script>x') && !lm.html.includes('<img src=x') && l
 assert.ok(!rm.html.includes('script') && !rm.html.includes('Vraag'));
 assert.ok(m.replyMail(m.clean({ ...base, type: 'olieanalyse', lang: 'en', name: 'Jan Peeters' })).html.includes('Dear Jan,'));
 for (const l of ['nl', 'en', 'fr']) for (const t of ['olieanalyse', 'offerte', 'besparing', 'contact']) assert.ok(m.replyMail(m.clean({ ...base, type: t, lang: l })).subject);
+const pdf = Buffer.from('%PDF-1.4 test').toString('base64');
+const job = { ...base, type: 'sollicitatie', lang: 'nl', name: 'Jan Peeters', extra: { Vacature: 'Servicetechnicus' }, cv: { name: 'cv.pdf', data: pdf } };
+let dj = m.clean(job);
+assert.equal(m.validate(dj, job), '');
+assert.equal(m.route(dj).to, 'info@triple-r-europe.com');
+assert.equal(m.route(dj).bcc, 'maxim.vanuytven@triple-r-europe.com');
+assert.ok(m.leadMail(dj, 3).subject.startsWith('[SOLLICITATIE] Servicetechnicus – Jan Peeters'));
+assert.equal(m.replyMail(dj).subject, 'We hebben uw sollicitatie ontvangen');
+assert.equal(m.validate(m.clean({ ...job, cv: undefined }), job), 'cv');
+assert.equal(m.validate(m.clean({ ...job, cv: { name: 'cv.pdf', data: Buffer.from('MZ evil').toString('base64') } }), job), 'cv');
+assert.equal(m.validate(m.clean({ ...job, cv: { name: 'cv.exe', data: pdf } }), job), 'cv');
 console.log('leadlogica: alle tests geslaagd');
