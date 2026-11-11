@@ -1,7 +1,7 @@
 <title>Triple R Homepage</title>
 <meta name="description" content="Triple R-bypassfilters reinigen hydraulische olie en smeerolie. Minder stilstand, langere olielevensduur en lagere kosten.">
 <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="media/hero-poster.webp" as="image" fetchpriority="high">
+<link rel="preload" href="media/hero3-poster.webp" as="image" fetchpriority="high">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="site.css">
 <style>
@@ -15,9 +15,10 @@
 overlay: merkblauw verloop links (tekst) → transparant rechts · poster = eerste frame · pauzeknop (WCAG 2.2.2) · reduced-motion: alleen poster
 LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaartjes rechtsonder">
   <div class="hero__media" aria-hidden="true">
-    <video class="hero__video" id="hero-video" muted loop playsinline preload="none" poster="media/hero-poster.webp" disablepictureinpicture>
-      <source src="media/hero-720.mp4" type="video/mp4" media="(max-width: 767px)">
-      <source src="media/hero-1280.mp4" type="video/mp4">
+    <video class="hero__video" id="hero-video" muted loop playsinline preload="none" poster="media/hero3-poster.webp" disablepictureinpicture>
+      <source src="media/hero3-720.mp4" type="video/mp4" media="(max-width: 767px)">
+      <source src="media/hero3-1920.webm" type="video/webm" media="(min-width: 1280px)">
+      <source src="media/hero3-1280.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero__bg" aria-hidden="true"></div>
@@ -38,6 +39,7 @@ LCP = H1-tekst; video laadt met preload=metadata · spec-labels als glazen kaart
         </div>
       </div>
     </div>
+    <a class="scrollcue scrollcue--hero" href="#contaminanten" aria-label="Scroll naar de inhoud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
     <div class="trust" data-annot="Vertrouwensbalk · namen lopen als carrousel (40 s per ronde, lineair, pauzeert bij hover/focus, randen vervagen) · statisch en wrappend bij reduced motion · tekst-placeholders tot logo's (grijs SVG, 28px hoog) goedgekeurd zijn">
       <p>Vertrouwd door OEM’s, multinationals en kmo’s<i class="tb" title="Te bevestigen: toestemming logo's"></i></p>
       <div class="marquee"><div class="marquee__track"><ul aria-label="Referenties (placeholder)"><li>KOMATSU</li><li>Battenfeld</li><li>ENGEL</li><li>Stena Line</li><li>SKF</li><li>Rolls-Royce</li><li>Castrol</li><li>Equans</li><li>Ferrari</li><li>Epiroc</li><li>Everllence</li><li>SOUDAL</li><li>Aurubis</li><li>ENGIE</li></ul><ul aria-hidden="true"><li>KOMATSU</li><li>Battenfeld</li><li>ENGEL</li><li>Stena Line</li><li>SKF</li><li>Rolls-Royce</li><li>Castrol</li><li>Equans</li><li>Ferrari</li><li>Epiroc</li><li>Everllence</li><li>SOUDAL</li><li>Aurubis</li><li>ENGIE</li></ul></div></div>

@@ -1742,3 +1742,36 @@ figure.vtl__media{margin:0;position:relative}
 /* Ruimte onder de trust-balk in de hero, zodat die niet tegen de overgang naar het volgende blok plakt */
 .hero--video .trust{margin-bottom:clamp(32px,2rem + 1.5vh,56px)}
 @media (max-width:767px){.hero--video .trust{margin-bottom:64px}}
+.vtl__media--doc{background:#fff;aspect-ratio:auto}
+.vtl__media--doc img{height:auto;object-fit:contain;padding:12px 12px 0}
+.vtl__media--doc figcaption{position:static;background:none;color:var(--ink-500,#5B6178);font-weight:500;padding:8px 14px 12px;border-radius:0}
+/* Tijdlijn: lijn in het midden, jaren afwisselend links en rechts (desktop/tablet) */
+@media (min-width:768px){
+  .vtl__list::before{left:50%}
+  .vtl__list li{grid-template-columns:1fr 1fr;column-gap:clamp(3rem,2rem + 3vw,5rem)}
+  .vtl__list li::after{left:50%}
+  .vtl__list li > *{grid-row:1}
+  .vtl__list li:nth-child(odd) .vtl__media{grid-column:1;justify-self:end}
+  .vtl__list li:nth-child(odd) .vtl__body{grid-column:2;padding-left:0}
+  .vtl__list li:nth-child(even) .vtl__media{grid-column:2;justify-self:start}
+  .vtl__list li:nth-child(even) .vtl__body{grid-column:1;padding-left:0;text-align:right;justify-self:end}
+  .vtl__list li:nth-child(even) .vtl__body p:not(.vtl__y){margin-left:auto}
+  .vtl__media{width:100%;max-width:440px}
+  .vtl__media--tall{max-width:320px}
+}
+/* Mobiele tijdlijn: jaartal boven de foto, puntje altijd naast het jaartal */
+@media (max-width:767px){
+  .vtl__list li{padding-block:1rem}
+  .vtl__list li .vtl__body{order:-1}
+  .vtl__list li::after,.vtl__list li:has(.vtl__media)::after,.vtl__list li:not(:has(.vtl__media))::after{top:2rem}
+}
+/* Mobiele hero: vult het volledige scherm (ook achter de adresbalk van Safari),
+   pijl staat boven de vertrouwensbalk, de balk zelf mag onder de adresbalk vallen */
+.scrollcue--hero{display:none}
+@media (max-width:767px){
+  .hero--video{min-height:calc(100vh - var(--hero-top));min-height:calc(100lvh - var(--hero-top))}
+  .hero--video>.wrap{justify-content:flex-start}
+  .has-cue>.scrollcue{display:none}
+  .hero--video .scrollcue--hero{display:grid;position:relative;top:auto;left:auto;margin:auto auto 0;flex:none;order:2}
+  .hero--video .trust{margin-bottom:max(16px,env(safe-area-inset-bottom))}
+}

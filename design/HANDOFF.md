@@ -52,7 +52,7 @@ Date: 24 Sep 2026 · Status: **for review**
 The homepage only gives a short overview and sends visitors on; the detail lives on the subpages (BRIEF §5).
 
 **Homepage (`homepage.html`, 7 sections)**
-1. **Hero:** full-bleed video background (`media/hero-*.mp4`, poster `hero-poster.jpg`). The visible credit line has been removed at the client's request, but **[CONFIRM] permission from TRIS to use the footage remains open**. The video autoplays muted on a loop, has a pause button (WCAG 2.2.2), pauses when out of view and shows only the poster under reduced motion. Left column: H1, intro, CTAs → olieanalyse and Filtration Systembuilder. **Right column: "Vraag het aan Triple R"** (see below). Under it: the reference names as a running carousel.
+1. **Hero:** full-bleed video background (`media/hero3-1920.webm` from 1280 px, `hero3-1280.mp4` fallback, `hero3-720.mp4` on mobile; poster `hero3-poster.webp`). Footage supplied by the client on 11/11/2026 (triple-r-header-1920.webm) (own video, replaces the earlier TRIS footage). The video autoplays muted on a loop, has a pause button (WCAG 2.2.2), pauses when out of view and shows only the poster under reduced motion. Left column: H1, intro, CTAs → olieanalyse and Filtration Systembuilder. **Right column: "Vraag het aan Triple R"** (see below). Under it: the reference names as a running carousel.
 2. **Four contaminants:** 4 cards → `oplossingen.html`.
 3. **Featured products:** 3 tiles → `producten.html` (the selector moved there).
 4. **Results:** on the oil photo, with a link to the calculator.

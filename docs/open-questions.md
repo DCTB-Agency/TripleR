@@ -101,7 +101,7 @@ Inhoud die op de site staat, maar nog door Triple R bevestigd moet worden. De ma
 - **Sectorfoto's**: de foto's van de oude site zijn maar 300 px breed en worden wat wazig op grote schermen. Grotere versies?
 - **Filterelement-doorsnede**: de tekening van de oude site is 507 px. Een grotere versie of de bronfile (Illustrator/PDF)?
 - **Diensten-pagina** (voorbeeld TRIS): bestaat er een aparte Diensten-pagina met kaarten (assemblage & engineering, diensten ter plaatse, olieanalyse, installatie & reparatie, verhuur)? Welke diensten biedt Triple R Europe zelf aan, en met welke foto's?
-- **Video homepage**: wordt vervangen; nieuwe video volgt van de klant.
+- **Video homepage**: vervangen door de video van de klant (11/11/2026), met de blauwe overlay behouden. Afgehandeld.
 
 ## Productlijst opgekuist (11/11/2026)
 - Verwijderd: TR-serie, centrifuges, BF-15, BF-20, SE50E-BH, WS-WD-1PF, WS-SU103-1R-WS20. Oude URL's van de TR-serie en centrifuges verwijzen nu door naar het productoverzicht.
@@ -112,4 +112,4 @@ Inhoud die op de site staat, maar nog door Triple R bevestigd moet worden. De ma
 ## Over ons – copycheck (11/11/2026)
 - **Oprichtingsjaar**: de tijdlijn zegt "1992 oprichting Triple R Europe NV" en "2020: 30 jaar Triple R Europe" (dat wijst op 1990). Zo staat het ook op de huidige site. Welk jaar klopt?
 - **Jubileumclaims**: "45 jaar" en "meer dan 40 jaar" (oude tekst) spraken elkaar tegen en passen niet bij "jaren 1960". Nu neutraal geformuleerd als "decennia". Een exact aantal jaren mag terug als het bevestigd is.
-- **Tijdlijnfoto's** 1974, 1992 en 2013 komen uit de eigen mediabibliotheek van de huidige site (filterelementen, nieuwe elementen, assemblage-unit): illustratief, geen historische foto's. Echte archieffoto's zijn welkom.
+- **Tijdlijnfoto's**: illustratieve foto's verwijderd (op vraag). Bij 'Jaren 1960' staat nu de originele octrooitekening US 3.346.120 (J. J. Russo, aangevraagd 16/11/1964, verleend 10/10/1967; publiek domein, via Google Patents). Echte historische foto gevonden bij TRIS BV (oilcleaner.eu/en/History): originele Triple R-verpakking uit 1964. Alleen bruikbaar met toestemming van TRIS. Voor 1974, 1992, 2004 en 2013 geen vrij bruikbare foto's online gevonden: archieffoto's van Triple R Europe of Triple R Japan nodig.
