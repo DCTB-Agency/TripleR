@@ -1775,3 +1775,15 @@ figure.vtl__media{margin:0;position:relative}
   .hero--video .scrollcue--hero{display:grid;position:relative;top:auto;left:auto;margin:auto auto 0;flex:none;order:2}
   .hero--video .trust{margin-bottom:max(16px,env(safe-area-inset-bottom))}
 }
+/* Mobiele hero (v3): eerste scherm = titel op 1/3, tekst in het midden, CTA's net boven de witte pijl onderaan.
+   De vertrouwensbalk staat onder de vouw, zodat de donkere hero altijd langer is dan het scherm (geen witte streep onder de Safari-balk). */
+@media (max-width:767px){
+  .hero--video{display:block;position:relative;min-height:0;padding-top:0;padding-bottom:152px}
+  .hero--video>.wrap{display:flex;flex-direction:column;justify-content:flex-start;gap:0;min-height:100vh;min-height:100svh;position:static}
+  .hero--video .hero__grid,.hero--video .hero__copy{display:contents}
+  .hero--video h1{order:0;margin:max(calc(77px + 1.25rem),calc(33svh - 8.3vw)) 0 0}
+  .hero--video .hero__copy .lead{order:0;margin-top:max(1.25rem,calc(17svh - 45px - 8.3vw))}
+  .hero--video .hcta{order:0;margin-top:auto;padding-top:1.5rem}
+  .hero--video .scrollcue--hero{order:1;margin:18px auto max(18px,calc(env(safe-area-inset-bottom) + 10px))}
+  .hero--video .trust{position:absolute;left:var(--gutter,20px);right:var(--gutter,20px);top:calc(100svh + 8px);margin:0}
+}
