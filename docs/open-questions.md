@@ -113,4 +113,3 @@ Inhoud die op de site staat, maar nog door Triple R bevestigd moet worden. De ma
 - **Oprichtingsjaar**: de tijdlijn zegt "1992 oprichting Triple R Europe NV" en "2020: 30 jaar Triple R Europe" (dat wijst op 1990). Zo staat het ook op de huidige site. Welk jaar klopt?
 - **Jubileumclaims**: "45 jaar" en "meer dan 40 jaar" (oude tekst) spraken elkaar tegen en passen niet bij "jaren 1960". Nu neutraal geformuleerd als "decennia". Een exact aantal jaren mag terug als het bevestigd is.
 - **Tijdlijnfoto's** 1974, 1992 en 2013 komen uit de eigen mediabibliotheek van de huidige site (filterelementen, nieuwe elementen, assemblage-unit): illustratief, geen historische foto's. Echte archieffoto's zijn welkom.
-- **Valérie**: op LinkedIn met accent ("Valérie"), op de site "Valerie". Welke schrijfwijze?

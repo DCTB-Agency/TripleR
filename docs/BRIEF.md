@@ -38,7 +38,7 @@ All facts below come from the current website (scraped 24 Sep 2026). Items with 
 | Phone | +32 3 825 46 47 (display: +32 (0)3 825 46 47) |
 | Email | info@triple-r-europe.com |
 | VAT / KBO | BE 0448.276.293 |
-| People | Maxim Van Uytven (CEO), Lily Bastiaens – Van Uytven (CFO), Valerie Van Uytven (Marketing), Shani Catthoor (Office Manager). Marc Van Uytven (voormalig CEO, overleden) niet meer vermelden. |
+| People | Maxim Van Uytven (CEO), Lily Bastiaens – Van Uytven (CFO), Valérie Van Uytven (Marketing), Shani Catthoor (Office Manager). Marc Van Uytven (voormalig CEO, overleden) niet meer vermelden. |
 | Partner | Triple R Finland Oy AB — Murikantie 2B, 68410 Alaveteli, FI — Tony Skog (CEO) — +358 40 025 8091 |
 | Social | LinkedIn: https://www.linkedin.com/company/10456623/ |
 | Channel | Also sold via ERIKS (shop.eriks.nl lists "TRIPLE R Bypass filter olie reiniger") |
