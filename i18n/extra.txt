@@ -155,7 +155,7 @@ gestuurd. ¦ shortly. ¦ sous peu.
 Een specialist belt u om het te bespreken. ¦ A specialist will call you to discuss it. ¦ Un spécialiste vous appellera pour en discuter.
 Gecertificeerde distributeur ¦ Certified distributor ¦ Distributeur certifié
 <p>Contactgegevens volgen. Ons hoofdkantoor brengt u graag in contact.</p> ¦ <p>Contact details to follow. Our head office will be glad to put you in touch.</p> ¦ <p>Coordonnées à suivre. Notre siège vous met volontiers en contact.</p>
-vestigingen in 20 landen ¦ locations in 20 countries ¦ sites dans 20 pays
+vestigingen in 21 landen ¦ locations in 21 countries ¦ sites dans 21 pays
 Welk toestel hebt u nodig? ¦ Which unit do you need? ¦ De quel appareil avez-vous besoin ?
 Opmerking, bv. uitvoering of spanning ¦ Note, e.g. version or voltage ¦ Remarque, p. ex. version ou tension
 We bekijken uw selectie ¦ We will review your selection ¦ Nous examinons votre sélection
@@ -326,7 +326,7 @@ Propere olie ¦ Clean oil ¦ Huile propre
 Van filterelement tot mobiel filtersysteem ¦ From filter element to mobile filter system ¦ De l'élément filtrant au système de filtration mobile
 Alle series ¦ All series ¦ Toutes les séries
 Een Europees netwerk van distributeurs ¦ A European network of distributors ¦ Un réseau européen de distributeurs
-Vanuit Aartselaar werken we samen met gecertificeerde distributeurs in 20 Europese landen, en met partners in Azië en Amerika. ¦ From Aartselaar, we work with certified distributors in 20 European countries, and with partners in Asia and America. ¦ Depuis Aartselaar, nous travaillons avec des distributeurs certifiés dans 20 pays européens, ainsi qu'avec des partenaires en Asie et en Amérique.
+Vanuit Aartselaar werken we samen met gecertificeerde distributeurs in 21 Europese landen, en met partners in Azië en Amerika. ¦ From Aartselaar, we work with certified distributors in 21 European countries, and with partners in Asia and America. ¦ Depuis Aartselaar, nous travaillons avec des distributeurs certifiés dans 21 pays européens, ainsi qu'avec des partenaires en Asie et en Amérique.
 Bekijk het netwerk ¦ View the network ¦ Voir le réseau
 Europese landen ¦ European countries ¦ pays européens
 We zoeken nieuwe distributeurs in verschillende regio's in Europa. ¦ We are looking for new distributors in several regions of Europe. ¦ Nous recherchons de nouveaux distributeurs dans plusieurs régions d'Europe.
@@ -467,3 +467,8 @@ Resultaat Marc ¦ Marc result ¦ Résultat Marc
 Geen betrouwbaar antwoord gevonden in de website en de datasheets ¦ No reliable answer found on the website or in the datasheets ¦ Aucune réponse fiable trouvée sur le site ni dans les fiches techniques
 Bedankt, uw vraag is verstuurd. ¦ Thank you, your question has been sent. ¦ Merci, votre question a bien été envoyée.
 Een specialist van Triple R neemt contact met u op. U ontvangt ook een bevestiging per e-mail. ¦ A Triple R specialist will contact you. You will also receive a confirmation by email. ¦ Un spécialiste Triple R vous contactera. Vous recevrez également une confirmation par e-mail.
+De nieuwe generatie van Triple R Europe bij een filtersysteem met twee Triple R-filterhuizen ¦ The new generation of Triple R Europe beside a filtration system with two Triple R filter housings ¦ La nouvelle génération de Triple R Europe à côté d'un système de filtration équipé de deux carters Triple R
+Office- &amp; operations manager ¦ Office &amp; operations manager ¦ Office &amp; operations manager
+Noorwegen ¦ Norway ¦ Norvège
+Het officiële Europese netwerk van Triple R Europe ¦ The official European network of Triple R Europe ¦ Le réseau européen officiel de Triple R Europe
+Vanuit Aartselaar werken wij samen met gecertificeerde distributeurs in 21 Europese landen. ¦ From Aartselaar, we work with certified distributors in 21 European countries. ¦ Depuis Aartselaar, nous collaborons avec des distributeurs certifiés dans 21 pays européens.

@@ -113,3 +113,12 @@ Inhoud die op de site staat, maar nog door Triple R bevestigd moet worden. De ma
 - **Oprichtingsjaar**: de tijdlijn zegt "1992 oprichting Triple R Europe NV" en "2020: 30 jaar Triple R Europe" (dat wijst op 1990). Zo staat het ook op de huidige site. Welk jaar klopt?
 - **Jubileumclaims**: "45 jaar" en "meer dan 40 jaar" (oude tekst) spraken elkaar tegen en passen niet bij "jaren 1960". Nu neutraal geformuleerd als "decennia". Een exact aantal jaren mag terug als het bevestigd is.
 - **Tijdlijnfoto's**: illustratieve foto's verwijderd (op vraag). Bij 'Jaren 1960' staat nu de originele octrooitekening US 3.346.120 (J. J. Russo, aangevraagd 16/11/1964, verleend 10/10/1967; publiek domein, via Google Patents). Echte historische foto gevonden bij TRIS BV (oilcleaner.eu/en/History): originele Triple R-verpakking uit 1964. Alleen bruikbaar met toestemming van TRIS. Voor 1974, 1992, 2004 en 2013 geen vrij bruikbare foto's online gevonden: archieffoto's van Triple R Europe of Triple R Japan nodig.
+
+## Feedback ronde 2 (12/11/2026)
+- **Nieuwe distributeurs Leeds (VK) en Sandnes (NO)**: als stip op de kaart gezet, zonder bedrijfsnaam, adres of telefoon. Graag de gegevens van beide distributeurs. Met Noorwegen erbij telt het netwerk nu 21 Europese landen (overal aangepast).
+- **Foto 2022 "Een nieuwe generatie"**: toegevoegd zonder naam in de alt-tekst. Mag de naam van de persoon erbij?
+- **Tijdlijnfoto's per jaar**: gevraagd voor elk jaar. Voor 2013, 2004, 1992 en 1974 hebben we nog geen foto's (zie hierboven). Graag archieffoto's aanleveren.
+- **Vacature Sales representative**: concepttekst opgesteld en op staging gezet. Te bevestigen: regio, talen (nu NL, FR en EN gevraagd), rijbewijs B, vast voltijds contract, opleidingsniveau en of er een bedrijfswagen bij hoort.
+- **Varnish-pagina**: de foto komt uit de V100-datasheet (V100-element). Is het een V100-M? Een productfoto van de V100-M is welkom.
+- **Quicktoron in de scheepvaart**: op vraag een link naar de sector Scheepvaart toegevoegd. De bestaande sectortekst noemt de Quicktoron niet bij de scheepvaartproducten; graag bevestigen of hij daar thuishoort.
+- **Productfoto's per model**: de modelkaarten tonen nu de foto van de serie (bv. alle BU-modellen dezelfde foto). Foto's per model zijn welkom.

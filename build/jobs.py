@@ -30,9 +30,9 @@ def _checks(items, cls='jb-checks'):
 def overview(l, O, UI, jobs, url, crumbs):
     o, u = O[l], UI[l]
     pts = ''.join(f'<div class="jb-pt"><span class="jb-ic">{IC[k]}</span><h3>{e(t)}</h3><p>{e(x)}</p></div>' for k, (t, x) in zip(('home', 'bolt', 'gear'), o['points']))
-    cards = ''.join(f"""<a class="jb-card" href="{url(j, l)}"><span class="jb-card__img"><img src="img/element-change.jpg" alt="" width="800" height="533" loading="eager"></span>
+    cards = ''.join(f"""<a class="jb-card" href="{url(j, l)}"><span class="jb-card__img"><img src="img/{j.get('card_img', 'element-change.jpg')}" alt="" width="800" height="533" loading="eager"></span>
 <span class="jb-card__body"><span class="jb-meta">{e(u["loc"])} · {e(u["type"])} · {e(u["contract"])}</span><h3>{e(j[l]["h1"])}</h3><p>{e(j[l]["card"])}</p>
-<span class="jb-tags">{''.join(f'<span>{e(h)}</span>' for h, _ in u['hl'])}</span><span class="jb-go">{e(o["view"])} {GO}</span></span></a>""" for j in jobs)
+<span class="jb-tags">{''.join(f'<span>{e(h)}</span>' for h, _ in j[l].get('hl', u['hl']))}</span><span class="jb-go">{e(o["view"])} {GO}</span></span></a>""" for j in jobs)
     return f"""<section class="hero hero--page" aria-labelledby="h1"><div class="hero__bg" aria-hidden="true"></div><div class="wrap"><div class="hero__copy" style="gap:0">
 {crumbs}<h1 id="h1">{e(o['h1'])}</h1><p class="lead">{e(o['lead'])}</p></div></div></section>
 <section class="sec"><div class="wrap">
@@ -49,8 +49,11 @@ def detail(j, l, UI, crumbs, posted):
     t, u = j[l], UI[l]
     S = t['sections']
     about, roles, grow, prof, offer = S[0], S[1:4], S[4], S[5], S[6]
+    u = dict(u, **{k: t[k] for k in ('hl', 'path') if k in t})  # per vacature eigen kernpunten en groeipad
     hl = ''.join(f'<div class="jb-hl__i"><span class="jb-ic">{IC[k]}</span><div><h3>{e(h)}</h3><p>{e(x)}</p></div></div>' for k, (h, x) in zip(('mix', 'up', 'book'), u['hl']))
     imgs = (('engineering.jpg', 1200, 900, '50% 40%'), ('industry.jpg', 1800, 1200, '50% 30%'), ('oil-samples.jpg', 1400, 933, '50% 50%'))
+    if t.get('imgs'):
+        imgs = t['imgs']
     rc = ''.join(f"""<article class="jb-role"><div class="jb-role__img"><img src="img/{im}" alt="" width="{w}" height="{hh}" loading="lazy" style="object-position:{pos}"><span class="jb-ic">{IC[k]}</span></div>
 <div class="jb-role__body"><h3>{e(h)}</h3>{_checks(lis)}</div></article>""" for (h, _, lis), k, (im, w, hh, pos) in zip(roles, ('tool', 'site', 'team'), imgs))
     steps = ''.join(f'<li><span class="jb-step__n">{i}</span><h3>{e(h)}</h3><p>{e(x)}</p></li>' for i, (h, x) in enumerate(u['path'], 1))

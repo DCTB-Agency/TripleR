@@ -210,7 +210,8 @@ def route(page, lang):
 
 def rewrite_links(s, lang):
     s = re.sub(r'product\.html\?id=\$\{([^}]*)\}', lambda m: f'/{lang}/{PRODUCTS_SLUG[lang]}/${{{m.group(1)}}}/', s)
-    s = re.sub(r"'product\.html\?id=' \+ ([\w.]+)", lambda m: f"'/{lang}/{PRODUCTS_SLUG[lang]}/' + {m.group(1)} + '/'", s)
+    s = re.sub(r'(?<![\w/.-])product\.html\?id=([\w-]+)(?=["\'`#])', lambda m: f'/{lang}/{PRODUCTS_SLUG[lang]}/{m.group(1)}/', s)
+    s = re.sub(r"'product\.html\?id=' \+ ([\w.]+)",lambda m: f"'/{lang}/{PRODUCTS_SLUG[lang]}/' + {m.group(1)} + '/'", s)
     SER = {'bu': 'p-bu', 'se': 'p-se', 'osca': 'p-osca', 'tr': 'p-tr', 'ss': 'p-ss', 'ws': 'p-ws', 'quicktoron': 'p-qt', 'vacuum': 'p-vac', 'centrifuges': 'p-cen'}
     s = re.sub(r'(?<![\w/.-])producten\.html\?serie=(\w+)(?=["\'`])', lambda m: route(SER[m.group(1)], lang) if m.group(1) in SER else m.group(0), s)
     s = re.sub(r'(?<![\w/.-])producten\.html\?cat=elementen(?=["\'`])', lambda m: route('p-el', lang), s)
@@ -392,6 +393,45 @@ KB_IMG = {'kb-filtratie': 'industry.jpg', 'kb-varnish': 'sludge.jpg', 'kb-water'
           'kb-rendement': 'sec-wind.jpg', 'kb-tribologie': 'engine.jpg'}
 
 
+EXTRA_IND = {'p-qt': ['s-marine']}
+ZZ_IMG = {'kb-filtratie': ['industry.jpg', 'engineering.jpg', 'element-cut.png', 'oil-samples.jpg', 'sec-hyd.jpg', 'element-change.jpg', 'oil-gold.jpg'],
+          'kb-bypass': ['element-cut.png', 'engineering.jpg', 'element-change.jpg'],
+          'kb-analyse': ['oil-samples.jpg', 'particles.jpg', 'engineering.jpg', 'water-drops.jpg', 'element-cut.png', 'oil-gold.jpg', 'industry.jpg'],
+          'kb-beheer': ['engineering.jpg', 'oil-samples.jpg', 'element-change.jpg', 'industry.jpg'],
+          'kb-schoon': ['oil-gold.jpg', 'element-cut.png', 'engineering.jpg'],
+          'kb-techniek': ['element-cut.png', 'engineering.jpg', 'particles.jpg', 'sludge.jpg', 'water-drops.jpg', 'air-bubbles.jpg', 'oil-samples.jpg'],
+          'kb-rendement': ['sec-wind.jpg', 'engineering.jpg', 'industry.jpg', 'element-change.jpg', 'oil-gold.jpg', 'footprint.png'],
+          'p-qt': ['quicktoron.png', 'air-bubbles.jpg', 'engineering.jpg'],
+          'p-vac': ['vacuum.png', 'water-drops.jpg', 'engineering.jpg', 'industry.jpg'],
+          'p-ws': ['ws.png', 'water-drops.jpg', 'engineering.jpg', 'industry.jpg'],
+          'p-el': ['elements.png', 'element-cut.png', 'v100-element.jpg', 'element-change.jpg', 'particles.jpg'],
+          'kb-tribologie': ['particles.jpg', 'sludge.jpg', 'water-drops.jpg', 'air-bubbles.jpg', 'oil-samples.jpg', 'element-cut.png']}
+
+
+def page_imgs(key, m, cat):
+    if key in ZZ_IMG:
+        return ZZ_IMG[key]
+    if m['sec'] == 'sec':
+        return [R.SECTOR_IMG.get(key, 'industry.jpg'), 'engineering.jpg', 'industry.jpg']
+    ser = [cat['series'].get(x, {}).get('img') for x in m.get('serie', [])]
+    first = next((x for x in ser if x), 'elements.png')
+    return [first, 'element-cut.png', 'engineering.jpg', 'industry.jpg']
+
+
+def skip_lead(blocks, meta, sec=None):
+    """Dezelfde inleiding weglaten als bij de taalversie (voor het vergelijken van de structuur)."""
+    if len(meta) > 3 or sec == 'pro-serie':
+        return blocks
+    _, n = R.lead_from(blocks)
+    out = []
+    for b in blocks:
+        if n and b[0] == 'p':
+            n -= 1
+            continue
+        out.append(b)
+    return out
+
+
 def kb_links(l):
     t = R.T[l]
     items = ''.join(f'<li><a class="tcard" href="{route(k, l)}"><span class="tcard__img{" tcard__img--contain" if KB_IMG.get(k, "").endswith(".png") else ""}"><img src="img/{KB_IMG.get(k, "industry.jpg")}" alt="" loading="lazy"></span><span class="tcard__b"><b>{R.e(m[l][0])}</b><span>{R.e(m[l][2])}</span></span></a></li>' for k, m in KB.items() if m['sec'] == 'opl')
@@ -404,8 +444,8 @@ def all_models(cat, l):
     for sid, s in cat['series'].items():
         ps = [p for p in cat['products'] if p.get('series') == sid and not p.get('hidden')]
         if ps:
-            out.append(f'<h3>{R.e(s["n"])}</h3><ul>' + ''.join(f'<li><a href="/{l}/{PRODUCTS_SLUG[l]}/{p["id"]}/">{R.e(p["n"])}</a></li>' for p in ps) + '</ul>')
-    return f'<section class="sec" id="alle-modellen"><div class="wrap prose"><h2>{t["all"]}</h2><p>{t["all_s"]}</p>{"".join(out)}</div></section>'
+            out.append(f'<h3 class="mser">{R.e(s["n"])}</h3>' + R.model_cards(ps, l, lambda p: f"/{l}/{PRODUCTS_SLUG[l]}/{p['id']}/", cat))
+    return f'<section class="sec sec--tint" id="alle-modellen"><div class="wrap"><h2 class="zz-h">{t["all"]}</h2><p class="lead">{t["all_s"]}</p>{"".join(out)}</div></section>'
 
 
 def llms(kb, cats):
@@ -495,6 +535,8 @@ def main():
             blocks_ = kb_data[key][l]
             if len(data) > 3:
                 lead, skip = data[3], 0
+            elif m['sec'] == 'pro' and m.get('serie') and key != 'p-el':  # productpagina: vaste omschrijving van de serie, de tekst blijft in zijn eigen sectie
+                lead = cats[l]['series'][m['serie'][0]]['s']
             else:
                 lead, skip = R.lead_from(blocks_)
                 rest = []
@@ -505,6 +547,8 @@ def main():
                         continue
                     rest.append(b)
                 blocks_ = rest
+                if not lead.strip() and m.get('serie'):  # productpagina zonder eigen inleiding: omschrijving van de serie
+                    lead = cats[l]['series'][m['serie'][0]]['s']
             parent = PARENT[m['sec']]
             ptitle = PAGES[parent][l][0].split(' – ')[0].split(':')[0]
             crumbs = [(HOME[l], f'/{l}/'), (CRUMB[parent][l], route(parent, l)), (h1, alts[l])]
@@ -524,12 +568,17 @@ def main():
                 ld = {'@type': 'TechArticle', 'headline': h1, 'name': h1, 'description': desc, 'inLanguage': l, 'url': SITE + alts[l], 'dateModified': date.today().isoformat(), 'publisher': {'@id': ORG['@id']}, 'author': {'@id': ORG['@id']}}
                 build_page('kb', l, ver, parts, alts, title, desc, crumbs, extra_ld=[ld, faq], blocks={'{{KB}}': body_})
                 continue
+            nl_blocks = skip_lead(kb_data[key]['nl'], KB[key]['nl'], 'pro-serie' if m['sec'] == 'pro' and key != 'p-el' else m['sec'])
+            purl = lambda x: f"/{l}/{PRODUCTS_SLUG[l]}/{x['id']}/"
+            models_html = ('<div class="wrap"><h2 class="zz-h">' + t["models"] + '</h2>' + R.model_cards(prods, l, purl, cats[l]) + '</div>') if prods else ''
+            imgs = page_imgs(key, m, cats['nl'])
+            secs, tint = R.blocks_page(key, l, m['sec'], R.groups(blocks_), R.groups(nl_blocks), imgs, route, KB, extra_ind=EXTRA_IND.get(key), models_html=models_html)
             html_body = f'''<section class="hero hero--page" aria-labelledby="h1"><div class="hero__bg" aria-hidden="true"></div><div class="wrap"><div class="hero__copy" style="gap:0">
 <ol class="crumbs" aria-label="Kruimelpad"><li><a href="{route('homepage', l)}">{HOME[l]}</a></li><li><a href="{route(parent, l)}">{CRUMB[parent][l]}</a></li><li aria-current="page">{R.e(h1)}</li></ol>
 <h1 id="h1">{R.e(h1)}</h1><p class="lead">{R.e(lead)}</p></div></div></section>
-<section class="sec"><div class="wrap prose">{models if m['sec'] == 'pro' else ''}{R.body(blocks_)}
-<p style="margin-top:var(--s-6);font-size:13px;color:var(--grey-600)">{t['upd']}: <time datetime="{date.today().isoformat()}">{t['date']}</time> · {R.e(t['by'])}</p>
-<h2>{t['rel']}</h2><ul>{rel}</ul></div></section>''' + R.cta(l)
+{secs}<section class="sec{' sec--tint' if tint else ''}"><div class="wrap prose">
+<h2>{t['rel']}</h2><ul>{rel}</ul>
+<p style="margin-top:var(--s-6);font-size:13px;color:var(--grey-600)">{t['upd']}: <time datetime="{date.today().isoformat()}">{t['date']}</time> · {R.e(t['by'])}</p></div></section>''' + R.cta(l)
             ld = {'@type': 'TechArticle' if m['sec'] == 'opl' else 'WebPage', 'headline': h1, 'name': h1, 'description': desc, 'inLanguage': l, 'url': SITE + alts[l], 'dateModified': date.today().isoformat(), 'publisher': {'@id': ORG['@id']}, 'author': {'@id': ORG['@id']}}
             build_page('kb', l, ver, parts, alts, title, desc, crumbs, extra_ld=ld, blocks={'{{KB}}': html_body})
         urls.append((alts, '0.8'))
