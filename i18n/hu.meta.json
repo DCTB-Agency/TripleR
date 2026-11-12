@@ -1,0 +1,20 @@
+{
+"products_slug": "termekek",
+"ui": {
+ "taal": "Nyelv", "home": "Kezdőlap",
+ "crumb": {"oplossingen": "Megoldások", "sectoren": "Iparágak", "producten": "Termékek"},
+ "t404": ["Az oldal nem található – Triple R", "Ez az oldal már nem létezik. Nézze meg termékeinket, vagy vegye fel velünk a kapcsolatot."],
+ "num": [["(\\d)\\.(\\d{3})\\b", "\\1 \\2"], [" tot ", "–"], ["\\btpm\\b", "ford./perc"], ["l/min", "l/perc"], ["(\\d+)-formaat", "\\1-es méret"], ["\\bhoogte\\b", "magasság"], ["\\(gegarandeerd debiet\\)", "(garantált térfogatáram)"], ["\\(standaard\\)", "(alapkivitel)"], ["\\(waterbasis; bij olie 50%\\)", "(vízbázisú; olajjal 50%)"], ["verschillende fijnheden", "különböző finomságok"], ["\" in en uit", "\" be és ki"], ["\\buit\\b", "ki"], ["\\bca,", "kb."]],
+ "kb_t": {"upd": "Utolsó frissítés", "by": "Triple R Europe, olajszűrési szakértő 1992 óta", "rel": "Olvassa el ezt is", "models": "Modellek", "model": "Modell", "descr": "Leírás", "cta_h": "Méresse meg olaját", "cta": "Kérjen ingyenes olajelemzést, és kapjon személyes tanácsot a Triple R szakértőjétől.", "cta_b": "Ingyenes olajelemzés igénylése", "cta_c": "Kapcsolatfelvétel", "sp": "Műszaki adatok", "arts": "Cikkszám", "all": "Összes modell", "all_s": "Minden modell műszaki adatokkal és adatlappal.", "topics": "Összes téma", "topics_s": "Ismerje meg a szennyeződések típusait, a technológiát és a tiszta olaj előnyeit.", "date": "2026. november 6."},
+ "zt": {"ind": "Ezekben az iparágakban használják", "prods": "Termékek ehhez az iparághoz", "refs": "Referenciák"}
+},
+"pages": {
+ "homepage": ["", "Triple R – Mellékáramú szűrők és ipari olajtisztítás", "Ne cserélje, tisztítsa az olajat. A Triple R eltávolítja a részecskéket, a lakkot, a vizet és a levegőt az ipari olajból. Kérjen ingyenes olajelemzést."],
+ "producten": ["termekek", "Mellékáramú szűrők és olajtisztítók – Triple R", "A kompakt mellékáramú szűrőktől a mobil olajtisztítókig és vákuumszárítókig. Hasonlítsa össze a Triple R modelleket, és találja meg a megfelelő szűrőt."],
+ "olieanalyse": ["ingyenes-olajelemzes", "Ingyenes olajelemzés igénylése – Triple R", "Tudja meg, mennyire tiszta az olaja: részecskeszámlálás (ISO 4406), víz, viszkozitás és lakk, személyes tanácsadással. Igényelje most."],
+ "offerte": ["ajanlatkeres", "Ajánlatkérés – Triple R", "Állítsa össze kérését: válasszon termékeket vagy bérelhető berendezéseket, adja meg adatait, és kapjon egyedi ajánlatot a Triple R szakértőjétől."],
+ "contact": ["kapcsolat", "Kapcsolat – Triple R Europe, Aartselaar", "Lépjen kapcsolatba a Triple R Europe-pal Aartselaarban (Belgium): +32 3 825 46 47 vagy info@triple-r-europe.com. Gyors olajszűrési tanácsadás."],
+ "netwerk": ["forgalmazok", "Forgalmazói hálózat – Triple R", "Keresse meg a legközelebbi Triple R forgalmazót: központ Aartselaarban és tanúsított forgalmazók 21 európai országban."],
+ "sectoren": ["iparagak", "Olajszűrés iparáganként – Triple R", "A hajózástól és a szélenergiától az acél-, a papír- és a fröccsöntő iparig: így tartja tisztán a Triple R az olajat az Ön iparágában."]
+}
+}

@@ -1,0 +1,20 @@
+{
+"products_slug": "tuotteet",
+"ui": {
+ "taal": "Kieli", "home": "Etusivu",
+ "crumb": {"oplossingen": "Ratkaisut", "sectoren": "Toimialat", "producten": "Tuotteet"},
+ "t404": ["Sivua ei löytynyt – Triple R", "Tätä sivua ei enää ole. Katso tuotteemme tai ota yhteyttä."],
+ "num": [["(\\d)\\.(\\d{3})\\b", "\\1 \\2"], [" tot ", "–"], ["\\btpm\\b", "r/min"], ["(\\d+)-formaat", "koko \\1"], ["\\bhoogte\\b", "korkeus"], ["\\(gegarandeerd debiet\\)", "(taattu virtaama)"], ["\\(standaard\\)", "(vakio)"], ["\\(waterbasis; bij olie 50%\\)", "(vesipohjainen; öljyllä 50 %)"], ["verschillende fijnheden", "eri hienouksia"], ["\" in en uit", "\" sisään ja ulos"], ["\\buit\\b", "ulos"], ["\\bca,", "n."]],
+ "kb_t": {"upd": "Päivitetty viimeksi", "by": "Triple R Europe, öljynsuodatuksen asiantuntija vuodesta 1992", "rel": "Lue myös", "models": "Mallit", "model": "Malli", "descr": "Kuvaus", "cta_h": "Mittauta öljysi", "cta": "Pyydä maksuton öljyanalyysi ja saat Triple R -asiantuntijan henkilökohtaisen neuvonnan.", "cta_b": "Pyydä maksuton öljyanalyysi", "cta_c": "Ota yhteyttä", "sp": "Tekniset tiedot", "arts": "Tuotenumero", "all": "Kaikki mallit", "all_s": "Jokainen malli teknisine tietoineen ja tietolehtineen.", "topics": "Kaikki aiheet", "topics_s": "Tutustu jokaiseen likaantumistyyppiin, tekniikkaan ja puhtaan öljyn hyötyihin.", "date": "6. marraskuuta 2026"},
+ "zt": {"ind": "Käytössä näillä toimialoilla", "prods": "Tuotteet tälle toimialalle", "refs": "Referenssit"}
+},
+"pages": {
+ "homepage": ["", "Triple R – Ohivirtaussuodattimet ja öljynpuhdistus", "Lopeta öljynvaihdot, ala puhdistaa öljyä. Triple R poistaa hiukkaset, lakan, veden ja ilman teollisuusöljystä. Pyydä maksuton öljyanalyysi."],
+ "producten": ["tuotteet", "Ohivirtaussuodattimet ja öljynpuhdistimet – Triple R", "Kompakteista ohivirtaussuodattimista siirrettäviin öljynpuhdistimiin ja tyhjiökuivaimiin. Vertaa kaikkia Triple R -malleja ja löydä oikea suodatin."],
+ "olieanalyse": ["maksuton-oljyanalyysi", "Pyydä maksuton öljyanalyysi – Triple R", "Tiedä, kuinka puhdasta öljysi on: hiukkaslaskenta (ISO 4406), vesi, viskositeetti ja lakka, henkilökohtaisella neuvonnalla. Pyydä analyysi."],
+ "offerte": ["pyyda-tarjous", "Pyydä tarjous – Triple R", "Kokoa pyyntösi: valitse tuotteet tai vuokralaitteet, täytä tietosi ja saat Triple R -asiantuntijalta laitteistoosi räätälöidyn tarjouksen."],
+ "contact": ["yhteystiedot", "Yhteystiedot – Triple R Europe, Aartselaar", "Ota yhteyttä Triple R Europeen Aartselaarissa (Belgia): +32 3 825 46 47 tai info@triple-r-europe.com. Nopeaa neuvontaa öljynsuodatuksessa."],
+ "netwerk": ["jalleenmyyjat", "Jälleenmyyjäverkosto – Triple R", "Löydä lähin Triple R -jälleenmyyjä: pääkonttori Aartselaarissa ja sertifioidut jälleenmyyjät 21 Euroopan maassa."],
+ "sectoren": ["toimialat", "Öljynsuodatus toimialoittain – Triple R", "Merenkulusta ja tuulivoimasta terästeollisuuteen, paperiin ja ruiskuvaluun: näin Triple R pitää toimialasi öljyn puhtaana."]
+}
+}

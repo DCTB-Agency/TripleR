@@ -1,0 +1,20 @@
+{
+"products_slug": "produkter",
+"ui": {
+ "taal": "Språk", "home": "Forside",
+ "crumb": {"oplossingen": "Løsninger", "sectoren": "Bransjer", "producten": "Produkter"},
+ "t404": ["Fant ikke siden – Triple R", "Denne siden finnes ikke lenger. Se produktene våre eller ta kontakt."],
+ "num": [["(\\d)\\.(\\d{3})\\b", "\\1 \\2"], [" tot ", " til "], ["\\btpm\\b", "o/min"], ["(\\d+)-formaat", "størrelse \\1"], ["\\bhoogte\\b", "høyde"], ["\\(gegarandeerd debiet\\)", "(garantert strømning)"], ["\\(standaard\\)", "(standard)"], ["\\(waterbasis; bij olie 50%\\)", "(vannbasert; med olje 50 %)"], ["verschillende fijnheden", "ulike finheter"], ["\" in en uit", "\" inn og ut"], ["\\buit\\b", "ut"], ["\\bca,", "ca."]],
+ "kb_t": {"upd": "Sist oppdatert", "by": "Triple R Europe, spesialist på oljefiltrering siden 1992", "rel": "Les også", "models": "Modeller", "model": "Modell", "descr": "Beskrivelse", "cta_h": "Få oljen din målt", "cta": "Be om en gratis oljeanalyse og få personlig rådgivning fra en Triple R-spesialist.", "cta_b": "Be om en gratis oljeanalyse", "cta_c": "Kontakt oss", "sp": "Tekniske data", "arts": "Artikkelnummer", "all": "Alle modeller", "all_s": "Hver modell med spesifikasjoner og datablad.", "topics": "Alle emner", "topics_s": "Fordyp deg i hver type forurensning, teknikken og hva ren olje gir.", "date": "6. november 2026"},
+ "zt": {"ind": "Brukes i disse bransjene", "prods": "Produkter for denne bransjen", "refs": "Referanser"}
+},
+"pages": {
+ "homepage": ["", "Triple R – Bypassfiltre og oljerensing for industrien", "Slutt å bytte olje, begynn å rense den. Triple R fjerner partikler, lakk, vann og luft fra industriolje. Be om en gratis oljeanalyse."],
+ "producten": ["produkter", "Bypassfiltre og oljerensere – Produkter – Triple R", "Fra kompakte bypassfiltre til mobile oljerensere og vakuumtørkere. Sammenlign alle Triple R-modeller og finn riktig filter."],
+ "olieanalyse": ["gratis-oljeanalyse", "Be om en gratis oljeanalyse – Triple R", "Vit hvor ren oljen din er: partikkeltelling (ISO 4406), vann, viskositet og lakk, med personlig rådgivning. Be om analysen nå."],
+ "offerte": ["be-om-tilbud", "Be om tilbud – Triple R", "Sett sammen forespørselen: velg produkter eller leieutstyr, fyll ut opplysningene dine og få et skreddersydd tilbud fra en Triple R-spesialist."],
+ "contact": ["kontakt", "Kontakt – Triple R Europe, Aartselaar", "Kontakt Triple R Europe i Aartselaar, Belgia: +32 3 825 46 47 eller info@triple-r-europe.com. Rask rådgivning om oljefiltrering."],
+ "netwerk": ["forhandlere", "Forhandlernettverk – Triple R", "Finn nærmeste Triple R-forhandler: hovedkontor i Aartselaar og sertifiserte forhandlere i 21 europeiske land."],
+ "sectoren": ["bransjer", "Oljefiltrering per bransje – Triple R", "Fra maritim og vindkraft til stål, papir og sprøytestøping: slik holder Triple R oljen ren i din bransje."]
+}
+}

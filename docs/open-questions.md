@@ -122,3 +122,10 @@ Inhoud die op de site staat, maar nog door Triple R bevestigd moet worden. De ma
 - **Varnish-pagina**: de foto komt uit de V100-datasheet (V100-element). Is het een V100-M? Een productfoto van de V100-M is welkom.
 - **Quicktoron in de scheepvaart**: op vraag een link naar de sector Scheepvaart toegevoegd. De bestaande sectortekst noemt de Quicktoron niet bij de scheepvaartproducten; graag bevestigen of hij daar thuishoort.
 - **Productfoto's per model**: de modelkaarten tonen nu de foto van de serie (bv. alle BU-modellen dezelfde foto). Foto's per model zijn welkom.
+
+## Talen (12/11/2026)
+- **Duits** (primair) staat volledig online op staging: interface, alle inhoudspagina's, vacatures en mails.
+- **Italiaans, Spaans, Fins, Hongaars, Zweeds en Noors** (secundair): homepage, producten, alle modelpagina's, gratis olieanalyse, offerte, contact, netwerk en sectoroverzicht. Overige links (diensten, oplossingen, over ons, vacatures, FAQ, privacy- en cookiebeleid) gaan naar de Engelse versie.
+- Alle vertalingen zijn door Claude opgesteld, niet door een moedertaalspreker nagelezen. Steekproef aanbevolen, vooral voor Fins en Hongaars (lokale distributeurs?).
+- **Privacy- en cookiebeleid** bestaan voor de secundaire talen alleen in het Engels. Juridisch nakijken of een vertaling nodig is.
+- **Marc**: de inhoudsexport (ask-content.json) bevat nu alle 10 talen. De AI-backend moet weten dat vragen in die talen kunnen binnenkomen.

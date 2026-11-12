@@ -23,7 +23,7 @@ const lm = m.leadMail(x, 5), rm = m.replyMail(x);
 assert.ok(!lm.html.includes('<script>x') && !lm.html.includes('<img src=x') && lm.html.includes('A&amp;B'));
 assert.ok(!rm.html.includes('script') && !rm.html.includes('Vraag'));
 assert.ok(m.replyMail(m.clean({ ...base, type: 'olieanalyse', lang: 'en', name: 'Jan Peeters' })).html.includes('Dear Jan,'));
-for (const l of ['nl', 'en', 'fr', 'de']) for (const t of ['olieanalyse', 'offerte', 'besparing', 'contact']) assert.ok(m.replyMail(m.clean({ ...base, type: t, lang: l })).subject);
+for (const l of ['nl', 'en', 'fr', 'de', 'it', 'es', 'fi', 'hu', 'sv', 'no']) for (const t of ['olieanalyse', 'offerte', 'besparing', 'contact']) assert.ok(m.replyMail(m.clean({ ...base, type: t, lang: l })).subject);
 const pdf = Buffer.from('%PDF-1.4 test').toString('base64');
 const job = { ...base, type: 'sollicitatie', lang: 'nl', name: 'Jan Peeters', extra: { Vacature: 'Servicetechnicus' }, cv: { name: 'cv.pdf', data: pdf } };
 let dj = m.clean(job);

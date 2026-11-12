@@ -3,6 +3,9 @@
 Primaire talen krijgen de volledige site. Secundaire talen krijgen de kernpagina's (CORE + productpagina's per model);
 de overige links in die talen verwijzen naar de Engelse versie.
 Een nieuwe taal wordt pas gebouwd zodra i18n/<taal>.meta.json bestaat (NL, EN en FR zijn altijd actief).
+
+Welke teksten een secundaire taal nodig heeft: USED_OUT=/pad/used.json python3 build/site.py
+schrijft alle opgezochte NL-teksten weg; vertaal de sleutels uit i18n/en.json die daarin staan.
 """
 import json, os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

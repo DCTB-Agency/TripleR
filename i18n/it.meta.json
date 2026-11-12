@@ -1,0 +1,20 @@
+{
+"products_slug": "prodotti",
+"ui": {
+ "taal": "Lingua", "home": "Home",
+ "crumb": {"oplossingen": "Soluzioni", "sectoren": "Settori", "producten": "Prodotti"},
+ "t404": ["Pagina non trovata – Triple R", "Questa pagina non esiste più. Guardate i nostri prodotti o contattateci."],
+ "num": [[" tot ", " a "], ["\\btpm\\b", "giri/min"], ["(\\d+)-formaat", "formato \\1"], ["\\bhoogte\\b", "altezza"], ["\\(gegarandeerd debiet\\)", "(portata garantita)"], ["\\(standaard\\)", "(standard)"], ["\\(waterbasis; bij olie 50%\\)", "(a base d'acqua; con olio 50%)"], ["verschillende fijnheden", "varie finezze"], ["\" in en uit", "\" ingresso e uscita"], ["\\buit\\b", "uscita"], ["\\bca,", "ca."]],
+ "kb_t": {"upd": "Ultimo aggiornamento", "by": "Triple R Europe, specialista della filtrazione dell'olio dal 1992", "rel": "Leggi anche", "models": "Modelli", "model": "Modello", "descr": "Descrizione", "cta_h": "Fate misurare il vostro olio", "cta": "Richiedete un'analisi dell'olio gratuita e ricevete la consulenza personale di uno specialista Triple R.", "cta_b": "Richiedi un'analisi dell'olio gratuita", "cta_c": "Contattateci", "sp": "Dati tecnici", "arts": "Codice articolo", "all": "Tutti i modelli", "all_s": "Ogni modello con specifiche e scheda tecnica.", "topics": "Tutti gli argomenti", "topics_s": "Approfondite ogni tipo di contaminazione, la tecnologia e i vantaggi dell'olio pulito.", "date": "6 novembre 2026"},
+ "zt": {"ind": "Utilizzato in questi settori", "prods": "Prodotti per questo settore", "refs": "Referenze"}
+},
+"pages": {
+ "homepage": ["", "Triple R – Filtri bypass e depurazione dell'olio industriale", "Smettete di cambiare l'olio, iniziate a pulirlo. Triple R rimuove particelle, varnish, acqua e aria dall'olio industriale. Analisi dell'olio gratuita."],
+ "producten": ["prodotti", "Filtri bypass e depuratori d'olio – Prodotti – Triple R", "Dai filtri bypass compatti ai depuratori d'olio mobili e ai disidratatori sottovuoto. Confrontate tutti i modelli Triple R e trovate il filtro giusto."],
+ "olieanalyse": ["analisi-olio-gratuita", "Richiedi un'analisi dell'olio gratuita – Triple R", "Sappiate quanto è pulito il vostro olio: conteggio particellare (ISO 4406), acqua, viscosità e varnish, con consulenza personale. Richiedetela ora."],
+ "offerte": ["richiesta-offerta", "Richiedi un'offerta – Triple R", "Componete la vostra richiesta: scegliete prodotti o dispositivi a noleggio, inserite i vostri dati e ricevete un'offerta su misura da uno specialista."],
+ "contact": ["contatti", "Contatti – Triple R Europe, Aartselaar", "Contattate Triple R Europe ad Aartselaar (Belgio): +32 3 825 46 47 o info@triple-r-europe.com. Consulenza rapida sulla filtrazione dell'olio."],
+ "netwerk": ["distributori", "Rete di distributori – Triple R", "Trovate il distributore Triple R più vicino: sede centrale ad Aartselaar e distributori certificati in 21 paesi europei."],
+ "sectoren": ["settori", "Filtrazione dell'olio per settore – Triple R", "Dalla nautica e dall'eolico all'acciaio, alla carta e allo stampaggio a iniezione: così Triple R mantiene pulito l'olio nel vostro settore."]
+}
+}

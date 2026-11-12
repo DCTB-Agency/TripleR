@@ -1,0 +1,20 @@
+{
+"products_slug": "productos",
+"ui": {
+ "taal": "Idioma", "home": "Inicio",
+ "crumb": {"oplossingen": "Soluciones", "sectoren": "Sectores", "producten": "Productos"},
+ "t404": ["Página no encontrada – Triple R", "Esta página ya no existe. Vea nuestros productos o contáctenos."],
+ "num": [[" tot ", " a "], ["\\btpm\\b", "rpm"], ["(\\d+)-formaat", "formato \\1"], ["\\bhoogte\\b", "altura"], ["\\(gegarandeerd debiet\\)", "(caudal garantizado)"], ["\\(standaard\\)", "(estándar)"], ["\\(waterbasis; bij olie 50%\\)", "(base agua; con aceite 50 %)"], ["verschillende fijnheden", "distintas finuras"], ["\" in en uit", "\" entrada y salida"], ["\\buit\\b", "salida"], ["\\bca,", "aprox."]],
+ "kb_t": {"upd": "Última actualización", "by": "Triple R Europe, especialista en filtración de aceite desde 1992", "rel": "Lea también", "models": "Modelos", "model": "Modelo", "descr": "Descripción", "cta_h": "Mida su aceite", "cta": "Solicite un análisis de aceite gratuito y reciba el asesoramiento personal de un especialista de Triple R.", "cta_b": "Solicitar un análisis de aceite gratuito", "cta_c": "Contáctenos", "sp": "Datos técnicos", "arts": "Referencia", "all": "Todos los modelos", "all_s": "Cada modelo con especificaciones y ficha técnica.", "topics": "Todos los temas", "topics_s": "Profundice en cada tipo de contaminación, la tecnología y lo que aporta el aceite limpio.", "date": "6 de noviembre de 2026"},
+ "zt": {"ind": "Se utiliza en estos sectores", "prods": "Productos para este sector", "refs": "Referencias"}
+},
+"pages": {
+ "homepage": ["", "Triple R – Filtros bypass y depuración de aceite industrial", "Deje de cambiar el aceite y empiece a limpiarlo. Triple R elimina partículas, barniz, agua y aire del aceite industrial. Análisis de aceite gratuito."],
+ "producten": ["productos", "Filtros bypass y depuradoras de aceite – Triple R", "De filtros bypass compactos a depuradoras de aceite móviles y deshidratadores al vacío. Compare todos los modelos Triple R y encuentre el filtro adecuado."],
+ "olieanalyse": ["analisis-aceite-gratuito", "Solicite un análisis de aceite gratuito – Triple R", "Sepa lo limpio que está su aceite: recuento de partículas (ISO 4406), agua, viscosidad y barniz, con asesoramiento personal. Solicítelo ahora."],
+ "offerte": ["solicitar-oferta", "Solicitar oferta – Triple R", "Prepare su solicitud: elija productos o equipos de alquiler, rellene sus datos y reciba una oferta a medida de un especialista de Triple R."],
+ "contact": ["contacto", "Contacto – Triple R Europe, Aartselaar", "Contacte con Triple R Europe en Aartselaar (Bélgica): +32 3 825 46 47 o info@triple-r-europe.com. Asesoramiento rápido en filtración de aceite."],
+ "netwerk": ["distribuidores", "Red de distribuidores – Triple R", "Encuentre el distribuidor de Triple R más cercano: sede central en Aartselaar y distribuidores certificados en 21 países europeos."],
+ "sectoren": ["sectores", "Filtración de aceite por sector – Triple R", "Del sector naval y eólico al acero, el papel y la inyección de plástico: así mantiene Triple R limpio el aceite de su sector."]
+}
+}

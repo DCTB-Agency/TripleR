@@ -32,10 +32,15 @@ for _l in LANGS[3:]:
     TAAL[_l], HOME[_l] = META[_l]['ui']['taal'], META[_l]['ui']['home']
 
 
+USED = set()
+
+
 def tr(text, lang, where='', report=True):
     if lang == 'nl':
         return text
     key = text.strip()
+    if lang in SECONDARY:
+        USED.add(key)
     if not key:
         return text
     v = DICT[lang].get(key)
@@ -361,6 +366,8 @@ def cat_str(s, lang):
     if lang == 'nl':
         return s
     v = DICT[lang].get(s.strip())
+    if lang in SECONDARY:
+        USED.add(s.strip())
     if v is not None:
         return v
     r = s
@@ -645,6 +652,8 @@ def main():
     import ask_export
     ac, asz = ask_export.run(OUT, cat_str)
     print('ask-content.json:', ac, f'{asz // 1024} KB')
+    if os.environ.get('USED_OUT'):
+        json.dump(sorted(USED), open(os.environ['USED_OUT'], 'w'), ensure_ascii=False)
     json.dump({'html': MISSING, 'js': JS_MISS}, open(os.path.join(ROOT, 'build', '.missing.json'), 'w'), ensure_ascii=False, indent=0)
     if os.environ.get('MISSING_OUT'):
         json.dump(MISSING, open(os.environ['MISSING_OUT'], 'w'), ensure_ascii=False, indent=1)
