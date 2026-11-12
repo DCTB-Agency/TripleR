@@ -1848,3 +1848,6 @@ figure.vtl__media{margin:0;position:relative}
 .tp__how{font-size:1.1875rem}
 .tp-faq>*{max-width:860px}
 .tp-faq .faq{margin-top:var(--s-5)}
+
+/* taalkeuze: primaire talen boven, secundaire talen onder een scheidingslijn */
+.langsw__sep{display:block;height:1px;margin:4px 8px;background:var(--grey-200,#E4E7EC)}

@@ -9,6 +9,7 @@ from datetime import date
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'build'))
 from pages import LANGS, PAGES, PRODUCTS_SLUG
+from langs import META, NAME as LANG_NAME, LOCALE, PRIMARY, SECONDARY, has_page, ix, pick, strings
 from kb_meta import KB, SECTION, PARENT
 import kb_render as R
 from kb_topics import TOPIC, UI as TOPIC_UI, LABEL as TOPIC_LABEL
@@ -23,10 +24,12 @@ os.chdir(D)
 _g = {'__name__': 'copytool'}
 exec(open('copy/copytool.py', encoding='utf-8').read().split('if __name__')[0], _g)
 Extract = _g['Extract']
-DICT = {l: json.load(open(os.path.join(I18N, l + '.json'), encoding='utf-8')) for l in ('en', 'fr')}
-MISSING = {'en': {}, 'fr': {}}
-LANG_NAME = {'nl': 'Nederlands', 'en': 'English', 'fr': 'Français'}
+DICT = {l: strings(l) for l in LANGS if l != 'nl'}
+MISSING = {l: {} for l in DICT}
 TAAL = {'nl': 'Taal', 'en': 'Language', 'fr': 'Langue'}
+HOME = {'nl': 'Home', 'en': 'Home', 'fr': 'Accueil'}
+for _l in LANGS[3:]:
+    TAAL[_l], HOME[_l] = META[_l]['ui']['taal'], META[_l]['ui']['home']
 
 
 def tr(text, lang, where='', report=True):
@@ -48,7 +51,7 @@ def tr(text, lang, where='', report=True):
 
 
 ATTR = re.compile(r'\b(aria-label|placeholder|title|alt|data-on)="([^"$]*)"')
-JS_MISS = {'en': {}, 'fr': {}}
+JS_MISS = {l: {} for l in DICT}
 
 
 def tr_piece(text, lang, where, q):
@@ -196,15 +199,15 @@ def tr_file(path, lang):
 
 
 def job_url(j, lang):
-    i = LANGS.index(lang)
-    return f"/{lang}/{PAGES['vacatures']['slug'][i]}/{j['slug'][i]}/"
+    return f"/{lang}/{pick(PAGES['vacatures']['slug'], lang)}/{pick(j['slug'], lang)}/"
 
 
 def route(page, lang):
+    if not has_page(page, lang):  # secundaire taal: deze pagina bestaat enkel in het Engels
+        lang = 'en'
     if page in KB:
-        i = LANGS.index(lang)
-        return f"/{lang}/{SECTION[KB[page]['sec']][i]}/{KB[page]['slug'][i]}/"
-    slug = PAGES[page]['slug'][LANGS.index(lang)]
+        return f"/{lang}/{pick(SECTION[KB[page]['sec']], lang)}/{pick(KB[page]['slug'], lang)}/"
+    slug = pick(PAGES[page]['slug'], lang)
     return f'/{lang}/{slug}/' if slug else f'/{lang}/'
 
 
@@ -252,7 +255,9 @@ def clean(s):
 
 
 def lang_links(alts, lang):
-    hdr = ''.join(f'<a href="{alts[l]}" lang="{l}" hreflang="{l}">{LANG_NAME[l]}</a>' for l in LANGS if l != lang)
+    alts = {l: alts.get(l, f'/{l}/') for l in LANGS}  # taal zonder deze pagina: naar de homepage van die taal
+    grp = lambda ls: ''.join(f'<a href="{alts[l]}" lang="{l}" hreflang="{l}">{LANG_NAME[l]}</a>' for l in ls if l != lang)
+    hdr = grp(PRIMARY) + (f'<span class="langsw__sep" aria-hidden="true"></span>' + grp(SECONDARY) if SECONDARY else '')
     header = f'<details class="langsw"><summary aria-label="{TAAL[lang]}: {LANG_NAME[lang]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>{lang.upper()}<svg class="chev" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></summary><nav aria-label="{TAAL[lang]}">{hdr}</nav></details>'
     footer = ''.join(f'<a href="{alts[l]}" lang="{l}" hreflang="{l}"' + (' aria-current="true"' if l == lang else '') + f'>{l.upper()}</a>' for l in LANGS)
     return header, footer
@@ -276,12 +281,12 @@ def jsonld(lang, url, crumbs, extra=None):
 def head(lang, title, desc, alts, ld, noindex=False, img='/assets/img/industry.jpg'):
     e = html.escape
     url = SITE + alts[lang]
-    links = ''.join(f'<link rel="alternate" hreflang="{l}" href="{SITE}{alts[l]}">\n' for l in LANGS) + f'<link rel="alternate" hreflang="x-default" href="{SITE}{alts["en"]}">\n'
+    links = ''.join(f'<link rel="alternate" hreflang="{l}" href="{SITE}{alts[l]}">\n' for l in LANGS if l in alts) + f'<link rel="alternate" hreflang="x-default" href="{SITE}{alts["en"]}">\n'
     r = '<meta name="robots" content="noindex">\n' if noindex else ''
     return (f'<!doctype html>\n<html lang="{lang}">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
             f'<title>{e(title, False)}</title>\n<meta name="description" content="{e(desc)}">\n{r}<link rel="canonical" href="{url}">\n{links}'
             f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Triple R Europe">\n<meta property="og:title" content="{e(title)}">\n<meta property="og:description" content="{e(desc)}">\n'
-            f'<meta property="og:url" content="{url}">\n<meta property="og:image" content="{SITE}{img}">\n<meta property="og:locale" content="{ {"nl": "nl_BE", "en": "en_GB", "fr": "fr_BE"}[lang]}">\n<meta name="twitter:card" content="summary_large_image">\n'
+            f'<meta property="og:url" content="{url}">\n<meta property="og:image" content="{SITE}{img}">\n<meta property="og:locale" content="{LOCALE[lang]}">\n<meta name="twitter:card" content="summary_large_image">\n'
             f'<link rel="icon" href="/assets/logo-color.svg" type="image/svg+xml">\n{ld}\n')
 
 
@@ -386,6 +391,11 @@ def catalog(lang):
 
 
 CRUMB = {'oplossingen': {'nl': 'Oplossingen', 'en': 'Solutions', 'fr': 'Solutions'}, 'sectoren': {'nl': 'Sectoren', 'en': 'Industries', 'fr': 'Secteurs'}, 'producten': {'nl': 'Producten', 'en': 'Products', 'fr': 'Produits'}}
+for _l in LANGS[3:]:
+    _u = META[_l]['ui']
+    NUM[_l] = [tuple(x) for x in _u.get('num', [])]
+    for _k, _v in _u['crumb'].items():
+        CRUMB[_k][_l] = _v
 
 
 KB_IMG = {'kb-filtratie': 'industry.jpg', 'kb-varnish': 'sludge.jpg', 'kb-water': 'water-drops.jpg', 'kb-deeltjes': 'particles.jpg', 'kb-lucht': 'air-bubbles.jpg',
@@ -434,7 +444,7 @@ def skip_lead(blocks, meta, sec=None):
 
 def kb_links(l):
     t = R.T[l]
-    items = ''.join(f'<li><a class="tcard" href="{route(k, l)}"><span class="tcard__img{" tcard__img--contain" if KB_IMG.get(k, "").endswith(".png") else ""}"><img src="img/{KB_IMG.get(k, "industry.jpg")}" alt="" loading="lazy"></span><span class="tcard__b"><b>{R.e(m[l][0])}</b><span>{R.e(m[l][2])}</span></span></a></li>' for k, m in KB.items() if m['sec'] == 'opl')
+    items = ''.join(f'<li><a class="tcard" href="{route(k, l)}"><span class="tcard__img{" tcard__img--contain" if KB_IMG.get(k, "").endswith(".png") else ""}"><img src="img/{KB_IMG.get(k, "industry.jpg")}" alt="" loading="lazy"></span><span class="tcard__b"><b>{R.e(m[l][0])}</b><span>{R.e(m[l][2])}</span></span></a></li>' for k, m in KB.items() if m['sec'] == 'opl' and l in m)
     return f'<section class="sec sec--tint"><div class="wrap"><div class="head"><div><h2>{t["topics"]}</h2></div><div class="side"><p class="lead">{t["topics_s"]}</p></div></div><ul class="tcards">{items}</ul></div></section>'
 
 
@@ -453,9 +463,11 @@ def llms(kb, cats):
     intro = {'nl': 'Triple R Europe nv (Aartselaar, België) levert bypass-oliefiltratie voor de industrie: filterelementen van 114 mm die vaste deeltjes, varnish en water uit hydraulische olie en smeerolie verwijderen, in systemen van compacte bypassfilters tot mobiele oliereinigers en vacuümdrogers.',
              'en': 'Triple R Europe nv (Aartselaar, Belgium) supplies bypass oil filtration for industry: 114 mm filter elements that remove solid particles, varnish and water from hydraulic and lubricating oil, in systems ranging from compact bypass filters to mobile oil cleaners and vacuum dehydrators.',
              'fr': 'Triple R Europe nv (Aartselaar, Belgique) fournit la filtration d\'huile en dérivation pour l\'industrie : éléments filtrants de 114 mm qui éliminent particules solides, vernis et eau des huiles hydrauliques et de lubrification, dans des systèmes allant du filtre compact à l\'épurateur mobile et au déshydrateur sous vide.'}
+    for l in PRIMARY[3:]:
+        head[l], intro[l] = '## ' + LANG_NAME[l], META[l]['ui']['llms_intro']
     a = ['# Triple R Europe', '', '> Industrial bypass oil filtration. Head office: Cleydaellaan 16, unit 8, 2630 Aartselaar, Belgium. +32 3 825 46 47, info@triple-r-europe.com.', '']
     f = list(a)
-    for l in LANGS:
+    for l in PRIMARY:
         a += [head[l], '', intro[l], '']
         f += [head[l], '', intro[l], '']
         for k in ('homepage', 'producten', 'oplossingen', 'sectoren', 'olieanalyse', 'faq', 'contact'):
@@ -501,10 +513,9 @@ def main():
              '{{LOGO_WHITE_F}}': reid(white, 'lw', 'wf'), '{{LOGO_WHITE_H}}': reid(white, 'lw', 'wh'), '{{LOGO_COLOR_D}}': reid(color, 'lc', 'ld').replace('aria-label="Triple R"', 'aria-hidden="true"'), '{{LOGO_COLOR}}': color}
     parts = {l: {'header': tr_file('partials/header.html', l), 'footer': tr_file('partials/footer.html', l)} for l in LANGS}
     urls = []
-    HOME = {'nl': 'Home', 'en': 'Home', 'fr': 'Accueil'}
     for name, p in PAGES.items():
-        alts = {l: route(name, l) for l in LANGS}
-        for l in LANGS:
+        alts = {l: route(name, l) for l in LANGS if has_page(name, l)}
+        for l in alts:
             title, desc = p[l]
             crumbs = [(HOME[l], f'/{l}/')] + ([] if name == 'homepage' else [(title.split(' – ')[0].split(':')[0], alts[l])])
             prod_url = lambda x: f"/{l}/{PRODUCTS_SLUG[l]}/{x['id']}/"
@@ -516,20 +527,23 @@ def main():
         urls.append((alts, p['prio']))
     # vacatures
     for j in JOBS:
-        alts = {l: job_url(j, l) for l in LANGS}
-        for l in LANGS:
+        alts = {l: job_url(j, l) for l in PRIMARY}
+        for l in alts:
             t = j[l]
             crumbs = [(HOME[l], f'/{l}/'), (V.OVERVIEW[l]['h1'], route('vacatures', l)), (t['h1'], alts[l])]
             cr = f'<ol class="crumbs" aria-label="Kruimelpad"><li><a href="{route("homepage", l)}">{HOME[l]}</a></li><li><a href="{route("vacatures", l)}">{R.e(V.OVERVIEW[l]["h1"])}</a></li><li aria-current="page">{R.e(t["h1"])}</li></ol>'
-            body_ = J.detail(j, l, V.UI, cr, j['posted_txt'][LANGS.index(l)])
+            body_ = J.detail(j, l, V.UI, cr, pick(j['posted_txt'], l))
             desc_html = ''.join(f'<h3>{R.e(h)}</h3>' + ''.join(f'<p>{R.e(p)}</p>' for p in ps) + (('<ul>' + ''.join(f'<li>{R.e(x)}</li>' for x in lis) + '</ul>') if lis else '') for h, ps, lis in t['sections'])
             build_page('vacatures', l, ver, parts, alts, t['title'], t['desc'], crumbs, extra_ld=J.posting(j, l, desc_html, SITE + alts[l], ORG), blocks={'{{KB}}': body_}, img='/assets/img/team.jpg')
         urls.append((alts, '0.6'))
     # inhoudspagina's
     kb_data = json.load(open(os.path.join(ROOT, 'content', 'kb.json'), encoding='utf-8'))
+    for l in PRIMARY[3:]:  # extra primaire talen: content/kb.<taal>.json
+        for k, v in json.load(open(os.path.join(ROOT, 'content', f'kb.{l}.json'), encoding='utf-8')).items():
+            kb_data[k][l] = v
     for key, m in KB.items():
-        alts = {l: route(key, l) for l in LANGS}
-        for l in LANGS:
+        alts = {l: route(key, l) for l in PRIMARY}
+        for l in alts:
             data = m[l]
             h1, title, desc = data[:3]
             blocks_ = kb_data[key][l]
@@ -560,7 +574,7 @@ def main():
             sib = sorted(sib, key=lambda k: (list(KB).index(k) - i) % len(KB))[:4]
             rel = ''.join(f'<li><a href="{route(k, l)}">{R.e(KB[k][l][0])}</a></li>' for k in sib)
             if key in TOPIC:
-                TOPIC[key]['_names'] = {x: [(k, KB[k][x][0]) for k in TOPIC[key]['products']] for x in LANGS}
+                TOPIC[key]['_names'] = {x: [(k, KB[k][x][0]) for k in TOPIC[key]['products']] for x in PRIMARY}
                 crumb = f'<ol class="crumbs" aria-label="Kruimelpad"><li><a href="{route("homepage", l)}">{HOME[l]}</a></li><li><a href="{route(parent, l)}">{CRUMB[parent][l]}</a></li><li aria-current="page">{R.e(TOPIC_LABEL[key][LANGS.index(l)])}</li></ol>'
                 upd = f'{t["upd"]}: <time datetime="{date.today().isoformat()}">{t["date"]}</time> · {R.e(t["by"])}'
                 body_ = R.topic(key, l, h1, lead, blocks_, TOPIC, TOPIC_UI, TOPIC_LABEL, route, crumb, upd)
@@ -603,6 +617,7 @@ def main():
         urls.append((alts, '0.6'))
     # 404 per taal
     T404 = {'nl': ('Pagina niet gevonden – Triple R', 'Deze pagina bestaat niet meer. Bekijk onze producten of neem contact op.'), 'en': ('Page not found – Triple R', 'This page no longer exists. Browse our products or get in touch.'), 'fr': ('Page introuvable – Triple R', 'Cette page n\'existe plus. Consultez nos produits ou contactez-nous.')}
+    T404.update({_l: tuple(META[_l]['ui']['t404']) for _l in LANGS[3:]})
     alts = {l: f'/{l}/' for l in LANGS}
     for l in LANGS:
         build_page('404', l, ver, parts, alts, *T404[l], [], noindex=True, out=os.path.join(OUT, f'{l}/404.html'))
@@ -611,8 +626,8 @@ def main():
     today = date.today().isoformat()
     x = ['<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
     for alts, prio in urls:
-        links = ''.join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{alts[l]}"/>' for l in LANGS) + f'<xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{alts["en"]}"/>'
-        for l in LANGS:
+        links = ''.join(f'<xhtml:link rel="alternate" hreflang="{l}" href="{SITE}{alts[l]}"/>' for l in LANGS if l in alts) + f'<xhtml:link rel="alternate" hreflang="x-default" href="{SITE}{alts["en"]}"/>'
+        for l in [l for l in LANGS if l in alts]:
             x.append(f'<url><loc>{SITE}{alts[l]}</loc>{links}<lastmod>{today}</lastmod><priority>{prio}</priority></url>')
     open(os.path.join(OUT, 'sitemap.xml'), 'w', encoding='utf-8').write('\n'.join(x) + '\n</urlset>\n')
     bots = ['GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'Google-Extended', 'Googlebot', 'Bingbot', 'Applebot', 'Applebot-Extended', 'DuckAssistBot', 'meta-externalagent']
@@ -633,7 +648,7 @@ def main():
     json.dump({'html': MISSING, 'js': JS_MISS}, open(os.path.join(ROOT, 'build', '.missing.json'), 'w'), ensure_ascii=False, indent=0)
     if os.environ.get('MISSING_OUT'):
         json.dump(MISSING, open(os.environ['MISSING_OUT'], 'w'), ensure_ascii=False, indent=1)
-    print('pagina\'s:', sum(1 for _ in os.walk(OUT) for f in _[2] if f.endswith('.html')), '| niet vertaald EN', len(MISSING['en']), 'FR', len(MISSING['fr']))
+    print('pagina\'s:', sum(1 for _ in os.walk(OUT) for f in _[2] if f.endswith('.html')), '| niet vertaald', ' '.join(f'{l.upper()} {len(MISSING[l])}' for l in MISSING))
 
 
 if __name__ == '__main__':

@@ -1,0 +1,3158 @@
+{
+"kb-analyse": [
+[
+"p",
+"Ölanalysen sind mit Blutanalysen beim Menschen vergleichbar. Sie zeigen, welche Werte und Elemente in Ordnung sind und welche Werte auf ein Problem hinweisen."
+],
+[
+"p",
+"Auf Basis von Ölanalysen lassen sich Richtwerte festlegen und Maschinen mit kritischen Werten schnell erkennen."
+],
+[
+"h2",
+"Einen Ölanalysebericht verstehen"
+],
+[
+"p",
+"Ziel der Ölprobenahme ist die höchste Leistung und Zuverlässigkeit der Maschine – durch die Kontrolle des Zustands und, sehr wichtig, des Verschmutzungsgrads des Öls."
+],
+[
+"p",
+"Ölanalysen sind die einzige Methode, um verlässliche Informationen über den Zustand Ihres Öls und Ihrer Maschine zu erhalten."
+],
+[
+"p",
+"Triple R Europe arbeitet mit verschiedenen unabhängigen Ölanalyselaboren zusammen, etwa WearCheck und Filtrex Services."
+],
+[
+"p",
+"Neben den Grunddaten des Öls wie Viskosität, Säurezahl, Wassergehalt und Spektralanalyse führen wir immer eine PARTIKELZÄHLUNG durch. Darauf legen wir bewusst Wert."
+],
+[
+"p",
+"Denn die chemischen Eigenschaften einer Flüssigkeit können in Ordnung sein, während Feststoffe, Wasser und Schlamm Ihr Öl verschmutzen. Dann hat Ihre Maschine ein echtes Problem. Prüfen Sie also auch die anderen Verunreinigungen."
+],
+[
+"p",
+"Wir haben 33 Jahre Erfahrung mit Ölanalyseberichten. Für ausführlichere Erklärungen oder Unterstützung zum Zustand Ihres Öls wenden Sie sich an Ihren Triple R-Vertriebspartner."
+],
+[
+"h2",
+"Ölanalyse: Wie lesen Sie die Daten?"
+],
+[
+"p",
+"Eine Ölanalyse sollte mindestens Folgendes enthalten:"
+],
+[
+"li",
+"Partikelzählung (ISO 4406 oder NAS 1638)"
+],
+[
+"li",
+"Wassergehalt in ppm"
+],
+[
+"li",
+"Viskosität"
+],
+[
+"li",
+"Säurezahl (TAN)"
+],
+[
+"li",
+"Spektralanalyse (Verschleißmetalle und Additivpaket)"
+],
+[
+"li",
+"Millipore-Filtermembran 0,8 µm zum Nachweis von Schlamm oder einen MPC-Test"
+],
+[
+"h2",
+"Grenzwerte:"
+],
+[
+"h3",
+"Partikelzahl"
+],
+[
+"p",
+"Eine Partikelzählung ist unverzichtbar und sollte fester Bestandteil jeder Ölanalyse sein."
+],
+[
+"p",
+"Als Richtlinie gilt: Der Verschmutzungsgrad sollte nicht höher sein, als es das empfindlichste Bauteil des Hydrauliksystems zulässt. Arbeitet das System zum Beispiel mit Servoventilen, ist NAS-Klasse 6 oder besser entscheidend."
+],
+[
+"p",
+"Im Allgemeinen sollten Hydrauliksysteme NAS 7 oder ISO 18/16/14 nicht überschreiten."
+],
+[
+"h3",
+"Wasser"
+],
+[
+"p",
+"Der Wassergehalt wird in ppm (parts per million) angegeben. 1 ppm = 0,0001 %. Als Faustregel sollte der Wassergehalt 300 ppm (0,03 %) nicht überschreiten."
+],
+[
+"h3",
+"Viskosität"
+],
+[
+"p",
+"Die Viskosität wird in cSt angegeben. Typische Viskositäten für Hydrauliköl sind 32, 46 und 68 cSt, für Schmieröl 220 und 320 cSt. Die Viskosität darf um bis zu 25 % nach oben oder unten von der Ausgangsviskosität abweichen. Ein Öl mit 46 cSt liegt also noch im zulässigen Bereich, wenn die gemessene Viskosität zwischen 33 und 59 cSt liegt."
+],
+[
+"h3",
+"Säurezahl"
+],
+[
+"p",
+"Gesamtsäurezahl (TAN): Die Säurezahl wird in mg KOH/g angegeben. Jedes Öl hat einen maximalen TAN-Wert; fragen Sie Ihren Öllieferanten danach. Bei Hydrauliköl liegt der Höchstwert typischerweise bei 1,0 mg KOH/g. Frisches Öl beginnt bei etwa 0,2 mg KOH/g."
+],
+[
+"h3",
+"Spektralanalyse"
+],
+[
+"p",
+"Machen Sie nicht den verbreiteten Fehler, die Ölverschmutzung mit einer Spektralanalyse zu bestimmen. Das ist sinnlos, denn eine Spektralanalyse misst Elemente unter 3 µm, einige Feststoffe, vor allem aber die chemische Zusammensetzung."
+],
+[
+"p",
+"Eine Spektralanalyse misst die sogenannten Verschleißmetalle und das Additivpaket. Das ist nützlich, vor allem für die Konzentration der Additive. Eine Spektralanalyse ersetzt aber keine Partikelzählung."
+],
+[
+"p",
+"Wichtig ist, mehrere Spektralanalysen vergleichen und den Trend verfolgen zu können. Steigen die Verschleißmetalle deutlich an? Nehmen die Additive ab?"
+],
+[
+"h2",
+"Normen für die Partikelzählung"
+],
+[
+"h3",
+"Norm ISO 4406"
+],
+[
+"p",
+"Die Klassifizierung der Partikelgehalte nach ISO 4406/2000 wurde eingeführt, um Partikelzählungen vergleichbar zu machen."
+],
+[
+"p",
+"Die ISO 4406-Tabelle können Sie hier als PDF herunterladen."
+],
+[
+"p",
+"Ein plötzlicher Ausfall in einem Ölsystem wird oft durch mittelgroße Partikel (> 14 µm) verursacht, während langsame, fortschreitende Schäden wie Verschleiß von kleineren Partikeln (4–6 µm) ausgehen."
+],
+[
+"p",
+"Das ist einer der Gründe, warum die Bezugsgrößen in ISO 4406/2000 auf 4 µm, 6 µm und 14 µm festgelegt wurden."
+],
+[
+"p",
+"Eine typische Probe enthält pro 100 ml Öl:"
+],
+[
+"p",
+"450.000 Partikel > 4 µm, 120.000 Partikel > 6 µm und 14.000 Partikel > 14 µm. In der ISO-Klassifizierungstabelle ergibt das für diese Ölprobe die Verschmutzungsklasse 19/17/14."
+],
+[
+"h3",
+"Norm NAS 1638"
+],
+[
+"p",
+"NAS 1638 ist eine amerikanische Norm, die die Verschmutzung nach Partikelgrößen aufschlüsselt: 5–15 µm, 15–25 µm, 25–50 µm, 50–100 µm und > 100 µm."
+],
+[
+"p",
+"Laden Sie die NAS 1638-Tabelle als PDF herunter."
+],
+[
+"p",
+"Der Unterschied: NAS gibt eine detaillierte Aufschlüsselung der Partikelgrößen über 5 µm."
+],
+[
+"h2",
+"Bewertung der Partikelzahl"
+],
+[
+"p",
+"Der ermittelte ISO- und NAS-Code zeigt die Reinheit des Öls im System an und lässt sich in den Verschmutzungstabellen oben überprüfen."
+],
+[
+"h3",
+"Verschmutzungsleitfaden für Hydraulik- und Schmierölsysteme"
+],
+[
+"li",
+"ISO 14/12/10 – NAS 4: sehr sauberes Öl, optimal für alle Ölsysteme."
+],
+[
+"li",
+"ISO 16/14/11 – NAS 5: sauberes Öl, unerlässlich für Servo- und Hochdruckhydraulik."
+],
+[
+"li",
+"ISO 17/15/12 – NAS 6: leicht verschmutztes Öl, übliche Hydraulik- und Schmierölsysteme."
+],
+[
+"li",
+"ISO 19/17/14 – NAS 8: neues Öl, für Systeme mit mittlerem bis niedrigem Druck."
+],
+[
+"li",
+"ISO 22/20/17 – NAS 12: sehr verschmutztes Öl, für Ölsysteme ungeeignet."
+],
+[
+"p",
+"Für jedes ölgefüllte System sollte ein Reinheitsziel festgelegt werden. Das ist die Grundvoraussetzung für Zuverlässigkeit zu möglichst niedrigen Kosten. Eine Millipore-Membran aus Zellulose mit 0,8 µm zeigt die Alterung des Öls."
+],
+[
+"h3",
+"Häufigkeit der Analyse"
+],
+[
+"p",
+"In der Einführungsphase einer Zustandsüberwachung müssen häufig Analysen gemacht werden – mindestens alle sechs Monate –, um eine Wissensbasis aufzubauen. Für jedes Ölsystem sollte ein Logbuch die Analyseergebnisse festhalten, ebenso Ölsorte, Ölwechsel, Ausfälle, angestrebte ISO-Klasse und Ergebnisse der Ölanalysen."
+],
+[
+"h2",
+"Für eine Ölprobe benötigen Sie:"
+],
+[
+"li",
+"eine partikelfreie Glasflasche mit 200 ml"
+],
+[
+"li",
+"einen offenen Ölbehälter mit fünf Litern"
+],
+[
+"li",
+"ein Tuch"
+],
+[
+"h2",
+"Wo entnehmen Sie eine Ölprobe?"
+],
+[
+"p",
+"Entnehmen Sie das Öl möglichst aus einer nach oben gerichteten Leitung mit kontinuierlichem Durchfluss, damit die Probe repräsentativ ist. An Entnahmestellen an der Unterseite einer Leitung setzen sich Partikel im Probenventil ab. Eine Probe zwischen Pumpe und Filtergehäuse eines Offline-Filters stammt normalerweise aus dem am stärksten verschmutzten Teil des Ölsystems und ist daher am repräsentativsten für die gesamte Verschmutzung. Ist kein Offline-Filter installiert, ist eine Vakuum-Probenpumpe eine gute Lösung. Entnehmen Sie die Probe dann 10 cm über dem tiefsten Punkt des Tanks."
+],
+[
+"h3",
+"Lesen Sie die folgenden Anweisungen sorgfältig, bevor Sie die Ölprobe nehmen"
+],
+[
+"p",
+"1) Stellen Sie den Ölbehälter unter das Probenventil."
+],
+[
+"p",
+"2) Öffnen und schließen Sie das Ventil fünfmal und lassen Sie es dann offen."
+],
+[
+"p",
+"3) Spülen Sie die Leitung, indem Sie einen Liter in den Behälter ablassen."
+],
+[
+"p",
+"4) Öffnen Sie die Probenflasche, ohne dass Schmutz hineingelangt."
+],
+[
+"p",
+"5) Halten Sie die Flasche in den Ölstrom, ohne das Probenventil zu berühren."
+],
+[
+"p",
+"6) Füllen Sie die Flasche zu etwa 80 %."
+],
+[
+"p",
+"7) Verschließen Sie die Flasche sofort nach der Probenahme."
+],
+[
+"p",
+"8) Schütteln Sie die Flasche, leeren Sie das Öl in den Behälter und füllen Sie erneut."
+],
+[
+"p",
+"9) Schließen Sie das Probenventil."
+],
+[
+"p",
+"10) Kennzeichnen Sie jede Probe eindeutig mit Referenznummer, Maschinennummer, Hersteller und Typ der Maschine, Entnahmestelle, Datum sowie Ölsorte und -marke."
+],
+[
+"p",
+"Nehmen Sie Proben nur, wenn die Maschine bei normaler Betriebstemperatur läuft."
+],
+[
+"p",
+"Bei Proben für die Partikelzählung ist die Methode sehr wichtig. Eine Probe kann nie besser (sauberer) sein als das Öl im System – schlechter wird sie dagegen leicht."
+]
+],
+"kb-beheer": [
+[
+"p",
+"Die Industrie läuft auf einem Ölfilm von weniger als 10 µm. Dieser hauchdünne Ölfilm sorgt für eine einwandfreie Schmierung Ihrer Hydraulikmaschinen und Getriebe. Die Praxis zeigt, dass über 70 % aller Hydraulikmaschinen stark verschmutzt sind (> NAS 9, > ISO 21/18/16) – eine einwandfreie Schmierung verlangt aber 100 % sauberes Öl. Zeit, mit der Reinigung zu beginnen."
+],
+[
+"h2",
+"Das Ergebnis"
+],
+[
+"p",
+"Sauberes Öl verringert Verschleiß, Pumpen- und Ventilausfälle, Leckagen, Maschinenstillstand und die Häufigkeit von Ölwechseln – vor allem aber Produktivitäts- und Produktionsverluste."
+],
+[
+"p",
+"Wirksames Ölmanagement ist entscheidend. Öl und Systemfilter von Zeit zu Zeit zu wechseln, ist keine Garantie für sauberes Öl."
+],
+[
+"p",
+"Mit unserem Ölmanagementprogramm sorgen wir für dauerhaft einwandfrei sauberes Öl – zu 50 % Ihrer heutigen Ölkosten."
+],
+[
+"h2",
+"Ölmanagementprogramm"
+],
+[
+"h3",
+"Entscheidungen auf Basis von Daten"
+],
+[
+"p",
+"Unser Filtrationsspezialist nimmt vor und nach der Reinigung eine Ölprobe. Die vorgeschlagene Lösung garantiert sauberes Öl."
+],
+[
+"h3",
+"Ölmanagement ist 50 % günstiger als Öl wechseln"
+],
+[
+"p",
+"Beim Ölwechsel werfen Sie Öl weg, weil es verschmutzt ist – nicht, weil es schlecht ist. Ein Ölmanagementprogramm erspart Ihnen das Wegwerfen von verschmutztem Öl."
+],
+[
+"h3",
+"Höhere Maschinenzuverlässigkeit"
+],
+[
+"p",
+"Bei regelmäßigen Ölwechseln bleiben Feststoffpartikel, Wasser und Oxidationsprodukte in den Schläuchen und im Tank zurück. Verschmutztes Öl führt früher oder später zu Maschinenausfällen und Produktionsverlust. Unser Ölmanagementprogramm reinigt das gesamte System."
+],
+[
+"h3",
+"Höhere Produktionsleistung"
+],
+[
+"p",
+"Die Ölreinigung erfolgt, während Ihre Maschinen weiterlaufen. Kein Stillstand für die Wartung bedeutet mehr Produktion."
+],
+[
+"h3",
+"Im Dienst der Umwelt"
+],
+[
+"p",
+"Ein Ölmanagementprogramm vermeidet die Verschwendung von wertvollem Öl. Das schont die Umwelt und senkt Ihre Wartungskosten."
+]
+],
+"kb-bypass": [
+[
+"p",
+"Stellen Sie sich eine Filtrationstechnik vor, mit der Ölfilter nicht nur Feststoffpartikel entfernen, sondern auch Wasser aufnehmen … und Varnish, Schlamm und andere Oxidationsprodukte beseitigen."
+],
+[
+"h2",
+"Triple R – 33 Jahre Erfahrung"
+],
+[
+"p",
+"Wirksame Filtration und eine bessere Ölreinheit bringen erhebliche Einsparungen. Das ist heute allgemein bekannt, und viele Unternehmen haben Ölmanagementsysteme eingeführt, um ihre Verschmutzungsprobleme zu lösen."
+],
+[
+"p",
+"Doch wie lassen sich Feststoffpartikel, Wasser, Varnish und Schlamm gleichzeitig entfernen? Unseren Ingenieuren ist die effizienteste und wirksamste Lösung gelungen, die es heute gibt: Triple R-Nebenstrom-Ölreiniger."
+],
+[
+"p",
+"Mit Blick auf die vollständige Ölreinigung nutzen unsere Nebenstrom-Ölreiniger eine ganz eigene Technik, die auf einem völlig anderen Aufbau des Filterelements beruht. Das Filterdesign zwingt das Öl durch 114 mm speziell entwickeltes Filtermaterial und schafft drei getrennte Filtrationsstufen. Das Zellulose-Filtermaterial nimmt Wassertropfen auf und trocknet das Öl so auf unter 100 ppm. Der dickste Filter der Branche – 114 mm Durchströmungstiefe – in Kombination mit dem Filtermaterial von Triple R nimmt Oxidationsrückstände des Öls auf, bekannt als Schlamm, Varnish und Teer."
+],
+[
+"h2",
+"Einzigartig"
+],
+[
+"p",
+"Dank seiner besonderen Eigenschaften hat Triple R einen neuen Standard gesetzt. Ölfilter allein reichen nicht mehr aus: Ölreinigung ist der neue Standard."
+]
+],
+"kb-deeltjes": [
+[
+"p",
+"In Hydrauliksystemen vermehren sich Feststoffpartikel ständig."
+],
+[
+"p",
+"Feststoffpartikel strömen unter hohem Druck und mit hoher Geschwindigkeit durch das Hydrauliksystem und sandstrahlen seine Bauteile (Pumpen, Ventile, Dichtungen und Zylinder). Am gefährlichsten sind die kleinsten Partikel, die so groß wie oder kleiner als die kritischen dynamischen Spaltmaße sind (< 5 µm). Sie dringen in die engsten Toleranzen ein und beschädigen eine oder beide Oberflächen."
+],
+[
+"p",
+"Regelpumpen und Servoventile haben kritische Spaltmaße von 1 bis 10 µm und sind daher sehr empfindlich gegenüber feinen Schmutzpartikeln. Die meisten Hersteller solcher Bauteile verlangen deshalb eine Ölreinheit besser als NAS 6 oder ISO 15/12, um Stillstand zu vermeiden und eine lange Lebensdauer zu sichern."
+],
+[
+"h2",
+"Pumpenverschleiß und Pumpenausfälle"
+],
+[
+"p",
+"Wussten Sie, dass eine Pumpe mit 200 l/min bei verschmutztem Öl (NAS 12 oder ISO 21/18) pro Jahr über 3.000 kg Schmutzpartikel umwälzt? Dieselbe Pumpe mit sauberem Öl (NAS 4 oder ISO 12/9) verarbeitet nur 15 kg."
+],
+[
+"p",
+"Außerdem sind Metalle hochaktive Katalysatoren, die die Oxidation des Öls beschleunigen. Diese Oxidation wird durch Antioxidationsadditive im Öl neutralisiert. Durch Polymerisation lagern sie sich an die Metallpartikel an und verhindern so den direkten Kontakt zwischen Öl und Metall. Neue Metallpartikel müssen aber ständig neutralisiert werden, sodass die Additive langsam aufgebraucht werden."
+],
+[
+"p",
+"Kleine Metallpartikel spielen dabei eine große Rolle, weil sie eine enorme Oberfläche bieten (je kleiner die Partikel, desto größer ihre Oberfläche pro Volumeneinheit). Die Folge: Je stärker die Verschmutzung, desto schneller bildet sich Säure im Öl und desto schneller verliert es seine physikalischen und chemischen Eigenschaften. Ist ein Ölwechsel dann die einzige Lösung? Nein, das wäre die falsche Entscheidung. Reinigen Sie Ihr Öl – oder besser: bereiten Sie es auf. Genau das bietet Triple R."
+],
+[
+"h2",
+"Ursachen für Störungen an Proportional- und Servoventilen"
+],
+[
+"li",
+"Bei älteren Bauarten mit Strahlrohrsteuerung bleiben größere Partikel im engen Durchgang hängen und stören die Ventilsteuerung."
+],
+[
+"li",
+"In der ersten Stufe steuert die Kugelnadel die Position des Steuerschiebers. Sehr kleine Metallpartikel (< 10 µm) verschleißen jedoch die Kugeloberfläche. Die runde Kugel wird nach und nach oval, was wiederum zu einer falschen Steuerung des Hauptschiebers führt."
+],
+[
+"li",
+"Die Steuerkanten des Schiebers eines Servoventils haben eine Nullüberdeckung. Diese Kanten verschleißen mit der Zeit, was zu Leckage und Fehlfunktion des Ventils führt."
+],
+[
+"li",
+"Bei viel Varnish verklebt der Schieber vollständig. Auch Metallpartikel können sich in den engen Toleranzen festsetzen und das Ventil ganz blockieren."
+]
+],
+"kb-filtratie": [
+[
+"p",
+"Die Industrie läuft auf einem Ölfilm von weniger als 10 µm. Dieser hauchdünne Ölfilm sorgt für eine einwandfreie Schmierung Ihrer Hydraulikmaschinen und Getriebe. Die Praxis zeigt, dass über 70 % aller Hydraulikmaschinen stark verschmutzt sind (> NAS 9, > ISO 21/18/16) – eine einwandfreie Schmierung verlangt aber 100 % sauberes Öl. Zeit, Öl zu reinigen."
+],
+[
+"h2",
+"Das Ergebnis unserer Ölfiltrationssysteme"
+],
+[
+"p",
+"Sauberes Öl verringert Verschleiß, Pumpen- und Ventilausfälle, Leckagen, Maschinenstillstand und die Häufigkeit von Ölwechseln – vor allem aber Produktivitäts- und Produktionsverluste."
+],
+[
+"p",
+"Wirksames Ölmanagement ist entscheidend. Öl und Systemfilter von Zeit zu Zeit zu wechseln, ist keine Garantie für sauberes Öl."
+],
+[
+"p",
+"Mit unseren Ölfiltrationssystemen und unserem Ölmanagementprogramm sorgen wir für dauerhaft einwandfrei sauberes Öl – zu 50 % Ihrer heutigen Ölkosten."
+],
+[
+"h2",
+"Aus Ölfiltration wird Ölmanagement"
+],
+[
+"h3",
+"Entscheidungen auf Basis von Daten"
+],
+[
+"p",
+"Unser Filtrationsspezialist nimmt vor und nach der Reinigung eine Ölprobe. Die vorgeschlagene Lösung garantiert sauberes Öl."
+],
+[
+"h3",
+"Öl reinigen ist 50 % günstiger als Öl wechseln"
+],
+[
+"p",
+"Beim Ölwechsel werfen Sie Öl weg, weil es verschmutzt ist – nicht, weil es schlecht ist. Unsere industriellen Filtrationssysteme und unser Ölmanagementprogramm ersparen Ihnen das Wegwerfen von verschmutztem Öl."
+],
+[
+"h3",
+"Höhere Maschinenzuverlässigkeit"
+],
+[
+"p",
+"Bei regelmäßigen Ölwechseln bleiben Feststoffpartikel, Wasser und Oxidationsprodukte in den Schläuchen und im Tank zurück. Verschmutztes Öl führt früher oder später zu Maschinenausfällen und Produktionsverlust. Unser Ölmanagementprogramm reinigt das gesamte System."
+],
+[
+"h3",
+"Höhere Produktionsleistung"
+],
+[
+"p",
+"Die industriellen Filtrationssysteme reinigen Ihr Öl, während Ihre Maschinen weiterlaufen. Kein Stillstand für die Wartung bedeutet mehr Produktion."
+],
+[
+"h3",
+"Im Dienst der Umwelt"
+],
+[
+"p",
+"Ein Ölmanagementprogramm vermeidet die Verschwendung von wertvollem Öl. Das schont die Umwelt und senkt Ihre Wartungskosten."
+],
+[
+"h2",
+"Triple R-Ölfilter sind dafür gemacht, Öl zu reinigen"
+],
+[
+"p",
+"Hohe Effizienz. Erstklassige Qualität. Ein breites Sortiment für alle Anwendungen rund um Öl."
+],
+[
+"p",
+"Das Filtrationskonzept entfernt Feststoffpartikel, Schmutz und Abrieb, Varnish und Wasser wirksam, und unser Quicktoron beseitigt Luftblasen. So verlängert es die Lebensdauer des Öls erheblich und senkt Wartungskosten und Produktionsstillstand um bis zu 80 %."
+],
+[
+"p",
+"Damit senken Triple R-Systeme den Ölverbrauch deutlich und verringern die CO₂-Emissionen spürbar."
+],
+[
+"p",
+"Feststoffpartikel"
+],
+[
+"p",
+"Varnish"
+],
+[
+"p",
+"Wasser"
+],
+[
+"p",
+"Luftblasen"
+],
+[
+"h2",
+"Schluss mit Maschinenausfällen"
+],
+[
+"p",
+"Ölbetriebene Maschinen fallen früher oder später durch Oxidationsprodukte wie Varnish aus. Herkömmliche Filter können diese Stoffe nicht entfernen; die speziellen Ölreiniger von Triple R entfernen Oxidationsprodukte zuverlässig aus dem Öl."
+],
+[
+"h2",
+"Unsere Ölfiltrationssysteme bieten Lösungen für"
+],
+[
+"h2",
+"Filtration von Hydrauliköl und Schmieröl"
+],
+[
+"p",
+"Verunreinigungen im Öl von Hydraulik- und Schmiersystemen verursachen bis zu 80 % aller Maschinenausfälle und Produktionsstopps."
+],
+[
+"h2",
+"Nebenstrom-Ölfiltration"
+],
+[
+"p",
+"Triple R-Nebenstromfilter reinigen Öl vollständig: Sie entfernen Feststoffpartikel, Schlamm, Varnish und Wasser aus allen Arten von Industrieöl."
+],
+[
+"h2",
+"Die besten Ölfiltrationssysteme"
+],
+[
+"p",
+"Triple R-Filter nutzen eine patentierte, kostengünstige Mikrofiltrationstechnik, die Verunreinigungen entfernt, die andere Systeme nicht einmal erkennen."
+],
+[
+"h2",
+"Wie können wir Sie beim Ölmanagement unterstützen?"
+],
+[
+"p",
+"\"*\" kennzeichnet Pflichtfelder"
+]
+],
+"kb-lucht": [
+[
+"p",
+"Luft und Dampf: die verborgenen Ölverschmutzungen."
+],
+[
+"p",
+"Geraten Dampfblasen schnell unter Druck, etwa in einer Pumpe oder einem Gleitlager, können zerstörerische Mikrostrahlen aus Öl mit extrem hoher Geschwindigkeit auf Maschinenoberflächen treffen."
+],
+[
+"p",
+"Dieses Phänomen heißt Kavitation: ein fortschreitender Abtrag der Oberflächen."
+],
+[
+"p",
+"Außerdem führt Luft in Öl oder Diesel dazu, dass"
+],
+[
+"li",
+"Metall schneller korrodiert,"
+],
+[
+"li",
+"Kühler weniger effizient arbeiten,"
+],
+[
+"li",
+"Messfehler entstehen,"
+],
+[
+"li",
+"Beschichtungen schlechter haften,"
+],
+[
+"li",
+"übermäßiger Lärm und Vibrationen entstehen."
+]
+],
+"kb-rendement": [
+[
+"h3",
+"Keine Ölwechsel mehr"
+],
+[
+"p",
+"Verlängern Sie die Lebensdauer Ihres Öls um bis zu 50.000 Stunden und sparen Sie bis zu 90 % Ihrer Ölkosten."
+],
+[
+"h3",
+"Kein Verschleiß, kein Ausfall"
+],
+[
+"p",
+"Vermeiden Sie Ventil- und Pumpenausfälle – und damit plötzliche Maschinenausfälle, Produktionsverluste und den teuren Ersatz von Servoventilen, Proportionalventilen und hochwertigen Pumpen."
+],
+[
+"h3",
+"Längere Lebensdauer der Hauptstromfilter"
+],
+[
+"p",
+"Entlasten Sie die Hauptstromfilter, sparen Sie die Kosten für den Wechsel dieser teuren Filter und verringern Sie ihre energieintensive und umweltbelastende Entsorgung."
+],
+[
+"h3",
+"Ausfälle und Stillstand vermeiden"
+],
+[
+"p",
+"Gut geschmierte Maschinen fallen nicht aus – der Traum jedes Produktions- und Betriebsleiters."
+],
+[
+"h3",
+"Höhere Maschinenzuverlässigkeit"
+],
+[
+"p",
+"Sauberes Öl hält Ihre Maschinen in Gang und verhindert ungeplante Stillstände und Ausfälle."
+],
+[
+"h3",
+"Höhere Maschinenverfügbarkeit"
+],
+[
+"p",
+"Zuverlässige Maschinen bringen deutlich mehr Produktion. Stellen Sie sich vor, Sie steigern Ihre Produktionskapazität um 3 %, 5 %, 10 % oder mehr."
+],
+[
+"h3",
+"Mehr Produktion"
+],
+[
+"p",
+"Kein Stillstand bedeutet mehr Produktion. Ganz einfach."
+],
+[
+"h3",
+"Geld sparen"
+],
+[
+"p",
+"Weniger Stillstand senkt die Wartungskosten und erhöht die Rentabilität Ihres Unternehmens – das Ziel jedes Unternehmens."
+],
+[
+"h2",
+"Ganzheitliches Ölmanagement"
+],
+[
+"p",
+"Bei Triple R haben wir alle Werkzeuge für ein ganzheitliches Ölmanagement."
+],
+[
+"h2",
+"Bestimmen Sie die Reinheitsziele Ihrer Maschinen"
+],
+[
+"h3",
+"Legen Sie mit den ISO-Reinheitscodes die Alarmwerte für die Reinheit Ihrer Maschinen fest."
+],
+[
+"p",
+"Jedes System braucht eine bestimmte Reinheit. Wie rein das Öl sein muss, hängt stark von den Bauteilen Ihrer Maschinen ab."
+],
+[
+"p",
+"Prüfen Sie, welche Bauteile Sie haben, und legen Sie Ihre Reinheitsziele entsprechend fest. Mit der Datei unten vergleichen Sie Ihr Reinheitsziel mit der Reinheit, die Ihre Systeme heute haben."
+],
+[
+"p",
+"Denken Sie daran: Neues Öl ist nicht sauber. Oft ist es zu verschmutzt für den Einsatz, etwa auf Prüfständen oder in Hydrauliksystemen mit Servoventilen."
+]
+],
+"kb-schoon": [
+[
+"p",
+"Bei Triple R bauen wir Ölfilter für einwandfrei sauberes Öl. Keine leeren Versprechen, sondern garantierte Ergebnisse."
+],
+[
+"p",
+"Sie brauchen einen Ölfilter, um die Reinheit Ihres Öls zu verbessern? Kein Problem, Filterlieferanten gibt es an jeder Ecke. Aber was nützt ein Filter, wenn Sie nicht wissen, ob er Ihre Schmierstoffe wirklich sauber hält?"
+],
+[
+"p",
+"Welche Anwendung und welcher Verschmutzungsgrad auch immer: Mit einem Triple R-Nebenstrom-Ölreiniger haben Sie eine echte, einzigartige Lösung für Ihr Verschmutzungsproblem."
+],
+[
+"p",
+"40 Jahre Erfahrung und kontinuierliche Forschung und Entwicklung haben Triple R zur Referenz für erfolgreiche Nebenstrom-Ölfiltration gemacht."
+],
+[
+"h2",
+"Alle Triple R-Filterelemente werden nach dem Multipass-Test geprüft"
+],
+[
+"p",
+"Jede Filterfeinheit und jeder Beta-Wert, den wir angeben, ist das Ergebnis umfangreicher Prüfungen in einem offiziellen, zertifizierten Multipass-Prüflabor."
+],
+[
+"p",
+"Unsere Filterfeinheiten sind immer ABSOLUT (Beta x > 75) und nie ein „nichtssagender“ NOMINALWERT."
+],
+[
+"p",
+"Vorsicht vor Nachahmern und unseriösen Herstellern oder Lieferanten von Nebenstromfiltern, die absurde Filterfeinheiten von 0,1 µm oder Aufnahmekapazitäten von 2 kg Partikeln und 2 Litern Wasser versprechen."
+],
+[
+"p",
+"Wer heute kritisch prüft, erspart sich später viel Ärger."
+],
+[
+"h3",
+"Statten Sie jede Maschine mit einem Triple R-Nebenstromfilter aus und sparen Sie"
+],
+[
+"p",
+"Mit Triple R-Nebenstromfiltern halten Sie Ihr Öl dauerhaft einwandfrei sauber und profitieren von diesen Vorteilen:"
+],
+[
+"li",
+"Längere Öllebensdauer: bis zu 50.000 Stunden (Hydrauliksysteme) oder 2.000 Stunden (Motoröl)."
+],
+[
+"li",
+"Keine Pumpen- und Ventilausfälle: über 90 % weniger Bauteilausfälle."
+],
+[
+"li",
+"Längere Lebensdauer der teuren Hauptstromfilter: Sie halten 2- bis 5-mal länger."
+],
+[
+"li",
+"Kein plötzlicher oder ungeplanter Maschinenstillstand und Produktionsverlust; höhere Produktionskapazität."
+],
+[
+"h3",
+"Verschmutztes Öl verursacht 90 % aller Maschinenstörungen und Stillstände"
+],
+[
+"p",
+"Hydraulikflüssigkeiten sind das Herzstück jeder Produktionsanlage. Zur richtigen Wartung gehört, dass das Öl regelmäßig gefiltert, analysiert und gewechselt wird. Trotzdem haben Unternehmen weiterhin Stillstände, in denen Pumpen, Ventile, Zylinder und Dichtungen ersetzt werden müssen. Verschmutzung des Öls scheint unvermeidlich und fester Bestandteil jedes Hydrauliksystems."
+],
+[
+"p",
+"Selbst neues Hydrauliköl ist verschmutzt und enthält typischerweise über 75.000 Feststoffpartikel > 5 µm pro 100 ml. Auch Pumpen, Ventile, Rohre, Schläuche, Wärmetauscher und Öltanks werden mit Restschmutz aus der Fertigung geliefert."
+],
+[
+"p",
+"Diese Schmutzpartikel zirkulieren mit hoher Geschwindigkeit und hohem Druck durch das System und verursachen abrasiven Verschleiß, Ermüdung und Erosion. Zusätzlich gelangen Partikel aus der Umgebungsluft über Tankbelüftungen und Kolbenstangendichtungen ins System und erhöhen die Schmutzfracht."
+],
+[
+"p",
+"Kondensation durch Temperaturschwankungen und undichte Ölkühler bringen Wasser ins Öl. Metallpartikel (die als Katalysatoren wirken), Wasser und Sauerstoff bei relativ hohen Temperaturen verstärken und beschleunigen zusammen die Oxidation des Öls."
+],
+[
+"p",
+"Bei diesem komplexen Oxidationsprozess entstehen durch Polymerisation klebrige Molekülstrukturen, der sogenannte Schlamm. Diese harzartigen Stoffe sind dunkel (ein Grund, warum Öl mit der Zeit dunkler wird) und haften an vielen Teilen des Hydrauliksystems."
+],
+[
+"p",
+"Weil diese Ablagerungen mikroskopisch klein sind, entfernen herkömmliche Filtersysteme sie nicht. Durch ihre klebrige Struktur und korrosive Wirkung beeinträchtigen sie direkt die Effizienz und Zuverlässigkeit des Hydrauliksystems."
+]
+],
+"kb-techniek": [
+[
+"h2",
+"Bei Triple R bauen wir Ölfiltrationssysteme mit nur einem Ziel: aktive Ölreinigung."
+],
+[
+"p",
+"Für jede Industrie ist das unerlässlich, denn ein Ölfilm muss die einwandfreie Schmierung von Hydraulikmaschinen und Getrieben sicherstellen. Einwandfreie Schmierung verlangt aber 100 % sauberes Öl. Leider sind über 70 % aller Hydraulikmaschinen stark verschmutzt (> NAS 9, > ISO 21/18/16). Hier erfahren Sie, wie Sie die Ölreinheit verbessern und die richtige Ölfiltrationstechnik wählen."
+],
+[
+"p",
+"Feststoffpartikel"
+],
+[
+"p",
+"Varnish"
+],
+[
+"p",
+"Wasser"
+],
+[
+"p",
+"Luftblasen"
+],
+[
+"h2",
+"Triple R-Nebenstrom-Ölreiniger entfernen alle Verunreinigungen wirksam"
+],
+[
+"p",
+"Das Ergebnis ist einwandfrei sauberes Öl dank 3-in-1-Ölreinigung."
+],
+[
+"li",
+"Bis zu 99 % aller Feststoffverunreinigungen werden entfernt."
+],
+[
+"li",
+"Schädlicher Schlamm, Varnish und Oxidationsprodukte werden beseitigt."
+],
+[
+"li",
+"Wasser und Feuchtigkeit werden auf unter 100 ppm reduziert."
+],
+[
+"h2",
+"Wissenszentrum"
+],
+[
+"h3",
+"Feststoffpartikel"
+],
+[
+"h3",
+"Varnish"
+],
+[
+"h3",
+"Wasser"
+],
+[
+"h3",
+"Luftblasen"
+],
+[
+"h3",
+"Ölanalyse"
+],
+[
+"h3",
+"Garantiert sauber"
+],
+[
+"h3",
+"Nebenstrom-Ölreinigung"
+]
+],
+"kb-tribologie": [
+[
+"h2",
+"Feststoffpartikel"
+],
+[
+"p",
+"Feststoffpartikel vermehren sich in Hydrauliksystemen ständig. Sie strömen unter hohem Druck und mit hoher Geschwindigkeit durch das System und sandstrahlen Pumpen, Ventile, Dichtungen und Zylinder. Am gefährlichsten sind die kleinsten Partikel, die so groß wie oder kleiner als die kritischen dynamischen Spaltmaße sind (< 5 µm)."
+],
+[
+"h2",
+"Varnish"
+],
+[
+"p",
+"Varnish und Schlamm sind die verborgenen Ölverschmutzungen. Sie umfassen die verschiedenen Abbauprodukte des Öls und weiche Verunreinigungen: ein dünner, unlöslicher Film aus langkettigen Molekülen, der sich mit der Zeit auf den inneren Oberflächen eines Schmiersystems ablagert."
+],
+[
+"h2",
+"Wasser"
+],
+[
+"p",
+"Kondensation durch Temperaturschwankungen, undichte Ölkühler und die Lagerung von Ölfässern im Freien führen zu Wasser im Öl. Wasser beschleunigt die Oxidation des Öls dramatisch, vor allem in Gegenwart mikrometergroßer Metallpartikel wie Kupfer (Cu) und Eisen (Fe), die sehr aktive Katalysatoren sind."
+],
+[
+"h2",
+"Luftblasen"
+],
+[
+"p",
+"Luft und Dampf sind verborgene Ölverschmutzungen. Geraten Dampfblasen schnell unter Druck, etwa in einer Pumpe oder einem Gleitlager, treffen zerstörerische Mikrostrahlen aus Öl mit extrem hoher Geschwindigkeit auf Maschinenoberflächen. Dieses Phänomen heißt Kavitation."
+],
+[
+"h2",
+"Ölanalyse"
+],
+[
+"p",
+"Ölanalysen sind mit Blutanalysen beim Menschen vergleichbar. Sie zeigen, welche Werte und Elemente in Ordnung sind und welche auf ein Problem hinweisen. So lassen sich Richtwerte festlegen und Maschinen mit kritischen Werten schnell erkennen."
+],
+[
+"h2",
+"Garantiert sauber"
+],
+[
+"p",
+"Bei Triple R bauen wir Ölfilter für einwandfrei sauberes Öl. Keine leeren Versprechen, sondern garantierte Ergebnisse – mit Filterfeinheiten, die im Multipass-Test absolut bestimmt werden."
+],
+[
+"h2",
+"Nebenstrom-Ölreinigung"
+],
+[
+"p",
+"Stellen Sie sich eine Filtrationstechnik vor, mit der Ölfilter nicht nur Feststoffpartikel entfernen, sondern auch Wasser aufnehmen und Varnish, Schlamm und andere Oxidationsprodukte beseitigen. Effiziente Filtration und eine bessere Ölreinheit bringen erhebliche Einsparungen."
+]
+],
+"kb-varnish": [
+[
+"h3",
+"Varnish und Schlamm: die verborgenen Ölverschmutzungen"
+],
+[
+"p",
+"In Hydraulik- und Schmiersystemen kommen zahlreiche unlösliche Verunreinigungen vor."
+],
+[
+"p",
+"Varnish und Schlamm umfassen die verschiedenen Abbauprodukte des Öls und weiche Verschmutzungen."
+],
+[
+"p",
+"Es handelt sich um einen dünnen, unlöslichen Film aus langkettigen Molekülen, der sich mit der Zeit auf allen inneren Oberflächen eines Schmiersystems ablagert. Der Abbau beschleunigt sich, je länger der Schmierstoff Luft, Wasser, Katalysatoren (Metallpartikeln) und hohen Temperaturen ausgesetzt ist."
+],
+[
+"p",
+"Tatsächlich sind Varnish und Schlamm in praktisch jedem Hydraulik- und Schmiersystem vorhanden."
+],
+[
+"p",
+"Schlamm ist zweifellos die am wenigsten erkannte Verschmutzung in Hydraulikanlagen."
+],
+[
+"p",
+"Weil Varnish eine weiche Verschmutzung ist, wird es bei der üblichen Ölanalyse nicht gemessen. Die meisten Betreiber wissen deshalb nicht, dass es in ihrem Öl vorhanden ist."
+],
+[
+"h2",
+"Varnish verkürzt die Lebensdauer von Hydraulikmaschinen erheblich"
+],
+[
+"p",
+"Triple R-Filterelemente sind darauf ausgelegt, alle Verunreinigungen zu entfernen – ihre beeindruckendste Eigenschaft ist aber zweifellos, dass sie Varnish und Schlamm entfernen."
+],
+[
+"p",
+"Diese Leistung beruht auf der Kombination aus einem besonderen Filtermaterial, dem dreistufigen Aufbau des Filterelements und der Filtertiefe von 114 mm. Damit erreichen Triple R-Filterelemente eine unübertroffene Ölreinheit."
+],
+[
+"p",
+"Außerdem sind Triple R-Filtersysteme sehr flexibel. Alle Filterelemente sind untereinander austauschbar und passen in jede Filterserie, etwa die BU-, TR-, SE- oder OSCA-Serie."
+],
+[
+"p",
+"Für 25 € bis 90 € entfernt ein Triple R-Element alle Verunreinigungen aus jeder Hydraulikmaschine mit einem Tankvolumen bis 1.000 Liter. Damit ist Triple R die günstigste Lösung, um Schlamm, Varnish, Feststoffe und Wasser zu entfernen: 3-in-1-Ölreinigung statt herkömmlicher Ölfiltration."
+],
+[
+"h2",
+"Varnish hat weitreichende Folgen"
+],
+[
+"p",
+"Varnish bindet harte Partikel und bildet so eine schleifende Oberfläche, die den Verschleiß beschleunigt."
+],
+[
+"p",
+"Ablagerungen von Varnish und Schlamm haften an der Innenseite von Leitungen und bilden eine isolierende Schicht, die die Kühlwirkung von Wärmetauschern verringert. Der Wärmeaustausch wird weniger effizient, und die Betriebstemperatur steigt. Das erhöht den Energieverbrauch und beschleunigt wiederum die Oxidation des Öls."
+],
+[
+"p",
+"Varnish ist eine klebrige, harzartige Substanz und setzt sich daher in den Poren von Filtern fest, die schnell verstopfen. Der Durchfluss sinkt und/oder der Differenzdruck steigt, sodass der Antrieb langsamer arbeitet. Die Pumpe kann das Öl immer schwerer umwälzen, was zu Kavitation, höherem Energieverbrauch und mehr Verschleiß führt. Die Hauptstromfilter müssen häufiger gewechselt werden."
+],
+[
+"p",
+"Klebrige Harze erhöhen die Reibung auf das 5- bis 6-Fache des Nennwerts. Das erhöht den Energiebedarf und kann Ventile klemmen oder festfressen lassen."
+],
+[
+"p",
+"Oft geht dabei die Vollschmierung in eine Grenzschmierung über, was den Verschleiß an Pumpen, Lagern, Zahnrädern und Ventilen erhöht."
+],
+[
+"p",
+"Varnish-Verbindungen sind in der Regel sauer und greifen Metalloberflächen an."
+],
+[
+"p",
+"Die Reinigung von Systemen mit Varnish kostet Zeit und Geld."
+]
+],
+"kb-water": [
+[
+"p",
+"Kondensation durch Temperaturschwankungen, undichte Ölkühler, die Lagerung von Ölfässern im Freien und andere Ursachen führen zu Wasser im Öl."
+],
+[
+"p",
+"Wasser beschleunigt die Oxidation des Öls dramatisch, vor allem in Gegenwart mikrometergroßer Metallpartikel, die sehr aktive Katalysatoren sind – besonders Kupfer (Cu) und Eisen (Fe)."
+],
+[
+"p",
+"Jedes Öl enthält Antioxidationsadditive. Je stärker die Verschmutzung und je mehr neue Metallpartikel im System entstehen, desto schneller werden diese Additive verbraucht."
+],
+[
+"p",
+"Die Folge: Je länger die Oxidation des Öls andauert, desto höher wird die Säurezahl (TAN). Erreicht sie bei Hydrauliköl 1,0 mg KOH/g, ist ein Ölwechsel nötig, um Schäden an der Anlage zu vermeiden."
+],
+[
+"h2",
+"Wasser kann die Lebensdauer von Hydraulikmaschinen um mehr als 50 % verkürzen"
+],
+[
+"p",
+"In modernen Maschinen sind die Toleranzen meist so klein, dass bewegte Teile abwechselnd Druck und Unterdruck erzeugen. Im Unterdruck dehnt sich Feuchtigkeit stark aus (bei 70 °C bis zum 5.000-Fachen) und implodiert an den Oberflächen der Bauteile."
+],
+[
+"p",
+"Eine typische Folge ist Kavitation in der Pumpe."
+],
+[
+"p",
+"Dabei entstehen neue Verschleißpartikel, und die Oberflächen verlieren ihren Schmierfilm."
+],
+[
+"p",
+"Wasser greift Metalloberflächen an (Korrosion) und dringt langsam in mikroskopische Poren ein, was zu Ermüdungsverschleiß führt."
+],
+[
+"p",
+"Feuchtigkeit im Tank lässt an der Tankdecke Rost entstehen. Vibrationen im Betrieb lösen die Rostpartikel ins Öl, wo die Pumpe sie aufnimmt und im ganzen System verteilt. Wo alte Rostpartikel abfallen, bilden sich neue – ein endloser Verschmutzungskreislauf."
+],
+[
+"p",
+"Außerdem ist Wasser ein idealer Nährboden für Bakterien, die wiederum die Additive abbauen."
+]
+],
+"p-bu": [
+[
+"li",
+"Sehr kompakte und leichte Nebenstrom-Ölreiniger."
+],
+[
+"li",
+"Direkter Anschluss an die Hochdruckleitung. Kein Motor und keine Pumpe nötig."
+],
+[
+"li",
+"Für Hydrauliksysteme bis 450 bar Systemdruck."
+],
+[
+"li",
+"Alle BU-Nebenstromfilter sind mit Filterelementen der M-Serie mit 2 µm absolut ausgestattet (Beta-Wert ß2 > 400 und ß3 = 1000)."
+],
+[
+"li",
+"Mit eingebautem Druck- und Stromregelventil, Sicherheitsventil und Manometer zur Kontrolle des Elementwechsels."
+],
+[
+"li",
+"Auch für Wasser-Glykol-Flüssigkeiten erhältlich, mit beschichtetem Gehäuse und WG-Element."
+],
+[
+"h2",
+"Nebenstromfilter: typische Anwendungen"
+],
+[
+"li",
+"Hydrauliksysteme aller Art mit Dauerdruck und Servo- oder Proportionalventilen sowie andere Hightech-Hydraulik."
+],
+[
+"li",
+"Typische Anwendung: Kunststoffspritzgießmaschinen"
+],
+[
+"li",
+"Mobile Hydraulik wie Bagger, Krane, Containerheber, Holzerntemaschinen, Rammen und Bohrgeräte."
+],
+[
+"li",
+"Druckgießmaschinen und Metallbearbeitungsmaschinen wie Biege-, Schneide- und Stanzmaschinen."
+],
+[
+"h2",
+"Praxisbeispiele mit Nebenstromfiltern"
+],
+[
+"p",
+"Laden Sie die Fallstudie herunter"
+],
+[
+"h2",
+"Branchen, in denen Sie die BU-Serie einsetzen"
+],
+[
+"h3",
+"Schifffahrt"
+],
+[
+"h3",
+"Windenergie"
+],
+[
+"h3",
+"Luftfahrt"
+],
+[
+"h3",
+"Bahn"
+],
+[
+"h3",
+"Baumaschinen"
+],
+[
+"h3",
+"Papierindustrie"
+],
+[
+"h3",
+"Stahl & Eisen"
+],
+[
+"h3",
+"Automobilhersteller"
+],
+[
+"h3",
+"Hydrauliksysteme"
+]
+],
+"p-el": [
+[
+"p",
+"Durch kontinuierliche Investitionen in Forschung und Entwicklung erreicht Triple R höchste Effizienz in der Ölfiltration. So schützen Sie Ihre Investitionen und steigern die Produktivität."
+],
+[
+"p",
+"Unsere Filterelemente reinigen Industrieöle und entfernen alles – von Feststoffpartikeln über Wasser bis zu Schlamm, Varnish und Oxidationsrückständen. 3 in 1, in einem einzigen Element: einzigartig bei Triple R und von keinem Filterhersteller weltweit erreicht."
+],
+[
+"p",
+"1. Stufe"
+],
+[
+"p",
+"Große Partikel bleiben oben auf dem Filter liegen"
+],
+[
+"p",
+"2. Stufe"
+],
+[
+"p",
+"Kleine Partikel werden in der mittleren Schicht des Filterelements zurückgehalten"
+],
+[
+"p",
+"3. Stufe"
+],
+[
+"p",
+"Die kleinsten Partikel bleiben im unteren, verdichteten Teil des Filters hängen"
+],
+[
+"h2",
+"Ein revolutionäres 3-in-1-Elementdesign garantiert eine absolute Filtrationswirkung"
+],
+[
+"p",
+"Das Filterdesign zwingt das Öl durch 114 mm speziell entwickeltes Filtermaterial und schafft drei getrennte Filtrationsstufen. Der untere Teil wird durch einen Kartonmantel verdichtet, wodurch ein noch feineres Filtermedium entsteht."
+],
+[
+"li",
+"Große Partikel bleiben oben auf dem Element"
+],
+[
+"li",
+"Kleinere Partikel werden im oberen, unverdichteten Teil zurückgehalten"
+],
+[
+"li",
+"Die kleinsten Partikel werden im unteren, verdichteten Teil zurückgehalten"
+],
+[
+"p",
+"Weil große PARTIKEL oben liegen bleiben, wird der Filter zu einem hervorragenden Diagnosewerkzeug."
+],
+[
+"p",
+"Das Zellulose-Filtermaterial nimmt WASSERtropfen auf und trocknet das Öl so auf unter 100 ppm."
+],
+[
+"p",
+"Der dickste Filter der Branche – 114 mm Durchströmungstiefe – in Kombination mit dem Filtermaterial von Triple R nimmt Oxidationsrückstände des Öls auf, bekannt als Varnish oder Schlammablagerungen."
+],
+[
+"h2",
+"Triple R-Filterpatronen für die 3-in-1-Ölreinigung"
+],
+[
+"h2",
+"Ein einzigartiges Sortiment an Filterelementen für jede Anwendung"
+],
+[
+"p",
+"Alle Triple R-Filterelemente sind Multipass-geprüft und garantieren gleichbleibende, reproduzierbare Filterfeinheiten und Filtrationsleistung. Anders als bei anderen Anbietern sind alle unsere Filterfeinheiten sowie Schmutz- und Wasseraufnahmekapazitäten offiziell dokumentiert."
+],
+[
+"p",
+"Das Sortiment umfasst 4 Größen (30, 50, 100 und 300), verschiedene Filtermaterialien von Zellulose über Polyester bis PP und 2 Bauarten (Standard oder zweistufige D-Serie)."
+],
+[
+"p",
+"Nach 4 Jahren Entwicklung und Forschung stellen wir eine Weltneuheit vor: das neue V100-Filterelement zur ENTFERNUNG von Varnish mit einer absoluten Filterfeinheit von 1 µm."
+],
+[
+"li",
+"Beta-Werte: ß1 > 400 und ß3 = 1000"
+],
+[
+"li",
+"Für Turbinenöl und Hydrauliköl – 3 bis 180 cSt"
+],
+[
+"li",
+"Größen: mit M100, E100 und X100"
+],
+[
+"li",
+"verschiedene Logo-Aufdrucke"
+],
+[
+"li",
+"Beta-Werte: ß2 > 400 und ß3 = 1000"
+],
+[
+"li",
+"Für Hydrauliköl und Diesel; 3 bis 180 cSt"
+],
+[
+"li",
+"Größen: M30, M50, M100, M300"
+],
+[
+"li",
+"Grüner Logo-Aufdruck"
+],
+[
+"li",
+"Beta-Wert: ß3 > 75 und ß5 = 1000"
+],
+[
+"li",
+"Für Motoröl – 46 bis 180 cSt"
+],
+[
+"li",
+"Größen: E30, E50, E100, E300"
+],
+[
+"li",
+"Blauer Logo-Aufdruck"
+],
+[
+"li",
+"Beta-Werte: ß5 > 75 und ß10 = 1000"
+],
+[
+"li",
+"Für hochviskoses Öl und Motoröl, für eine längere Standzeit des Filterelements"
+],
+[
+"li",
+"Größen: X30, X50, X100, X300"
+],
+[
+"li",
+"Oranger Logo-Aufdruck"
+],
+[
+"li",
+"Beta-Werte: ß3 > 75 und ß4 = 1000"
+],
+[
+"li",
+"+80 % höhere Schmutzaufnahmekapazität"
+],
+[
+"li",
+"Größen: M100, M300"
+],
+[
+"li",
+"Roter Logo-Aufdruck"
+],
+[
+"li",
+"WG-Serie, 5 µm: ß5 > 75, für Wasser-Glykol-Flüssigkeiten"
+],
+[
+"li",
+"Modelle: WG100 (10 µm) – DWG100 (5 µm)"
+],
+[
+"li",
+"Gelbes Stützband"
+],
+[
+"li",
+"WE100: ein einzigartiger Filter, der wie ein Schwamm bis zu 900 ml Wasser aufnimmt, bis unter 80 ppm."
+],
+[
+"h2",
+"So wechseln Sie einen Triple R-Filtereinsatz"
+],
+[
+"p",
+"Triple R-Filterpatronen lassen sich mit etwas Sorgfalt wechseln, ohne einen Tropfen Öl zu verschütten. Zum Öffnen des Filters brauchen Sie kein Spezialwerkzeug. Sehr praktisch, um den Filter schnell und sauber zu tauschen."
+],
+[
+"p",
+"Jedes Filterelement ist vakuumverpackt. Entfernen Sie zuerst die äußere Schutzfolie (außer beim WE100-Filter)."
+],
+[
+"p",
+"Im Mittelrohr liegt immer ein Kunststoffbeutel für den verschmutzten Filter. Stülpen Sie den Beutel über den Filter und ziehen Sie das verschmutzte Element vorsichtig an den Laschen in den Beutel."
+],
+[
+"h2",
+"Expertentipp"
+],
+[
+"p",
+"Nutzen Sie Triple R, um den Zustand Ihres Systems und Ihres Öls zu beurteilen."
+],
+[
+"p",
+"Wenn Sie den Deckel eines Triple R-Filtergehäuses öffnen oder ein Filterelement wechseln, sehen Sie oben auf dem Element sofort die Farbe des Öls und die zurückgehaltenen Feststoffpartikel."
+],
+[
+"p",
+"Aus dem Aussehen des Filterelements und der Art der Verschmutzung auf der Oberseite können Sie schnell auf den Zustand Ihres Systems schließen."
+],
+[
+"h2",
+"Flexible Dimensionierung"
+],
+[
+"p",
+"Triple R-Filtersysteme eignen sich für Motoren mit nur 30 Litern Öl bis hin zu großen Maschinen mit Ölvolumen bis 100.000 Litern. Fragen Sie Ihren Triple R-Ansprechpartner nach Details."
+],
+[
+"p",
+"Deshalb bietet Triple R eine breite Auswahl an Filtergehäusen für 1 bis 6 Filterelemente."
+],
+[
+"p",
+"So lässt sich der Durchfluss erhöhen oder das Filtersystem an verschiedene Viskositäten von 2–3 cSt bis 320 cSt anpassen. Triple R-Nebenstromfilter reinigen damit auch große Ölvolumen mit Durchflüssen von über 100 l/min (> 6.000 l/h)."
+]
+],
+"p-osca": [
+[
+"li",
+"Offline-Nebenstrom-Ölreiniger für hohe Durchflüsse und große Tankvolumen, auf Basis der Filtergehäuse der SS-Serie."
+],
+[
+"li",
+"Ideal für Wartungs- und Serviceeinsätze, sehr große Ölvolumen bis 50.000 Liter und hochviskoses Öl."
+],
+[
+"li",
+"Entfernt wirksam Partikel, die mit herkömmlichen Filtern kaum zu entfernen sind, und reinigt das Öl vollständig: Feststoffpartikel werden entfernt, Wasser aufgenommen und Schlamm und andere Oxidationsrückstände beseitigt."
+],
+[
+"li",
+"Alle Systeme sind komplett ausgestattet, mit waschbarem Metall-Saugfilter, Kontrollmanometern, Bedienfeld mit Ein-/Ausschalter und Ablasshahn."
+],
+[
+"li",
+"Standardgeräte haben einen Durchfluss von 6 bis über 60 l/min und eignen sich für sehr große Ölvolumen (> 50.000 Liter)."
+],
+[
+"li",
+"Optional: Zeitschaltuhr, automatische Entleerung, Quicktoron zur Luftentfernung."
+],
+[
+"h2",
+"Typische Anwendungen"
+],
+[
+"li",
+"Für Maschinen mit großen Ölvolumen, als stationäres Filtersystem oder mobiler Ölreiniger für Serviceeinsätze."
+],
+[
+"li",
+"Ideal für Schmiersysteme und hochviskose Systeme."
+],
+[
+"li",
+"Hervorragend für Spülungen und zum Reinigen von Neuöl beim Befüllen eines Hydrauliksystems."
+],
+[
+"li",
+"Sehr erfolgreich bei der Reinigung von Hydraulik-Prüfleitungen."
+],
+[
+"li",
+"Schwere Industriepressen."
+],
+[
+"h2",
+"Praxisbeispiele"
+],
+[
+"p",
+"Laden Sie die Fallstudie herunter"
+],
+[
+"h2",
+"OSCA-EXCEL mit integriertem Laser-Partikelzähler"
+],
+[
+"p",
+"Triple R Europe bietet die mobilen Filteranlagen OSCA-EXCEL mit eingebauter Verschmutzungsüberwachung an."
+],
+[
+"p",
+"Die OSCA-EXCEL-Serie hat folgende Merkmale und lässt sich mit zahlreichen Optionen ausstatten:"
+],
+[
+"li",
+"Eingebauter Partikelmonitor: direkt vor Ort messen, statt zu raten oder auf Laborberichte zu warten. Ein wichtiger Vorteil, denn Servicetechniker sehen den Verschmutzungsgrad sofort und können entsprechend handeln."
+],
+[
+"li",
+"Quicktoron zur Luftblasenentfernung: verbessert die Filtrationseffizienz und -genauigkeit."
+],
+[
+"li",
+"Automatische Entleerung: Elementwechsel ohne Ölverlust."
+],
+[
+"li",
+"Frequenzumrichter zur Anpassung der Motor- und damit der Pumpendrehzahl; ideal für hochviskoses Öl."
+],
+[
+"li",
+"Vorwärmelement, das das Öl erwärmt und bei Bedarf die Viskosität senkt."
+],
+[
+"h2",
+"Branchen, in denen Sie die OSCA-Serie einsetzen"
+],
+[
+"h3",
+"Petrochemie"
+],
+[
+"h3",
+"Schifffahrt"
+],
+[
+"h3",
+"Energie"
+],
+[
+"h3",
+"Stahl & Eisen"
+],
+[
+"h3",
+"Automobilhersteller"
+],
+[
+"h3",
+"Hydrauliksysteme"
+]
+],
+"p-qt": [
+[
+"li",
+"Der Quicktoron ist ein Gerät, das Luftblasen aus Flüssigkeiten entfernt."
+],
+[
+"li",
+"Er arbeitet nach dem Zyklonprinzip und entfernt sehr wirksam alle feinen Luftblasen, die in der Flüssigkeit eingeschlossen sind."
+],
+[
+"li",
+"Der Quicktoron hilft auch, die Filtrationsleistung der Filterelemente zu erhalten. Die meisten Luftblasen sind größer als Feststoffpartikel. Strömen sie durch die Filterelemente, entstehen größere Kanäle, durch die Verunreinigungen ungefiltert hindurchgehen – die Leistung der Ölfilter sinkt."
+],
+[
+"li",
+"Quicktoron-Geräte sind sehr kompakt, einfach zu installieren und eine sehr wirtschaftliche Lösung, um Luftblasen schnell und wirksam zu entfernen."
+],
+[
+"li",
+"Meist wird der Quicktoron zusammen mit unserer OSCA-Serie eingesetzt."
+],
+[
+"h2",
+"Folgen von Luftblasen im Öl"
+],
+[
+"li",
+"Übermäßiger Lärm und Vibrationen"
+],
+[
+"li",
+"Mehr Reibung und Verschleiß an bewegten Teilen"
+],
+[
+"li",
+"Schnellere Oxidation der Flüssigkeit"
+],
+[
+"li",
+"Schnellere Korrosion von Metall, geringere Kühlerleistung"
+],
+[
+"li",
+"Messfehler"
+],
+[
+"h2",
+"Vorteile des Luftblasenabscheiders"
+],
+[
+"li",
+"Entfernt bis zu 95 % aller Luftblasen."
+],
+[
+"li",
+"Ermöglicht einen kleinen Öltank, wie er bei mobilen Maschinen üblich ist."
+],
+[
+"li",
+"Vermeidet Pumpenkavitation und erhöht die Zuverlässigkeit der Maschine und die Lebensdauer der Bauteile."
+],
+[
+"li",
+"Verlängert die Lebensdauer des Öls."
+],
+[
+"li",
+"Verbessert die Effizienz der Ölfilter."
+],
+[
+"li",
+"Verbessert die Effizienz der Kühler."
+],
+[
+"li",
+"Verbessert die Kraftübertragung und spart Energie."
+],
+[
+"h2",
+"Funktionsprinzip"
+],
+[
+"p",
+"Die Quicktorons arbeiten nach dem Zyklonprinzip."
+],
+[
+"p",
+"Die Form des Quicktoron erzeugt im Gehäuse einen Zykloneffekt. Das Öl kreist mit hoher Geschwindigkeit und drängt die Luftblasen zur Mitte. Von dort werden sie nach oben gedrückt und verlassen den Quicktoron über den oberen Auslass."
+],
+[
+"p",
+"Für beste Ergebnisse empfehlen wir, den Durchfluss am Luftauslass auf etwa 5 bis 7 % der Förderleistung der Hauptpumpe einzustellen. Das Verhältnis von Luft und Flüssigkeit in der Luftauslassleitung hängt davon ab, wie viel Luft im Öl ist. Auch die Luftauslassleitung muss in den Öltank geführt werden – am besten weit weg vom Ansaugbereich und gegen eine Seitenwand in den Luftraum (möglichst knapp über dem Flüssigkeitsspiegel)."
+],
+[
+"p",
+"Der Hauptölstrom verlässt das Gehäuse über den unteren Anschluss und muss ohne Gegendruck in den Öltank geführt werden."
+]
+],
+"p-se": [
+[
+"li",
+"Kompakte Offline-Nebenstrom-Ölreiniger in allen Größen und mit verschiedenen Durchflüssen. Wählen Sie das passende Modell für Ihren Öltank anhand des Datenblatts."
+],
+[
+"li",
+"Rund um ein sehr kompaktes Aggregat gebaut und daher einfach an jeden Öltank anzuschließen."
+],
+[
+"li",
+"Die Standardausführungen sind komplett ausgestattet: Schaltkasten mit Thermoschutz und Probenentnahmestelle (sehr praktisch für regelmäßige Ölproben). Alle Geräte haben eine Montagehalterung für die schnelle Installation und ein Manometer zur Kontrolle der Elementverschmutzung. Ein Saugsieb oder ein Spin-on-Saugfilter kann ergänzt werden und schützt die Saugpumpe zusätzlich."
+],
+[
+"li",
+"Alle SE-Offline-Ölreiniger sind mit Filterelementen der M-Serie mit 3 µm absolut ausgestattet (Beta-Wert ß3 = 1000)."
+],
+[
+"li",
+"Niedrige Betriebskosten, einfache Installation und Wartung."
+],
+[
+"li",
+"Auch für Wasser-Glykol-Flüssigkeiten erhältlich, mit beschichtetem Gehäuse und WG-Element."
+],
+[
+"h2",
+"Typische Anwendungen"
+],
+[
+"li",
+"Kunststoffspritzgießmaschinen"
+],
+[
+"li",
+"Druckgießmaschinen und Metallbearbeitungsmaschinen wie Biege-, Schneide- und Stanzmaschinen"
+],
+[
+"li",
+"Mobile Hydraulik"
+],
+[
+"li",
+"Alle Hydrauliksysteme mit Proportional- oder Servoventilen und andere Hightech-Hydraulik, die optimale Ölreinheit verlangt"
+],
+[
+"h2",
+"Mobile Ausführung"
+],
+[
+"p",
+"Ein mobiler Ölreiniger ist ideal für Service- und Wartungseinsätze oder zum Filtern von Neuöl."
+],
+[
+"p",
+"Wir haben einen sehr handlichen mobilen Wagen gebaut, der sich für viele Anwendungen und Serviceaufgaben eignet."
+],
+[
+"p",
+"Die mobile SE-Einheit ist auch mit automatischem Partikelzähler erhältlich."
+],
+[
+"p",
+"ANSCHLIESSEN – PRÜFEN – REINIGEN!"
+],
+[
+"h2",
+"SE-Sonderausführungen: flexible Aufstellung"
+],
+[
+"p",
+"Der SE100E und die meisten größeren Modelle sind für die horizontale Aufstellung (BH-Ausführung) oder für die vertikale Wandmontage (WH-Ausführung) erhältlich."
+],
+[
+"p",
+"SE100E-BH als PDF ansehen"
+],
+[
+"p",
+"SE100E-WH als PDF ansehen"
+],
+[
+"h2",
+"Branchen, in denen Sie die SE-Serie einsetzen"
+],
+[
+"h3",
+"Schifffahrt"
+],
+[
+"h3",
+"Luftfahrt"
+],
+[
+"h3",
+"Baumaschinen"
+],
+[
+"h3",
+"Papierindustrie"
+],
+[
+"h3",
+"Stahl & Eisen"
+],
+[
+"h3",
+"Automobilhersteller"
+],
+[
+"h3",
+"Hydrauliksysteme"
+]
+],
+"p-ss": [
+[
+"li",
+"Kompakte Gehäuse aus Kohlenstoffstahl für 2, 3, 4, 5 oder 6 Filterelemente."
+],
+[
+"li",
+"Entfernt wirksam Partikel, die mit herkömmlichen Filtern kaum zu entfernen sind, und reinigt das Öl vollständig: Feststoffpartikel werden entfernt, Wasser aufgenommen und Schlamm und andere Oxidationsrückstände beseitigt."
+],
+[
+"li",
+"Die Gehäuse haben einen robusten Deckel und halten einen Systemdruck bis 15 bar aus."
+],
+[
+"li",
+"In 4 Größen erhältlich und mit allen Triple R-Elementserien bestückbar."
+],
+[
+"li",
+"Ideal für Filteranlagen mit hohem Durchfluss: bis 60 l/min (3.600 l/h)."
+],
+[
+"li",
+"Typische Filtergehäuse für die Schifffahrt."
+],
+[
+"li",
+"Mit Elementen der X-Serie für hochviskoses Öl bis 600 cSt geeignet."
+],
+[
+"h2",
+"Typische Anwendungen"
+],
+[
+"p",
+"Systeme mit großem Volumen."
+],
+[
+"p",
+"Schmiersysteme und hochviskose Systeme."
+],
+[
+"p",
+"Für Filteranlagen mit hohem Durchfluss. Kombinierbar mit Saugfiltern und Vorfiltern zu maßgeschneiderten Lösungen."
+],
+[
+"h2",
+"Praxisbeispiele"
+],
+[
+"p",
+"Laden Sie die Fallstudie herunter"
+],
+[
+"h2",
+"Branchen, in denen Sie die SS-Serie einsetzen"
+],
+[
+"h3",
+"Petrochemie"
+],
+[
+"h3",
+"Energie"
+],
+[
+"h3",
+"Bahn"
+]
+],
+"p-vac": [
+[
+"li",
+"Sehr schnelles und hochwirksames Gerät zur Wasserentfernung, für den harten Dauereinsatz."
+],
+[
+"li",
+"Einfacher, vollautomatischer Betrieb."
+],
+[
+"li",
+"Entfernt Wasser, Feuchtigkeit und Luftblasen: gelöstes Wasser 80 %, freies Wasser 100 %, Luftblasen 100 %."
+],
+[
+"li",
+"Viskositätsbereich 10 bis 600 cSt."
+],
+[
+"li",
+"Öltemperatur 15 °C bis 60 °C."
+],
+[
+"li",
+"Auf Wunsch sind alle Systeme mit ATEX/Ex-Zertifizierung erhältlich."
+],
+[
+"h2",
+"Typische Anwendungen"
+],
+[
+"p",
+"Nicht jeder Vakuumtrockner hält, was er verspricht. Bei Triple R wollen wir das Beste der Branche liefern. Deshalb haben sich führende Unternehmen wie Volkswagen, SKF, Mitsubishi Heavy Industries und viele andere für Triple R entschieden."
+],
+[
+"p",
+"Sehen Sie sich unser Vergleichstestergebnis an und erfahren Sie, wie viel wirksamer ein Triple R-Vakuumtrockner in der Praxis ist."
+],
+[
+"h2",
+"Vorteile"
+],
+[
+"p",
+"Verlängert die Lebensdauer des Öls. Deutlich weniger Altöl und Entsorgungskosten. Geringere Kosten für den Ölkauf."
+],
+[
+"p",
+"Verhindert Maschinenausfälle und verlängert die Lebensdauer der Maschinen: keine Pumpenkavitation, kein Verschleiß durch Rost, geringere Wartungskosten, höhere Produktivität."
+],
+[
+"p",
+"Niedrige Betriebskosten: keine Verbrauchsmaterialien, einmalige Investition."
+],
+[
+"h2",
+"Branchen, in denen Sie den Vakuumtrockner einsetzen"
+],
+[
+"h3",
+"Petrochemie"
+],
+[
+"h3",
+"Schifffahrt"
+],
+[
+"h3",
+"Energie"
+],
+[
+"h3",
+"Stahl & Eisen"
+]
+],
+"p-ws": [
+[
+"li",
+"Offline-Gerät, das Wasser vom Öl trennt und gleichzeitig Verunreinigungen zurückhält."
+],
+[
+"li",
+"Auf Basis unseres zweistufigen Koaleszenzprinzips zur Wasserabscheidung."
+],
+[
+"li",
+"Die Geräte haben ein Plexiglasfach, in dem Sie die Trennung von Öl und Wasser sehen."
+],
+[
+"li",
+"Das Wasser lässt sich einfach über den Hahn ablassen."
+],
+[
+"li",
+"Wasserablass außerhalb der Arbeitsleitung."
+],
+[
+"li",
+"Auch als Feinfiltrationseinheit mit oder ohne Wasserverschmutzung einsetzbar."
+],
+[
+"li",
+"Einfache Bedienung und Wartung des Öl-Wasser-Abscheiders."
+],
+[
+"h2",
+"So funktioniert der Öl-Wasser-Abscheider"
+],
+[
+"h2",
+"Typische Anwendungen"
+],
+[
+"p",
+"Schifffahrt"
+],
+[
+"p",
+"Papierindustrie"
+],
+[
+"p",
+"Alle Systeme, die regelmäßig oder ständig mit Wasser verschmutzt werden."
+],
+[
+"h2",
+"Vorteile"
+],
+[
+"p",
+"Sauberes Öl und weniger Ölwechsel"
+],
+[
+"p",
+"Korrosion und Ausfälle vermeiden"
+],
+[
+"p",
+"Einfache Handhabung und niedrige Betriebskosten"
+],
+[
+"h2",
+"So entfernen wir Wasser aus Öl"
+],
+[
+"h2",
+"Der Öl-Wasser-Abscheider besteht aus Feststofffiltration, Koaleszenz und Abscheidung"
+],
+[
+"p",
+"Eine Vorfiltration entfernt Feststoffe und lässt Wasserteilchen zusammenkommen. Der WS-Wasserabscheidefilter im WS-Gehäuse lässt die Wassertröpfchen dann zu größeren Tropfen zusammenfließen. Diese großen Tropfen trennen sich durch die Schwerkraft vom Öl und sammeln sich unten. Der untere Teil des WS-Gehäuses ist aus klarem Acryl, sodass Sie die Wasserabscheidung auf einen Blick sehen. Über das Ablassventil am Gehäuse lassen Sie das abgeschiedene Wasser von Hand ab."
+],
+[
+"p",
+"Die Koaleszenztechnik arbeitet am besten bei niedriger Viskosität; ein Vorwärmen des Öls kann daher nötig sein. Bei emulgiertem Wasser empfehlen wir zuerst einen Versuch. Manche Ölsorten sind sehr hydrophil, und emulgiertes Wasser lässt sich dann schwer abscheiden."
+],
+[
+"h2",
+"Branchen, in denen Sie die WS-Serie einsetzen"
+],
+[
+"h3",
+"Schifffahrt"
+],
+[
+"h3",
+"Papierindustrie"
+],
+[
+"h3",
+"Stahl & Eisen"
+]
+],
+"s-auto": [
+[
+"p",
+"Triple R beliefert Automobilhersteller seit Langem mit einem breiten Sortiment an Filterprodukten. Dafür sind wir in dieser Branche bekannt."
+],
+[
+"p",
+"Automobilhersteller wissen, dass niedrigere Kosten für Prozessflüssigkeiten ihre Sparziele stark beeinflussen. Weil wir ihnen helfen, entscheidende Einsparungen zu erzielen, arbeiten diese Hersteller weiterhin mit Triple R-Produkten."
+],
+[
+"p",
+"Doch Triple R senkt nicht nur die Kosten: Einwandfrei sauberes Öl verbessert auch die Teilequalität, verlängert die Standzeit der Werkzeuge und verbessert das Arbeitsumfeld."
+],
+[
+"p",
+"Wir arbeiten eng mit unseren Partnern in der Automobilindustrie zusammen und setzen unsere Erfahrung in ergebnisorientierten Reinigungsprogrammen ein. Unsere Filterprodukte und der Service vor Ort sind ein Hauptgrund, warum die Automobilindustrie intensiv mit Triple R zusammenarbeitet."
+],
+[
+"h2",
+"Anwendungen"
+],
+[
+"li",
+"Alle Hydraulikanlagen mit Servo- und Proportionalventilen"
+],
+[
+"li",
+"Stanzpressen, Bandwaschanlagen"
+],
+[
+"li",
+"Motorenfertigung"
+],
+[
+"li",
+"Getriebefertigung und -prüfung"
+],
+[
+"li",
+"Lenksäulen und Baugruppen"
+],
+[
+"li",
+"Spritzgießanlagen"
+],
+[
+"li",
+"Filtration von Heißprüfständen"
+],
+[
+"li",
+"Zerspanung"
+],
+[
+"li",
+"Antriebsstrangkomponenten"
+],
+[
+"li",
+"Hebetechnik"
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"BU-Serie"
+],
+[
+"li",
+"SE-Serie"
+],
+[
+"li",
+"OSCA-Serie"
+],
+[
+"li",
+"Zentrifugen"
+],
+[
+"h2",
+"Praxisbeispiele"
+],
+[
+"p",
+"Lesen Sie die Fallstudien, in denen wir auf mehreren Ebenen den Unterschied gemacht haben."
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"PSA"
+],
+[
+"li",
+"Chrysler"
+],
+[
+"li",
+"DAF"
+],
+[
+"li",
+"Saab"
+],
+[
+"li",
+"Volvo"
+],
+[
+"li",
+"Opel"
+],
+[
+"li",
+"Mazda"
+],
+[
+"li",
+"Toyota"
+],
+[
+"li",
+"Nissan"
+]
+],
+"s-bouw": [
+[
+"p",
+"Verschmutzte Flüssigkeiten sind eine Hauptursache für nachlassende Leistung, unregelmäßigen Betrieb, Produktivitätsverlust, höhere Betriebskosten und schwere Ausfälle bei mobilen Baumaschinen. Die Triple R-Technik hat ihren Mehrwert für viele weltweit tätige Kunden im Bau mit mobilen Fahrzeugen und Anlagen bewiesen."
+],
+[
+"p",
+"Mobile Maschinen haben meist mehrere Ölsysteme und arbeiten an wechselnden Orten. Sie sind teure Geräte, die auf der Baustelle funktionieren müssen. Oft beginnen andere Arbeiten erst, wenn die mobile Maschine fertig ist; ein Stillstand muss daher unbedingt vermieden werden, weil er ein ganzes Projekt verzögern kann."
+],
+[
+"p",
+"Unbehandelte Verschmutzung macht Flüssigkeiten, Motoröl und Hydrauliköl weniger effizient. In Hydrauliksystemen bleiben Produktivitätsverluste oft unbemerkt: Der Wirkungsgrad kann um 20 % sinken, bevor der Bediener überhaupt eine Veränderung merkt. Das ist jede Woche ein Tag verlorene Produktivität."
+],
+[
+"p",
+"Früher waren die Hydraulikdrücke viel niedriger, die Spaltmaße zwischen Metalloberflächen größer, und man sorgte sich um Verschmutzung, die man sehen konnte. Weil Kunden heute mehr Leistung, höhere Losbrechkräfte und kürzere Taktzeiten verlangen, setzt der Maschinenbau auf ausgefeiltere Flüssigkeitssysteme, höhere Drücke, engere Spaltmaße und Elektrohydraulik. Das macht mobile Maschinen produktiver und einfacher zu bedienen, erhöht aber auch den Bedarf an sauberen Flüssigkeiten über die gesamte Lebensdauer. Bediener und Instandhaltung müssen sich heute um Schmutz kümmern, den sie nicht sehen: Partikel von nur 2 bis 5 µm. Diese kleinen Partikel können vorzeitigen Verschleiß und Leistungsverlust auslösen, und es braucht nicht viele davon, um ein System zu verschmutzen."
+],
+[
+"p",
+"Durch den Einsatz im Freien sind mobile Maschinen außerdem anfällig für Kondenswasser und Partikel im Öl. Die Triple R-Filtration lässt sich mit Standard-Filterelementen oder bei viel Wasser mit Water-Eater-Elementen (WE) auf der mobilen Maschine einsetzen und entfernt Partikel und Kondenswasser in einem einzigen Schritt. Ausfälle durch verschmutztes Öl haben gravierende Folgen. Triple R-Filtrationssysteme entfernen Kondenswasser, Schlamm, Wasser und Partikel mit ein und demselben Filterelement. Diese hohe Ölreinheit erhöht Zuverlässigkeit, Verfügbarkeit und Lebensdauer teurer Bauteile wie Motoren, Proportional- und Servoventile."
+],
+[
+"p",
+"Typische Folgen von verschmutztem Öl sind Zylinderdrift, ruckartige Lenkung, nachlassende Leistung, unregelmäßiger Betrieb, kürzere Wartungsintervalle, höhere Betriebskosten, Produktivitätsverlust und schwere Ausfälle."
+],
+[
+"h2",
+"Anwendungen"
+],
+[
+"li",
+"Krane"
+],
+[
+"li",
+"Planierraupen"
+],
+[
+"li",
+"Bagger"
+],
+[
+"li",
+"Steinbrecher"
+],
+[
+"li",
+"Kompressoren"
+],
+[
+"li",
+"Stromaggregate"
+],
+[
+"li",
+"Müllfahrzeuge"
+],
+[
+"li",
+"Betonmischer"
+],
+[
+"li",
+"Kehrmaschinen"
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"BU-Serie"
+],
+[
+"li",
+"SE-Serie"
+],
+[
+"li",
+"TR-Serie"
+],
+[
+"h2",
+"Praxisbeispiele"
+],
+[
+"p",
+"Lesen Sie die Fallstudien, in denen wir auf mehreren Ebenen den Unterschied gemacht haben."
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Gremo"
+],
+[
+"li",
+"Junttan"
+],
+[
+"li",
+"Svetruck"
+],
+[
+"li",
+"Huddig"
+],
+[
+"li",
+"Konecranes"
+],
+[
+"li",
+"Hitachi"
+],
+[
+"li",
+"Kubota"
+],
+[
+"li",
+"Kato"
+],
+[
+"li",
+"Komatsu"
+],
+[
+"li",
+"Maschinen einer südafrikanischen Diamantmine"
+],
+[
+"li",
+"Spierings Kranen"
+],
+[
+"li",
+"Van Werven"
+]
+],
+"s-energie": [
+[
+"p",
+"Für mehr Effizienz werden Triple R-Produkte in Kraftwerken eingesetzt, die Strom aus fossilen, nuklearen und erneuerbaren Quellen erzeugen. Energieversorger weltweit verlassen sich auf Triple R, um Öle und Flüssigkeiten dauerhaft, zuverlässig und wirtschaftlich sauber zu halten."
+],
+[
+"p",
+"Was das für Sie bedeutet, ist einfach: ein effizientes Kraftwerk."
+],
+[
+"p",
+"Dafür liefert Triple R Tiefenfilter und Vakuumfilter für das Öl in Hydrauliksystemen, Mühlen, Dampfturbinen, Leistungstransformatoren und anderen Anlagen der Stromerzeugung."
+],
+[
+"p",
+"Die Effizienz eines Kraftwerks zu halten, ist nicht einfach: Die Betriebsbedingungen für Hydraulik und andere Flüssigkeitssysteme sind rau. Verschmutzung, Staub und Feuchtigkeit in Mühlen schaden dem Getriebeöl erheblich."
+],
+[
+"p",
+"Durch Dampf, Wasser und Verschmutzung oxidiert das Öl schnell und verursacht Korrosion an Lagern. Wasser und Gase verringern die Isolierfähigkeit von Transformatorenöl."
+],
+[
+"p",
+"Triple R hat das Wissen und die Erfahrung, um Ausfälle durch Wasser und Verschmutzung zu verhindern und so die Effizienz des Kraftwerks zu sichern."
+],
+[
+"p",
+"Für Unternehmen, die Stromaggregate vermieten, ist eine effiziente und kostengünstige Wartung schwierig. Ausfälle durch Wasser und starke Verschmutzung sind häufig."
+],
+[
+"p",
+"Triple R bietet eine Reihe von Filtrationssystemen, die einwandfrei sauberes Öl und sauberen Kraftstoff sicherstellen. Mit Triple R lassen sich Ölwechselintervalle von 400–500 Stunden auf bis zu 2.000 Stunden verlängern. Fragen Sie Ihren Triple R-Ansprechpartner nach Details."
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"TR-Serie"
+],
+[
+"li",
+"OSCA-Serie"
+],
+[
+"li",
+"SS-Serie"
+],
+[
+"li",
+"Vakuumtrockner"
+],
+[
+"h2",
+"Praxisbeispiele"
+],
+[
+"p",
+"Lesen Sie die Fallstudien, in denen wir auf mehreren Ebenen den Unterschied gemacht haben."
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Electrabel Oman"
+],
+[
+"li",
+"Siemens Turbo Services"
+],
+[
+"li",
+"Stork Turbo Services"
+],
+[
+"li",
+"E.ON"
+],
+[
+"li",
+"Kernkraftwerk Doel – Belgien"
+],
+[
+"li",
+"Electrabel"
+]
+],
+"s-hyd": [
+[
+"p",
+"Hydrauliksysteme sind seit 40 Jahren das Kerngeschäft von Triple R, wenn es um einwandfrei sauberes Öl geht."
+],
+[
+"p",
+"Der größte Markt für unsere Triple R-Produkte ist zweifellos die weltweite Kunststoffspritzgussindustrie. Triple R wurde weltweit auf mehreren Hunderttausend Spritzgießmaschinen eingebaut."
+],
+[
+"p",
+"Deshalb ist Triple R in diesem Markt bei den Maschinenherstellern sehr stark vertreten, mit über 30.000 Nebenstromfiltern pro Jahr in der Erstausrüstung."
+],
+[
+"h2",
+"Anwendungen"
+],
+[
+"li",
+"Spritzgieß- und Blasformmaschinen für Kunststoff"
+],
+[
+"li",
+"Stanzpressen"
+],
+[
+"li",
+"Biege-, Schneide- und Lochpressen"
+],
+[
+"li",
+"Gummipressen"
+],
+[
+"li",
+"Hydraulische Roboter"
+],
+[
+"li",
+"Prüfstände"
+],
+[
+"li",
+"Hydraulikaggregate aller Art in der Papier-, Druck-, Stahl- und Eisenindustrie, im Automobilbau und in der Petrochemie"
+],
+[
+"li",
+"Hydrauliksysteme von Hafen-, mobilen und Baumaschinen"
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"BU-Serie"
+],
+[
+"li",
+"SE-Serie"
+],
+[
+"li",
+"OSCA-Serie"
+],
+[
+"h2",
+"Praxisbeispiele"
+],
+[
+"p",
+"Lesen Sie die Fallstudien, in denen wir auf mehreren Ebenen den Unterschied gemacht haben."
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Soudal"
+],
+[
+"li",
+"Sumitomo"
+],
+[
+"li",
+"JSW"
+],
+[
+"li",
+"Toshiba"
+],
+[
+"li",
+"Shinwa Seiki"
+],
+[
+"li",
+"Toyo"
+],
+[
+"li",
+"Haitian Machinery"
+],
+[
+"li",
+"Demag Ergotech"
+],
+[
+"li",
+"Engel"
+],
+[
+"li",
+"Battenfeld"
+],
+[
+"li",
+"Billion"
+],
+[
+"li",
+"Meiki"
+]
+],
+"s-lucht": [
+[
+"p",
+"In der Luftfahrt gibt es zahlreiche Anwendungen."
+],
+[
+"p",
+"Zunächst das bekannte Luftfahrt-Hydrauliköl Skydrol. Skydrol ist ein synthetischer Ester, der speziell auf Explosionssicherheit ausgelegt ist. Deshalb enthält Skydrol immer viel Wasser: Neues Skydrol enthält typischerweise bereits über 2.000 ppm. Anders als bei den meisten Ölen sollte der Wassergehalt bei Skydrol stets zwischen 1.000 und 4.000 ppm liegen."
+],
+[
+"p",
+"Eine weitere Anwendung sind die zahlreichen Prüfstände. Sie alle arbeiten mit hochwertigen, aber sehr empfindlichen Servoventilen und benötigen eine Ölreinheit von NAS 6 bzw. ISO 18/16/14 oder besser."
+],
+[
+"h2",
+"Anwendungen"
+],
+[
+"li",
+"Flughafengeräte"
+],
+[
+"li",
+"Lader"
+],
+[
+"li",
+"Schlepper"
+],
+[
+"li",
+"Passagier- und Cateringfahrzeuge"
+],
+[
+"li",
+"Catering-Versorgung"
+],
+[
+"li",
+"Gepäckabfertigung für Passagierflüge"
+],
+[
+"li",
+"Frachtabfertigung für Linienflüge"
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"BU-Serie"
+],
+[
+"li",
+"SE-Serie"
+],
+[
+"li",
+"TR-Serie"
+],
+[
+"h2",
+"Praxisbeispiele"
+],
+[
+"p",
+"Lesen Sie die Fallstudien, in denen wir auf mehreren Ebenen den Unterschied gemacht haben."
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Airbus"
+],
+[
+"li",
+"Boeing"
+],
+[
+"li",
+"SAS"
+],
+[
+"li",
+"KLM"
+],
+[
+"li",
+"Finnair"
+]
+],
+"s-marine": [
+[
+"p",
+"Dank 40 Jahren Erfahrung gehören wir bei der Instandhaltung von Schiffstechnik zu den Vorreitern."
+],
+[
+"p",
+"Wir halten das Öl sauber für Dieselmotoren, Strahlruder, Krane, Schmiersysteme, Winden und viele weitere Geräte an Bord."
+],
+[
+"p",
+"Triple R-Produkte schützen auch kritische Hydrauliksysteme an Kaianlagen und Ladestellen, die Schiffe abfertigen."
+],
+[
+"p",
+"Auf Wunsch sind alle Systeme mit ATEX/Ex-Zertifizierung erhältlich."
+],
+[
+"h2",
+"Anwendungen"
+],
+[
+"li",
+"Containerschiffe, Tanker, Massengutfrachter"
+],
+[
+"li",
+"Passagierschiffe, Fähren"
+],
+[
+"li",
+"Fischereifahrzeuge"
+],
+[
+"li",
+"Baggerschiffe"
+],
+[
+"li",
+"Schlepper und Binnenschiffe, Flussschiffe"
+],
+[
+"li",
+"Yachten"
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"BU-Serie"
+],
+[
+"li",
+"SE-Serie"
+],
+[
+"li",
+"TR-Serie"
+],
+[
+"li",
+"OSCA-Serie"
+],
+[
+"li",
+"WS-Serie"
+],
+[
+"li",
+"Vakuumtrockner"
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Verschiedene Segel- und Motoryachten sowie Superyachten"
+],
+[
+"li",
+"ThyssenKrupp Marine Systems AG"
+],
+[
+"li",
+"Baltic Yachts"
+],
+[
+"li",
+"Wintershall"
+],
+[
+"li",
+"Great White Fleet Ltd."
+],
+[
+"li",
+"Dredging International"
+],
+[
+"li",
+"Jan De Nul"
+],
+[
+"li",
+"Stena Line, SLK Line"
+],
+[
+"li",
+"Anthony Veder"
+],
+[
+"li",
+"Erstausrüster bei Rolls-Royce Aquamaster"
+]
+],
+"s-papier": [
+[
+"p",
+"Die Zellstoff- und Papierindustrie entwickelt sich mit immer neueren, schnelleren Papiermaschinen weiter. Die Anforderungen an die Schmiertechnik sind höher denn je."
+],
+[
+"p",
+"Warum? Weil die Herstellung von Zellstoff und Papier Schmierstoffe besonders stark belastet: Viel Feuchtigkeit, Hitze und Schmutz sind unvermeidlich. Wasser und Partikel im Öltank von Papiermaschinen sind daher an der Tagesordnung."
+],
+[
+"p",
+"In dieser rauen Umgebung müssen Schmierstoffe sauber und wasserfrei bleiben, um teuren Stillstand zu vermeiden. Ein Stillstand durch Schmierungsprobleme kann Tausende Euro kosten – eine Investition in Triple R-Filter rechnet sich schon, wenn sie einen einzigen Ausfall verhindert."
+],
+[
+"p",
+"Triple R begegnet allen Herausforderungen der Zellstoff- und Papierindustrie mit Tiefenfiltern und Reinigungssystemen. Triple R hat seine Wirksamkeit bewiesen und bietet eine zuverlässige und bezahlbare Lösung für die kontinuierliche Reinigung von Schmierstoffen."
+],
+[
+"h2",
+"Anwendungen"
+],
+[
+"li",
+"Papiermaschinen"
+],
+[
+"li",
+"Betriebshydraulik"
+],
+[
+"li",
+"Hydraulikanlagen"
+],
+[
+"li",
+"Turbinen"
+],
+[
+"li",
+"Mobile Geräte"
+],
+[
+"li",
+"Turbinen für Kesselspeisepumpen"
+],
+[
+"li",
+"Turbinen für Saugzuggebläse"
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"BU-Serie"
+],
+[
+"li",
+"SE-Serie"
+],
+[
+"li",
+"TR-Serie"
+],
+[
+"li",
+"WS-Serie"
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Stora Enso"
+],
+[
+"li",
+"SCA – Svenska Cellulosa Aktiebolaget"
+],
+[
+"li",
+"UPM-Kymmene"
+],
+[
+"li",
+"Valmet"
+]
+],
+"s-petro": [
+[
+"p",
+"Nach einer weltweiten Untersuchung zur nachhaltigen Ölnutzung durch AkzoNobel Manufacturing Support wurde Triple R empfohlen, um die Produktionsstandorte bei der Senkung der Wartungskosten und der Steigerung der Produktion zu unterstützen."
+],
+[
+"p",
+"Erfahren Sie mehr über das Nachhaltigkeitsprogramm von AkzoNobel."
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"OSCA-Serie"
+],
+[
+"li",
+"SS-Serie"
+],
+[
+"li",
+"Vakuumtrockner"
+],
+[
+"h2",
+"Praxisbeispiele"
+],
+[
+"p",
+"Lesen Sie die Fallstudien, in denen wir auf mehreren Ebenen den Unterschied gemacht haben."
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Total"
+],
+[
+"li",
+"Shell"
+],
+[
+"li",
+"Monsanto"
+],
+[
+"li",
+"BASF"
+],
+[
+"li",
+"Bayer"
+]
+],
+"s-spoor": [
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"BU-Serie"
+],
+[
+"li",
+"SS-Serie"
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"NMBS/SNCB – Belgien"
+],
+[
+"li",
+"NS – Niederlande"
+],
+[
+"li",
+"Norwegische Staatsbahn"
+],
+[
+"li",
+"Finnische Staatsbahn"
+]
+],
+"s-staal": [
+[
+"p",
+"Triple R ist Marktführer in der Flüssigkeitsreinigung für die Stahlindustrie. Wir liefern lösungsorientierte Produkte zur Verschmutzungskontrolle an Stahlwerke in aller Welt. Unsere Filterprodukte sorgen für einen zuverlässigen Betrieb und erhebliche Kosteneinsparungen bei unseren internationalen Kunden."
+],
+[
+"p",
+"Die Stahlindustrie steht ständig vor der Aufgabe, Prozessflüssigkeiten sauber zu halten. Triple R bietet eine Lösung, die auch unter den extremen Bedingungen, in denen diese Flüssigkeiten arbeiten, einwandfrei funktioniert. So garantieren wir einwandfrei sauberes Öl."
+],
+[
+"h2",
+"Anwendungen"
+],
+[
+"li",
+"Schutz von Hydraulikanlagen mit Servo- und Proportionalventilen"
+],
+[
+"li",
+"Pumpenschutz"
+],
+[
+"li",
+"Abschreckbecken"
+],
+[
+"li",
+"Düsenschutz"
+],
+[
+"li",
+"Vorfilter für Membranen"
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"BU-Serie"
+],
+[
+"li",
+"SE-Serie"
+],
+[
+"li",
+"OSCA-Serie"
+],
+[
+"li",
+"WS-Serie"
+],
+[
+"li",
+"Vakuumtrockner"
+],
+[
+"li",
+"Zentrifugen"
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Umicore"
+],
+[
+"li",
+"ArcelorMittal"
+],
+[
+"li",
+"Corus"
+],
+[
+"li",
+"Kawasaki"
+],
+[
+"li",
+"Bekaert"
+],
+[
+"li",
+"Sumitomo"
+]
+],
+"s-transport": [
+[
+"p",
+"Triple R wurde in den 1960er-Jahren für die US-Streitkräfte entwickelt."
+],
+[
+"p",
+"Ziel war es, die Ölwechselintervalle bei militärischem Gerät – vom Panzer bis zum Hubschrauber – erfolgreich und sicher zu verlängern."
+],
+[
+"p",
+"Bis Ende der 1980er-Jahre wurden über 500.000 Busse, Lkw und andere Fahrzeuge mit Triple R-Filtern nachgerüstet, um Ölkosten zu sparen und den Motorverschleiß zu verringern."
+],
+[
+"p",
+"Der Einbau von Triple R-Produkten ist einfach, und zur Wartung wechseln Sie nur ein Element statt das Öl. In manchen Fällen muss das Öl nie gewechselt werden; für die meisten Anwendungen empfehlen wir einen Ölwechsel nach vier Elementwechseln."
+],
+[
+"p",
+"Je seltener Ihr Fahrzeug in die Werkstatt muss, desto länger ist es auf der Straße. Weniger gekauftes Öl heißt weniger verbrauchtes Öl und mehr Ersparnis. Das ist ein Gewinn für die Umwelt und für das Ergebnis jedes Betreibers."
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"TR-Serie"
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Škoda-Züge"
+],
+[
+"li",
+"Stadtbusbetrieb Zutphen"
+],
+[
+"li",
+"Evolia – Niederlande"
+],
+[
+"li",
+"Japanische Post: 30.000 Lkw mit Triple R ausgestattet"
+],
+[
+"li",
+"Van Werven"
+]
+],
+"s-wind": [
+[
+"p",
+"Die Windenergie wächst weltweit in enormem Tempo."
+],
+[
+"p",
+"Eine gemeinsame Herausforderung: die Wartungskosten senken, die Leistung maximieren und zugleich die Lebensdauer der Bauteile verlängern."
+],
+[
+"p",
+"Turbinenhersteller und Windparkbetreiber in Europa, Asien und Amerika setzen Triple R als Standard ein, um Probleme durch Feststoffe und Feuchtigkeit zu beseitigen, die die Lebensdauer und Leistung des Getriebeöls beeinträchtigen."
+],
+[
+"p",
+"Die Norm AGMA/AWEA 6006-AXX der American Gear Manufacturers Association enthält Richtlinien für Betrieb und Wartung von Getrieben in Windkraftanlagen. Ein sehr wichtiger Teil der Norm ist die Reinheit des Getriebeöls."
+],
+[
+"p",
+"Während und nach der Montage sollen alle Bauteile frei von Verunreinigungen sein, und im Betrieb soll das Getriebeöl durch Filtration von Feststoffen, Wasser und Schlamm freigehalten werden."
+],
+[
+"p",
+"Der Triple R-Nebenstrom-Ölreiniger für Windkraftanlagen reinigt das Öl kontinuierlich und hält es sauberer als Neuöl. Triple R garantiert es."
+],
+[
+"h2",
+"Produkte"
+],
+[
+"p",
+"Diese Produkte werden in Ihrer Branche eingesetzt."
+],
+[
+"li",
+"BU-Serie"
+],
+[
+"li",
+"TR-Serie"
+],
+[
+"h2",
+"Praxisbeispiele"
+],
+[
+"p",
+"Lesen Sie die Fallstudien, in denen wir auf mehreren Ebenen den Unterschied gemacht haben."
+],
+[
+"h2",
+"Referenzen"
+],
+[
+"p",
+"Diese Kunden kennen die Vorteile der Triple R-Produkte bereits. Gehören Sie bald auch zu unseren zufriedenen Kunden?"
+],
+[
+"li",
+"Acciona"
+],
+[
+"li",
+"Endesa"
+],
+[
+"li",
+"Iberdrola"
+],
+[
+"li",
+"GE Wind"
+]
+]
+}

@@ -1,5 +1,5 @@
 """Routes en SEO per pagina. Titel ≤ 60 tekens, description ≤ 155 tekens (build/check.py controleert dit)."""
-LANGS = ['nl', 'en', 'fr']
+from langs import LANGS, META, ORDER
 PRODUCTS_SLUG = {'nl': 'producten', 'en': 'products', 'fr': 'produits'}
 PAGES = {
     'homepage': {'slug': ('', '', ''), 'prio': '1.0',
@@ -71,3 +71,17 @@ PAGES = {
         'en': ('Cookie policy – Triple R Europe', 'Read which cookies and storage Triple R Europe uses, what for and for how long, and how to change your choice at any time.'),
         'fr': ('Politique de cookies – Triple R Europe', 'Découvrez quels cookies et stockages Triple R Europe utilise, pourquoi et combien de temps, et comment modifier votre choix à tout moment.')},
 }
+
+
+# Extra talen: slug, titel en description uit i18n/<taal>.meta.json; slugs in ORDER-volgorde aanvullen.
+for _l in ORDER[3:]:
+    _m = META.get(_l)
+    if not _m:
+        continue
+    PRODUCTS_SLUG[_l] = _m['products_slug']
+    for _p, (_slug, _t, _d) in _m.get('pages', {}).items():
+        _s = list(PAGES[_p]['slug'])
+        _s += [PAGES[_p]['slug'][1]] * (ORDER.index(_l) + 1 - len(_s))
+        _s[ORDER.index(_l)] = _slug
+        PAGES[_p]['slug'] = tuple(_s)
+        PAGES[_p][_l] = (_t, _d)

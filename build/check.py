@@ -26,13 +26,15 @@ for f in files:
     if not is404:
         seen_t.setdefault(t, []).append(rel)
         if '<link rel="canonical"' not in s: errs.append(f'{rel}: geen canonical')
-        if len(re.findall(r'hreflang="(nl|en|fr|x-default)" href', s)) != 4: errs.append(f'{rel}: hreflang onvolledig')
+        own = re.match(r'/([a-z]{2})/', rel)
+        hl = set(re.findall(r'<link rel="alternate" hreflang="([a-z-]+)" href', s))
+        if 'x-default' not in hl or (own and own.group(1) not in hl) or len(hl) < 3: errs.append(f'{rel}: hreflang onvolledig')
         if 'application/ld+json' not in s: errs.append(f'{rel}: geen JSON-LD')
         if 'noindex' in s: errs.append(f'{rel}: noindex in HTML')
         if 'class="crumbs"' not in s and rel.count('/') > 2: warns.append(f'{rel}: geen broodkruimel')
     for b in ('fonts.googleapis', 'fonts.gstatic', 'cdnjs.cloudflare', '[X]', 'Prototype', 'Designvoorstel', '[CONFIRM]', 'data-annot', '{{'):
         if b in s: errs.append(f'{rel}: bevat {b}')
-    m = re.match(r'/(nl|en|fr)/', rel)
+    m = re.match(r'/(nl|en|fr|de|it|es|fi|hu|sv|no)/', rel)
     if m and m.group(1) != 'nl':
         txt = re.sub(r'<[^>]+>', ' ', h)
         txt = re.sub(r'\s+', ' ', txt)
@@ -49,7 +51,7 @@ for f in files:
             elif p not in paths and p + '/' not in paths and p != '/': errs.append(f'{rel}: dode link {p}')
         elif re.search(r'\.html($|[?#])', href) and not href.startswith('http'): errs.append(f'{rel}: oude link {href}')
 for t, r in seen_t.items():
-    if len(r) > 3: warns.append(f'dubbele titel ({len(r)}×): {t}')
+    if len(r) > len(glob.glob(OUT + '/[a-z][a-z]/')): warns.append(f'dubbele titel ({len(r)}×): {t}')
 # redirects
 rd = [l.split() for l in open(OUT + '/_redirects') if l.strip() and not l.startswith('#')]
 for parts in rd:
@@ -68,7 +70,7 @@ for j in glob.glob(OUT + '/assets/site.*.js'):
     s = open(j, encoding='utf-8').read()
     ext = set(re.findall(r'https?://[a-z0-9.-]+', s)) - {'https://www.googletagmanager.com', 'http://www.w3.org'}
     if ext: warns.append(f'{os.path.basename(j)}: externe adressen {ext}')
-for j in ('en', 'fr'):
+for j in [os.path.basename(x)[5:7] for x in glob.glob(OUT + '/assets/site.*.js') if not x.endswith('site.nl.js')]:
     s = open(f'{OUT}/assets/site.{j}.js', encoding='utf-8').read()
     for w in ('Bedankt', 'Vul uw', 'Offerteaanvraag', 'Verzenden is niet'):
         if w in s: errs.append(f'site.{j}.js bevat "{w}"')

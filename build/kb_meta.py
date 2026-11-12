@@ -111,3 +111,21 @@ _ser('p-ws', '/product/ws-series/', ('ws-serie', 'ws-series', 'serie-ws'), ['ws'
 _ser('p-qt', '/product/quicktoron/', ('quicktoron', 'quicktoron', 'quicktoron'), ['quicktoron'], ('Quicktoron-ontluchter', 'Quicktoron: luchtbellen uit olie verwijderen – Triple R', 'Cycloon-ontluchter die tot 95% van de luchtbellen uit olie haalt. Minder cavitatie, lawaai en oxidatie.'), ('Quicktoron de-aerator', 'Quicktoron: removing air bubbles from oil – Triple R', 'Cyclone de-aerator that removes up to 95% of the air bubbles from oil. Less cavitation, noise and oxidation.'), ('Désaérateur Quicktoron', 'Quicktoron : éliminer les bulles d\'air de l\'huile – Triple R', 'Désaérateur à cyclone qui élimine jusqu\'à 95 % des bulles d\'air de l\'huile. Moins de cavitation, de bruit et d\'oxydation.'))
 _ser('p-ss', '/product/ss-series/', ('ss-serie', 'ss-series', 'serie-ss'), ['ss'], ('SS-serie stalen filterhuizen', 'SS-serie filterhuizen voor 2 tot 12 elementen – Triple R', 'Robuuste stalen filterhuizen voor grote hydraulische en smeersystemen, ook voor hoge viscositeit.'), ('SS series steel filter housings', 'SS series filter housings for 2 to 12 elements – Triple R', 'Robust steel filter housings for large hydraulic and lubrication systems, also for high viscosity.'), ('Carters de filtre en acier série SS', 'Carters de filtre série SS, 2 à 12 éléments – Triple R', 'Carters de filtre en acier robustes pour grands systèmes hydrauliques et de lubrification, aussi pour viscosité élevée.'))
 _ser('p-vac', '/product/vacuum-dehydrator/', ('vacuumdroger', 'vacuum-dehydrator', 'deshydrateur-sous-vide'), ['vacuum'], ('Vacuümdroger', 'Vacuümdroger: water uit olie halen – Triple R', 'Automatische vacuümdroger: verwijdert vrij en opgelost water en lucht, 10 tot 600 cSt, optioneel ATEX. Geen verbruiksmateriaal.'), ('Vacuum dehydrator', 'Vacuum dehydrator: removing water from oil – Triple R', 'Automatic vacuum dehydrator: removes free and dissolved water and air, 10 to 600 cSt, optional ATEX. No consumables.'), ('Déshydrateur sous vide', 'Déshydrateur sous vide : l\'eau de l\'huile – Triple R', 'Déshydrateur automatique : élimine l\'eau libre et dissoute et l\'air, de 10 à 600 cSt, ATEX en option. Sans consommables.'))
+
+
+# Extra primaire talen (bv. Duits): metadata uit i18n/<taal>.meta.json -> "kb" en "section".
+from langs import META as _META, LANGS as _LANGS, ORDER as _ORDER
+def _put(t, l, v):
+    t = list(t)
+    t += [t[1]] * (_ORDER.index(l) + 1 - len(t))
+    t[_ORDER.index(l)] = v
+    return tuple(t)
+for _l in _LANGS[3:]:
+    _m = _META[_l]
+    if 'kb' not in _m:
+        continue
+    for _k, _v in _m['section'].items():
+        SECTION[_k] = _put(SECTION[_k], _l, _v)
+    for _k, _v in _m['kb'].items():
+        KB[_k]['slug'] = _put(KB[_k]['slug'], _l, _v['slug'])
+        KB[_k][_l] = tuple(_v['meta'])

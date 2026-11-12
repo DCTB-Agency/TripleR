@@ -6,6 +6,9 @@ T = {
  'fr': dict(upd='Dernière mise à jour', by='Triple R Europe, spécialiste de la filtration d\'huile depuis 1992', rel='À lire aussi', models='Modèles', model='Modèle', descr='Description', cta_h='Faites mesurer votre huile', cta='Demandez une analyse d\'huile gratuite et recevez les conseils personnalisés d\'un spécialiste Triple R.', cta_b='Demandez une analyse d\'huile gratuite', cta_c='Nous contacter', sp='Données techniques', arts='Numéro d\'article', all='Tous les modèles', all_s='Chaque modèle avec spécifications et fiche technique.', topics='Tous les sujets', topics_s='Découvrez chaque type de contamination, la technique et ce que rapporte une huile propre.', date='6 novembre 2026'),
 }
 e = lambda s: html.escape(s, quote=False)
+from langs import META as _META, LANGS as _LANGS, ix as _ix
+for _l in _LANGS[3:]:
+    T[_l] = _META[_l]['ui']['kb_t']
 
 
 def lead_from(blocks):
@@ -66,15 +69,15 @@ def spec_table(p, lang):
     return f'<h2 id="h-spec">{t["sp"]}</h2>{art}<table class="spec-static"><tbody>{rows}</tbody></table>' if rows else ''
 
 
-TOPIC_IMG = {'kb-deeltjes': ('se100e-wh.jpg', ('Triple R SE100E-WH-oliereiniger aan de wand', 'Triple R SE100E-WH wall-mounted oil cleaner', 'Épurateur d\'huile mural Triple R SE100E-WH')),
-             'kb-varnish': ('v100-element.jpg', ('Triple R V100-filterelement tegen varnish', 'Triple R V100 filter element against varnish', 'Élément filtrant Triple R V100 contre les vernis')),
-             'kb-water': ('vacuum.png', ('Triple R-vacuümdroger', 'Triple R vacuum dehydrator', 'Déshydrateur sous vide Triple R')),
-             'kb-lucht': ('quicktoron.png', ('Triple R Quicktoron-ontluchter', 'Triple R Quicktoron de-aerator', 'Désaérateur Triple R Quicktoron'))}
+TOPIC_IMG = {'kb-deeltjes': ('se100e-wh.jpg', ('Triple R SE100E-WH-oliereiniger aan de wand', 'Triple R SE100E-WH wall-mounted oil cleaner', 'Épurateur d\'huile mural Triple R SE100E-WH', 'Triple R SE100E-WH Ölreiniger für die Wandmontage')),
+             'kb-varnish': ('v100-element.jpg', ('Triple R V100-filterelement tegen varnish', 'Triple R V100 filter element against varnish', 'Élément filtrant Triple R V100 contre les vernis', 'Triple R V100-Filterelement gegen Varnish')),
+             'kb-water': ('vacuum.png', ('Triple R-vacuümdroger', 'Triple R vacuum dehydrator', 'Déshydrateur sous vide Triple R', 'Triple R-Vakuumtrockner')),
+             'kb-lucht': ('quicktoron.png', ('Triple R Quicktoron-ontluchter', 'Triple R Quicktoron de-aerator', 'Désaérateur Triple R Quicktoron', 'Triple R Quicktoron-Entlüfter'))}
 
 
 def topic(key, l, h1, lead, blocks, TOPIC, UI, LABEL, route, crumb_html, upd):
     """Vervuilingspagina in aparte blokken: kerncijfers, waarom een probleem (met vaste CTA ernaast), oplossing met foto, FAQ."""
-    i = ['nl', 'en', 'fr'].index(l)
+    i = _ix(l)
     t, u, keys = TOPIC[key][l], UI[l], list(TOPIC)
     nxt = keys[(keys.index(key) + 1) % len(keys)]
     GO = '<svg class="go" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>'
@@ -84,7 +87,7 @@ def topic(key, l, h1, lead, blocks, TOPIC, UI, LABEL, route, crumb_html, upd):
     prods = ''.join(f'<li><a href="{route(k, l)}">{e(n)} {GO}</a></li>' for k, n in TOPIC[key]['_names'][l])
     faq = ''.join(f'<details><summary>{e(q)}</summary><p>{e(a)}</p></details>' for q, a in t['faq'])
     img, alt = TOPIC_IMG.get(key, ('element-cut.png', ('', '', '')))
-    fig = f'<figure class="zz__img{" zz__img--contain" if img.endswith(".png") or img.startswith(("v100", "se100e")) else ""}"><img src="img/{img}" alt="{html.escape(alt[i])}" loading="lazy"></figure>'
+    fig = f'<figure class="zz__img{" zz__img--contain" if img.endswith(".png") or img.startswith(("v100", "se100e")) else ""}"><img src="img/{img}" alt="{html.escape(alt[i] if i < len(alt) else alt[1])}" loading="lazy"></figure>'
     return f"""<section class="hero hero--page" aria-labelledby="h1"><div class="hero__bg" aria-hidden="true"></div><div class="wrap"><div class="hero__copy" style="gap:0">
 {crumb_html}<h1 id="h1">{e(h1)}</h1><p class="lead">{e(lead)}</p></div></div></section>
 <nav class="tp-nav" aria-label="{e(u['nav'])}"><div class="wrap"><ul>{pills}</ul></div></nav>
@@ -109,6 +112,9 @@ def topic(key, l, h1, lead, blocks, TOPIC, UI, LABEL, route, crumb_html, upd):
 ZT = {'nl': dict(ind='Toegepast in deze sectoren', prods='Producten voor deze sector', refs='Referenties'),
       'en': dict(ind='Used in these industries', prods='Products for this industry', refs='References'),
       'fr': dict(ind='Utilisé dans ces secteurs', prods='Produits pour ce secteur', refs='Références')}
+for _l in _LANGS[3:]:
+    if 'zt' in _META[_l]['ui']:
+        ZT[_l] = _META[_l]['ui']['zt']
 SECTOR = {'zee': 's-marine', 'windenergie': 's-wind', 'luchtvaart': 's-lucht', 'spoorweg': 's-spoor', 'bouwmachines': 's-bouw', 'papierindustrie': 's-papier',
           'staal & ijzer': 's-staal', 'autofabrikanten': 's-auto', 'hydraulische systemen': 's-hyd', 'petrochemisch': 's-petro', 'energie': 's-energie', 'transport': 's-transport'}
 SECTOR_IMG = {'s-marine': 'sec-marine.jpg', 's-wind': 'sec-wind.jpg', 's-lucht': 'sec-lucht.jpg', 's-spoor': 'sec-spoor.jpg', 's-bouw': 'sec-bouw.jpg', 's-papier': 'sec-papier.jpg',
@@ -116,7 +122,7 @@ SECTOR_IMG = {'s-marine': 'sec-marine.jpg', 's-wind': 'sec-wind.jpg', 's-lucht':
 SERIES_PAGE = [('bu', 'p-bu'), ('se', 'p-se'), ('osca', 'p-osca'), ('ws', 'p-ws'), ('ss', 'p-ss'), ('quicktoron', 'p-qt'), ('vacu', 'p-vac'), ('element', 'p-el')]
 PAGE_IMG = {'p-bu': 'BU-Series.png', 'p-se': 'se.png', 'p-osca': 'osca.png', 'p-ws': 'ws.png', 'p-ss': 'ss.png', 'p-qt': 'quicktoron.png', 'p-vac': 'vacuum.png', 'p-el': 'elements.png'}
 SERIES_IMG = {'el-v': 'v100-element.jpg'}
-JUNK = re.compile(r'verplichte velden|required fields|champs obligatoires|^Download de casestudy van$|^Download the case study|^Téléchargez l', re.I)
+JUNK = re.compile(r'verplichte velden|required fields|champs obligatoires|Pflichtfelder|^Laden Sie die Fallstudie herunter$|^Download de casestudy van$|^Download the case study|^Téléchargez l', re.I)
 
 
 def groups(blocks):

@@ -59,3 +59,18 @@ TOPIC = {
    how='Le Quicktoron est un désaérateur à cyclone : il élimine jusqu\'à 95 % des bulles d\'air de l\'huile et existe de 9 à 100 l/min. Il fonctionne indépendamment de l\'élément filtrant, qui élimine particules, vernis et eau.',
    faq=[('Qu\'est-ce que la cavitation ?', 'Une érosion progressive des surfaces, causée par des bulles de vapeur qui implosent sous pression.'), ('Comment fonctionne le Quicktoron ?', 'Selon le principe du cyclone : l\'huile tourne, ce qui en extrait les fines bulles d\'air.'), ('Le Quicktoron remplace-t-il un filtre ?', 'Non. Il élimine l\'air. Les particules solides, les vernis et l\'eau s\'éliminent avec un élément filtrant Triple R.')])),
 }
+
+
+# Extra primaire talen: i18n/<taal>.meta.json -> "topics" (ui, label, per pagina facts/why/how/faq).
+from langs import META as _META, LANGS as _LANGS, ORDER as _ORDER
+for _l in _LANGS[3:]:
+    _t = _META[_l].get('topics')
+    if not _t:
+        continue
+    UI[_l] = _t['ui']
+    for _k, _v in _t['label'].items():
+        _x = list(LABEL[_k]) + [LABEL[_k][1]] * (_ORDER.index(_l) + 1 - len(LABEL[_k]))
+        _x[_ORDER.index(_l)] = _v
+        LABEL[_k] = tuple(_x)
+    for _k, _v in _t['data'].items():
+        TOPIC[_k][_l] = {a: [tuple(x) for x in b] if isinstance(b, list) else b for a, b in _v.items()}

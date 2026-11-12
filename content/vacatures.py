@@ -131,3 +131,28 @@ _VIS = {
 }
 for _l in UI:
     UI[_l].update(_VIS[_l])
+
+
+# Extra primaire talen: i18n/<taal>.meta.json -> "jobs" (overview, ui, vis en per vacature).
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), 'build'))
+from langs import META as _META, LANGS as _LANGS, ORDER as _ORDER
+for _l in _LANGS[3:]:
+    _j = _META[_l].get('jobs')
+    if not _j:
+        continue
+    OVERVIEW[_l] = dict(_j['overview'], points=[tuple(x) for x in _j['overview']['points']])
+    UI[_l] = dict(_j['ui'], **{k: [tuple(x) for x in v] if isinstance(v, list) else v for k, v in _j['vis'].items()})
+    for _job in JOBS:
+        _v = _j['jobs'].get(_job['id'])
+        if not _v or not _job.get('published'):
+            continue
+        for _f in ('slug', 'posted_txt'):
+            _x = list(_job[_f]) + [_job[_f][1]] * (_ORDER.index(_l) + 1 - len(_job[_f]))
+            _x[_ORDER.index(_l)] = _v.pop(_f)
+            _job[_f] = tuple(_x)
+        _v['sections'] = [tuple(x) for x in _v['sections']]
+        for _k in ('hl', 'path'):
+            if _k in _v:
+                _v[_k] = [tuple(x) for x in _v[_k]]
+        _job[_l] = _v
