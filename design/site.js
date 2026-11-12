@@ -295,7 +295,39 @@
   function noAnswer(q) {
     askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p>
       <div class="noans marc-no" role="status"><img src="${MARC('knipoog')}" alt="" width="320" height="396"><div><p class="ai"><img class="marc-av" src="${MARC('icoon')}" alt="" width="330" height="285">Marc (AI-assistent)</p><p><b>Daar vind ik geen betrouwbaar antwoord op in de documentatie van Triple R.</b></p><p class="small muted">Ik heb gezocht in de webpagina’s en alle datasheets, maar geef liever geen gok. Een specialist beantwoordt uw vraag persoonlijk.<i class="tb" title="Te bevestigen: responstijd"></i></p></div></div>
-      ${handoff('Stel uw vraag aan een specialist', q)}`;
+      ${askForm(q)}`;
+    wireAskForm(q);
+  }
+  /* geen antwoord: de vraag meteen naar een specialist sturen, via /api/lead (nooit via de AI-backend) */
+  function askForm(q) {
+    return `<form class="mq" id="mq-form" novalidate aria-labelledby="mq-h">
+      <p class="mq__h" id="mq-h"><b>Stel uw vraag meteen aan een specialist</b><span>Uw vraag staat al ingevuld. Vul uw gegevens aan, dan neemt een specialist van Triple R contact met u op.</span></p>
+      <div class="mq__f mq__f--full"><label for="mq-msg">Uw vraag</label><textarea id="mq-msg" name="message" rows="3" required maxlength="2000">${esc(q)}</textarea></div>
+      <div class="mq__f"><label for="mq-name">Naam</label><input id="mq-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="mq__f"><label for="mq-email">E-mail</label><input id="mq-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="mq__f"><label for="mq-co">Bedrijf <em>(optioneel)</em></label><input id="mq-co" name="company" type="text" autocomplete="organization"></div>
+      <div class="mq__f"><label for="mq-phone">Telefoon <em>(optioneel)</em></label><input id="mq-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <label class="mq__chk mq__f--full"><input type="checkbox" id="mq-consent" required><span>Ik ga akkoord dat Triple R mijn gegevens gebruikt om deze vraag te beantwoorden (<a href="privacy.html">privacybeleid</a>).</span></label>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="mq__hp">
+      <p class="mq__err" id="mq-err" role="alert" hidden></p>
+      <div class="mq__act mq__f--full"><button type="submit" class="btn btn--primary">Vraag versturen</button><a class="btn btn--secondary" href="contact.html?vraag=${encodeURIComponent(q)}">Volledig contactformulier</a><a class="btn btn--secondary" href="tel:+3238254647">Bel +32 3 825 46 47</a></div>
+    </form>`;
+  }
+  function wireAskForm(q) {
+    const f = document.getElementById('mq-form'); if (!f) return;
+    window.dataLayer?.push({ event: 'ask_answer_shown', no_answer: true });
+    f.addEventListener('submit', async e => {
+      e.preventDefault();
+      const err = document.getElementById('mq-err'), v = id => document.getElementById(id).value.trim();
+      const bad = !v('mq-msg') ? 'Vul uw vraag in.' : !v('mq-name') ? 'Vul uw naam in.' : !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('mq-email')) ? 'Vul een geldig e-mailadres in.' : !document.getElementById('mq-consent').checked ? 'Vink het akkoord aan om uw vraag te versturen.' : '';
+      err.hidden = !bad; err.textContent = bad; if (bad) return;
+      if (!window.RRRLead) return;
+      const ok = await window.RRRLead.send('marc', f, { email: 'mq-email', name: 'mq-name', company: 'mq-co', phone: 'mq-phone', message: 'mq-msg', consent: 'mq-consent' }, { 'Oorspronkelijke vraag aan Marc': q, 'Resultaat Marc': 'Geen betrouwbaar antwoord gevonden in de website en de datasheets' });
+      if (!ok) return;
+      window.dataLayer?.push({ event: 'lead_chat', form_type: 'assistant' });
+      f.outerHTML = `<div class="mq mq--ok" role="status" tabindex="-1" id="mq-ok"><b>Bedankt, uw vraag is verstuurd.</b><span>Een specialist van Triple R neemt contact met u op. U ontvangt ook een bevestiging per e-mail.</span></div>`;
+      document.getElementById('mq-ok')?.focus();
+    });
   }
   function appendBlock(ans, t, html) {
     if (t.open === 'li') { let ul = ans.lastElementChild; if (!ul || ul.tagName !== 'UL') { ul = document.createElement('ul'); ans.appendChild(ul); } const li = document.createElement('li'); li.innerHTML = html; ul.appendChild(li); return li; }

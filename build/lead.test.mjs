@@ -5,7 +5,7 @@ const base = { type: 'contact', lang: 'fr', email: 'jan@bedrijf.be', name: 'Jan'
 let d = m.clean(base);
 assert.equal(m.validate(d, base), '');
 assert.equal(m.route(d).to, 'maxim.vanuytven@triple-r-europe.com');
-assert.equal(m.route(d).bcc, 'marc.vanuytven@triple-r-europe.com');
+assert.equal(m.route(d).bcc, 'info@triple-r-europe.com');
 const fi = m.clean({ ...base, country: 'Finland' });
 assert.equal(m.route(fi).to, 'sf.edustus@co.inet.fi');
 assert.equal(m.route(fi).bcc, 'maxim.vanuytven@triple-r-europe.com');

@@ -1787,3 +1787,19 @@ figure.vtl__media{margin:0;position:relative}
   .hero--video .scrollcue--hero{order:1;margin:18px auto max(18px,calc(env(safe-area-inset-bottom) + 10px))}
   .hero--video .trust{position:absolute;left:var(--gutter,20px);right:var(--gutter,20px);top:calc(100svh + 8px);margin:0}
 }
+/* Marc: vraag meteen versturen als er geen antwoord is */
+.ask .mq{margin-top:var(--s-5);padding:var(--s-5);border-radius:16px;background:var(--grey-50);display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.ask .mq__h,.ask .mq__f--full,.ask .mq__err{grid-column:1/-1}
+.ask .mq__h{display:grid;gap:4px;margin:0}.ask .mq__h span{font-size:var(--fs-sm);color:var(--grey-600)}
+.ask .mq__f{display:grid;gap:6px;min-width:0}
+.ask .mq__f label{font-size:13px;font-weight:600}.ask .mq__f label em{font-weight:400;font-style:normal;color:var(--grey-600)}
+.ask .mq__f input,.ask .mq__f textarea{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--grey-300,#CDD3DD);border-radius:10px;background:#fff;color:var(--ink)}
+.ask .mq__f textarea{resize:vertical;min-height:84px}
+.ask .mq__f input:focus,.ask .mq__f textarea:focus{outline:none;border-color:var(--blue-700);box-shadow:0 0 0 3px var(--blue-50)}
+.ask .mq__chk{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.45}.ask .mq__chk input{margin-top:3px;flex:none;width:18px;height:18px;accent-color:var(--blue-700)}
+.ask .mq__hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.ask .mq__err{margin:0;color:#B42318;font-size:var(--fs-sm);font-weight:600}
+.ask .mq__act{display:flex;flex-wrap:wrap;gap:8px}
+.ask .mq--ok{display:grid;gap:4px;grid-template-columns:1fr;border:1px solid var(--blue-300,#9CCBEA);background:var(--blue-50)}
+.ask .mq--ok span{font-size:var(--fs-sm);color:var(--grey-600)}
+@media (max-width:559px){.ask .mq{grid-template-columns:1fr}.ask .mq__act .btn{flex:1 1 100%;justify-content:center}}
