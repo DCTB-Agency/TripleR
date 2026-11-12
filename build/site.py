@@ -325,6 +325,15 @@ def faq_ld(body):
     return {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': strip(q), 'acceptedAnswer': {'@type': 'Answer', 'text': strip(a)}} for q, a in qs]} if qs else None
 
 
+def long_h1(m):
+    """Lange titels (vaak in andere talen) krijgen een iets kleiner lettertype, zodat ze niet over 4 regels lopen."""
+    attrs, inner = m.group(1), m.group(2)
+    if len(re.sub(r'<[^>]+>|\s+', ' ', inner).strip()) <= 56:
+        return m.group(0)
+    attrs = re.sub(r'class="([^"]*)"', r'class="\1 h1--long"', attrs) if 'class="' in attrs else attrs + ' class="h1--long"'
+    return f'<h1{attrs}>{inner}</h1>'
+
+
 def build_page(name, lang, ver, parts, alts, title, desc, crumbs, noindex=False, inject='', extra_ld=None, img='/assets/img/industry.jpg', out=None, blocks=None, h1=None):
     src = tr_file(f'{name}.src.html', lang)
     src = src.replace('{{HEADER}}', parts[lang]['header']).replace('{{FOOTER}}', parts[lang]['footer'])
@@ -347,6 +356,7 @@ def build_page(name, lang, ver, parts, alts, title, desc, crumbs, noindex=False,
     if lang != 'nl':
         page = ATTR.sub(lambda m: f'{m.group(1)}="{tr(m.group(2), lang, name, report=False)}"', page)
     page = clean(rewrite_links(page, lang))
+    page = re.sub(r'<h1\b([^>]*)>(.*?)</h1>', long_h1, page, count=1, flags=re.S)
     page = re.sub(r',?\s*"note":\s*"[^"]*geen marker[^"]*"', '', page)
     page = assets(page, lang, ver)
     page = optimise(page)

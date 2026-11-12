@@ -1851,3 +1851,14 @@ figure.vtl__media{margin:0;position:relative}
 
 /* taalkeuze: primaire talen boven, secundaire talen onder een scheidingslijn */
 .langsw__sep{display:block;height:1px;margin:4px 8px;background:var(--grey-200,#E4E7EC)}
+
+/* Header-CTA's: breedte volgt de tekst (langere talen worden breder, niet hoger); stapelen pas als het echt niet past */
+.hcta{display:flex;flex-wrap:wrap;align-items:stretch;max-width:min(100%,900px)}
+.hcta__b{flex:1 1 auto;min-width:0}
+.hcta__b--marc{flex-basis:300px}
+.hcta__b span,.hcta__b b,.hcta__b small{overflow-wrap:break-word}
+@media (max-width:559px){.hcta__b{flex-basis:100%}}
+/* footprint-kaartje mag op tablet niet buiten het scherm steken */
+@media (max-width:1023px){.sus__fp{right:4%}}
+/* lange titels (andere talen): iets kleiner en evenwichtig verdeeld */
+h1.h1--long{font-size:clamp(1.875rem,1.2rem + 2.4vw,3.25rem);text-wrap:balance}
