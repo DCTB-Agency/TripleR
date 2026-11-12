@@ -574,8 +574,13 @@ def main():
     if ENV != 'production':
         h.append('  X-Robots-Tag: noindex, nofollow')
     h += ['/assets/*', '  Cache-Control: public, max-age=31536000, immutable']
+    h += ['/ask-content.json', '  Cache-Control: public, max-age=300', '  Access-Control-Allow-Origin: *']
     open(os.path.join(OUT, '_headers'), 'w').write('\n'.join(h) + '\n')
     shutil.copy(os.path.join(ROOT, 'build', '_redirects'), os.path.join(OUT, '_redirects'))
+    # inhoudsexport voor de AI-assistent (docs/marc-ai-backend-brief.md §4)
+    import ask_export
+    ac, asz = ask_export.run(OUT, cat_str)
+    print('ask-content.json:', ac, f'{asz // 1024} KB')
     json.dump({'html': MISSING, 'js': JS_MISS}, open(os.path.join(ROOT, 'build', '.missing.json'), 'w'), ensure_ascii=False, indent=0)
     if os.environ.get('MISSING_OUT'):
         json.dump(MISSING, open(os.environ['MISSING_OUT'], 'w'), ensure_ascii=False, indent=1)
