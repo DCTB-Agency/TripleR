@@ -16,8 +16,7 @@ from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCHEMA = 'triple-r-ask-content/1'
-LANGS = ('nl', 'en', 'fr')
-PROD_DIR = {'nl': 'producten', 'en': 'products', 'fr': 'produits'}
+from pages import LANGS, PRODUCTS_SLUG as PROD_DIR  # talen en productmap per taal: één centrale plek
 # eerste URL-segment -> type
 TYPES = {
     'producten': 'product', 'products': 'product', 'produits': 'product',
@@ -114,10 +113,8 @@ def _pages(out_dir, product_ids):
 
 
 def _pdfs(products, js_titles):
-    src = os.path.join(ROOT, 'content', 'pdf-pages.json')
-    if not os.path.exists(src):
-        return []
-    data = json.load(open(src, encoding='utf-8'))
+    import pdf_text
+    data = pdf_text.refresh()  # leest nieuwe of gewijzigde PDF's automatisch uit
     by_pdf = {}
     for p in products:
         if p.get('pdf'):

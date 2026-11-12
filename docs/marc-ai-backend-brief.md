@@ -1,7 +1,7 @@
 # Brief voor de backendpartij — AI-assistent "Marc" op triple-r-europe.com
 
 **Opdrachtgever:** Triple R Europe nv, Aartselaar (BE)
-**Versie:** 1.3 — 12 november 2026
+**Versie:** 1.4 — 12 november 2026
 **Doel van dit document:** de partij die de AI-backend bouwt, weet precies wat ze moet leveren zodat de bestaande website (frontend) er zonder verdere afstemming op kan aansluiten.
 
 ---
@@ -15,7 +15,7 @@ Kosten, abonnement en facturatie van de AI regelt de subleverancier rechtstreeks
 1. **De bronnen:** de inhoudsexport `ask-content.json` (**staat klaar**, zie §4) met alle webpagina's (NL, EN, FR) en alle PDF-datasheets per pagina, met per stuk de URL, het anker of het PDF-paginanummer, de taal en het type. Dit is de **enige** bron waarop Marc mag antwoorden.
 2. **De PDF's zelf**, online op de website (`/assets/pdf/...`), zodat bronlinks naar de juiste pagina openen.
 3. **De productlijst met product-id's** (bv. `bu200e`), met naam, serie, categorie, URL per taal, foto, kernspecificaties en datasheet. Zit in dezelfde export.
-4. **Automatische update:** na elke deploy staat er een nieuwe export op dezelfde URL. Zodra hun `/v1/reindex` bestaat, sturen we daar ook een seintje (webhook) naartoe.
+4. **Automatische update:** na elke geslaagde deploy staat er een nieuwe export op dezelfde URL, en de website stuurt **automatisch** een seintje naar hun `/v1/reindex` (§4.3). Daar hoeft niemand iets voor te doen.
 5. **Dit API-contract** (§3): de velden en events die de website verwacht.
 6. **De antwoordregels en de tone of voice** (§5): u-vorm, nooit prijzen of specificaties verzinnen, doorverwijzen naar advies of olieanalyse.
 7. **De testlijst van 40 vragen** (20 NL, 10 EN, 10 FR, waarvan 10 strikvragen), opgesteld met Triple R.
@@ -263,6 +263,37 @@ De export **staat klaar** en wordt bij **elke deploy** opnieuw aangemaakt. De pa
 
 **Vraag aan de partij:** bevestig dat jullie dit formaat kunnen inlezen, of geef aan welk formaat jullie liever hebben.
 
+### 4.3 Automatisch seintje na elke deploy (webhook)
+
+Na elke geslaagde deploy roept de website automatisch hun reindex-endpoint aan. Er is geen handwerk nodig.
+
+`POST {BACKEND_URL}/v1/reindex`
+
+Headers: `Authorization: Bearer <token>` (dezelfde token als voor `/v1/ask`), `Content-Type: application/json`.
+
+```json
+{
+  "event": "deploy-succeeded",
+  "schema": "triple-r-ask-content/1",
+  "export_url": "https://www.triple-r-europe.com/ask-content.json",
+  "site_url": "https://www.triple-r-europe.com",
+  "context": "production",
+  "branch": "main",
+  "deploy_id": "…",
+  "commit": "…",
+  "published_at": "2026-11-12T12:31:12Z"
+}
+```
+
+Wat de partij doet:
+
+1. Snel antwoorden met `202 Accepted` (binnen 8 seconden); de verwerking gebeurt daarna op de achtergrond.
+2. `export_url` ophalen en alleen de stukken met een nieuwe `hash` opnieuw verwerken; stukken waarvan de `id` verdwenen is, verwijderen uit de index.
+3. Dezelfde melding twee keer ontvangen moet geen probleem zijn (de website probeert één keer opnieuw bij een fout 5xx of een time-out).
+4. Daarnaast **minstens dagelijks** zelf de export ophalen, als vangnet voor een gemiste melding.
+
+Aan de websitekant staan de instellingen in Netlify (Site configuration > Environment variables): `ASK_REINDEX_URL` en `ASK_BACKEND_TOKEN`. Zonder die twee doet het seintje niets.
+
 ---
 
 ## 5. Inhoudelijke regels voor de antwoorden (system prompt)
@@ -345,7 +376,7 @@ Acceptatie wanneer:
 - De Netlify-functie `/api/ask` bouwen als beveiligde proxy (token als geheime variabele `ASK_BACKEND_TOKEN`, adres als `ASK_BACKEND_URL`).
 - De bestaande Marc-interface koppelen: tekst streamen, bronkaarten en PDF-paginalinks tonen, productkaartjes, vervolgvragen, feedbackknoppen.
 - De doorverwijzing naar het adviesformulier met de vraag vooraf ingevuld (event `lead_chat`).
-- De inhoudsexport `ask-content.json` (klaar) en de webhook naar hun `/v1/reindex` zodra hun endpoint bestaat.
+- De inhoudsexport `ask-content.json` en het automatische seintje naar hun `/v1/reindex` (beide klaar; het seintje werkt zodra `ASK_REINDEX_URL` en `ASK_BACKEND_TOKEN` in Netlify staan).
 - Terugvallen op de huidige zoekfunctie als de backend niet antwoordt.
 
 **Contact website:** [CONFIRM naam en e-mail van de contactpersoon bij Triple R / het webbureau]
