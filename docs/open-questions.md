@@ -129,3 +129,8 @@ Inhoud die op de site staat, maar nog door Triple R bevestigd moet worden. De ma
 - Alle vertalingen zijn door Claude opgesteld, niet door een moedertaalspreker nagelezen. Steekproef aanbevolen, vooral voor Fins en Hongaars (lokale distributeurs?).
 - **Privacy- en cookiebeleid** bestaan voor de secundaire talen alleen in het Engels. Juridisch nakijken of een vertaling nodig is.
 - **Marc**: de inhoudsexport (ask-content.json) bevat nu alle 10 talen. De AI-backend moet weten dat vragen in die talen kunnen binnenkomen.
+
+## Privacy en Marc AI (16/11/2026)
+- **Bewaartermijn vragen aan Marc**: de privacyverklaring vermeldt "maximaal 12 maanden" (voorstel uit de briefing, gemarkeerd als te bevestigen). Triple R en Kigumi bevestigen de termijn in de verwerkersovereenkomst; daarna de markering weghalen.
+- **Verwerkersovereenkomst** Kigumi–Triple R (met Google Cloud/Vertex AI EU als subverwerker): voorwaarde voor de livegang van Marc AI.
+- De privacyverklaring is geen juridisch advies: laat de tekst over Marc nalezen door wie bij Triple R de AVG opvolgt.
