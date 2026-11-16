@@ -16,20 +16,32 @@ from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCHEMA = 'triple-r-ask-content/1'
-from pages import LANGS, PRODUCTS_SLUG as PROD_DIR  # talen en productmap per taal: één centrale plek
-# eerste URL-segment -> type
-TYPES = {
-    'producten': 'product', 'products': 'product', 'produits': 'product',
-    'oplossingen': 'solution', 'solutions': 'solution',
-    'sectoren': 'sector', 'industries': 'sector', 'secteurs': 'sector',
-    'diensten': 'service', 'services': 'service', 'verhuur': 'service', 'rental': 'service', 'location': 'service',
-    'gratis-olieanalyse': 'service', 'free-oil-analysis': 'service', 'analyse-huile-gratuite': 'service',
-    'filtration-systembuilder': 'tool', 'besparingscalculator': 'tool', 'savings-calculator': 'tool', 'calculateur-economies': 'tool',
-    'veelgestelde-vragen': 'faq', 'faq': 'faq', 'questions-frequentes': 'faq',
-    'vacatures': 'job', 'careers': 'job', 'emplois': 'job',
+from pages import LANGS, PAGES, PRODUCTS_SLUG as PROD_DIR  # talen en productmap per taal: één centrale plek
+from langs import pick
+from kb_meta import SECTION
+# paginasleutel -> type; het eerste URL-segment wordt per taal afgeleid uit de slugs (werkt voor elke taal)
+PAGE_TYPE = {
+    'producten': 'product', 'oplossingen': 'solution', 'sectoren': 'sector',
+    'diensten': 'service', 'verhuur': 'service', 'olieanalyse': 'service',
+    'faq': 'faq', 'vacatures': 'job',
+    'filtration-systembuilder': 'tool', 'besparingscalculator': 'tool',  # voorbeeldwaarden zouden de AI misleiden
+    'privacy': 'skip', 'cookies': 'skip',  # juridisch: niet indexeren
 }
-# niet indexeren: juridisch en formulieren zonder inhoud
-SKIP_SEG = {'privacybeleid', 'privacy-policy', 'politique-de-confidentialite', 'cookiebeleid', 'cookie-policy', 'politique-cookies'}
+SECTION_PAGE = {'opl': 'oplossingen', 'sec': 'sectoren', 'pro': 'producten'}
+BOILERPLATE_MIN = 4  # zelfde tekst op zoveel pagina's of meer (CTA-blokken, "Lees ook"): niet opnemen
+
+
+def _seg_types(lang):
+    t = {PROD_DIR.get(lang, 'products'): 'product'}
+    for key, cfg in PAGES.items():
+        slug = pick(cfg['slug'], lang)
+        if slug:
+            t.setdefault(slug.split('/')[0], PAGE_TYPE.get(key, 'page'))
+    for sec, slugs in SECTION.items():
+        t.setdefault(pick(slugs, lang), PAGE_TYPE[SECTION_PAGE[sec]])
+    return t
+
+
 MAX_CHARS = 2400  # ca. 400-600 tokens per stuk
 
 
@@ -67,6 +79,7 @@ def _split(text):
 def _pages(out_dir, product_ids):
     chunks = []
     for lang in LANGS:
+        types = _seg_types(lang)
         base = os.path.join(out_dir, lang)
         for dirpath, _, files in os.walk(base):
             if 'index.html' not in files:
@@ -74,10 +87,8 @@ def _pages(out_dir, product_ids):
             rel = os.path.relpath(dirpath, out_dir).replace(os.sep, '/')
             url = '/' + rel + '/'
             segs = rel.split('/')[1:]
-            if segs and segs[0] in SKIP_SEG:
+            if segs and types.get(segs[0]) in ('skip', 'tool'):
                 continue
-            if segs and TYPES.get(segs[0]) == 'tool':
-                continue  # configurator/calculator: voorbeeldwaarden zouden de AI misleiden
             s = open(os.path.join(dirpath, 'index.html'), encoding='utf-8').read()
             if re.search(r'<meta name="robots" content="[^"]*noindex', s):
                 continue
@@ -86,7 +97,7 @@ def _pages(out_dir, product_ids):
                 continue
             main = m.group(1)
             title = H.unescape(re.sub(r'\s*[–|·-]\s*Triple R.*$', '', re.search(r'<title>(.*?)</title>', s, re.S).group(1))).strip()
-            ptype = 'home' if not segs else TYPES.get(segs[0], 'page')
+            ptype = 'home' if not segs else types.get(segs[0], 'page')
             product = segs[1] if ptype == 'product' and len(segs) > 1 and segs[1] in product_ids else None
             if ptype == 'product' and len(segs) > 1 and not product:
                 ptype = 'series'
@@ -109,7 +120,11 @@ def _pages(out_dir, product_ids):
                         'url': url, 'anchor': anchor or None, 'page': None, 'product': product,
                         'text': piece, 'hash': _h(piece),
                     })
-    return chunks
+    # herhaalde blokken (zelfde tekst op veel pagina's) verdringen bij het zoeken de echte antwoorden
+    seen = {}
+    for c in chunks:
+        seen.setdefault((c['lang'], c['hash']), set()).add(c['url'])
+    return [c for c in chunks if len(seen[(c['lang'], c['hash'])]) < BOILERPLATE_MIN]
 
 
 def _pdfs(products, js_titles):

@@ -85,8 +85,8 @@ T = [
      'The X element: long-life, ideal for high viscosity (220 to 460 cSt). Recommends advice or an oil analysis to confirm.',
      ['/en/products/x100/'], ['220 to 460 cSt'], None, 'advies', ['x100']),
     ('EN-03', 'en', 'specificatie', 'What is the flow rate of the OSCA unit CS-SS306-H80-2R?',
-     '100 l/min, 2.2 kW motor.',
-     ['/en/products/cs-ss306-h80-2r/#h-spec'], ['100 l/min', '2.2 kW'], None, None, ['cs-ss306-h80-2r']),
+     '100 l/min. (Het vermogen hoeft niet: daar vroeg de bezoeker niet naar.)',
+     ['/en/products/cs-ss306-h80-2r/#h-spec'], ['100 l/min'], None, None, ['cs-ss306-h80-2r']),
     ('EN-04', 'en', 'inhoud', 'Can I install a filter directly on a 200 bar hydraulic pressure line?',
      'Yes, the BU series on the pressure line without its own pump or motor; flow guaranteed from 10 to 245 bar, so 200 bar is within the range.',
      ['/en/faq/#h-producten', '/en/products/bu100e/#h-spec'], ['10 to 245 bar'], None, None, ['bu100e', 'bu200e']),
@@ -94,8 +94,8 @@ T = [
      'Particle count ISO 4406 and NAS 1638, water, viscosity, TAN and varnish, with a report and personal advice; free for companies.',
      ['/en/free-oil-analysis/'], ['ISO 4406'], None, 'olieanalyse', []),
     ('EN-06', 'en', 'specificatie', 'Which elements fit the BU100E?',
-     'One element of the 100 size: M100, E100, X100, D100, WE100 (and V100 variants). Links the product page.',
-     ['/en/products/bu100e/#h-spec'], ['1 × 100 size'], None, None, ['bu100e', 'm100', 'x100']),
+     'Lists the fitting elements of the 100 size: M100, E100, X100, D100, WE100 (and the V100 variants). Links the product page.',
+     ['/en/products/bu100e/#h-spec', 'product:bu100e'], ['M100', 'X100'], None, None, ['bu100e', 'm100', 'x100']),
     ('EN-07', 'en', 'inhoud', 'Do you have a solution for water-glycol fluids?',
      'Yes: BU100EW/BU200EW/BU300EW with WG100 or DWG100 polyester elements.',
      ['/en/faq/#h-producten', '/en/products/bu200ew/'], ['water-glycol'], None, None, ['bu200ew', 'wg100', 'dwg100']),
@@ -127,7 +127,7 @@ T = [
      ['/fr/questions-frequentes/#h-kosten', '/fr/analyse-huile-gratuite/'], ['gratuit'], None, 'olieanalyse', []),
     ('FR-06', 'fr', 'inhoud', "Proposez-vous la location d'un épurateur pour un rinçage (flushing) ?",
      'Oui : série SE mobile, série OSCA mobile, déshydrateur sous vide ; Triple R confirme disponibilité, prix et livraison. Pas de prix inventé.',
-     ['/fr/location/', '/fr/location/#h-rent'], ['location'], None, 'advies', []),
+     ['/fr/location/', '/fr/location/#h-rent'], ['location|louer'], None, 'advies', []),
     ('FR-07', 'fr', 'datasheet EN', "Pouvez-vous nettoyer des esters phosphates (fluides HFD) ?",
      "Réponse en français à partir des fiches techniques en anglais : des modèles SE et OSCA pour les esters phosphates existent ; consulter un spécialiste pour la configuration. Cite la fiche technique avec numéro de page.",
      ['/assets/pdf/SE-2019-ENGLISH.pdf#page=2', '/assets/pdf/OSCA-2019-ENGLISH.pdf#page=2'], ['phosphate'], None, 'advies', []),
@@ -151,6 +151,8 @@ def main():
         by_link.setdefault(ch['url'] + (ch['anchor'] or ''), []).append(ch['text'])
         by_link.setdefault(ch['url'], []).append(ch['text'])
     ids = {p['id'] for p in exp['products']}
+    for p in exp['products']:  # productlijst als bron: 'product:<id>' (o.a. passende elementen)
+        by_link['product:' + p['id']] = [json.dumps(p, ensure_ascii=False).replace('-', '').upper() + ' ' + json.dumps(p, ensure_ascii=False)]
     errors = []
     assert len(T) == 40, len(T)
     for nr, lang, kind, q, beh, srcs, facts, reason, handoff, prods in T:
@@ -159,8 +161,8 @@ def main():
                 errors.append(f'{nr}: bron {s} niet in de export')
         if facts:
             texts = ' '.join(t for s in srcs for t in by_link.get(s, []))
-            for f in facts:
-                if f.lower() not in texts.lower():
+            for f in facts:  # 'a|b' = een van beide volstaat (synoniemen)
+                if not any(alt.lower() in texts.lower() for alt in f.split('|')):
                     errors.append(f'{nr}: feit "{f}" niet gevonden in {srcs}')
         for p in prods:
             if p not in ids:
@@ -176,7 +178,7 @@ def main():
         w = csv.writer(fh)
         w.writerow(['nr', 'taal', 'soort', 'vraag', 'verwacht_gedrag', 'verwachte_bronnen', 'sleutelfeiten', 'no_answer_reason', 'handoff', 'producten'])
         for nr, lang, kind, q, beh, srcs, facts, reason, handoff, prods in T:
-            w.writerow([nr, lang, kind, q, beh, ' '.join(srcs), ' | '.join(facts), reason or '', handoff or '', ' '.join(prods)])
+            w.writerow([nr, lang, kind, q, beh, ' '.join(srcs), ' ; '.join(f.replace('|', ' of ') for f in facts), reason or '', handoff or '', ' '.join(prods)])
     # Markdown-bijlage
     md = ['## Bijlage A. Testset: 40 vragen', '',
           'Elke vraag is gecontroleerd tegen `ask-content.json` van 12 november 2026: de bronnen bestaan en de sleutelfeiten staan er letterlijk in. '

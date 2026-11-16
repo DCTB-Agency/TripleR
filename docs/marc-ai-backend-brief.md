@@ -2,7 +2,7 @@
 
 **Opdrachtgever:** Triple R Europe nv, Aartselaar (BE)
 **Opdrachtnemer (AI-backend):** Kigumi
-**Versie:** 1.7 — 12 november 2026
+**Versie:** 1.8 — 16 november 2026 (stand na het dossier van Kigumi van 15 november)
 **Doel van dit document:** Kigumi, dat de AI-backend bouwt, weet precies wat ze moet leveren zodat de bestaande website (frontend) er zonder verdere afstemming op kan aansluiten.
 
 ---
@@ -374,13 +374,19 @@ Acceptatie wanneer:
 
 ---
 
-## 10. Wat wij (website) doen zodra dit er is
+## 10. Wat de website doet (stand 16 november 2026)
 
-- De Netlify-functie `/api/ask` bouwen als beveiligde proxy (token als geheime variabele `ASK_BACKEND_TOKEN`, adres als `ASK_BACKEND_URL`).
-- De bestaande Marc-interface koppelen: tekst streamen, bronkaarten en PDF-paginalinks tonen, productkaartjes, vervolgvragen, feedbackknoppen.
-- Het formulier "Stel uw vraag meteen aan een specialist" in Marc bij `no_answer` (klaar, zie §11.2), plus de doorverwijzing naar het contactformulier met de vraag vooraf ingevuld (event `lead_chat`).
-- De inhoudsexport `ask-content.json` en het automatische seintje naar hun `/v1/reindex` (beide klaar; het seintje werkt zodra `ASK_REINDEX_URL` en `ASK_BACKEND_TOKEN` in Netlify staan).
-- Terugvallen op de huidige zoekfunctie als de backend niet antwoordt (§11.3).
+Alles hieronder is gebouwd en getest; het werkt zodra de token in Netlify staat.
+
+- **Doorgeefschakel** `/api/ask` en `/api/ask/feedback`, als Netlify **Edge Function** (`netlify/edge-functions/ask.js`), zodat een gestreamd antwoord tot 35 seconden mag duren (Kigumi vraagt minstens 30). Instellingen: `ASK_BACKEND_URL` = `https://cockpit.kigumi.be/api`, `ASK_BACKEND_TOKEN` = de token, en `ASSISTANT_ENABLED=false` als noodstop. De schakel aanvaardt alleen aanvragen van de eigen site, haalt e-mailadressen en telefoonnummers uit vraag, geschiedenis en commentaar, en geeft de foutcodes van §3.5 door zonder de interne `message`.
+- **Marc in de browser:** vraagt het antwoord als stroom (SSE), toont tekst, bronkaarten met PDF-paginalinks, productlinks, vervolgvragen en duimpjes (naar `/v1/feedback` met de `answer_id`). De laatste 6 berichten gaan mee als `history`; `session_id` is willekeurig per bezoek.
+- **`intent: "offerte"`** wordt gebruikt: Marc toont dan meteen de knop "Offerte aanvragen".
+- **Geen antwoord:** bij `not_in_sources` en `needs_specialist` het vraagformulier (§11.2); bij `safety` ook de belknop; bij `out_of_scope` en `refused` alleen de tekst van Marc, zonder formulier.
+- **Storing** (fout, time-out, `503`, geen tekst ontvangen): automatisch terug naar de gewone zoekfunctie. Bronnen met een adres buiten de site worden niet getoond.
+- **Seintje na elke deploy** naar `/v1/reindex`: werkt zodra `ASK_REINDEX_URL` = `https://cockpit.kigumi.be/api/v1/reindex` en de token in Netlify staan.
+- **Export (16 november):** het type van elk stuk klopt nu in alle tien talen (ook `product`, `solution` enzovoort in het Duits en de zes andere talen); blokken die op 4 of meer pagina's herhaald worden ("Lees ook", contactblokken) zijn weggelaten. De zes secundaire talen (IT, ES, FI, HU, SV, NO) bevatten bewust alleen de kernpagina's en de productpagina's.
+- **Inhoud:** "Als richtlijn: één element volstaat voor tanks tot 1.000 l" staat nu ook bij "Welke Triple R past bij mijn installatie?" (NL, EN, FR, DE).
+- **Testset:** EN-03 vraagt alleen nog het debiet; EN-06 verwacht de opsomming van de elementen (M100, X100 …); FR-06 aanvaardt "location" en "louer".
 
 ---
 
@@ -469,10 +475,10 @@ Elke vraag is gecontroleerd tegen `ask-content.json` van 12 november 2026: de br
 |---|---|---|---|---|---|
 | EN-01 | inhoud | How does a Triple R filter remove water from oil? | Element absorbs free and emulsified water; with a lot of water the vacuum dehydrator removes 80% of the dissolved and 100% of the free water. | `/en/faq/#h-water` | olieanalyse |
 | EN-02 | advies | Which filter element should I use for gear oil with a viscosity of 320 cSt? | The X element: long-life, ideal for high viscosity (220 to 460 cSt). Recommends advice or an oil analysis to confirm. | `/en/products/x100/` | advies |
-| EN-03 | specificatie | What is the flow rate of the OSCA unit CS-SS306-H80-2R? | 100 l/min, 2.2 kW motor. | `/en/products/cs-ss306-h80-2r/#h-spec` | — |
+| EN-03 | specificatie | What is the flow rate of the OSCA unit CS-SS306-H80-2R? | 100 l/min. (Het vermogen hoeft niet: daar vroeg de bezoeker niet naar.) | `/en/products/cs-ss306-h80-2r/#h-spec` | — |
 | EN-04 | inhoud | Can I install a filter directly on a 200 bar hydraulic pressure line? | Yes, the BU series on the pressure line without its own pump or motor; flow guaranteed from 10 to 245 bar, so 200 bar is within the range. | `/en/faq/#h-producten`<br>`/en/products/bu100e/#h-spec` | — |
 | EN-05 | inhoud | What does the free oil analysis include? | Particle count ISO 4406 and NAS 1638, water, viscosity, TAN and varnish, with a report and personal advice; free for companies. | `/en/free-oil-analysis/` | olieanalyse |
-| EN-06 | specificatie | Which elements fit the BU100E? | One element of the 100 size: M100, E100, X100, D100, WE100 (and V100 variants). Links the product page. | `/en/products/bu100e/#h-spec` | — |
+| EN-06 | specificatie | Which elements fit the BU100E? | Lists the fitting elements of the 100 size: M100, E100, X100, D100, WE100 (and the V100 variants). Links the product page. | `/en/products/bu100e/#h-spec`<br>`product:bu100e` | — |
 | EN-07 | inhoud | Do you have a solution for water-glycol fluids? | Yes: BU100EW/BU200EW/BU300EW with WG100 or DWG100 polyester elements. | `/en/faq/#h-producten`<br>`/en/products/bu200ew/` | — |
 | EN-08 | inhoud | What does ISO code 14/12/10 mean? | Very clean oil (NAS 4), best for all oil systems. | `/en/solutions/oil-analysis/` | olieanalyse |
 | EN-09 | strikvraag: off-topic | What's the weather going to be like in Antwerp tomorrow? | Politely decline, back to oil filtration. Reason out_of_scope. | — | `out_of_scope` |

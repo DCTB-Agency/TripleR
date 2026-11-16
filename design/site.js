@@ -243,7 +243,100 @@
     if (s.pdf) return `<a class="src pdf" id="src-${i + 1}" href="${pdfHref(s.pdf, s.pageNo)}" target="_blank" rel="noopener"><span class="n">${i + 1}</span><b>${esc(s.title)}</b><span>PDF · p. ${s.pageNo} ↗</span></a>`;
     return `<a class="src" id="src-${i + 1}" href="${s.u}" data-close-go><span class="n">${i + 1}</span><b>${esc(s.page)}</b><span>Webpagina</span></a>`;
   }
+  /* ---------- Marc AI (Kigumi via /api/ask); bij elke storing: terug naar de zoekfunctie hieronder ---------- */
+  const AI = { down: false, history: [], sid: (() => { try { let v = sessionStorage.getItem('rrr_ask_sid'); if (!v) { v = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem('rrr_ask_sid', v); } return v; } catch (e) { return Math.random().toString(36).slice(2) + Date.now().toString(36); } })() };
+  const LANG = (document.documentElement.lang || 'nl').slice(0, 2);
+  const safePath = u => typeof u === 'string' && /^\/(?!\/)[\w\-./%]*$/.test(u);
+  function mdHtml(text, final) {
+    const cite = h => h.replace(/\[(\d{1,2})\]/g, (m, n) => `<sup><a href="#src-${n}" aria-label="bron ${n}">${n}</a></sup>`);
+    const inline = t => cite(esc(t).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>'));
+    let src = text; if (!final) src = src.replace(/\[\d{0,2}$/, ''); /* half binnengekomen bronnummer nog niet tonen */
+    return src.split(/\n{2,}/).map(b => b.trim()).filter(Boolean).map(b => {
+      const lines = b.split('\n').map(l => l.trim()).filter(Boolean);
+      if (lines.every(l => /^[-*•]\s+/.test(l))) return `<ul>${lines.map(l => `<li>${inline(l.replace(/^[-*•]\s+/, ''))}</li>`).join('')}</ul>`;
+      return `<p>${lines.map(inline).join('<br>')}</p>`;
+    }).join('');
+  }
+  function aiSrcCard(s, i) {
+    const n = s.n || i + 1;
+    if (s.type === 'pdf') return `<a class="src pdf" id="src-${n}" href="${s.url}#page=${+s.page || 1}" target="_blank" rel="noopener"><span class="n">${n}</span><b>${esc(s.title || 'Datasheet')}</b><span>PDF · p. ${+s.page || 1} ↗</span></a>`;
+    return `<a class="src" id="src-${n}" href="${s.url}${/^#[\w-]+$/.test(s.anchor || '') ? s.anchor : ''}" data-close-go><span class="n">${n}</span><b>${esc(s.title || '')}</b><span>Webpagina</span></a>`;
+  }
+  function aiHandoff(d, q) {
+    const ask = encodeURIComponent(d.handoff_summary || q);
+    if (d.intent === 'offerte') return `<div class="handoff"><p>Volgende stap. Vraag een offerte aan; een specialist stelt ze op maat van uw installatie op.</p><div class="btns"><a class="btn btn--primary" href="offerte.html" data-close-go>Offerte aanvragen</a><a class="btn btn--secondary" href="contact.html?vraag=${ask}">Advies aanvragen</a><a class="btn btn--secondary" href="tel:+3238254647">Bel +32 3 825 46 47</a></div></div>`;
+    if (d.handoff === 'bellen') return `<div class="handoff"><p>Volgende stap. Bespreek dit best rechtstreeks met een specialist.</p><div class="btns"><a class="btn btn--primary" href="tel:+3238254647">Bel +32 3 825 46 47</a><a class="btn btn--secondary" href="contact.html?vraag=${ask}">Advies aanvragen</a></div></div>`;
+    if (d.handoff === 'olieanalyse') return handoff('Vraag uw gratis olieanalyse aan', q, 'olieanalyse.html');
+    return handoff('Vraag advies over deze situatie', d.handoff_summary || q);
+  }
+  async function readSse(res, on) {
+    const rd = res.body.getReader(), dec = new TextDecoder(); let buf = '';
+    for (;;) {
+      const { done, value } = await rd.read(); if (done) break;
+      buf += dec.decode(value, { stream: true });
+      let i; while ((i = buf.indexOf('\n\n')) >= 0) {
+        const raw = buf.slice(0, i); buf = buf.slice(i + 2);
+        const ev = (raw.match(/^event:\s*(.+)$/m) || [])[1] || 'message';
+        const data = raw.split('\n').filter(l => l.startsWith('data:')).map(l => l.slice(5).replace(/^ /, '')).join('\n');
+        let obj = {}; try { obj = JSON.parse(data || '{}'); } catch (e) {}
+        on(ev.trim(), obj);
+      }
+    }
+  }
+  /* geeft true als Marc AI de vraag afhandelde (antwoord of "geen antwoord"), false = terugvallen op de zoekfunctie */
+  async function aiAnswer(q) {
+    askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p>
+      <div class="marc-busy" role="status" id="ai-busy"><img src="${MARC('loep')}" alt="" width="360" height="311"><p class="ai busy"><span class="dot"></span><span>Marc zoekt in de webpagina’s en datasheets…</span></p></div>
+      <div id="ai-out" hidden><p class="ai busy marc-ai" id="ai-l"><img class="marc-av" src="${MARC('icoon')}" alt="" width="330" height="285"><span class="dot"></span><span id="ai-t">Marc stelt een antwoord op…</span></p><div class="ans" id="ans" aria-live="polite" aria-busy="true"></div><div id="after" hidden></div></div>`;
+    const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 35000);
+    let text = '', meta = {}, sources = [], fin = null, broken = false;
+    const paint = final => { const a = document.getElementById('ans'); if (!a) return; document.getElementById('ai-busy')?.remove(); document.getElementById('ai-out').hidden = false; a.innerHTML = mdHtml(text, final) + (final ? '' : '<span class="caret" aria-hidden="true"></span>'); };
+    try {
+      window.dataLayer?.push({ event: 'ask_question', lang: LANG, length: q.length });
+      const res = await fetch('/api/ask', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
+        body: JSON.stringify({ question: q, lang: LANG, page: location.pathname, session_id: AI.sid, history: AI.history.slice(-6) }) });
+      if (!res.ok) { if ([404, 405, 503].includes(res.status)) AI.down = true; return false; }
+      if ((res.headers.get('content-type') || '').includes('text/event-stream')) {
+        await readSse(res, (ev, d) => {
+          if (askQ.value !== q) return;
+          if (ev === 'meta') meta = d;
+          else if (ev === 'delta' && typeof d.text === 'string') { text += d.text; paint(false); }
+          else if (ev === 'sources') sources = Array.isArray(d.sources) ? d.sources : [];
+          else if (ev === 'done') fin = d;
+          else if (ev === 'error') broken = true;
+        });
+      } else { const d = await res.json(); meta = d; text = d.text || ''; sources = d.sources || []; fin = d; }
+    } catch (e) { broken = true; } finally { clearTimeout(timer); }
+    if (askQ.value !== q) return true;
+    if (!fin && !text) return false; /* niets ontvangen: gewone zoekfunctie */
+    sources = sources.filter(s => s && safePath(s.url));
+    const d = fin || {};
+    if (d.no_answer || !sources.length) { noAnswer(q, d.no_answer_reason, text); return true; }
+    AI.history.push({ role: 'user', content: q }, { role: 'assistant', content: text.slice(0, 2000) }); AI.history = AI.history.slice(-6);
+    paint(true);
+    const prods = (Array.isArray(d.products) ? d.products : []).filter(id => /^[a-z0-9-]{2,40}$/.test(id)).slice(0, 4);
+    const follow = (Array.isArray(d.followups) ? d.followups : []).filter(f => typeof f === 'string').slice(0, 3);
+    const after = document.getElementById('after');
+    after.innerHTML = `${broken ? '<p class="small muted">Het antwoord werd onderbroken en is mogelijk onvolledig. Stel de vraag gerust opnieuw of vraag het aan een specialist.</p>' : ''}
+      <h3 class="lbl" style="margin-top:var(--s-5)">Bronnen</h3><div class="srcs">${sources.map(aiSrcCard).join('')}</div>
+      ${prods.length ? `<div class="aiprods">${prods.map(id => `<a class="pmini" href="product.html?id=${id}" data-close-go><span><b>${esc(id.toUpperCase())}</b><span>Bekijk product</span></span></a>`).join('')}</div>` : ''}
+      ${aiHandoff(d, q)}
+      ${follow.length ? `<div class="follow" aria-label="Vervolgvragen">${follow.map(f => `<button type="button" data-ask="${esc(f)}">${esc(f)}</button>`).join('')}</div>` : ''}
+      <div class="fb" data-aid="${esc(meta.answer_id || d.answer_id || '')}"><span>Was dit antwoord nuttig?</span><button type="button" aria-pressed="false" aria-label="Nuttig" data-fb>${I.up}</button><button type="button" aria-pressed="false" aria-label="Niet nuttig" data-fb>${I.down}</button><span id="fb-t" role="status"></span></div>`;
+    after.hidden = false;
+    const a = document.getElementById('ans'); a.setAttribute('aria-busy', 'false');
+    document.getElementById('ai-l').classList.remove('busy'); document.getElementById('ai-t').textContent = 'Antwoord van Marc (AI), op basis van Triple R-documentatie';
+    window.dataLayer?.push({ event: 'ask_answer_shown', no_answer: false, sources: sources.length });
+    return true;
+  }
   async function answer(q) {
+    clearInterval(streamTimer);
+    askQ.value = q; askGo.disabled = false;
+    if (!AI.down && await aiAnswer(q)) return;
+    if (askQ.value !== q) return;
+    return localAnswer(q);
+  }
+  async function localAnswer(q) {
     clearInterval(streamTimer);
     askQ.value = q; askGo.disabled = false;
     const nq = norm(q), terms = expand(q);
@@ -292,11 +385,14 @@
       if (wi >= words.length) { words = null; bi++; }
     }, 40);
   }
-  function noAnswer(q) {
+  function noAnswer(q, reason, said) {
+    const plain = reason === 'out_of_scope' || reason === 'refused';
+    const msg = said && said.trim() ? mdHtml(said, true) : '<p><b>Daar vind ik geen betrouwbaar antwoord op in de documentatie van Triple R.</b></p><p class="small muted">Ik heb gezocht in de webpagina’s en alle datasheets, maar geef liever geen gok. Een specialist beantwoordt uw vraag persoonlijk.</p>';
     askBody.innerHTML = `<button type="button" class="back" data-back>${I.back}Terug naar resultaten</button><p class="qhead">${esc(q)}</p>
-      <div class="noans marc-no" role="status"><img src="${MARC('knipoog')}" alt="" width="320" height="396"><div><p class="ai"><img class="marc-av" src="${MARC('icoon')}" alt="" width="330" height="285">Marc (AI-assistent)</p><p><b>Daar vind ik geen betrouwbaar antwoord op in de documentatie van Triple R.</b></p><p class="small muted">Ik heb gezocht in de webpagina’s en alle datasheets, maar geef liever geen gok. Een specialist beantwoordt uw vraag persoonlijk.<i class="tb" title="Te bevestigen: responstijd"></i></p></div></div>
-      ${askForm(q)}`;
-    wireAskForm(q);
+      <div class="noans marc-no" role="status"><img src="${MARC('knipoog')}" alt="" width="320" height="396"><div><p class="ai"><img class="marc-av" src="${MARC('icoon')}" alt="" width="330" height="285">Marc (AI-assistent)</p>${msg}</div></div>
+      ${plain ? '' : reason === 'safety' ? `<div class="handoff"><p>Bij veiligheid of explosiegevaar beslist een specialist mee. Bel ons gerust, of stel uw vraag hieronder.</p><div class="btns"><a class="btn btn--primary" href="tel:+3238254647">Bel +32 3 825 46 47</a></div></div>${askForm(q)}` : askForm(q)}`;
+    if (plain) window.dataLayer?.push({ event: 'ask_answer_shown', no_answer: true, reason });
+    else wireAskForm(q);
   }
   /* geen antwoord: de vraag meteen naar een specialist sturen, via /api/lead (nooit via de AI-backend) */
   function askForm(q) {
@@ -353,7 +449,7 @@
     if (t.hasAttribute('data-ask')) answer(t.dataset.ask);
     else if (t.hasAttribute('data-back')) { clearInterval(streamTimer); render(); askQ.focus(); }
     else if (t.hasAttribute('data-close') || t.hasAttribute('data-close-go')) closeAsk();
-    else if (t.hasAttribute('data-fb')) { t.parentElement.querySelectorAll('[data-fb]').forEach(b => b.setAttribute('aria-pressed', b === t)); const up = t.getAttribute('aria-label') === 'Nuttig'; document.getElementById('fb-t').innerHTML = up ? `<span class="marc-thx"><img src="${MARC('duim')}" alt="" width="320" height="398">Bedankt, dat hoort Marc graag!</span>` : 'Bedankt voor uw feedback.'; }
+    else if (t.hasAttribute('data-fb')) { t.parentElement.querySelectorAll('[data-fb]').forEach(b => b.setAttribute('aria-pressed', b === t)); const up = t.getAttribute('aria-label') === 'Nuttig'; const aid = t.parentElement.dataset.aid; if (aid && !t.parentElement.dataset.sent) { t.parentElement.dataset.sent = '1'; fetch('/api/ask/feedback', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ answer_id: aid, rating: up ? 'up' : 'down' }) }).catch(() => {}); window.dataLayer?.push({ event: 'ask_feedback', rating: up ? 'up' : 'down' }); } document.getElementById('fb-t').innerHTML = up ? `<span class="marc-thx"><img src="${MARC('duim')}" alt="" width="320" height="398">Bedankt, dat hoort Marc graag!</span>` : 'Bedankt voor uw feedback.'; }
   });
   ask.addEventListener('keydown', e => {
     if (e.key === 'Escape') { e.preventDefault(); closeAsk(); return; }

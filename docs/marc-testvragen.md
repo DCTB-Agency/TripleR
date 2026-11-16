@@ -33,10 +33,10 @@ Elke vraag is gecontroleerd tegen `ask-content.json` van 12 november 2026: de br
 |---|---|---|---|---|---|
 | EN-01 | inhoud | How does a Triple R filter remove water from oil? | Element absorbs free and emulsified water; with a lot of water the vacuum dehydrator removes 80% of the dissolved and 100% of the free water. | `/en/faq/#h-water` | olieanalyse |
 | EN-02 | advies | Which filter element should I use for gear oil with a viscosity of 320 cSt? | The X element: long-life, ideal for high viscosity (220 to 460 cSt). Recommends advice or an oil analysis to confirm. | `/en/products/x100/` | advies |
-| EN-03 | specificatie | What is the flow rate of the OSCA unit CS-SS306-H80-2R? | 100 l/min, 2.2 kW motor. | `/en/products/cs-ss306-h80-2r/#h-spec` | — |
+| EN-03 | specificatie | What is the flow rate of the OSCA unit CS-SS306-H80-2R? | 100 l/min. (Het vermogen hoeft niet: daar vroeg de bezoeker niet naar.) | `/en/products/cs-ss306-h80-2r/#h-spec` | — |
 | EN-04 | inhoud | Can I install a filter directly on a 200 bar hydraulic pressure line? | Yes, the BU series on the pressure line without its own pump or motor; flow guaranteed from 10 to 245 bar, so 200 bar is within the range. | `/en/faq/#h-producten`<br>`/en/products/bu100e/#h-spec` | — |
 | EN-05 | inhoud | What does the free oil analysis include? | Particle count ISO 4406 and NAS 1638, water, viscosity, TAN and varnish, with a report and personal advice; free for companies. | `/en/free-oil-analysis/` | olieanalyse |
-| EN-06 | specificatie | Which elements fit the BU100E? | One element of the 100 size: M100, E100, X100, D100, WE100 (and V100 variants). Links the product page. | `/en/products/bu100e/#h-spec` | — |
+| EN-06 | specificatie | Which elements fit the BU100E? | Lists the fitting elements of the 100 size: M100, E100, X100, D100, WE100 (and the V100 variants). Links the product page. | `/en/products/bu100e/#h-spec`<br>`product:bu100e` | — |
 | EN-07 | inhoud | Do you have a solution for water-glycol fluids? | Yes: BU100EW/BU200EW/BU300EW with WG100 or DWG100 polyester elements. | `/en/faq/#h-producten`<br>`/en/products/bu200ew/` | — |
 | EN-08 | inhoud | What does ISO code 14/12/10 mean? | Very clean oil (NAS 4), best for all oil systems. | `/en/solutions/oil-analysis/` | olieanalyse |
 | EN-09 | strikvraag: off-topic | What's the weather going to be like in Antwerp tomorrow? | Politely decline, back to oil filtration. Reason out_of_scope. | — | `out_of_scope` |

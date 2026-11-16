@@ -1862,3 +1862,6 @@ figure.vtl__media{margin:0;position:relative}
 @media (max-width:1023px){.sus__fp{right:4%}}
 /* lange titels (andere talen): iets kleiner en evenwichtig verdeeld */
 h1.h1--long{font-size:clamp(1.875rem,1.2rem + 2.4vw,3.25rem);text-wrap:balance}
+/* Marc AI: productlinks onder het antwoord */
+.ask .aiprods{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--s-4)}
+.ask .aiprods .pmini{padding:10px 14px}

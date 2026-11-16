@@ -1,0 +1,134 @@
+[
+  {
+    "request": {
+      "question": "Werkt de BU200E nog bij 350 bar systeemdruk?",
+      "lang": "nl",
+      "page": "/nl/producten/bu200e/",
+      "session_id": "…"
+    },
+    "response": {
+      "answer_id": "ans_ad2b78704902411e9cfa",
+      "lang": "nl",
+      "text": "De BU200E is ontworpen voor hydraulische systemen tot 450 bar systeemdruk [1]. Het gegarandeerde debiet van de werkdruk ligt echter op 10 tot 245 bar [2]. \n\nEen systeemdruk van 350 bar valt binnen het bereik van de ontworpen systeemdruk tot 450 bar, maar overschrijdt het bereik van de gegarandeerde werkdruk van 10 tot 245 bar. We raden advies of een gratis olieanalyse aan ter bevestiging.",
+      "sources": [
+        {
+          "n": 1,
+          "type": "page",
+          "title": "BU-serie bypassfilter tot 450 bar",
+          "url": "/nl/producten/bu-serie/"
+        },
+        {
+          "n": 2,
+          "type": "page",
+          "title": "BU200E",
+          "url": "/nl/producten/bu200e/",
+          "anchor": "#h-spec"
+        }
+      ],
+      "no_answer": false,
+      "no_answer_reason": null,
+      "handoff_summary": "Werkt de BU200E bij 350 bar systeemdruk?",
+      "products": [
+        "bu200e"
+      ],
+      "followups": [
+        "Wat is het debiet van de BU200E?",
+        "Welke filterelementen passen in de BU200E?",
+        "Wat zijn de afmetingen van de BU200E?"
+      ],
+      "handoff": "advies",
+      "intent": null
+    },
+    "ms": 2501,
+    "unverified": []
+  },
+  {
+    "request": {
+      "question": "Do you have a solution for water-glycol fluids?",
+      "lang": "en",
+      "page": "/en/products/",
+      "session_id": "…"
+    },
+    "response": {
+      "answer_id": "ans_8eab6f692f73405c9329",
+      "lang": "en",
+      "text": "Yes, we have solutions for water-glycol fluids. \n\n- **WG100 filter element**: Article number EL10012, polyester filter medium, filtration grade β10 > 75, dimensions Ø178 x 114 mm, weight 680 g, and flow of 1.0 to 1.4 l/min [1]. It fits in all water-glycol housings [1].\n- **DWG100 filter element**: Article number EL10017, polyester filter medium, filtration grade β5 > 75, dimensions Ø178 x 114 mm, weight 680 g, and flow of 1.0 to 1.4 l/min [2]. It fits in all water-glycol housings [2].\n- **BU100EW**: A BU bypass filter for water-glycol with 1 WG/DWG element [3].\n\nTo find the right setup for your specific system, you can use our Filtration Systembuilder or request a free oil analysis to confirm your requirements. Please contact us via +32 (0)3 825 46 47 or info@triple-r-europe.com for further assistance.",
+      "sources": [
+        {
+          "n": 1,
+          "type": "page",
+          "title": "WG100",
+          "url": "/en/products/wg100/",
+          "anchor": "#h-spec"
+        },
+        {
+          "n": 2,
+          "type": "page",
+          "title": "DWG100",
+          "url": "/en/products/dwg100/",
+          "anchor": "#h-spec"
+        },
+        {
+          "n": 3,
+          "type": "page",
+          "title": "BU100EW",
+          "url": "/en/products/bu100ew/"
+        }
+      ],
+      "no_answer": false,
+      "no_answer_reason": null,
+      "handoff_summary": "Solution for water-glycol fluids including WG100 and DWG100 filter elements and the BU100EW filter.",
+      "products": [
+        "wg100",
+        "dwg100",
+        "bu100ew"
+      ],
+      "followups": [
+        "What is the flow rate of the WG100?",
+        "What filtration grade does the DWG100 have?",
+        "What is the article number of the WG100?"
+      ],
+      "handoff": "advies",
+      "intent": null
+    },
+    "ms": 1887,
+    "unverified": []
+  },
+  {
+    "request": {
+      "question": "Quel est le débit du SE600E-BH ?",
+      "lang": "fr",
+      "page": "/fr/produits/se600e-bh/",
+      "session_id": "…"
+    },
+    "response": {
+      "answer_id": "ans_83e5b3f6b3764461ba65",
+      "lang": "fr",
+      "text": "Le débit du SE600E-BH est de 12,0 l/min [1]. Pour toute confirmation ou dimensionnement, vous pouvez faire appel à notre service de conseil ou demander une analyse d'huile gratuite.",
+      "sources": [
+        {
+          "n": 1,
+          "type": "page",
+          "title": "SE600E-BH",
+          "url": "/fr/produits/se600e-bh/",
+          "anchor": "#h-spec"
+        }
+      ],
+      "no_answer": false,
+      "no_answer_reason": null,
+      "handoff_summary": "Débit du SE600E-BH",
+      "products": [
+        "se600e-bh"
+      ],
+      "followups": [
+        "Quelles sont les dimensions du SE600E-BH ?",
+        "Quelle est la puissance du SE600E-BH ?",
+        "Quels éléments filtrants conviennent au SE600E-BH ?"
+      ],
+      "handoff": "advies",
+      "intent": null
+    },
+    "ms": 3211,
+    "unverified": []
+  }
+]
