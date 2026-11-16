@@ -212,7 +212,7 @@
   function openAsk(prefill) {
     lastFocus = document.activeElement; ask.hidden = false; document.body.style.overflow = 'hidden';
     if (!drawer.hidden) { drawer.hidden = true; mOpen.setAttribute('aria-expanded', 'false'); }
-    askQ.value = prefill || ''; render(); askQ.focus(); ensurePdfIndex();
+    AI.autoUsed = false; clearTimeout(AI.autoT); askQ.value = prefill || ''; render(); askQ.focus(); ensurePdfIndex();
   }
   function closeAsk() { clearInterval(streamTimer); ask.hidden = true; document.body.style.overflow = ''; (lastFocus || document.getElementById('ask-open')).focus(); }
   function render() { const v = askQ.value.trim(); askGo.disabled = !v; sel = -1; v ? renderResults(v) : renderEmpty(); }
@@ -244,7 +244,7 @@
     return `<a class="src" id="src-${i + 1}" href="${s.u}" data-close-go><span class="n">${i + 1}</span><b>${esc(s.page)}</b><span>Webpagina</span></a>`;
   }
   /* ---------- Marc AI (Kigumi via /api/ask); bij elke storing: terug naar de zoekfunctie hieronder ---------- */
-  const AI = { down: false, history: [], cache: new Map(), busy: '', sid: (() => { try { let v = sessionStorage.getItem('rrr_ask_sid'); if (!v) { v = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem('rrr_ask_sid', v); } return v; } catch (e) { return Math.random().toString(36).slice(2) + Date.now().toString(36); } })() };
+  const AI = { down: false, history: [], cache: new Map(), busy: '', autoT: 0, autoUsed: false, trigger: 'manual', sid: (() => { try { let v = sessionStorage.getItem('rrr_ask_sid'); if (!v) { v = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem('rrr_ask_sid', v); } return v; } catch (e) { return Math.random().toString(36).slice(2) + Date.now().toString(36); } })() };
   const LANG = (document.documentElement.lang || 'nl').slice(0, 2);
   const safePath = u => typeof u === 'string' && /^\/(?!\/)[\w\-./%]*$/.test(u);
   function mdHtml(text, final) {
@@ -292,7 +292,7 @@
     let text = '', meta = {}, sources = [], fin = null, broken = false;
     const paint = final => { const a = document.getElementById('ans'); if (!a) return; document.getElementById('ai-busy')?.remove(); document.getElementById('ai-out').hidden = false; a.innerHTML = mdHtml(text, final) + (final ? '' : '<span class="caret" aria-hidden="true"></span>'); };
     try {
-      window.dataLayer?.push({ event: 'ask_question', lang: LANG, length: q.length });
+      window.dataLayer?.push({ event: 'ask_question', lang: LANG, length: q.length, trigger: AI.trigger }); AI.trigger = 'manual';
       const res = await fetch('/api/ask', { method: 'POST', signal: ctl.signal, headers: { 'Content-Type': 'application/json', Accept: 'text/event-stream' },
         body: JSON.stringify({ question: q, lang: LANG, page: location.pathname, session_id: AI.sid, history: AI.history.slice(-6) }) });
       if (!res.ok) { if ([404, 405, 503].includes(res.status)) AI.down = true; return false; }
@@ -450,11 +450,30 @@
   });
   document.querySelectorAll('[data-ask-embed]').forEach(f => f.addEventListener('submit', e => { e.preventDefault(); const v = f.querySelector('input').value.trim(); openAsk(v); if (v) answer(v); }));
   askQ.addEventListener('input', render);
-  askGo.addEventListener('click', () => askQ.value.trim() && answer(askQ.value.trim()));
+  /* automatisch vragen: na 3 s pauze, alleen voor een volledige vraag, hoogstens één keer per invoer (daarna bij Enter) */
+  const QWORDS = /^(hoe|wat|welke?|waar|wanneer|waarom|wie|kan|kun|kunt|moet|mag|is|zijn|heb|heeft|hebben|werkt|bestaat|how|what|which|where|when|why|who|can|could|do|does|is|are|should|will|comment|quel(le)?s?|o[uù]|quand|pourquoi|combien|est-ce|puis-je|peut-on|faut-il|wie|was|welche[rs]?|wo|wann|warum|kann|k[oö]nnen|gibt|ist|sind|muss)$/i;
+  function looksComplete(v) {
+    const t = v.trim(), words = t.split(/\s+/).filter(Boolean);
+    if (t.length < 12 || t.length > 500) return false;
+    if (/\?$/.test(t) && words.length >= 3) return true;
+    return words.length >= 5 && QWORDS.test(words[0].replace(/[^\p{L}-]/gu, ''));
+  }
+  askQ.addEventListener('input', () => {
+    clearTimeout(AI.autoT);
+    const v = askQ.value;
+    if (AI.down || AI.autoUsed || !looksComplete(v)) return;
+    askBody.querySelector('.askrow')?.classList.add('askrow--auto');
+    AI.autoT = setTimeout(() => {
+      if (ask.hidden || askQ.value !== v || sel >= 0 || document.activeElement !== askQ) return;
+      AI.autoUsed = true; AI.trigger = 'auto';
+      answer(v.trim());
+    }, 3000);
+  });
+  askGo.addEventListener('click', () => { clearTimeout(AI.autoT); if (askQ.value.trim()) answer(askQ.value.trim()); });
   ask.addEventListener('click', e => {
     const t = e.target.closest('[data-ask],[data-back],[data-close],[data-close-go],[data-fb]');
     if (!t) return;
-    if (t.hasAttribute('data-ask')) answer(t.dataset.ask);
+    if (t.hasAttribute('data-ask')) { clearTimeout(AI.autoT); answer(t.dataset.ask); }
     else if (t.hasAttribute('data-back')) { clearInterval(streamTimer); render(); askQ.focus(); }
     else if (t.hasAttribute('data-close') || t.hasAttribute('data-close-go')) closeAsk();
     else if (t.hasAttribute('data-fb')) { t.parentElement.querySelectorAll('[data-fb]').forEach(b => b.setAttribute('aria-pressed', b === t)); const up = t.getAttribute('aria-label') === 'Nuttig'; const aid = t.parentElement.dataset.aid; if (aid && !t.parentElement.dataset.sent) { t.parentElement.dataset.sent = '1'; fetch('/api/ask/feedback', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ answer_id: aid, rating: up ? 'up' : 'down' }) }).catch(() => {}); window.dataLayer?.push({ event: 'ask_feedback', rating: up ? 'up' : 'down' }); } document.getElementById('fb-t').innerHTML = up ? `<span class="marc-thx"><img src="${MARC('duim')}" alt="" width="320" height="398">Bedankt, dat hoort Marc graag!</span>` : 'Bedankt voor uw feedback.'; }
@@ -466,7 +485,7 @@
       e.preventDefault(); sel = (sel + (e.key === 'ArrowDown' ? 1 : -1) + opts.length) % opts.length;
       opts.forEach((o, i) => o.classList.toggle('is-sel', i === sel)); opts[sel].scrollIntoView({ block: 'nearest' });
     }
-    if (e.key === 'Enter' && document.activeElement === askQ) { e.preventDefault(); if (sel >= 0 && opts[sel]) opts[sel].click(); else if (askQ.value.trim()) answer(askQ.value.trim()); }
+    if (e.key === 'Enter' && document.activeElement === askQ) { e.preventDefault(); clearTimeout(AI.autoT); if (sel >= 0 && opts[sel]) opts[sel].click(); else if (askQ.value.trim()) answer(askQ.value.trim()); }
     if (e.key === 'Tab') { const f = [...ask.querySelectorAll('a[href],button:not([disabled]),input')].filter(x => x.offsetParent !== null); if (!f.length) return; const first = f[0], last = f[f.length - 1]; if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); } else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); } }
   });
   const ph = document.getElementById('ask-ph'), PH = ['Zoek een product of stel een vraag', 'Bv. varnish in hydraulische olie', 'Bv. filter voor 450 bar', 'Bv. viscositeit OSCA-serie'];
