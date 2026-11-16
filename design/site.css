@@ -1870,3 +1870,5 @@ h1.h1--long{font-size:clamp(1.875rem,1.2rem + 2.4vw,3.25rem);text-wrap:balance}
 .ask .askrow--auto::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,#5CB8EB,#1B4C9C);transform-origin:left;animation:askauto 3s linear forwards}
 @keyframes askauto{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @media (prefers-reduced-motion:reduce){.ask .askrow--auto::after{animation:none;transform:none;opacity:.6}}
+/* contactvak: RRR-logo in plaats van teamfoto */
+.fab__who .fab__logo{width:52px;height:30px;border-radius:0;object-fit:contain;flex:none}
