@@ -244,7 +244,7 @@
     return `<a class="src" id="src-${i + 1}" href="${s.u}" data-close-go><span class="n">${i + 1}</span><b>${esc(s.page)}</b><span>Webpagina</span></a>`;
   }
   /* ---------- Marc AI (Kigumi via /api/ask); bij elke storing: terug naar de zoekfunctie hieronder ---------- */
-  const AI = { down: false, history: [], sid: (() => { try { let v = sessionStorage.getItem('rrr_ask_sid'); if (!v) { v = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem('rrr_ask_sid', v); } return v; } catch (e) { return Math.random().toString(36).slice(2) + Date.now().toString(36); } })() };
+  const AI = { down: false, history: [], cache: new Map(), busy: '', sid: (() => { try { let v = sessionStorage.getItem('rrr_ask_sid'); if (!v) { v = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem('rrr_ask_sid', v); } return v; } catch (e) { return Math.random().toString(36).slice(2) + Date.now().toString(36); } })() };
   const LANG = (document.documentElement.lang || 'nl').slice(0, 2);
   const safePath = u => typeof u === 'string' && /^\/(?!\/)[\w\-./%]*$/.test(u);
   function mdHtml(text, final) {
@@ -311,7 +311,7 @@
     if (!fin && !text) return false; /* niets ontvangen: gewone zoekfunctie */
     sources = sources.filter(s => s && safePath(s.url));
     const d = fin || {};
-    if (d.no_answer || !sources.length) { noAnswer(q, d.no_answer_reason, text); return true; }
+    if (d.no_answer || !sources.length) { if (!broken) AI.cache.set(norm(q), { no: [d.no_answer_reason, text] }); noAnswer(q, d.no_answer_reason, text); return true; }
     AI.history.push({ role: 'user', content: q }, { role: 'assistant', content: text.slice(0, 2000) }); AI.history = AI.history.slice(-6);
     paint(true);
     const prods = (Array.isArray(d.products) ? d.products : []).filter(id => /^[a-z0-9-]{2,40}$/.test(id)).slice(0, 4);
@@ -327,12 +327,20 @@
     const a = document.getElementById('ans'); a.setAttribute('aria-busy', 'false');
     document.getElementById('ai-l').classList.remove('busy'); document.getElementById('ai-t').textContent = 'Antwoord van Marc (AI), op basis van Triple R-documentatie';
     window.dataLayer?.push({ event: 'ask_answer_shown', no_answer: false, sources: sources.length });
+    if (!broken) AI.cache.set(norm(q), { html: askBody.innerHTML });
     return true;
   }
   async function answer(q) {
     clearInterval(streamTimer);
     askQ.value = q; askGo.disabled = false;
-    if (!AI.down && await aiAnswer(q)) return;
+    const key = norm(q);
+    if (AI.busy === key) return; /* dubbel klikken of twee keer Enter: geen tweede vraag */
+    const hit = AI.cache.get(key); /* zelfde vraag in hetzelfde bezoek: antwoord hergebruiken, geen nieuwe aanroep */
+    if (hit) { if (hit.no) noAnswer(q, hit.no[0], hit.no[1]); else askBody.innerHTML = hit.html; return; }
+    AI.busy = key;
+    let ok = false;
+    try { ok = !AI.down && await aiAnswer(q); } finally { AI.busy = ''; }
+    if (ok) return;
     if (askQ.value !== q) return;
     return localAnswer(q);
   }
